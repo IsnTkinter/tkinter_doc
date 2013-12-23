@@ -2,19 +2,27 @@
 Les étiquettes ``Label``
 ************************
 
- Label widgets can display one or more lines of text in the same style, or a bitmap or image. To create a label widget in a root window or frame parent:
+Label widgets can display one or more lines of text in the same style, or a bitmap or image. 
+To create a label widget in a root window or frame parent:
 
-    w = tk.Label(parent, option, ...)
+.. py:class:: Label(parent, option, ...)
 
-The constructor returns the new Label widget. Options include:
+   The constructor returns the new Label widget. Options include:
 
-Table 20. Label widget options
-activebackground 	Background color to be displayed when the mouse is over the widget.
-activeforeground 	Foreground color to be displayed when the mouse is over the widget.
-anchor	This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=tk.CENTER, which centers the text in the available space. For other values, see Section 5.5, “Anchors”. For example, if you use anchor=tk.NW, the text would be positioned in the upper left-hand corner of the available space.
+
+   :arg activebackground:
+       Background color to be displayed when the mouse is over the widget.
+   
+   :arg activeforeground:
+       Foreground color to be displayed when the mouse is over the widget.
+   :arg anchor:
+       This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=tk.CENTER, which centers the text in the available space. For other values, see Section 5.5, “Anchors”. For example, if you use anchor=tk.NW, the text would be positioned in the upper left-hand corner of the available space.
 bg or background	The background color of the label area. See Section 5.3, “Colors”.
-bitmap	Set this option equal to a bitmap or image object and the label will display that graphic. See Section 5.7, “Bitmaps” and Section 5.9, “Images”.
+   :arg bitmap:
+      Set this option equal to a bitmap or image object and the label will display that graphic. See Section 5.7, “Bitmaps” and Section 5.9, “Images”.
 bd or borderwidth	Width of the border around the label; see Section 5.1, “Dimensions”. The default value is two pixels.
+
+
 compound 	If you would like the Label widget to display both text and a graphic (either a bitmap or an image), the compound option specifies the relative orientation of the graphic relative to the text. Values may be any of tk.LEFT, tk.RIGHT, tk.CENTER, tk.BOTTOM, or tk.TOP. For example, if you specify compound=BOTTOM, the graphic will be displayed below the text.
 cursor	Cursor that appears when the mouse is over this label. See Section 5.8, “Cursors”.
 disabledforeground 	The foreground color to be displayed when the widget's state is tk.DISABLED.
