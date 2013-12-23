@@ -21,9 +21,11 @@ A canvas is a rectangular area intended for drawing pictures or other complex la
      One or more line segments. See Section 8.10, “Canvas line objects”.
 
 .. py:method:: create_oval()
+
      An ellipse; use this also for drawing circles, which are a special case of an ellipse. See Section 8.11, “Canvas oval objects”.
 
 .. py:method:: create_polygon()
+
      A polygon. See Section 8.12, “Canvas polygon objects”.
 
 create_rectangle(): A rectangle. See Section 8.13, “Canvas rectangle objects”.
