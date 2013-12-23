@@ -21,22 +21,35 @@ To create a label widget in a root window or frame parent:
       or bg	The background color of the label area. See Section 5.3, “Colors”.
    :arg bitmap:
       Set this option equal to a bitmap or image object and the label will display that graphic. See Section 5.7, “Bitmaps” and Section 5.9, “Images”.
-bd or borderwidth	Width of the border around the label; see Section 5.1, “Dimensions”. The default value is two pixels.
+   :arg borderwidth:
+      or border .Width of the border around the label; see Section 5.1, “Dimensions”. The default value is two pixels.
+   :arg compound:
+      If you would like the Label widget to display both text and a graphic (either a bitmap or an image), the compound option specifies the relative orientation of the graphic relative to the text. Values may be any of tk.LEFT, tk.RIGHT, tk.CENTER, tk.BOTTOM, or tk.TOP. For example, if you specify compound=BOTTOM, the graphic will be displayed below the text.
+   :arg cursor:
+      Cursor that appears when the mouse is over this label. See Section 5.8, “Cursors”.
+   :arg disabledforeground:
+      The foreground color to be displayed when the widget's state is tk.DISABLED.
+   :arg font:
+      If you are displaying text in this label (with the text or textvariable option, the font option specifies in what font that text will be displayed. See Section 5.4, “Type fonts”.
+   :arg foreground:
+      or fg ; If you are displaying text or a bitmap in this label, this option specifies the color of the text. If you are displaying a bitmap, this is the color that will appear at the position of the 1-bits in the bitmap. See Section 5.3, “Colors”.
+   :arg height:	
+      Height of the label in lines (not pixels!). If this option is not set, the label will be sized to fit its contents.
+   :arg highlightbackground:
+      Color of the focus highlight when the widget does not have focus.
+   :arg highlightcolor:
+      The color of the focus highlight when the widget has focus.
+   :arg highlightthickness:
+      Thickness of the focus highlight.
+   :arg image:
+      To display a static image in the label widget, set this option to an image object. See Section 5.9, “Images”.
+   :arg justify:
+      Specifies how multiple lines of text will be aligned with respect to each other: tk.LEFT for flush left, tk.CENTER for centered (the default), or tk.RIGHT for right-justified.
+   :arg padx:
+      Extra space added to the left and right of the text within the widget. Default is 1.
+   :arg pady:	
+      Extra space added above and below the text within the widget. Default is 1.
 
-
-compound 	If you would like the Label widget to display both text and a graphic (either a bitmap or an image), the compound option specifies the relative orientation of the graphic relative to the text. Values may be any of tk.LEFT, tk.RIGHT, tk.CENTER, tk.BOTTOM, or tk.TOP. For example, if you specify compound=BOTTOM, the graphic will be displayed below the text.
-cursor	Cursor that appears when the mouse is over this label. See Section 5.8, “Cursors”.
-disabledforeground 	The foreground color to be displayed when the widget's state is tk.DISABLED.
-font	If you are displaying text in this label (with the text or textvariable option, the font option specifies in what font that text will be displayed. See Section 5.4, “Type fonts”.
-fg or foreground	If you are displaying text or a bitmap in this label, this option specifies the color of the text. If you are displaying a bitmap, this is the color that will appear at the position of the 1-bits in the bitmap. See Section 5.3, “Colors”.
-height	Height of the label in lines (not pixels!). If this option is not set, the label will be sized to fit its contents.
-highlightbackground 	Color of the focus highlight when the widget does not have focus.
-highlightcolor	The color of the focus highlight when the widget has focus.
-highlightthickness 	Thickness of the focus highlight.
-image	To display a static image in the label widget, set this option to an image object. See Section 5.9, “Images”.
-justify	Specifies how multiple lines of text will be aligned with respect to each other: tk.LEFT for flush left, tk.CENTER for centered (the default), or tk.RIGHT for right-justified.
-padx	Extra space added to the left and right of the text within the widget. Default is 1.
-pady	Extra space added above and below the text within the widget. Default is 1.
 relief	Specifies the appearance of a decorative border around the label. The default is tk.FLAT; for other values, see Section 5.6, “Relief styles”.
 state 	By default, an Entry widget is in the tk.NORMAL state. Set this option to tk.DISABLED to make it unresponsive to mouse events. The state will be tk.ACTIVE when the mouse is over the widget.
 takefocus	Normally, focus does not cycle through Label widgets; see Section 53, “Focus: routing keyboard input”. If you want this widget to be visited by the focus, set takefocus=1.
