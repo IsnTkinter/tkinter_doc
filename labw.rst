@@ -17,7 +17,8 @@ To create a label widget in a root window or frame parent:
        Foreground color to be displayed when the mouse is over the widget.
    :arg anchor:
        This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=tk.CENTER, which centers the text in the available space. For other values, see Section 5.5, “Anchors”. For example, if you use anchor=tk.NW, the text would be positioned in the upper left-hand corner of the available space.
-bg or background	The background color of the label area. See Section 5.3, “Colors”.
+   :arg background: 
+      or bg	The background color of the label area. See Section 5.3, “Colors”.
    :arg bitmap:
       Set this option equal to a bitmap or image object and the label will display that graphic. See Section 5.7, “Bitmaps” and Section 5.9, “Images”.
 bd or borderwidth	Width of the border around the label; see Section 5.1, “Dimensions”. The default value is two pixels.
