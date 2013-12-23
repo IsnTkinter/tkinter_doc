@@ -2,25 +2,27 @@
 Les Canevas (``Canvas``)
 ************************
 
- A canvas is a rectangular area intended for drawing pictures or other complex layouts. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
+A canvas is a rectangular area intended for drawing pictures or other complex layouts. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
 
-    .create_arc(): A slice out of an ellipse. See Section 8.7, “Canvas arc objects”.
+.. py:meth:: create_arc()
+     A slice out of an ellipse. See Section 8.7, “Canvas arc objects”.
 
-    .create_bitmap(): An image as a bitmap. See Section 8.8, “Canvas bitmap objects”.
+.. py:meth:: create_bitmap()
+     An image as a bitmap. See Section 8.8, “Canvas bitmap objects”.
 
-    .create_image(): A graphic image. See Section 8.9, “Canvas image objects”.
+create_image(): A graphic image. See Section 8.9, “Canvas image objects”.
 
-    .create_line(): One or more line segments. See Section 8.10, “Canvas line objects”.
+create_line(): One or more line segments. See Section 8.10, “Canvas line objects”.
 
-    .create_oval(): An ellipse; use this also for drawing circles, which are a special case of an ellipse. See Section 8.11, “Canvas oval objects”.
+create_oval(): An ellipse; use this also for drawing circles, which are a special case of an ellipse. See Section 8.11, “Canvas oval objects”.
 
-    .create_polygon(): A polygon. See Section 8.12, “Canvas polygon objects”.
+create_polygon(): A polygon. See Section 8.12, “Canvas polygon objects”.
 
-    .create_rectangle(): A rectangle. See Section 8.13, “Canvas rectangle objects”.
+create_rectangle(): A rectangle. See Section 8.13, “Canvas rectangle objects”.
 
-    .create_text(): Text annotation. See Section 8.14, “Canvas text objects”.
+create_text(): Text annotation. See Section 8.14, “Canvas text objects”.
 
-    .create_window(): A rectangular window. See Section 8.15, “Canvas window objects”. 
+create_window(): A rectangular window. See Section 8.15, “Canvas window objects”. 
 
 To create a Canvas object:
 
