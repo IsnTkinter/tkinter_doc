@@ -49,14 +49,22 @@ To create a label widget in a root window or frame parent:
       Extra space added to the left and right of the text within the widget. Default is 1.
    :arg pady:	
       Extra space added above and below the text within the widget. Default is 1.
+   :arg relief:
+      Specifies the appearance of a decorative border around the label. The default is tk.FLAT; for other values, see Section 5.6, “Relief styles”.
+   :arg state:
+      By default, an Entry widget is in the tk.NORMAL state. Set this option to tk.DISABLED to make it unresponsive to mouse events. The state will be tk.ACTIVE when the mouse is over the widget.
+   :arg takefocus:
+      Normally, focus does not cycle through Label widgets; see Section 53, “Focus: routing keyboard input”. If you want this widget to be visited by the focus, set takefocus=1.
+   :arg text:
+      To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines ('\n') will force a line break.
+   :arg textvariable:
+      To slave the text displayed in a label widget to a control variable of class StringVar, set this option to that variable. SeeSection 52, “Control variables: the values behind the widgets”.
+   :arg underline:
+      You can display an underline (_) below the nth letter of the text, counting from 0, by setting this option to n. The default is underline=-1, which means no underlining.
+   :arg width:
+      Width of the label in characters (not pixels!). If this option is not set, the label will be sized to fit its contents.
+   :arg wraplength:
+      You can limit the number of characters in each line by setting this option to the desired number. The default value, 0, means that lines will be broken only at newlines.
 
-relief	Specifies the appearance of a decorative border around the label. The default is tk.FLAT; for other values, see Section 5.6, “Relief styles”.
-state 	By default, an Entry widget is in the tk.NORMAL state. Set this option to tk.DISABLED to make it unresponsive to mouse events. The state will be tk.ACTIVE when the mouse is over the widget.
-takefocus	Normally, focus does not cycle through Label widgets; see Section 53, “Focus: routing keyboard input”. If you want this widget to be visited by the focus, set takefocus=1.
-text	To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines ('\n') will force a line break.
-textvariable	To slave the text displayed in a label widget to a control variable of class StringVar, set this option to that variable. SeeSection 52, “Control variables: the values behind the widgets”.
-underline	You can display an underline (_) below the nth letter of the text, counting from 0, by setting this option to n. The default is underline=-1, which means no underlining.
-width	Width of the label in characters (not pixels!). If this option is not set, the label will be sized to fit its contents.
-wraplength	You can limit the number of characters in each line by setting this option to the desired number. The default value, 0, means that lines will be broken only at newlines.
 
 There are no special methods for label widgets other than the common ones (see Section 26, “Universal widget methods”). 
