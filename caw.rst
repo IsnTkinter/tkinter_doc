@@ -4,10 +4,10 @@ Les Canevas (``Canvas``)
 
 A canvas is a rectangular area intended for drawing pictures or other complex layouts. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
 
-.. py:meth:: create_arc()
+.. py:method:: create_arc()
      A slice out of an ellipse. See Section 8.7, “Canvas arc objects”.
 
-.. py:meth:: create_bitmap()
+.. py:method:: create_bitmap()
      An image as a bitmap. See Section 8.8, “Canvas bitmap objects”.
 
 create_image(): A graphic image. See Section 8.9, “Canvas image objects”.
