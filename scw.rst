@@ -1,3 +1,5 @@
+.. _SCALE:
+
 ****************
 The Scale widget
 ****************
@@ -34,8 +36,8 @@ To create a new scale widget as the child of a root window or frame named parent
                 The font used for the label and annotations. See Section 5.4, “Type fonts”.
         :arg fg: or foreground 
                 The color of the text used for the label and annotations.
-        :arg from_: 
-                A float value that defines one end of the scale's range. For vertical scales, this is the top end; for horizontal scales, the left end. The underbar (_) is not a typo: because from is a reserved word in Python, this option is spelled from_. The default is 0.0. See the to option, below, for the other end of the range.
+        :arg from\_: 
+                A float value that defines one end of the scale's range. For vertical scales, this is the top end; for horizontal scales, the left end. The underbar (_) is not a typo: because from is a reserved word in Python, this option is spelled from\_. The default is 0.0. See the to option, below, for the other end of the range.
         :arg highlightbackground: 
                 The color of the focus highlight when the scale does not have focus. See Section 53, “Focus: routing keyboard input”.
         :arg highlightcolor: 
@@ -55,7 +57,7 @@ To create a new scale widget as the child of a root window or frame named parent
         :arg repeatinterval: 
                 This option controls how often the slider jumps once button 1 has been held down in the trough for at least repeatdelay milliseconds. For example, repeatinterval=100 would jump the slider every 100 milliseconds.
         :arg resolution: 
-                Normally, the user will only be able to change the scale in whole units. Set this option to some other value to change the smallest increment of the scale's value. For example, if from_=-1.0 and to=1.0, and you set resolution=0.5, the scale will have 5 possible values: -1.0, -0.5, 0.0, +0.5, and +1.0. All smaller movements will be ignored. Use resolution=-1 to disable any rounding of values.
+                Normally, the user will only be able to change the scale in whole units. Set this option to some other value to change the smallest increment of the scale's value. For example, if ``from_=-1.0`` and ``to=1.0``, and you set ``resolution=0.5``, the scale will have 5 possible values: -1.0, -0.5, 0.0, +0.5, and +1.0. All smaller movements will be ignored. Use ``resolution=-1`` to disable any rounding of values.
         :arg showvalue: 
                 Normally, the current value of the scale is displayed in text form by the slider (above it for horizontal scales, to the left for vertical scales). Set this option to 0 to suppress that label.
         :arg sliderlength: 
@@ -67,9 +69,9 @@ To create a new scale widget as the child of a root window or frame named parent
         :arg takefocus: 
                 Normally, the focus will cycle through scale widgets. Set this option to 0 if you don't want this behavior. See Section 53, “Focus: routing keyboard input”.
         :arg tickinterval: 
-                Normally, no “ticks” are displayed along the scale. To display periodic scale values, set this option to a number, and ticks will be displayed on multiples of that value. For example, if from_=0.0, to=1.0, and tickinterval=0.25, labels will be displayed along the scale at values 0.0, 0.25, 0.50, 0.75, and 1.00. These labels appear below the scale if horizontal, to its left if vertical. Default is 0, which suppresses display of ticks.
+                Normally, no “ticks” are displayed along the scale. To display periodic scale values, set this option to a number, and ticks will be displayed on multiples of that value. For example, if ``from_=0.0``, ``to=1.0``, and ``tickinterval=0.25``, labels will be displayed along the scale at values 0.0, 0.25, 0.50, 0.75, and 1.00. These labels appear below the scale if horizontal, to its left if vertical. Default is 0, which suppresses display of ticks.
         :arg to: 
-                A float value that defines one end of the scale's range; the other end is defined by the from_ option, discussed above. The to value can be either greater than or less than the from_ value. For vertical scales, the to value defines the bottom of the scale; for horizontal scales, the right end. The default value is 100.0.
+                A float value that defines one end of the scale's range; the other end is defined by the from\_ option, discussed above. The to value can be either greater than or less than the from\_ value. For vertical scales, the to value defines the bottom of the scale; for horizontal scales, the right end. The default value is 100.0.
         :arg troughcolor: 
                 The color of the trough.
         :arg variable: 
@@ -90,10 +92,10 @@ To create a new scale widget as the child of a root window or frame named parent
         .. py:method:: identify(x, y)
 
                     Given a pair of coordinates (x, y) relative to the top left corner of the widget, this method returns a string identifying what functional part of the widget is at that location. The return value may be any of these:
-            'slider': The slider.
-            'trough1' : For horizontal scales, to the left of the slider; for vertical scales, above the slider.
-            'trough2' : For horizontal scales, to the right of the slider; for vertical scales, below the slider.
-            '' : Position (x, y) is not on any of the above parts. 
+                    ``'slider'`` : The slider.
+                    ``'trough1'`` : For horizontal scales, to the left of the slider; for vertical scales, above the slider.
+                    ``'trough2'`` : For horizontal scales, to the right of the slider; for vertical scales, below the slider.
+                    ``''`` : Position (x, y) is not on any of the above parts. 
 
         .. py:method:: set(value)
 

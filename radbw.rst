@@ -1,3 +1,5 @@
+.. _RADIOBUTTON:
+
 **********************
 The Radiobutton widget
 **********************

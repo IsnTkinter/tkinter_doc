@@ -1,3 +1,5 @@
+.. _PANEDWINDOW:
+
 **********************
 The PanedWindow widget
 **********************

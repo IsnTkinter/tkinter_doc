@@ -1,3 +1,5 @@
+.. _MENUBUTTON:
+
 *****************
 Menubutton widget
 *****************

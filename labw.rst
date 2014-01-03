@@ -1,4 +1,4 @@
-.. _Label:
+.. _LABEL:
 
 ************************
 Les étiquettes ``Label``

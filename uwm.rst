@@ -1,3 +1,5 @@
+.. _UNIVERSAL:
+
 ************************
 Universal widget methods
 ************************
@@ -67,7 +69,7 @@ Universal widget methods
 
 .. py:method:: configure(option=value, ...)
 
-    Set the values of one or more options. For the options whose names are Python reserved words (class, from, in), use a trailing underbar: 'class_', 'from_', 'in_'.
+    Set the values of one or more options. For the options whose names are Python reserved words (class, from, in), use a trailing underbar: 'class\_', 'from\_', 'in\_'.
 
     You can also set the value of an option for widget w with the statement
 
@@ -199,6 +201,8 @@ Universal widget methods
     \*Button\*font: times 24 bold
 
     your application (self in this example) might include these lines:
+
+    .. code-block:: python
 
         self.bigFont = tkFont.Font(family='times', size=24,
                                      weight='bold')

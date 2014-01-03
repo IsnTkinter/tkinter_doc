@@ -1,10 +1,12 @@
+.. _TOPLEVEL:
+
 **********************************
 Toplevel: Top-level window methods
 **********************************
 
 A top-level window is a window that has an independent existence under the window manager. It is decorated with the window manager's decorations, and can be moved and resized independently. Your application can use any number of top-level windows.
 
-For any widget w, you can get to its top-level widget using w.winfo_toplevel().
+For any widget w, you can get to its top-level widget using ``w.winfo_toplevel().``
 
 To create a new top-level window:
 
@@ -16,12 +18,12 @@ To create a new top-level window:
                 The background color of the window. See Section 5.3, “Colors”.
         :arg bd: or borderwidth 
                 Border width in pixels; default is 0. For possible values, see Section 5.1, “Dimensions”. See also the relief option, below.
-        :arg class_: 
-                You can give a Toplevel window a “class” name. Such names are matched against the option database, so your application can pick up the user's configuration preferences (such as colors) by class name. For example, you might design a series of pop-ups called “screamers,” and set them all up with class_='Screamer'. Then you can put a line in your option database like this:
+        :arg class\_: 
+                You can give a Toplevel window a “class” name. Such names are matched against the option database, so your application can pick up the user's configuration preferences (such as colors) by class name. For example, you might design a series of pop-ups called “screamers,” and set them all up with ``class_='Screamer'``. Then you can put a line in your option database like this:
 
                 \*Screamer\*background: red
 
-                and then, if you use the .option_readfile() method to read your option database, all widgets with that class name will default to a red background. This option is named class_ because class is a reserved word in Python.
+                and then, if you use the ``.option_readfile()`` method to read your option database, all widgets with that class name will default to a red background. This option is named ``class_`` because class is a reserved word in Python.
         :arg cursor: 
                 The cursor that appears when the mouse is in this window. See Section 5.8, “Cursors”.
         :arg height: 
@@ -83,7 +85,7 @@ To create a new top-level window:
 
                     If called with a True argument, this method sets the override redirect flag, which removes all window manager decorations from the window, so that it cannot be moved, resized, iconified, or closed. If called with a False argument, window manager decorations are restored and the override redirect flag is cleared. If called with no argument, it returns the current state of the override redirect flag.
 
-                    Be sure to call the .update_idletasks() method (see Section 26, “Universal widget methods”) before setting this flag. If you call it before entering the main loop, your window will be disabled before it ever appears.
+                    Be sure to call the ``.update_idletasks()`` method (see Section 26, “Universal widget methods”) before setting this flag. If you call it before entering the main loop, your window will be disabled before it ever appears.
 
                     This method may not work on some Unix and MacOS platforms. 
 

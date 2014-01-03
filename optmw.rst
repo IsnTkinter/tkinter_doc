@@ -1,3 +1,5 @@
+.. _OPTIONMENU:
+
 *********************
 The OptionMenu widget
 *********************

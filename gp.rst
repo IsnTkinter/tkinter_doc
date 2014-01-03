@@ -1,3 +1,5 @@
+.. _POSITIONNEMENT:
+
 ******************************
 Gestionnaire de positionnement
 ******************************

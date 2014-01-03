@@ -1,3 +1,5 @@
+.. _SPINBOX:
+
 ******************
 The Spinbox widget
 ******************
@@ -46,9 +48,9 @@ To create a new Spinbox widget as the child of a root window or frame parent:
         :arg fg: or foreground 
                 This option selects the color used to display the text in the entry part of the widget, and the color of the arrowheads.
         :arg format: 
-                Use this option to control the formatting of numeric values in combination with the from_ and to options. For example, format='%10.4f' would display the value as a ten-character field, with four digits after the decimal.
-        :arg from_: 
-                Use this option in combination with the to option (described below) to constrain the values to a numeric range. For example, from_=1 and to=9 would allow only values between 1 and 9 inclusive. See also the increment option below.
+                Use this option to control the formatting of numeric values in combination with the from\_ and to options. For example, format='%10.4f' would display the value as a ten-character field, with four digits after the decimal.
+        :arg from\_: 
+                Use this option in combination with the to option (described below) to constrain the values to a numeric range. For example, ``from_=1`` and ``to=9`` would allow only values between 1 and 9 inclusive. See also the increment option below.
         :arg highlightbackground: 
                 The color of the focus highlight when the Spinbox does not have focus. See Section 53, “Focus: routing keyboard input”.
         :arg highlightcolor: 
@@ -56,7 +58,7 @@ To create a new Spinbox widget as the child of a root window or frame parent:
         :arg highlightthickness: 
                 The thickness of the focus highlight. Default is 1. Set to 0 to suppress display of the focus highlight.
         :arg increment: 
-                When you constrain the values with the from_ and to options, you can use the increment option to specify how much the value increases or decreases when the user clicks on an arrowhead. For example, with options from_=0.0, to=2.0, and increment=0.5, the up-arrowhead will step through values 0.0, 0.5, 1.0, 1.5, and 2.0.
+                When you constrain the values with the from\_ and to options, you can use the increment option to specify how much the value increases or decreases when the user clicks on an arrowhead. For example, with options ``from_=0.0``, ``to=2.0``, and ``increment=0.5``, the up-arrowhead will step through values 0.0, 0.5, 1.0, 1.5, and 2.0.
         :arg insertbackground: 
                 Selects the color of the insertion cursor displayed in the entry part of the widget.
         :arg insertborderwidth: 
@@ -88,9 +90,9 @@ To create a new Spinbox widget as the child of a root window or frame parent:
         :arg textvariable: 
                 If you want to retrieve the current value of the widget, you can use the .get() method below, or you can associate a control variable with the widget by passing that control variable as the value of this option. See Section 52, “Control variables: the values behind the widgets”.
         :arg to: 
-                This option specifies the upper limit of a range values. See the from_ option, above, and also the increment option.
+                This option specifies the upper limit of a range values. See the from\_ option, above, and also the increment option.
         :arg values: 
-                There are two ways to specify the possible values of the widget. One way is to provide a tuple of strings as the value of the values option. For example, values=('red', 'blue', 'green') would allow only those three strings as values. To configure the widget to accept a range of numeric values, see the from_ option above.
+                There are two ways to specify the possible values of the widget. One way is to provide a tuple of strings as the value of the values option. For example, values=('red', 'blue', 'green') would allow only those three strings as values. To configure the widget to accept a range of numeric values, see the from\_ option above.
         :arg width: 
                 Use this option to specify the number of characters allowed in the entry part of the widget. The default value is 20.
         :arg wrap: 

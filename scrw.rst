@@ -1,3 +1,5 @@
+.. _SCROLLBAR:
+
 ********************
 The Scrollbar widget
 ********************

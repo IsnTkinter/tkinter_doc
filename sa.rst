@@ -1,3 +1,5 @@
+.. _STDATTR:
+
 ***********************
 Les attributs standards
 ***********************
@@ -111,10 +113,12 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
     Si vous ne fournissez aucun argument, vous obtenez un dictionnaire des options courantes de la fonte qui peuvent différents de celles que vous avez demandées. Pour obtenir la valeur actuelle d'une option, fournissez son nom comme argument.
     
 .. py:method:: cget(option)
+   :noindex:
 
     Retourne la valeur de l'option indiquée sous la forme d'une chaîne de caractère.
     
 .. py:method:: configure(option, ...)
+   :noindex:
 
     Utilisez cette méthode pour modifier une ou plusieurs options d'une fonte. Par exemple, si vous disposez d'un objet Font nommé ``titres`` et que vous appelez titres.configure(family='times', size=18), cette fonte sera modifiée conformément ainsi que tout widget qui l'utilise.
     

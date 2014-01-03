@@ -33,6 +33,12 @@ ISN : Documentation de tkinter
    textw
    toplww
    uwm
+   stdapp
+   connapplog
+   ctrvar
+   focus
+   event
+   popdial
 
 Indices and tables
 ==================
