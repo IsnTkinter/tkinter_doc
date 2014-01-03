@@ -4,37 +4,23 @@ Les Canevas (``Canvas``)
 
 A canvas is a rectangular area intended for drawing pictures or other complex layouts. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
 
-.. py:method:: create_arc() A slice out of an ellipse. See Section 8.7, “Canvas arc objects”.  .. py:method:: create_bitmap()
+* :py:meth:`~Canvas.create_arc` : A slice out of an ellipse. Voir :ref:`arcs`.
 
-        An image as a bitmap. See Section 8.8, “Canvas bitmap objects”.
+* :py:meth:`~Canvas.create_bitmap` : An image as a bitmap. Voir :ref:`can_bitmaps`.
 
-.. py:method:: create_image()
+* :py:meth:`~Canvas.create_image` : A graphic image. Voir :ref:`can_images`.
 
-        A graphic image. See Section 8.9, “Canvas image objects”.
+* :py:meth:`~Canvas.create_line` : One or more line segments. Voir :ref:`lignes`.
 
-.. py:method:: create_line()
+* :py:meth:`~Canvas.create_oval` : An ellipse; use this also for drawing circles, which are a special case of an ellipse. Voir :ref:`ellipses-et-cercles`.
 
-        One or more line segments. See Section 8.10, “Canvas line objects”.
+* :py:meth:`~Canvas.create_polygon` : A polygon. Voir :ref:`polygones`.
 
-.. py:method:: create_oval()
+* :py:meth:`~Canvas.create_rectangle` : A rectangle. Voir :ref:`rectangles`.
 
-        An ellipse; use this also for drawing circles, which are a special case of an ellipse. See Section 8.11, “Canvas oval objects”.
+* :py:meth:`~Canvas.create_text` : Text annotation. Voir :ref:`textes`.
 
-.. py:method:: create_polygon()
-
-        A polygon. See Section 8.12, “Canvas polygon objects”.
-
-.. py:method:: create_rectangle()
-
-        A rectangle. See Section 8.13, “Canvas rectangle objects”.
-
-.. py:method:: create_text()
-
-        Text annotation. See Section 8.14, “Canvas text objects”.
-
- .. py:method:: create_window()
-
-        A rectangular window. See Section 8.15, “Canvas window objects”. 
+* :py:meth:`~Canvas.create_window` : A rectangular window. Voir :ref:`fenêtres`.
 
 pour créer un objet de type Canvas
 
@@ -44,7 +30,8 @@ pour créer un objet de type Canvas
 
         :arg bd or borderwidth:
         
-                Width of the border around the outside of the canvas; see Section 5.1, “Dimensions”. The default is two pixels.
+                Width of the border around the outside of the canvas; Voir :ref:`dimensions`.
+                The default is two pixels.
         :arg bg or background:
 
                 Background color of the canvas. Default is a light gray, about '#E4E4E4'.
@@ -164,19 +151,74 @@ Méthodes des Canevas
 
  All Canvas objects support these methods:
 
-.. py:method:: addtag_above(newTag, tagOrId)
+.. hlist::
+  :columns: 4
+
+  * :py:meth:`~Canvas.addtag_above`
+  * :py:meth:`~Canvas.addtag_all`
+  * :py:meth:`~Canvas.addtag_below`
+  * :py:meth:`~Canvas.addtag_closest`
+  * :py:meth:`~Canvas.addtag_enclosed`
+  * :py:meth:`~Canvas.addtag_overlapping`
+  * :py:meth:`~Canvas.addtag_withtag`
+  * :py:meth:`~Canvas.bbox`
+  * :py:meth:`~Canvas.canvasx`
+  * :py:meth:`~Canvas.canvasy`
+  * :py:meth:`~Canvas.coords`
+  * :py:meth:`~Canvas.dchars`
+  * :py:meth:`~Canvas.delete`
+  * :py:meth:`~Canvas.dtag`
+  * :py:meth:`~Canvas.find_above`
+  * :py:meth:`~Canvas.find_all`
+  * :py:meth:`~Canvas.find_below`
+  * :py:meth:`~Canvas.find_closest`
+  * :py:meth:`~Canvas.find_enclosed`
+  * :py:meth:`~Canvas.find_overlapping`
+  * :py:meth:`~Canvas.find_withtag`
+  * :py:meth:`~Canvas.focus`
+  * :py:meth:`~Canvas.gettags`
+  * :py:meth:`~Canvas.icursor`
+  * :py:meth:`~Canvas.index`
+  * :py:meth:`~Canvas.insert`
+  * :py:meth:`~Canvas.itemcget`
+  * :py:meth:`~Canvas.itemconfigure`
+  * :py:meth:`~Canvas.move`
+  * :py:meth:`~Canvas.postscript`
+  * :py:meth:`~Canvas.scale`
+  * :py:meth:`~Canvas.scan_dragto`
+  * :py:meth:`~Canvas.scan_mark`
+  * :py:meth:`~Canvas.select_adjust`
+  * :py:meth:`~Canvas.select_clear`
+  * :py:meth:`~Canvas.select_from`
+  * :py:meth:`~Canvas.select_item`
+  * :py:meth:`~Canvas.select_to`
+  * :py:meth:`~Canvas.tag_bind`
+  * :py:meth:`~Canvas.tag_lower`
+  * :py:meth:`~Canvas.tag_raise`
+  * :py:meth:`~Canvas.tag_unbind`
+  * :py:meth:`~Canvas.type`
+  * :py:meth:`~Canvas.xview`
+  * :py:meth:`~Canvas.xview`
+  * :py:meth:`~Canvas.xview_moveto`
+  * :py:meth:`~Canvas.xview_scroll`
+  * :py:meth:`~Canvas.yview`
+  * :py:meth:`~Canvas.yview`
+  * :py:meth:`~Canvas.yview_moveto`
+  * :py:meth:`~Canvas.yview_scroll`
+
+.. py:method:: Canvas.addtag_above(newTag, tagOrId)
 
         Attaches a new tag to the object just above the one specified by tagOrId in the display list. The newTag argument is the tag you want to attach, as a string. 
 
-.. py:method:: addtag_all(newTag)
+.. py:method:: Canvas.addtag_all(newTag)
 
         Attaches the given tag newTag to all the objects on the canvas. 
 
-.. py:method:: addtag_below(newTag, tagOrID)
+.. py:method:: Canvas.addtag_below(newTag, tagOrID)
 
         Attaches a new tag to the object just below the one specified by tagOrId in the display list. The newTag argument is a tag string. 
 
-.. py:method:: addtag_closest(newTag, x, y, halo=None, start=None)
+.. py:method:: Canvas.addtag_closest(newTag, x, y, halo=None, start=None)
 
         Adds a tag to the object closest to screen coordinate (x,y). If there are two or more objects at the same distance, the one higher in the display list is selected.
 
@@ -184,61 +226,61 @@ Méthodes des Canevas
 
         If an object ID is passed in the start argument, this method tags the highest qualifying object that is below start in the display list. 
 
-.. py:method:: addtag_enclosed(newTag, x1, y1, x2, y2)
+.. py:method:: Canvas.addtag_enclosed(newTag, x1, y1, x2, y2)
 
         Add tag newTag to all objects that occur completely within the rectangle whose top left corner is (x1, y1) and whose bottom right corner is (x2, y2). 
 
-.. py:method:: addtag_overlapping(newTag, x1, y1, x2, y2)
+.. py:method:: Canvas.addtag_overlapping(newTag, x1, y1, x2, y2)
 
         Like the previous method, but affects all objects that share at least one point with the given rectangle. 
 
-.. py:method:: addtag_withtag(newTag, tagOrId)
+.. py:method:: Canvas.addtag_withtag(newTag, tagOrId)
 
         Adds tag newTag to the object or objects specified by tagOrId. 
 
-.. py:method:: bbox(tagOrId=None)
+.. py:method:: Canvas.bbox(tagOrId=None)
 
         Returns a tuple (x1, y1, x2, y2) describing a rectangle that encloses all the objects specified by tagOrId. If the argument is omitted, returns a rectangle enclosing all objects on the canvas. The top left corner of the rectangle is (x1, y1) and the bottom right corner is (x2, y2). 
 
-.. py:method:: canvasx(screenx, gridspacing=None)
+.. py:method:: Canvas.canvasx(screenx, gridspacing=None)
 
         Translates a window x coordinate screenx to a canvas coordinate. If gridspacing is supplied, the canvas coordinate is rounded to the nearest multiple of that value. 
 
-.. py:method:: canvasy(screeny, gridspacing=None)
+.. py:method:: Canvas.canvasy(screeny, gridspacing=None)
 
         Translates a window y coordinate screeny to a canvas coordinate. If gridspacing is supplied, the canvas coordinate is rounded to the nearest multiple of that value. 
 
-.. py:method:: coords(tagOrId, x0, y0, x1, y1, ..., xn, yn)
+.. py:method:: Canvas.coords(tagOrId, x0, y0, x1, y1, ..., xn, yn)
 
         If you pass only the tagOrId argument, returns a tuple of the coordinates of the lowest or only object specified by that argument. The number of coordinates depends on the type of object. In most cases it will be a 4-tuple (x1, y1, x2, y2) describing the bounding box of the object.
 
         You can move an object by passing in new coordinates. 
 
-.. py:method:: dchars(tagOrId, first=0, last=first)
+.. py:method:: Canvas.dchars(tagOrId, first=0, last=first)
 
         Deletes characters from a text item or items. Characters between first and last inclusive are deleted, where those values can be integer indices or the string 'end' to mean the end of the text. For example, for a canvas C and an item I, C.dchars(I, 1, 1) will remove the second character. 
 
-.. py:method:: delete(tagOrId)
+.. py:method:: Canvas.delete(tagOrId)
 
         Deletes the object or objects selected by tagOrId. It is not considered an error if no items match tagOrId. 
 
-.. py:method:: dtag(tagOrId, tagToDelete)
+.. py:method:: Canvas.dtag(tagOrId, tagToDelete)
 
         Removes the tag specified by tagToDelete from the object or objects specified by tagOrId. 
 
-.. py:method:: find_above(tagOrId)
+.. py:method:: Canvas.find_above(tagOrId)
 
         Returns the ID number of the object just above the object specified by tagOrId. If multiple objects match, you get the highest one. Returns an empty tuple if you pass it the object ID of the highest object. 
 
-.. py:method:: find_all()
+.. py:method:: Canvas.find_all()
 
         Returns a list of the object ID numbers for all objects on the canvas, from lowest to highest. 
 
-.. py:method:: find_below(tagOrId)
+.. py:method:: Canvas.find_below(tagOrId)
 
         Returns the object ID of the object just below the one specified by tagOrId. If multiple objects match, you get the lowest one. Returns an empty tuple if you pass it the object ID of the lowest object. 
 
-.. py:method:: find_closest(x, y, halo=None, start=None)
+.. py:method:: Canvas.find_closest(x, y, halo=None, start=None)
 
         Returns a singleton tuple containing the object ID of the object closest to point (x, y). If there are no qualifying objects, returns an empty tuple.
 
@@ -246,33 +288,33 @@ Méthodes des Canevas
 
         If an object ID is passed as the start argument, this method returns the highest qualifying object that is below start in the display list. 
 
-.. py:method:: find_enclosed(x1, y1, x2, y2)
+.. py:method:: Canvas.find_enclosed(x1, y1, x2, y2)
 
         Returns a list of the object IDs of all objects that occur completely within the rectangle whose top left corner is (x1, y1) and bottom right corner is (x2, y2). 
 
-.. py:method:: find_overlapping(x1, y1, x2, y2)
+.. py:method:: Canvas.find_overlapping(x1, y1, x2, y2)
 
         Like the previous method, but returns a list of the object IDs of all the objects that share at least one point with the given rectangle. 
 
-.. py:method:: find_withtag(tagOrId)
+.. py:method:: Canvas.find_withtag(tagOrId)
 
         Returns a list of the object IDs of the object or objects specified by tagOrId. 
 
-.. py:method:: focus(tagOrId=None)
+.. py:method:: Canvas.focus(tagOrId=None)
 
         Moves the focus to the object specified by tagOrId. If there are multiple such objects, moves the focus to the first one in the display list that allows an insertion cursor. If there are no qualifying items, or the canvas does not have focus, focus does not move.
 
     If the argument is omitted, returns the ID of the object that has focus, or '' if none of them do. 
 
-.. py:method:: gettags(tagOrId)
+.. py:method:: Canvas.gettags(tagOrId)
 
         If tagOrId is an object ID, returns a list of all the tags associated with that object. If the argument is a tag, returns all the tags for the lowest object that has that tag. 
 
-.. py:method:: icursor(tagOrId, index)
+.. py:method:: Canvas.icursor(tagOrId, index)
 
         Assuming that the selected item allows text insertion and has the focus, sets the insertion cursor to index, which may be either an integer index or the string 'end'. Has no effect otherwise. 
 
-.. py:method:: index(tagOrId, specifier)
+.. py:method:: Canvas.index(tagOrId, specifier)
 
         Returns the integer index of the given specifier in the text item specified by tagOrId (the lowest one that, if tagOrId specifies multiple objects). The return value is the corresponding position as an integer, with the usual Python convention, where 0 is the position before the first character.
 
@@ -289,7 +331,7 @@ Méthodes des Canevas
         A string of the form “@x,y”, to return the character of the character containing canvas coordinates (x, y). If those coordinates are above or to the left of the text item, the method returns 0; if the coordinates are to the right of or below the item, the method returns the index of the end of the item. 
 
 
-.. py:method:: insert(tagOrId, specifier, text)
+.. py:method:: Canvas.insert(tagOrId, specifier, text)
 
         Inserts the given string into the object or objects specified by tagOrId, at the position given by the specifier argument.
 
@@ -299,21 +341,21 @@ Méthodes des Canevas
 
         The position of the desired insertion, using the normal Python convention for positions in strings. 
 
-.. py:method:: itemcget(tagOrId, option)
+.. py:method:: Canvas.itemcget(tagOrId, option)
 
         Returns the value of the given configuration option in the selected object (or the lowest object if tagOrId specifies more than one). This is similar to the .cget() method for Tkinter objects. 
 
-.. py:method:: itemconfigure(tagOrId, option, ...)
+.. py:method:: Canvas.itemconfigure(tagOrId, option, ...)
 
         If no option arguments are supplied, returns a dictionary whose keys are the options of the object specified by tagOrId (the lowest one, if tagOrId specifies multiple objects).
 
     To change the configuration option of the specified item, supply one or more keyword arguments of the form option=value. 
 
-.. py:method:: move(tagOrId, xAmount, yAmount)
+.. py:method:: Canvas.move(tagOrId, xAmount, yAmount)
 
         Moves the items specified by tagOrId by adding xAmount to their x coordinates and yAmount to their y coordinates. 
 
-.. py:method:: postscript(option, ...)
+.. py:method:: Canvas.postscript(option, ...)
 
         Generates an Encapsulated PostScript representation of the canvas's current contents. The options include:
         colormode	Use 'color' for color output, 'gray' for grayscale, or 'mono' for black and white.
@@ -324,17 +366,17 @@ Méthodes des Canevas
         y	Topmost canvas coordinate of the area to print.
         width	How much of the X size of the canvas to print. Default is the visible width of the canvas. 
 
-.. py:method:: scale(tagOrId, xOffset, yOffset, xScale, yScale)
+.. py:method:: Canvas.scale(tagOrId, xOffset, yOffset, xScale, yScale)
 
         Scale all objects according to their distance from a point P=(xOffset, yOffset). The scale factors xScale and yScale are based on a value of 1.0, which means no scaling. Every point in the objects selected by tagOrId is moved so that its x distance from P is multiplied by xScale and its y distance is multiplied by yScale.
 
         This method will not change the size of a text item, but may move it. 
 
-.. py:method:: scan_dragto(x, y, gain=10.0)
+.. py:method:: Canvas.scan_dragto(x, y, gain=10.0)
 
         See the .scan_mark() method below. 
 
-.. py:method:: scan_mark(x, y)
+.. py:method:: Canvas.scan_mark(x, y)
 
         This method is used to implement fast scrolling of a canvas. The intent is that the user will press and hold a mouse button, then move the mouse up to scan (scroll) the canvas horizontally and vertically in that direction at a rate that depends on how far the mouse has moved since the mouse button was depressed.
 
@@ -342,19 +384,19 @@ Méthodes des Canevas
 
         The gain argument controls the rate of scanning. This argument has a default value of 10.0. Use larger numbers for faster scanning. 
 
-.. py:method:: select_adjust(oid, specifier)
+.. py:method:: Canvas.select_adjust(oid, specifier)
 
         Adjusts the boundaries of the current text selection to include the position given by the specifier argument, in the text item with the object ID oid.
 
-        The current selection anchor is also set to the specified position. For a discussion of the selection anchor, see the canvas select_from method below.
+        The current selection anchor is also set to the specified position. For a discussion of the selection anchor, :py:meth:`~Canvas.select_from` see the canvas select_from method below.
 
-        For the values of specifier, see the canvas insert method above. 
+        For the values of specifier, :py:meth:`~Canvas.insert` see the canvas insert method above. 
 
-.. py:method:: select_clear()
+.. py:method:: Canvas.select_clear()
 
         Removes the current text selection, if it is set. If there is no current selection, does nothing. 
 
-.. py:method:: select_from(oid, specifier)
+.. py:method:: Canvas.select_from(oid, specifier)
 
         This method sets the selection anchor to the position given by the specifier argument, within the text item whose object ID is given by oid.
 
@@ -362,15 +404,15 @@ Méthodes des Canevas
 
         To change the position of the currently selected text, use this method in combination with the select_adjust, select_from, and select_to canvas methods (q.v.). 
 
-.. py:method:: select_item()
+.. py:method:: Canvas.select_item()
 
         If there is a current text selection on this canvas, return the object ID of the text item containing the selection. If there is no current selection, this method returns None. 
 
-.. py:method:: select_to(oid, specifier
+.. py:method:: Canvas.select_to(oid, specifier)
 
-        This method changes the current text selection so that it includes the select anchor and the position given by specifier within the text item whose object ID is given by oid. For the values of specifier, see the canvas insert method above. 
+        This method changes the current text selection so that it includes the select anchor and the position given by specifier within the text item whose object ID is given by oid. For the values of specifier, :py:meth:`~Canvas.insert` see the canvas insert method above. 
 
-.. py:method:: tag_bind(tagOrId, sequence=None, function=None, add=None)
+.. py:method:: Canvas.tag_bind(tagOrId, sequence=None, function=None, add=None)
 
         Binds events to objects on the canvas. For the object or objects selected by tagOrId, associates the handler function with the event sequence. If the add argument is a string starting with '+', the new binding is added to existing bindings for the given sequence, otherwise the new binding replaces that for the given sequence.
 
@@ -378,7 +420,7 @@ Méthodes des Canevas
 
         Note that the bindings are applied to items that have this tag at the time of the tag_bind method call. If tags are later removed from those items, the bindings will persist on those items. If the tag you specify is later applied to items that did not have that tag when you called tag_bind, that binding will not be applied to the newly tagged items. 
 
-.. py:method:: tag_lower(tagOrId, belowThis)
+.. py:method:: Canvas.tag_lower(tagOrId, belowThis)
 
         Moves the object or objects selected by tagOrId within the display list to a position just below the first or only object specied by the tag or ID belowThis.
 
@@ -386,7 +428,7 @@ Méthodes des Canevas
 
         This method does not affect canvas window items. To change a window item's stacking order, use a lower or lift method on the window. 
 
-.. py:method:: tag_raise(tagOrId, aboveThis)
+.. py:method:: Canvas.tag_raise(tagOrId, aboveThis)
 
         Moves the object or objects selected by tagOrId within the display list to a position just above the first or only object specied by the tag or ID aboveThis.
 
@@ -394,19 +436,19 @@ Méthodes des Canevas
 
         This method does not affect canvas window items. To change a window item's stacking order, use a lower or lift method on the window. 
 
-.. py:method:: tag_unbind(tagOrId, sequence, funcId=None)
+.. py:method:: Canvas.tag_unbind(tagOrId, sequence, funcId=None)
 
         Removes bindings for handler funcId and event sequence from the canvas object or objects specified by tagOrId. See Section 54, “Events”. 
 
-.. py:method:: type(tagOrId)
+.. py:method:: Canvas.type(tagOrId)
 
         Returns the type of the first or only object specified by tagOrId. The return value will be one of the strings 'arc', 'bitmap', 'image', 'line', 'oval', 'polygon', 'rectangle', 'text', or 'window'. 
 
-.. py:method:: xview(tk.MOVETO, fraction)
+.. py:method:: Canvas.xview(tk.MOVETO, fraction)
 
         This method scrolls the canvas relative to its image, and is intended for binding to the command option of a related scrollbar. The canvas is scrolled horizontally to a position given by offset, where 0.0 moves the canvas to its leftmost position and 1.0 to its rightmost position. 
 
-.. py:method:: xview(tk.SCROLL, n, what)
+.. py:method:: Canvas.xview(tk.SCROLL, n, what)
 
         This method moves the canvas left or right: the what argument specifies how much to move and can be either tk.UNITS or tk.PAGES, and n tells how many units to move the canvas to the right relative to its image (or left, if negative).
 
@@ -414,29 +456,31 @@ Méthodes des Canevas
 
         For movements by tk.PAGES, n is multiplied by nine-tenths of the width of the canvas. 
 
-.. py:method:: xview_moveto(fraction)
+.. py:method:: Canvas.xview_moveto(fraction)
 
         This method scrolls the canvas in the same way as .xview(tk.MOVETO, fraction). 
 
-.. py:method:: xview_scroll(n, what)
+.. py:method:: Canvas.xview_scroll(n, what)
 
         Same as .xview(tk.SCROLL, n, what). 
 
-.. py:method:: yview(tk.MOVETO, fraction)
+.. py:method:: Canvas.yview(tk.MOVETO, fraction)
 
         The vertical scrolling equivalent of .xview(tk.MOVETO,…). 
 
-.. py:method:: yview(tk.SCROLL, n, what)
+.. py:method:: Canvas.yview(tk.SCROLL, n, what)
 
         The vertical scrolling equivalent of .xview(tk.SCROLL,…). 
 
-.. py:method:: yview_moveto(fraction)
+.. py:method:: Canvas.yview_moveto(fraction)
 
         The vertical scrolling equivalent of .xview(). 
 
-.. py:method:: yview_scroll(n, what)
+.. py:method:: Canvas.yview_scroll(n, what)
 
         The vertical scrolling equivalents of .xview(), .xview_moveto(), and .xview_scroll(). 
+
+.. _arcs:
 
 Les arcs
 ========
@@ -445,7 +489,7 @@ Les arcs
 
 To create an arc object on a canvas C, use:
 
-.. py:method:: create_arc(x0, y0, x1, y1, option, ...)
+.. py:method:: Canvas.create_arc(x0, y0, x1, y1, option, ...)
 
         The constructor returns the object ID of the new arc object on canvas C.
 
@@ -481,7 +525,7 @@ To create an arc object on a canvas C, use:
                 The color of the border around the outside of the slice. Default is black.
         :arg outlineoffset: 
                 Stipple pattern offset for the outline. See Section 5.14, “Matching stipple patterns”.
-        outlinestipple
+        :arg outlinestipple:
                 If the outline option is used, this option specifies a bitmap used to stipple the border. Default is black, and that default can be specified by setting outlinestipple=''.
         :arg start:
                 Starting angle for the slice, in degrees, measured from +x direction. If omitted, you get the entire ellipse.
@@ -496,6 +540,8 @@ To create an arc object on a canvas C, use:
         :arg width:
                 Width of the border around the outside of the arc. Default is 1 pixel. 
 
+.. _can_bitmaps:
+
 Les bitmaps
 ===========
 
@@ -504,7 +550,7 @@ Les bitmaps
 To create a bitmap object on a canvas C, use:
 
 
-.. py:method:: create_bitmap(x, y, options ...)
+.. py:method:: Canvas.create_bitmap(x, y, options ...)
 
         which returns the integer ID number of the image object for that canvas.
 
@@ -521,7 +567,7 @@ To create a bitmap object on a canvas C, use:
         :arg background: 
                 The color that will appear where there are 0 values in the bitmap. The default is background='', meaning transparent.
         :arg bitmap: 
-                The bitmap to be displayed; see Section 5.7, “Bitmaps”.
+                The bitmap to be displayed; Voir :ref:`bitmaps`.
         :arg disabledbackground: 
                 These options specify the background, bitmap, and foreground to be used when the bitmap's state is tk.DISABLED.
         :arg disabledbitmap:
@@ -533,13 +579,15 @@ To create a bitmap object on a canvas C, use:
         :arg tags: 
                 If a single string, the bitmap is tagged with that string. Use a tuple of strings to tag the bitmap with multiple tags. See Section 8.4, “Canvas tags”. 
 
+.. _can_images:
+
 Les images
 ==========
 
  To display a graphics image on a canvas C, use:
 
 
-.. py:method:: create_image(x, y, option, ...)
+.. py:method:: Canvas.create_image(x, y, option, ...)
 
         This constructor returns the integer ID number of the image object for that canvas.
 
@@ -558,13 +606,15 @@ Les images
         :arg tags:
                 If a single string, the image is tagged with that string. Use a tuple of strings to tag the image with multiple tags. See Section 8.4, “Canvas tags”. 
 
+.. _lignes:
+
 Les lignes
 ==========
 
  In general, a line can consist of any number of segments connected end to end, and each segment can be straight or curved. To create a canvas line object on a canvas C, use:
 
 
-.. py:method:: create_line(x0, y0, x1, y1, ..., xn, yn, option, ...)
+.. py:method:: Canvas.create_line(x0, y0, x1, y1, ..., xn, yn, option, ...)
 
         The line goes through the series of points (x0, y0), (x1, y1), … (xn, yn). Options include:
 
@@ -578,9 +628,11 @@ Les lignes
         :arg arrowshape:
                 A tuple (d1, d2, d3) that describes the shape of the arrowheads added by the arrow option. Default is (8,10,3).
         :arg capstyle: 
-                You can specify the shape of the ends of the line with this option; see Section 5.12, “Cap and join styles”. The default option is tk.BUTT.
+                You can specify the shape of the ends of the line with this option; seeVoir :ref:`style-extr`.
+                The default option is tk.BUTT.
         :arg dash: 
-                To produce a dashed line, specify this option; see Section 5.13, “Dash patterns”. The default appearance is a solid line.
+                To produce a dashed line, specify this option; Voir :ref:`Motifs-brise`.
+                The default appearance is a solid line.
         :arg dashoffset: 
                  If you specify a dash pattern, the default is to start the specified pattern at the beginning of the line. The dashoffset option allows you to specify that the start of the dash pattern occurs at a given distance after the start of the line. See Section 5.13, “Dash patterns”.
         :arg disableddash: 
@@ -591,7 +643,8 @@ Les lignes
         :arg fill:
                 The color to use in drawing the line. Default is fill='black'.
         :arg joinstyle: 
-                For lines that are made up of more than one line segment, this option controls the appearance of the junction between segments. For more details, see Section 5.12, “Cap and join styles”. The default style is ROUND
+                For lines that are made up of more than one line segment, this option controls the appearance of the junction between segments. For more details, Voir :ref:`style-extr`.
+                The default style is ROUND
         :arg offset: 
                 For stippled lines, the purpose of this option is to match the item's stippling pattern with those of adjacent objects. See Section 5.14, “Matching stipple patterns”..
         :arg smooth:
@@ -607,6 +660,8 @@ Les lignes
         :arg width:
                 The line's width. Default is 1 pixel. See Section 5.1, “Dimensions” for possible values. 
 
+.. _ellipses-et-cercles:
+
 Les ellipses et cercles
 =======================
 
@@ -617,7 +672,7 @@ The oval will coincide with the top and left-hand lines of this box, but will fi
 To create an ellipse on a canvas C, use:
 
 
-.. py:method:: create_oval(x0, y0, x1, y1, option, ...)
+.. py:method:: Canvas.create_oval(x0, y0, x1, y1, option, ...)
 
         which returns the object ID of the new oval object on canvas C.
 
@@ -631,7 +686,7 @@ To create an ellipse on a canvas C, use:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                To produce a dashed border around the oval, set this option to a dash pattern; see Section 5.13, “Dash patterns”
+                To produce a dashed border around the oval, set this option to a dash pattern; Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 When using the dash option, the dashoffset option is used to change the alignment of the border's dash pattern relative to the oval. See Section 5.14, “Matching stipple patterns”.
         :arg disableddash: 
@@ -642,7 +697,7 @@ To create an ellipse on a canvas C, use:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                The default appearance of an oval's interior is transparent, and a value of fill='' will select this behavior. You can also set this option to any color and the interior of the ellipse will be filled with that color; see Section 5.3, “Colors”.
+                The default appearance of an oval's interior is transparent, and a value of fill='' will select this behavior. You can also set this option to any color and the interior of the ellipse will be filled with that color; Voir :ref:`couleurs`.
         :arg offset: 
                 Stipple pattern offset of the interior. See Section 5.14, “Matching stipple patterns”.
         :arg outline:
@@ -658,7 +713,10 @@ To create an ellipse on a canvas C, use:
         :arg tags:
                 If a single string, the oval is tagged with that string. Use a tuple of strings to tag the oval with multiple tags. See Section 8.4, “Canvas tags”.
         :arg width:
-                Width of the border around the outside of the ellipse. Default is 1 pixel; see Section 5.1, “Dimensions” for possible values. If you set this to zero, the border will not appear. If you set this to zero and make the fill transparent, you can make the entire oval disappear. 
+                Width of the border around the outside of the ellipse. Default is 1 pixel; Voir :ref:`dimensions`.
+                for possible values. If you set this to zero, the border will not appear. If you set this to zero and make the fill transparent, you can make the entire oval disappear. 
+
+.. _polygones:
 
 Les polygones
 =============
@@ -667,7 +725,7 @@ Les polygones
 
 To create a new polygon object on a canvas C:
 
-.. py:method:: create_polygon(x0, y0, x1, y1, ..., option, ...)
+.. py:method:: Canvas.create_polygon(x0, y0, x1, y1, ..., option, ...)
 
         The constructor returns the object ID for that object. Options:
 
@@ -700,7 +758,7 @@ To create a new polygon object on a canvas C:
         :arg outlineoffset: 
                 Stipple offset for the border. See Section 5.14, “Matching stipple patterns”.
         :arg outlinestipple: 
-                Use this option to get a stippled border around the polygon. The option value must be a bitmap; see Section 5.7, “Bitmaps”.
+                Use this option to get a stippled border around the polygon. The option value must be a bitmap; Voir :ref:`bitmaps`.
         :arg smooth:
                 The default outline uses straight lines to connect the vertices; use smooth=0 to get that behavior. If you use smooth=1, you get a continuous spline curve. Moreover, if you set smooth=1, you can make any segment straight by duplicating the coordinates at each end of that segment.
         :arg splinesteps:
@@ -713,6 +771,8 @@ To create a new polygon object on a canvas C:
                 If a single string, the polygon is tagged with that string. Use a tuple of strings to tag the polygon with multiple tags. See Section 8.4, “Canvas tags”.
         :arg width:
                 Width of the outline; defaults to 1. See Section 5.1, “Dimensions”. 
+
+.. _rectangles:
 
 Les rectangles
 ==============
@@ -731,7 +791,7 @@ Rectangles are drawn in two parts:
 
 To create a rectangle object on canvas C:
 
-.. py:method:: create_rectangle(x0, y0, x1, y1, option, ...)
+.. py:method:: Canvas.create_rectangle(x0, y0, x1, y1, option, ...)
 
         This constructor returns the object ID of the rectangle on that canvas. Options include:
 
@@ -745,7 +805,7 @@ To create a rectangle object on canvas C:
         :arg dash: 
                 To produce a dashed border around the rectangle, use this option to specify a dash pattern. See Section 5.13, “Dash patterns”.
         :arg dashoffset: 
-                Use this option to start the border's dash pattern at a different point in the cycle; see Section 5.13, “Dash patterns”.
+                Use this option to start the border's dash pattern at a different point in the cycle; Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 These options specify the appearance of the rectangle when its state is tk.DISABLED.
         :arg disabledfill:
@@ -754,7 +814,7 @@ To create a rectangle object on canvas C:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                By default, the interior of a rectangle is empty, and you can get this behavior with fill=''. You can also set the option to a color; see Section 5.3, “Colors”.
+                By default, the interior of a rectangle is empty, and you can get this behavior with fill=''. You can also set the option to a color; Voir :ref:`couleurs`.
         :arg offset: 
                 Use this option to change the offset of the interior stipple pattern. See Section 5.14, “Matching stipple patterns”.
         :arg outline:
@@ -762,7 +822,7 @@ To create a rectangle object on canvas C:
         :arg outlineoffset: 
                 Use this option to adjust the offset of the stipple pattern in the outline; see Section 5.14, “Matching stipple patterns”.
         :arg outlinestipple: 
-                Use this option to produce a stippled outline. The pattern is specified by a bitmap; see Section 5.7, “Bitmaps”.
+                Use this option to produce a stippled outline. The pattern is specified by a bitmap; Voir :ref:`bitmaps`.
         :arg state: 
                 By default, rectangles are created in the tk.NORMAL state. The state is tk.ACTIVE when the mouse is over the rectangle. Set this option to tk.DISABLED to gray out the rectangle and make it unresponsive to mouse events.
         :arg stipple:
@@ -772,13 +832,15 @@ To create a rectangle object on canvas C:
         :arg width:
                 Width of the border. Default is 1 pixel. Use width=0 to make the border invisible. See Section 5.1, “Dimensions”. 
 
+.. _textes:
+
 Les textes
 ==========
 
  You can display one or more lines of text on a canvas C by creating a text object:
 
 
-.. py:method:: create_text(x, y, option, ...)
+.. py:method:: Canvas.create_text(x, y, option, ...)
 
         This returns the object ID of the text object on canvas C. Options include:
 
@@ -819,6 +881,8 @@ You can change the text displayed in a text item.
 
 A number of canvas methods allow you to manipulate text items. See Section 8.6, “Methods on Canvas widgets”, especially dchars, focus, icursor, index, and insert. 
 
+.. _fenêtres:
+
 Les fenêtres
 ============
 
@@ -828,7 +892,7 @@ If you want to put complex multi-widget objects on a canvas, you can use this me
 
 To create a new canvas window object on a canvas C:
 
-.. py:method:: create_window(x, y, option, ...)
+.. py:method:: Canvas.create_window(x, y, option, ...)
 
         This returns the object ID for the window object. Options include:
 

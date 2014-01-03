@@ -13,6 +13,8 @@ précisés.
 * Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode ``.config()``. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode ``.cget()``. Voir .... pour en apprendre plus sur ces méthodes.
 
 
+.. _dimensions:
+
 Les dimensions
 ==============
 
@@ -27,6 +29,8 @@ Les différentes dimensions comme la largeur, la hauteur, etc. peuvent être pr�
     * ``p`` : Points d'impression
 
   
+.. _système:
+
 Le système de coordonnées
 =========================
 
@@ -39,6 +43,8 @@ les valeur de `y` augmentant vers le bas.
 L'unité de base est le pixel avec le coin supérieur gauche de coordonnées `(0,0)`.
 Les coordonnées indiqués par un entier sont toujours exprimées en pixels, mais chaque coordonnées
 peut être indiqué via une chaîne de caractère dans une unité particulière.
+
+.. _couleurs:
 
 Les couleurs
 ============
@@ -55,6 +61,8 @@ Il y a deux manières générales pour indiquer une couleur dans tkinter.
 
 * Vous pouvez aussi utiliser n'importe quelle couleur définie localement par son nom standard. Les couleurs ``'white'``, ``'black'``, ``'red'``, ``'green'``, ``'blue'``, ``'cyan'``, ``'yellow'``, and ``'magenta'`` seront toujours disponible. D'autres noms peuvent fonctionner selon la configuration de votre ordinateur.
 
+
+.. _polices:
 
 Les polices de caractères
 =========================
@@ -130,6 +138,8 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
     
     :arg linespace: Nombre de pixels de la hauteur totale. This is the leading of type set solid in the given font.
 
+.. _ancrage:
+
 Le système d'ancrage
 =====================
 
@@ -147,6 +157,8 @@ Par exemple, si vous créez un petit widget dans un large cadre et utilisez l'op
 
 Les ancres sont aussi utilisées pour préciser où positionner un texte relativement à un point de référence. Par exemple, si on utilise ``CENTER`` comme une ancre pour un texte, il est centré horizontalement et verticalement autour du point de référence. L'ancre ``NW`` le positionnerait de telle sorte que le point de référence coincide avec coin nord ouest de la boîte qui contient le texte. L'ancre ``W`` le centrerait verticalement avec le bord gauche de la boîte du texte sur le point et ainsi de suite.
 
+.. _reliefs:
+
 Les styles de relief
 =====================
 
@@ -155,6 +167,8 @@ Le style de relief d'un widget se réfère à la simulation de certains effets 3
 .. image:: relief.png
 
 La largeur des bords dépend de l'option ``borderwidth`` du widget. Ici, cette largeur a été fixé à 5 pixels alors que par défaut elle vaut 2 pixels.
+
+.. _bitmaps:
 
 Les bitmaps
 ===========
@@ -168,6 +182,8 @@ L'image montre des widget boutons qui portent les bitmaps standards.
 De la gauche vers la droite, il y a ``'error'``, ``'gray75'``, ``'gray50'``, ``'gray25'``, ``'gray12'``, ``'hourglass'``, ``'info'``, ``'questhead'``, ``'question'``, and ``'warning'``. 
 
 Vous pouvez utiliser vos propres bitmaps. N'importe quel fichier d'extention `.xbm` de format X bit map fonctionnera. À la place du nom standard des bitmaps, utiliser une chaîne ``'@'`` suivi du chemin du fichier `.xbm`.
+
+.. _pointeurs:
 
 Le pointeur de la souris
 ========================
@@ -275,6 +291,8 @@ Il y a un grand nombre de pointeur de souris disponible. Leurs noms et le graphi
 .. |lr_angle| image:: cursors/40.png
 
 
+.. _images:
+
 Les images
 ==========
 
@@ -353,6 +371,8 @@ Pour obtenir le nom d'un widget ``w``, utilisez ``str(w)``.
 
 Voir aussi ref pour les méthodes que vous pouvez utiliser afin d'agir sur les nom de fenêtre, plus spécialement les méthodes  .winfo_name, .winfo_parent, and .winfo_pathname.
 
+.. _style-extr:
+
 Style des extrémités (`cap`) et des jointures (`join`)
 ======================================================
 
@@ -377,6 +397,8 @@ Pour obtenir des dessins plaisants, il est parfois bon de s'intéresser au style
 La figure suivante illustre ces styles. Les points rouge montre la localisation des points qui définissent les lignes.
 
 .. image:: cap-join.png
+
+.. _Motifs-brise:
 
 Motifs brisés (`dash patterns`)
 ===============================

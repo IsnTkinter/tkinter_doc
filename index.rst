@@ -20,6 +20,19 @@ ISN : Documentation de tkinter
    frw
    labw
    lbfr
+   lbw
+   menw
+   menbw
+   messw
+   optmw
+   panww
+   radbw
+   scw
+   scrw
+   spbw
+   textw
+   toplww
+   uwm
 
 Indices and tables
 ==================

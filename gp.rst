@@ -101,6 +101,8 @@ Pour afficher un widget ``w`` sur l'écran de votre application:
         
 
 
+.. _autres-meth-grille:
+
 Autres méthodes du gestionnaire de grille
 =========================================
 

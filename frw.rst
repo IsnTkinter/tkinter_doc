@@ -12,20 +12,32 @@ Les cadres ``Frame``
 
 To create a new frame widget in a root window or frame named parent:
 
-    w = Frame(parent, option, ...)
+.. py:class:: Frame(parent, option, ...)
 
-The constructor returns the new Frame widget. Options:
+        The constructor returns the new Frame widget. Options:
 
-Table 19. Frame widget options
-bg or background	The frame's background color. See Section 5.3, “Colors”.
-bd or borderwidth	Width of the frame's border. The default is 0 (no border). For permitted values, see Section 5.1, “Dimensions”.
-cursor	The cursor used when the mouse is within the frame widget; see Section 5.8, “Cursors”.
-height	The vertical dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; see Section 4.2, “Other grid management methods”.
-highlightbackground	Color of the focus highlight when the frame does not have focus. See Section 53, “Focus: routing keyboard input”.
-highlightcolor	Color shown in the focus highlight when the frame has the focus.
-highlightthickness	Thickness of the focus highlight.
-padx 	Normally, a Frame fits tightly around its contents. To add N pixels of horizontal space inside the frame, set padx=N.
-pady 	Used to add vertical space inside a frame. See padx above.
-relief	The default relief for a frame is tk.FLAT, which means the frame will blend in with its surroundings. To put a border around a frame, set its borderwidth to a positive value and set its relief to one of the standard relief types; see Section 5.6, “Relief styles”.
-takefocus	Normally, frame widgets are not visited by input focus (see Section 53, “Focus: routing keyboard input” for an overview of this topic). However, you can set takefocus=1 if you want the frame to receive keyboard input. To handle such input, you will need to create bindings for keyboard events; see Section 54, “Events” for more on events and bindings.
-width	The horizontal dimension of the new frame. See Section 5.1, “Dimensions”. This value be ignored unless you also call .grid_propagate(0) on the frame; see Section 4.2, “Other grid management methods”. 
+        :arg bg: or background
+                The frame's background color. Voir :ref:`couleurs`.
+        :arg bd: or borderwidth
+                Width of the frame's border. The default is 0 (no border). For permitted values, Voir :ref:`dimensions`.
+        :arg cursor:
+                The cursor used when the mouse is within the frame widget; Voir :ref:`pointeurs`.
+        :arg height:
+                The vertical dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`.
+        :arg highlightbackground:
+                Color of the focus highlight when the frame does not have focus. See Section 53, “Focus: routing keyboard input”.
+        :arg highlightcolor:
+                Color shown in the focus highlight when the frame has the focus.
+        :arg highlightthickness:
+                Thickness of the focus highlight.
+        :arg padx: 
+                Normally, a Frame fits tightly around its contents. To add N pixels of horizontal space inside the frame, set padx=N.
+        :arg pady: 
+                Used to add vertical space inside a frame. See padx above.
+        :arg relief:
+                The default relief for a frame is tk.FLAT, which means the frame will blend in with its surroundings. To put a border around a frame, set its borderwidth to a positive value and set its relief to one of the standard relief types; Voir :ref:`reliefs`.
+        :arg takefocus:
+                Normally, frame widgets are not visited by input focus (see Section 53, “Focus: routing keyboard input” for an overview of this topic). However, you can set takefocus=1 if you want the frame to receive keyboard input. To handle such input, you will need to create bindings for keyboard events; see Section 54, “Events” for more on events and bindings.
+        :arg width:
+                The horizontal dimension of the new frame. Voir :ref:`dimensions`.
+                This value be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`. 
