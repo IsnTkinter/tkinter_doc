@@ -40,7 +40,7 @@ Comme dans la plupart des système d'affichage, l'origine de chaque système de 
 située à son coin supérieur gauche, les valeurs de `x` augmentant vers la droite et
 les valeur de `y` augmentant vers le bas.
 
-.. image:: coords.png 
+.. image:: img/coords.png 
 
 L'unité de base est le pixel avec le coin supérieur gauche de coordonnées `(0,0)`.
 Les coordonnées indiqués par un entier sont toujours exprimées en pixels, mais chaque coordonnées
@@ -154,7 +154,7 @@ Ces constantes sont donnés comme sur une boussole où le nord est en haut et l'
 
 Les constantes d'ancrages sont montrées ci-dessous:
 
-.. image:: anchors.png
+.. image:: img/anchors.png
 
 Par exemple, si vous créez un petit widget dans un large cadre et utilisez l'option ``anchor=SE``, le widget sera placé au niveau du bord inférieur droit du cadre. Si vous utilisez
 ``anchor=N``, il sera centré sur le bord haut du cadre.
@@ -168,7 +168,7 @@ Les styles de relief
 
 Le style de relief d'un widget se réfère à la simulation de certains effets 3D autour de l'extérieur du widget. Voici les différentes possibilités :
 
-.. image:: relief.png
+.. image:: img/relief.png
 
 La largeur des bords dépend de l'option ``borderwidth`` du widget. Ici, cette largeur a été fixé à 5 pixels alors que par défaut elle vaut 2 pixels.
 
@@ -179,7 +179,7 @@ Les bitmaps
 
 Pour les options ``bitmap`` des widgets, les bitmaps représentés ci-dessous sont toujours disponibles :
 
-.. image:: stdbitmaps.png
+.. image:: img/stdbitmaps.png
 
 L'image montre des widget boutons qui portent les bitmaps standards.
 
@@ -216,83 +216,83 @@ Il y a un grand nombre de pointeur de souris disponible. Leurs noms et le graphi
 ``lr_angle`` |lr_angle|
 
 
-.. |arrow| image:: cursors/2.png
-.. |man| image:: cursors/41.png
-.. |based_arrow_down| image:: cursors/3.png
-.. |middlebutton| image:: cursors/42.png
-.. |based_arrow_up| image:: cursors/4.png
-.. |mouse| image:: cursors/43.png
-.. |boat| image:: cursors/5.png
-.. |pencil| image:: cursors/44.png
-.. |bogosity| image:: cursors/6.png
-.. |pirate| image:: cursors/45.png
-.. |bottom_left_corner| image:: cursors/7.png
-.. |plus| image:: cursors/46.png
-.. |bottom_right_corner| image:: cursors/8.png
-.. |question_arrow| image:: cursors/47.png
-.. |bottom_side| image:: cursors/9.png
-.. |right_ptr| image:: cursors/48.png
-.. |bottom_tee| image:: cursors/10.png
-.. |right_side| image:: cursors/49.png
-.. |box_spiral| image:: cursors/11.png
-.. |right_tee| image:: cursors/50.png
-.. |center_ptr| image:: cursors/12.png
-.. |rightbutton| image:: cursors/51.png
-.. |circle| image:: cursors/13.png
-.. |rtl_logo| image:: cursors/52.png
-.. |clock| image:: cursors/14.png
-.. |sailboat| image:: cursors/53.png
-.. |coffee_mug| image:: cursors/15.png
-.. |sb_down_arrow| image:: cursors/54.png
-.. |cross| image:: cursors/16.png
-.. |sb_h_double_arrow| image:: cursors/55.png
-.. |cross_reverse| image:: cursors/17.png
-.. |sb_left_arrow| image:: cursors/56.png
-.. |crosshair| image:: cursors/18.png
-.. |sb_right_arrow| image:: cursors/57.png
-.. |diamond_cross| image:: cursors/19.png
-.. |sb_up_arrow| image:: cursors/58.png
-.. |dot| image:: cursors/20.png
-.. |sb_v_double_arrow| image:: cursors/59.png
-.. |dotbox| image:: cursors/21.png
-.. |shuttle| image:: cursors/60.png
-.. |double_arrow| image:: cursors/22.png
-.. |sizing| image:: cursors/61.png
-.. |draft_large| image:: cursors/23.png
-.. |spider| image:: cursors/62.png
-.. |draft_small| image:: cursors/24.png
-.. |spraycan| image:: cursors/63.png
-.. |draped_box| image:: cursors/25.png
-.. |star| image:: cursors/64.png
-.. |exchange| image:: cursors/26.png
-.. |target| image:: cursors/65.png
-.. |fleur| image:: cursors/27.png
-.. |tcross| image:: cursors/66.png
-.. |gobbler| image:: cursors/28.png
-.. |top_left_arrow| image:: cursors/67.png
-.. |gumby| image:: cursors/29.png
-.. |top_left_corner| image:: cursors/68.png
-.. |hand1| image:: cursors/30.png
-.. |top_right_corner| image:: cursors/69.png
-.. |hand2| image:: cursors/31.png
-.. |top_side| image:: cursors/70.png
-.. |heart| image:: cursors/32.png
-.. |top_tee| image:: cursors/71.png
-.. |icon| image:: cursors/33.png
-.. |trek| image:: cursors/72.png
-.. |iron_cross| image:: cursors/34.png
-.. |ul_angle| image:: cursors/73.png
-.. |left_ptr| image:: cursors/35.png
-.. |umbrella| image:: cursors/74.png
-.. |left_side| image:: cursors/36.png
-.. |ur_angle| image:: cursors/75.png
-.. |left_tee| image:: cursors/37.png
-.. |watch| image:: cursors/76.png
-.. |leftbutton| image:: cursors/38.png
-.. |xterm| image:: cursors/77.png
-.. |ll_angle| image:: cursors/39.png
-.. |X_cursor| image:: cursors/1.png
-.. |lr_angle| image:: cursors/40.png
+.. |arrow| image:: img/cursors/2.png
+.. |man| image:: img/cursors/41.png
+.. |based_arrow_down| image:: img/cursors/3.png
+.. |middlebutton| image:: img/cursors/42.png
+.. |based_arrow_up| image:: img/cursors/4.png
+.. |mouse| image:: img/cursors/43.png
+.. |boat| image:: img/cursors/5.png
+.. |pencil| image:: img/cursors/44.png
+.. |bogosity| image:: img/cursors/6.png
+.. |pirate| image:: img/cursors/45.png
+.. |bottom_left_corner| image:: img/cursors/7.png
+.. |plus| image:: img/cursors/46.png
+.. |bottom_right_corner| image:: img/cursors/8.png
+.. |question_arrow| image:: img/cursors/47.png
+.. |bottom_side| image:: img/cursors/9.png
+.. |right_ptr| image:: img/cursors/48.png
+.. |bottom_tee| image:: img/cursors/10.png
+.. |right_side| image:: img/cursors/49.png
+.. |box_spiral| image:: img/cursors/11.png
+.. |right_tee| image:: img/cursors/50.png
+.. |center_ptr| image:: img/cursors/12.png
+.. |rightbutton| image:: img/cursors/51.png
+.. |circle| image:: img/cursors/13.png
+.. |rtl_logo| image:: img/cursors/52.png
+.. |clock| image:: img/cursors/14.png
+.. |sailboat| image:: img/cursors/53.png
+.. |coffee_mug| image:: img/cursors/15.png
+.. |sb_down_arrow| image:: img/cursors/54.png
+.. |cross| image:: img/cursors/16.png
+.. |sb_h_double_arrow| image:: img/cursors/55.png
+.. |cross_reverse| image:: img/cursors/17.png
+.. |sb_left_arrow| image:: img/cursors/56.png
+.. |crosshair| image:: img/cursors/18.png
+.. |sb_right_arrow| image:: img/cursors/57.png
+.. |diamond_cross| image:: img/cursors/19.png
+.. |sb_up_arrow| image:: img/cursors/58.png
+.. |dot| image:: img/cursors/20.png
+.. |sb_v_double_arrow| image:: img/cursors/59.png
+.. |dotbox| image:: img/cursors/21.png
+.. |shuttle| image:: img/cursors/60.png
+.. |double_arrow| image:: img/cursors/22.png
+.. |sizing| image:: img/cursors/61.png
+.. |draft_large| image:: img/cursors/23.png
+.. |spider| image:: img/cursors/62.png
+.. |draft_small| image:: img/cursors/24.png
+.. |spraycan| image:: img/cursors/63.png
+.. |draped_box| image:: img/cursors/25.png
+.. |star| image:: img/cursors/64.png
+.. |exchange| image:: img/cursors/26.png
+.. |target| image:: img/cursors/65.png
+.. |fleur| image:: img/cursors/27.png
+.. |tcross| image:: img/cursors/66.png
+.. |gobbler| image:: img/cursors/28.png
+.. |top_left_arrow| image:: img/cursors/67.png
+.. |gumby| image:: img/cursors/29.png
+.. |top_left_corner| image:: img/cursors/68.png
+.. |hand1| image:: img/cursors/30.png
+.. |top_right_corner| image:: img/cursors/69.png
+.. |hand2| image:: img/cursors/31.png
+.. |top_side| image:: img/cursors/70.png
+.. |heart| image:: img/cursors/32.png
+.. |top_tee| image:: img/cursors/71.png
+.. |icon| image:: img/cursors/33.png
+.. |trek| image:: img/cursors/72.png
+.. |iron_cross| image:: img/cursors/34.png
+.. |ul_angle| image:: img/cursors/73.png
+.. |left_ptr| image:: img/cursors/35.png
+.. |umbrella| image:: img/cursors/74.png
+.. |left_side| image:: img/cursors/36.png
+.. |ur_angle| image:: img/cursors/75.png
+.. |left_tee| image:: img/cursors/37.png
+.. |watch| image:: img/cursors/76.png
+.. |leftbutton| image:: img/cursors/38.png
+.. |xterm| image:: img/cursors/77.png
+.. |ll_angle| image:: img/cursors/39.png
+.. |X_cursor| image:: img/cursors/1.png
+.. |lr_angle| image:: img/cursors/40.png
 
 
 .. _images:
@@ -400,7 +400,7 @@ Pour obtenir des dessins plaisants, il est parfois bon de s'intéresser au style
         
 La figure suivante illustre ces styles. Les points rouge montre la localisation des points qui définissent les lignes.
 
-.. image:: cap-join.png
+.. image:: img/cap-join.png
 
 .. _Motifs-brise:
 
@@ -422,7 +422,7 @@ Bon nombre de widget vous permette d'indiquer un motif brisé pour dessiner leur
     
     Par exemple, ``dash=(5, 1, 2, 1)`` en combinaison avec ``dashoff=3`` produirait: tracé 2, vide 1, tracé 2, vide 1 puis ensuite, tracé 5, vide 1, tracé 2, vide 1 et ainsi de suite :
     
-    .. image:: dashpat.png
+    .. image:: img/dashpat.png
     
 Ajuster des motifs en nuage de points
 =====================================
