@@ -6,7 +6,7 @@ Les Canevas (``Canvas``)
 
 Un canevas est une zone rectangulaire destinée à contenir des dessins ou d'autres figures complexes. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
 
-* :py:meth:`~Canvas.create_arc` : A slice out of an ellipse. Voir :ref:`arcs`.
+* :py:meth:`~Canvas.create_arc` : Une portion d'ellipse. Voir :ref:`arcs`.
 
 * :py:meth:`~Canvas.create_bitmap` : An image as a bitmap. Voir :ref:`can_bitmaps`.
 
