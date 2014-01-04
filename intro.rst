@@ -5,7 +5,7 @@ Une interface graphique multiplateforme (GUI) pour Python
 *********************************************************
 
 Tkinter sert à réaliser des interfaces graphiques pour l'utilisateur (GUI) 
-à l'aide d'un ensemble de composant graphique (widget).
+à l'aide d'un ensemble de composants graphiques (widgets).
 
 Ce document s'inspire (et traduit) la référence suivante : lien à faire.
 
@@ -20,7 +20,7 @@ Un exemple simple
 Voici un programme «tkinter» minimal qui contient un seul bouton «Quitter»::
 
     # Chargement du module tkinter
-    from tkinter import * # pour Python2 se serait Tkinter
+    from tkinter import * # pour Python2 ce serait Tkinter
     
     # Construction de la fenêtre principale «root»
     root = Tk()
@@ -47,11 +47,11 @@ fréquemment ensuite:
 
     **Fenêtre** (*window*)
         Ce terme prend des sens différents suivant le contexte, mais
-        en général il renvoie à une aire rectangulaire quelquepart sur votre écran.
+        en général il renvoie à une aire rectangulaire quelque part sur votre écran.
 
     **Fenêtre mère** (*top-level window*)
         Une fenêtre qui existe de manière indépendante sur l'écran.
-        Elle sera décorée conformément à votre gestionnaire de bureau et muni des petits boutons habituels.
+        Elle sera décorée conformément à votre gestionnaire de bureau et munie des petits boutons habituels.
         On peut la déplacer et généralement la redimensionner même si votre application peut limiter cela.
 
     **Composant graphique** (*widget*)
