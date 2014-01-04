@@ -4,7 +4,7 @@
 The Menu widget
 ***************
 
-“Drop-down” menus are a popular way to present the user with a number of choices, yet take up minimal space on the face of the application when the user is not making a choice.
+“Drop-down” menus une façon populaire to present the user with a number of choices, yet take up minimal space on the face of the application when the user is not making a choice.
 
         A menubutton is the part that always appears on the application.
 
