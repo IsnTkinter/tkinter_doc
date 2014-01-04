@@ -20,7 +20,7 @@ Pour créer un simple bouton dans une fenêtre autonome ou un cadre nommé ``par
             Voir :ref:`ancrage`.
             Par exemple, anchor="ne" positionne le texte dans le bord supérieur droit (nord est) du bouton.
     :arg borderwidth: 
-            aussi bd ; Width of the border around the outside of the button; Voir :ref:`dimensions`.
+            aussi bd ; la largeur de la bordure around the outside of the button; Voir :ref:`dimensions`.
             The default is two pixels.
     :arg background:
             aussi bg ; Normal background color.
