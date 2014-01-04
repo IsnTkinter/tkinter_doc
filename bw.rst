@@ -12,7 +12,7 @@ Pour créer un simple bouton dans une fenêtre autonome ou un cadre nommé ``par
 
 
     :arg activebackground:
-            Background color when the button is under the cursor.
+            Couleur de fond lorsque le curseur de la souris est sur le bouton.
     :arg activeforeground:
             Foreground color when the button is under the cursor.
     :arg anchor:
