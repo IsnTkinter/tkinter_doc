@@ -16,9 +16,9 @@ Pour créer un simple bouton dans une fenêtre autonome ou un cadre nommé ``par
     :arg activeforeground:
             Couleur du texte lorsque la souris survole le bouton.
     :arg anchor:
-            Where the text is positioned on the button.
+            Précise la position du texte sur le bouton.
             Voir :ref:`ancrage`.
-            For example, anchor=tk.NE would position the text at the top right corner of the button.
+            Par exemple, anchor="ne" positionne le texte dans le bord supérieur droit (nord est) du bouton.
     :arg borderwidth: 
             aussi bd ; Width of the border around the outside of the button; Voir :ref:`dimensions`.
             The default is two pixels.
