@@ -110,7 +110,7 @@ pour créer un objet de type Canvas
 Le système de coordonnées
 =========================
 
-Parcqu'un Canevas peut être plus large que la fenêtre .... Because the canvas may be larger than the window, and equipped with scrollbars to move the overall canvas around in the window, there are two coordinate systems for each canvas:
+Parce qu'un canevas peut être plus large que la fenêtre .... Because the canvas may be larger than the window, and equipped with scrollbars to move the overall canvas around in the window, there are two coordinate systems for each canvas:
 
    The window coordinates of a point are relative to the top left corner of the area on the display where the canvas appears.
 
