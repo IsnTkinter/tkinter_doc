@@ -47,4 +47,4 @@ To create a new LabelFrame widget inside a root window or frame parent:
         :arg text: 
                 Text of the label.
         :arg width: 
-                The horizontal dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`_autres-meth-grille`.
+                The horizontal dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`.
