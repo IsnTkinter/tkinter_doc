@@ -183,7 +183,7 @@ Pour les options ``bitmap`` des widgets, les bitmaps représentés ci-dessous so
 
 L'image montre des widget boutons qui portent les bitmaps standards.
 
-De la gauche vers la droite, il y a ``'error'``, ``'gray75'``, ``'gray50'``, ``'gray25'``, ``'gray12'``, ``'hourglass'``, ``'info'``, ``'questhead'``, ``'question'``, and ``'warning'``. 
+De la gauche vers la droite, il y a ``'error'``, ``'gray75'``, ``'gray50'``, ``'gray25'``, ``'gray12'``, ``'hourglass'``, ``'info'``, ``'questhead'``, ``'question'``, et ``'warning'``. 
 
 Vous pouvez utiliser vos propres bitmaps. N'importe quel fichier d'extention `.xbm` de format X bit map fonctionnera. À la place du nom standard des bitmaps, utiliser une chaîne ``'@'`` suivi du chemin du fichier `.xbm`.
 
