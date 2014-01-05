@@ -4,11 +4,11 @@
 Les Boutons ``Button``
 **********************
 
-Pour créer un simple bouton dans une fenêtre autonome ou un cadre nommé ``parent``:
+Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
 
 .. py:class:: Button(parent, option=valeur, ...)
 
-    Le constructeur retourne le nouveau widget bouton. Ces options sont :
+    Le constructeur retourne le nouveau widget bouton. Ses options sont :
 
 
     :arg activebackground:
@@ -20,69 +20,67 @@ Pour créer un simple bouton dans une fenêtre autonome ou un cadre nommé ``par
             Voir :ref:`ancrage`.
             Par exemple, anchor="ne" positionne le texte dans le bord supérieur droit (nord est) du bouton.
     :arg borderwidth: 
-            aussi bd ; la largeur de la bordure around the outside of the button; Voir :ref:`dimensions`.
-            The default is two pixels.
+            (ou *bd*) largeur de la bordure du bouton ; Voir :ref:`dimensions`.
+            Par défaut, sa valeur est 2 pixels.
     :arg background:
-            aussi bg ; Normal background color.
+            (ou *bg*) Couleur de fond.
     :arg bitmap: 
-            Name of one of the standard bitmaps to display on the button (instead of text).
+            Nom de l'un des bitmaps standards à afficher sur le bouton à la place du du texte.
     :arg command:
-            Function or method to be called when the button is clicked.
-    :arg cursor:
-            Selects the cursor to be shown when the mouse is over the button. 
+            Fonction ou méthode a appeler lorsqu'on clique sur le bouton.
+    :arg cursor: 
+            Pour indiquer le pointeur de la souris à afficher lorsqu'on survole le bouton.
     :arg default:
-            tk.NORMAL is the default; use tk.DISABLED if the button is to be initially disabled (grayed out, unresponsive to mouse clicks).
+            ``'normal'`` est la valeur par défaut; utiliser ``'disabled'`` si le bouton doit être désactivé (grisé et ne répondant pas au clic de la souris).
     :arg disabledforeground:
-             Foreground color used when the button is disabled.
+             Couleur du texte lorsque le bouton est désactivé.
     :arg foreground:
-             Aussi fg, Normal foreground (text) color.
+             (ou *fg*), Couleur du texte.
     :arg font:
-            Text font to be used for the button's label.
+            Police de caractère a utiliser pour le texte sur le bouton.
     :arg height:
-            Height of the button in text lines (for textual buttons) or pixels (for images).
+            Hauteur du bouton en nombre de ligne (si le bouton possède une étiquette textuelle) ou en pixel (pour les images).
     :arg highlightbackground:
-             Color of the focus highlight when the widget does not have focus.
+             Couleur de ligne indiquant que le bouton n'a pas le focus.
     :arg highlightcolor:
-             The color of the focus highlight when the widget has focus.
+             Couleur de ligne indiquant que le bouton a le focus.
     :arg highlightthickness:
-             Thickness of the focus highlight.
+             Épaisseur de la ligne de focus.
     :arg image:
-            Image to be displayed on the button (instead of text).
+            Image a afficher sur le bouton (à la place du texte).
     :arg justify:
-            How to show multiple text lines: tk.LEFT to left-justify each line; tk.CENTER to center them; or tk.RIGHT to right-justify.
+            ``'left'``, ``'center'`` ou ``'right'`` pour indiquer la position du texte.
     :arg overrelief:
-            The relief style to be used while the mouse is on the button; default relief is tk.RAISED. Voir :ref:`reliefs`.
+            Le style de relief à utiliser lorsque la souris est sur le bouton; la valeur par défaut est ``'raised'``. Voir :ref:`reliefs`.
     :arg padx:
-            Additional padding left and right of the text. Voir :ref:`dimensions`.
-            for the possible values for padding.
+            Marge additionnelle à gauche et à droite du texte. Voir :ref:`dimensions` pour les valeurs possibles.
     :arg pady:
-            Additional padding above and below the text.
+            Marge additionnelle en haut et bas du texte.
     :arg relief:
-            Specifies the relief type for the button (Voir :ref:`reliefs`).
-            The default relief is tk.RAISED.
+            Précise le type de relief appliqué au bouton. (Voir :ref:`reliefs`).
     :arg repeatdelay:
-            See repeatinterval, below.
+            Voir l'argument suivant.
     :arg repeatinterval:
-            Normally, a button fires only once when the user releases the mouse button. If you want the button to fire at regular intervals as long as the mouse button is held down, set this option to a number of milliseconds to be used between repeats, and set the repeatdelay to the number of milliseconds to wait before starting to repeat. For example, if you specify “repeatdelay=500, repeatinterval=100” the button will fire after half a second, and every tenth of a second thereafter, until the user releases the mouse button. If the user does not hold the mouse button down at least repeatdelay milliseconds, the button will fire normally.
+            Normalement, un bouton est déclenché une seule fois lorsque l'utilisateur relâche le bouton de la souris. si vous souhaitez que le bouton soit déclanché à des intervalles réguliers lorsque l'utilisateur maintient le bouton de la souris enfoncé, positionner cette option a un certain nombre de millisecondes à attendre entre chaque répétition et donner une valeur à l'option repeatdelay (ms) pour indiquer un délai après lequel le bouton est déclenché. Par exemple, si ``repeatdelay=500`` et ``repeatinterval=100``, le bouton sera déclenché après une demi-seconde puis redéclenché tous les dixièmes de secondes juqu'à ce que l'utilisateur relâche le bouton de la souris. Si l'utilisateur relache le bouton avant la durée repeatdelay, le bouton se déclenche normalement.
     :arg state:
-            Set this option to tk.DISABLED to gray out the button and make it unresponsive. Has the value tk.ACTIVE when the mouse is over it. Default is tk.NORMAL.
+            Positionner cette option à ``'disabled'`` pour le griser et le rendre inactif. Sa valeur est 'active' lorsque la souris est sur le bouton et ``'normal'`` autrement.
     :arg takefocus:
-            Normally, keyboard focus does visit buttons (see Section 53, “Focus: routing keyboard input”), and a space character acts as the same as a mouse click, “pushing” the button. You can set the takefocus option to zero to prevent focus from visiting the button.
+            Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (see Section 53, “Focus: routing keyboard input”), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre *takefocus* a zéro pour empêcher cela.
     :arg text:
-            Text displayed on the button. Use internal newlines to display multiple text lines.
+            Le texte a afficher sur le bouton.
     :arg textvariable:
-            An instance of StringVar() that is associated with the text on this button. If the variable is changed, the new value will be displayed on the button. See Section 52, “Control variables: the values behind the widgets”.
+            Une instance d'un ``StringVar()`` qui sera associée au texte du bouton. Si la variable est modifiée, un nouveau texte est affiché sur le bouton. See Section 52, “Control variables: the values behind the widgets”.
     :arg underline:
-            Default is -1, meaning that no character of the text on the button will be underlined. If nonnegative, the corresponding text character will be underlined. For example, underline=1 would underline the second character of the button's text.
+            Par défaut, vaut -1, indiquant qu'aucun caractère du texte du bouton n'est souligné. Si sa valeur est positive ou nulle, le caractère correspondant du texte est souligné. Par exemple, ``underline=1`` indique que le deuxième caractère du texte sera souligné.
     :arg width:
-            Width of the button in letters (if displaying text) or pixels (if displaying an image).
+            Largeur du bouton en nombre de lettres (si du texte est affiché) ou en pixels (pour une image).
     :arg wraplength:
-            If this value is set to a positive number, the text lines will be wrapped to fit within this length. For possible values, Voir :ref:`dimensions`.
+            Si on indique une valeur positive, le texte est affiché avec autant de lignes qu'il faut pour tenir dans la largeur fixé par wraplength. Pour les différentes valeurs possibles, Voir :ref:`dimensions`.
 
     .. py:method:: flash()
 
-            Causes the button to flash several times between active and normal colors. Leaves the button in the state it was in originally. Ignored if the button is disabled. 
+            Provoque quelques clignotement du bouton. Après cela, il revient dans son état initial.
 
     .. py:method:: invoke()
 
-            Calls the button's command callback, and returns what that function returns. Has no effect if the button is disabled or there is no callback. 
+            Appelle la fonction de rappel (callback) associée à l'option command et retourne ce que cette fonction retourne. N'a pas d'effet si le bouton est désactivé ou si aucune fonction de rappel ne lui est associé.
