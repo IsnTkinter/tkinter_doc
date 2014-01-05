@@ -18,12 +18,12 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg anchor:
             Précise la position du texte sur le bouton.
             Voir :ref:`ancrage`.
-            Par exemple, anchor="ne" positionne le texte dans le bord supérieur droit (nord est) du bouton.
+            Par exemple, ``anchor="ne"`` positionne le texte dans le bord supérieur droit (nord est) du bouton.
     :arg borderwidth: 
-            (ou *bd*) largeur de la bordure du bouton ; Voir :ref:`dimensions`.
+            (ou **bd**) largeur de la bordure du bouton ; Voir :ref:`dimensions`.
             Par défaut, sa valeur est 2 pixels.
     :arg background:
-            (ou *bg*) Couleur de fond.
+            (ou **bg**) Couleur de fond.
     :arg bitmap: 
             Nom de l'un des bitmaps standards à afficher sur le bouton à la place du du texte.
     :arg command:
@@ -35,7 +35,7 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg disabledforeground:
              Couleur du texte lorsque le bouton est désactivé.
     :arg foreground:
-             (ou *fg*), Couleur du texte.
+             (ou **fg**), Couleur du texte.
     :arg font:
             Police de caractère a utiliser pour le texte sur le bouton.
     :arg height:
@@ -61,11 +61,11 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg repeatdelay:
             Voir l'argument suivant.
     :arg repeatinterval:
-            Normalement, un bouton est déclenché une seule fois lorsque l'utilisateur relâche le bouton de la souris. si vous souhaitez que le bouton soit déclanché à des intervalles réguliers lorsque l'utilisateur maintient le bouton de la souris enfoncé, positionner cette option a un certain nombre de millisecondes à attendre entre chaque répétition et donner une valeur à l'option repeatdelay (ms) pour indiquer un délai après lequel le bouton est déclenché. Par exemple, si ``repeatdelay=500`` et ``repeatinterval=100``, le bouton sera déclenché après une demi-seconde puis redéclenché tous les dixièmes de secondes juqu'à ce que l'utilisateur relâche le bouton de la souris. Si l'utilisateur relache le bouton avant la durée repeatdelay, le bouton se déclenche normalement.
+            Normalement, un bouton est déclenché une seule fois lorsque l'utilisateur relâche le bouton de la souris. si vous souhaitez que le bouton soit déclenché à des intervalles réguliers lorsque l'utilisateur maintient le bouton de la souris enfoncé, positionner cette option a un certain nombre de millisecondes à attendre entre chaque répétition et donner une valeur à l'option repeatdelay (ms) pour indiquer un délai après lequel le bouton est déclenché. Par exemple, si ``repeatdelay=500`` et ``repeatinterval=100``, le bouton sera déclenché après une demi-seconde puis redéclenché tous les dixièmes de secondes juqu'à ce que l'utilisateur relâche le bouton de la souris. Si l'utilisateur relache le bouton avant la durée repeatdelay, le bouton se déclenche normalement.
     :arg state:
             Positionner cette option à ``'disabled'`` pour le griser et le rendre inactif. Sa valeur est 'active' lorsque la souris est sur le bouton et ``'normal'`` autrement.
     :arg takefocus:
-            Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (see Section 53, “Focus: routing keyboard input”), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre *takefocus* a zéro pour empêcher cela.
+            Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (see Section 53, “Focus: routing keyboard input”), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre **takefocus** a zéro pour empêcher cela.
     :arg text:
             Le texte a afficher sur le bouton.
     :arg textvariable:
