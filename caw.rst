@@ -4,154 +4,119 @@
 Les Canevas (``Canvas``)
 ************************
 
-Un canevas est une zone rectangulaire destinée à contenir des dessins ou d'autres figures complexes. On it you can place graphics, text, widgets, or frames. See the following sections for methods that create objects on canvases:
+Un canevas est une zone rectangulaire destinée à contenir des dessins ou d'autres figures complexes. Vous pouvez y placer des graphiques, du texte, des composants graphiques (`widgets`) ou des cadres (`frames`). Veuillez consulter les sections suivantes pour les méthodes qui servent à créer de tels objet sur un canevas:
 
 * :py:meth:`~Canvas.create_arc` : Une portion d'ellipse. Voir :ref:`arcs`.
 
-* :py:meth:`~Canvas.create_bitmap` : An image as a bitmap. Voir :ref:`can_bitmaps`.
+* :py:meth:`~Canvas.create_bitmap` : Une image de type bitmap. Voir :ref:`can_bitmaps`.
 
-* :py:meth:`~Canvas.create_image` : A graphic image. Voir :ref:`can_images`.
+* :py:meth:`~Canvas.create_image` : Une image «plus riche». Voir :ref:`can_images`.
 
-* :py:meth:`~Canvas.create_line` : One or more line segments. Voir :ref:`lignes`.
+* :py:meth:`~Canvas.create_line` : Un ou plusieurs segments. Voir :ref:`lignes`.
 
-* :py:meth:`~Canvas.create_oval` : An ellipse; use this also for drawing circles, which are a special case of an ellipse. Voir :ref:`ellipses-et-cercles`.
+* :py:meth:`~Canvas.create_oval` : Une ellipse; Utiliser cette méthode pour dessiner des cercles qui sont des cas particuliers d'ellipses. Voir :ref:`ellipses-et-cercles`.
 
-* :py:meth:`~Canvas.create_polygon` : A polygon. Voir :ref:`polygones`.
+* :py:meth:`~Canvas.create_polygon` : Un polygone. Voir :ref:`polygones`.
 
-* :py:meth:`~Canvas.create_rectangle` : A rectangle. Voir :ref:`rectangles`.
+* :py:meth:`~Canvas.create_rectangle` : Un rectangle. Voir :ref:`rectangles`.
 
-* :py:meth:`~Canvas.create_text` : Text annotation. Voir :ref:`textes`.
+* :py:meth:`~Canvas.create_text` : Une annotation textuelle. Voir :ref:`textes`.
 
-* :py:meth:`~Canvas.create_window` : A rectangular window. Voir :ref:`fenêtres`.
+* :py:meth:`~Canvas.create_window` : Une fenêtre rectangulaire. Voir :ref:`fenêtres`.
 
-pour créer un objet de type Canvas
+Pour créer un objet de type Canvas:
 
 .. py:class:: Canvas(parent, option=valeur, ...)
 
         Le constructeur retourne le nouveau widget canvas. Ses options sont:
 
-        :arg bd or borderwidth:
-        
-                Width of the border around the outside of the canvas; Voir :ref:`dimensions`.
-                The default is two pixels.
-        :arg bg or background:
-
-                Background color of the canvas. Default is a light gray, about '#E4E4E4'.
+        :arg borderwidth:
+                (ou **bd**) Largeur de la bordure du canvas. Voir :ref:`dimensions`.
+                La valeur par défaut est deux pixels. 
+        :arg background:
+                (ou **bg**) Couleur de fond du canvas. La valeur par défaut est un gris léger, à peu près ``'#E4E4E4'``.
         :arg closeenough:
-
-                A float that specifies how close the mouse must be to an item to be considered inside it. Default is 1.0.
+                Un flottant qui précise la distance minimale entre la souris et un item pour considérer qu'elle est dedans. La valeur par défaut est 1.0.
         :arg confine:
-
-                If true (the default), the canvas cannot be scrolled outside of the scrollregion (see below).
+                Si True (la valeur par défaut), il n'est pas possible de faire défiler le canvas en dehors de sa zone de visualisation (`scrollregion`), voir plus ci-dessous.
         :arg cursor:
-
-                Cursor used in the canvas. See Section 5.8, “Cursors”.
-            
+                Pointeur de la souris utilisé sur le canvas. Voir “Cursors”.
         :arg height:
-            
-            Size of the canvas in the Y dimension. See Section 5.1, “Dimensions”.
-
+            Hauteur du canvas. Voir “Dimensions”.
         :arg highlightbackground:
-
-                Color of the focus highlight when the widget does not have focus. See Section 53, “Focus: routing keyboard input”.
-
+                Couleur de la ligne de focus lorsque le canvas n'a pas le focus. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-        
-                Color shown in the focus highlight.
-
+                Couleur de la ligne de focus lorsque le canvas a le focus.
         :arg highlightthickness:
-        
-                Thickness of the focus highlight. The default value is 1.
-
+                Épaisseur de la ligne de focus. La valeur par défaut est 1.
         :arg relief:
-        
-                The relief style of the canvas. Default is tk.FLAT. See Section 5.6, “Relief styles”.
-
+                Le style de relief du canvas. La valeur par défaut est 'flat'. Voir “Relief styles”.
         :arg scrollregion:
-
-                A tuple (w, n, e, s) that defines over how large an area the canvas can be scrolled, where w is the left side, n the top, e the right side, and s the bottom.
-
+                Un tuple ``(w, n, e, s)`` qui défini la zone du canvas accessible par défilement. w désigne le côté gauche, n le bord haut, e le côté droit et s le bord bas.
         :arg selectbackground:
-       
-                The background color to use displaying selected items.
-                
+                La couleur de fond utilisée pour afficher l'item sélectionné.
         :arg selectborderwidth:
-
-                The width of the border to use around selected items.
-
+                L'épaisseur de la bordure de l'item sélectionné.
         :arg selectforeground:
-
-                The foreground color to use displaying selected items.
-
+                La couleur d'avant plan utilisée pour mettre en valeur l'item sélectionné.
         :arg takefocus:
-
-                Normally, focus (see Section 53, “Focus: routing keyboard input”) will cycle through this widget with the tab key only if there are keyboard bindings set for it (see Section 54, “Events” for an overview of keyboard bindings). If you set this option to 1, focus will always visit this widget. Set it to '' to get the default behavior.
-
+                Normalement, le focus (see Section 53, “Focus: routing keyboard input”) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (see Section 54, “Events” for an overview of keyboard bindings). Si vous positionnez la valeur de cette option à 1, le canvas obtiendra le focus de manière ordinaire. Positionnez la à '' pour obtenir le comportement «normal».
         :arg width:
-
-                Size of the canvas in the X dimension. See Section 5.1, “Dimensions”.
-
+                Largeur du canvas. Voir “Dimensions”.
         :arg xscrollincrement:
-
-                Normally, canvases can be scrolled horizontally to any position. You can get this behavior by setting xscrollincrement to zero. If you set this option to some positive dimension, the canvas can be positioned only on multiples of that distance, and the value will be used for scrolling by scrolling units, such as when the user clicks on the arrows at the ends of a scrollbar. For more information on scrolling units, see Section 22, “The Scrollbar widget”.
-
+                Normalement, on peut faire défiler un canvas horizontalement à n'importe qu'elle position. Vous pouvez obtenir ce comportement en positionnant cette opition à 0. Si vous donnez une valeur positive à cette option, le canvas défile en utilisant des multiples de cette valeur. Elle sera en outre utilisée comme unité de défilement horizontal comme quand l'utilisateur clique sur les flèches situées aux extrémités d'une barre de défilement. Voir “The Scrollbar widget”.
         :arg xscrollcommand:
-
-                If the canvas is scrollable, set this option to the .set() method of the horizontal scrollbar.
-
+                Si le canvas est muni d'une barre défilement, positionnez cette option en utilisant la méthode ``set()`` de la barre.
         :arg yscrollincrement:
-
-                Works like xscrollincrement, but governs vertical movement.i
-
+                Fonctionne de manière similaire à **xscrollincrement**, mais pour un défilement vertical.
         :arg yscrollcommand:
-
-                If the canvas is scrollable, this option should be the .set() method of the vertical scrollbar. 
+                Fonctionne de manière similaire à **xscrollcommand**, mais pour une barre de défilement vertical.
 
 Le système de coordonnées
 =========================
 
-Parce qu'un canevas peut être plus large que la fenêtre .... Because the canvas may be larger than the window, and equipped with scrollbars to move the overall canvas around in the window, there are two coordinate systems for each canvas:
+Parce qu'un canevas peut être plus large que sa fenêtre de visualisation et qu'il peut être équipé de barres de défilement afin de le déplacer, il y a deux systèmes de coordonnées pour chaque canvas:
 
-   The window coordinates of a point are relative to the top left corner of the area on the display where the canvas appears.
+* Les coordonnées d'un point dans la fenêtre de vue; elles sont relatives au bord supérieur gauche de cette fenêtre.
 
-   The canvas coordinates of a point are relative to the top left corner of the total canvas. 
+* Les coordonnées d'un point dans le canvas lui-même.
 
 La liste d'affichage
 ====================
 
- The display list refers to the sequence of all the objects on the canvas, from background (the “bottom” of the display list) to foreground (the “top”).
+La liste d'affichage se réfère à la séquence de tous les items qui se trouvent sur le canvas, de l'arrière plan, *background* (le bas de la liste d'affichage) vers l'avant plan, *foreground* (le haut de cette liste).
 
-If two objects overlap, the one above the other in the display list means the one closer to the foreground, which will appear in the area of overlap and obscure the one below. By default, new objects are always created at the top of the display list (and hence in front of all other objects), but you can re-order the display list.
+Si deux items se recouvrent, l'item au-dessus de l'autre dans la liste d'affichage désigne celui qui est le plus proche de l'avant plan, c'est à dire qui est vu comme au-dessus de l'autre sur l'affichage. Par défaut, lorsqu'un item est créé, il est placé tout en haut de la liste d'affichage (et donc il apparaît au dessus des items déjà affichés), mais il est possible de ré-ordonner la liste d'affichage.
 
 Les identifiants numériques
 ===========================
 
-The object ID of an object on the canvas is the value returned by the constructor for that object. All object ID values are simple integers, and the object ID of an object is unique within that canvas. 
+Chaque item affiché sur le canvas possède un identifiant numérique (simple entier) unique, il s'agit de la valeur retournée par le «constructeur» (``create_*()``) lors de sa création.
 
 Les marques (`tags`)
 ====================
 
- A tag is a string that you can associate with objects on the canvas.
+Une marque, `tag`, est une chaîne de caractères qu'on peut associée à un ou plusieurs items du canvas.
 
-    A tag can be associated with any number of objects on the canvas, including zero.
+* Une marque peut être associée à autant d'items que l'on veut sur le canvas, 0 inclus.
 
-    An object can have any number of tags associated with it, including zero. 
+* Un item peut posséder autant de marques que souhaitées, 0 inclus.
 
-Tags have many uses. For example, if you are drawing a map on a canvas, and there are text objects for the labels on rivers, you could attach the tag 'riverLabel' to all those text objects. This would allow you to perform operations on all the objects with that tag, such as changing their color or deleting them. 
+Les marques ont de nombreux usages. Par exemple, si vous dessinez une carte sur un canvas et que vous utilisez des textes pour donner le nom des rivières, vous pourriez marquer tous ces items textuels avec 'rivEtiq'. Cela vous permettrait d'agir globalement sur les étiquettes en utilisant cette marque afin, par exemple de changer leur couleur ou de les supprimer.
 
 Identification des items graphiques
 ===================================
 
- A tagOrId argument specifies one or more objects on the canvas.
+Un argument ``tagOrId`` se réfère à un ou plusieur items du canvas.
 
-    If a tagOrId argument is an integer, it is treated as an object ID, and it applies only to the unique object with that ID. See Section 8.3, “Canvas object IDs”.
+* Si l'argument ``tagOrId`` est un entier, il est considéré comme un identifiant numérique et il s'applique à l'unique item qui le possède. Voir “Canvas object IDs”.
 
-    If such an argument is a string, it is interpreted as a tag, and selects all the objects that have that tag (if there are any). See Section 8.4, “Canvas tags”. 
+* Si cet argument est une chaîne de caractère, il est interprété comme une marque et sélectionne tous les items qui ont cette marque (s'il y en a). Voir “Canvas tags”. 
 
 Méthodes des Canevas
 ====================
 
- All Canvas objects support these methods:
+Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer des items et qui sont présentées plus loin):
 
 .. hlist::
   :columns: 4
@@ -487,7 +452,7 @@ Méthodes des Canevas
 Les arcs
 ========
 
- An arc object on a canvas, in its most general form, is a wedge-shaped slice taken out of an ellipse. This includes whole ellipses and circles as special cases. See Section 8.11, “Canvas oval objects” for more on the geometry of the ellipse drawn.
+An arc object on a canvas, in its most general form, is a wedge-shaped slice taken out of an ellipse. This includes whole ellipses and circles as special cases. See Section 8.11, “Canvas oval objects” for more on the geometry of the ellipse drawn.
 
 To create an arc object on a canvas C, use:
 
@@ -542,12 +507,13 @@ To create an arc object on a canvas C, use:
         :arg width:
                 Width of the border around the outside of the arc. Default is 1 pixel. 
 
+
 .. _can_bitmaps:
 
 Les bitmaps
 ===========
 
- A bitmap object on a canvas is shown as two colors, the background color (for 0 data values) and the foreground color (for 1 values).
+A bitmap object on a canvas is shown as two colors, the background color (for 0 data values) and the foreground color (for 1 values).
 
 To create a bitmap object on a canvas C, use:
 
@@ -586,7 +552,7 @@ To create a bitmap object on a canvas C, use:
 Les images
 ==========
 
- To display a graphics image on a canvas C, use:
+To display a graphics image on a canvas C, use:
 
 
 .. py:method:: Canvas.create_image(x, y, option, ...)
@@ -613,7 +579,7 @@ Les images
 Les lignes
 ==========
 
- In general, a line can consist of any number of segments connected end to end, and each segment can be straight or curved. To create a canvas line object on a canvas C, use:
+In general, a line can consist of any number of segments connected end to end, and each segment can be straight or curved. To create a canvas line object on a canvas C, use:
 
 
 .. py:method:: Canvas.create_line(x0, y0, x1, y1, ..., xn, yn, option, ...)
@@ -667,7 +633,7 @@ Les lignes
 Les ellipses et cercles
 =======================
 
- Ovals, mathematically, are ellipses, including circles as a special case. The ellipse is fit into a rectangle defined by the coordinates (x0, y0) of the top left corner and the coordinates (x1, y1) of a point just outside of the bottom right corner.
+Ovals, mathematically, are ellipses, including circles as a special case. The ellipse is fit into a rectangle defined by the coordinates (x0, y0) of the top left corner and the coordinates (x1, y1) of a point just outside of the bottom right corner.
 
 The oval will coincide with the top and left-hand lines of this box, but will fit just inside the bottom and right-hand sides.
 
@@ -723,7 +689,7 @@ To create an ellipse on a canvas C, use:
 Les polygones
 =============
 
- As displayed, a polygon has two parts: its outline and its interior. Its geometry is specified as a series of vertices [(x0, y0), (x1, y1), … (xn, yn)], but the actual perimeter includes one more segment from (xn, yn) back to (x0, y0). In this example, there are five vertices:
+As displayed, a polygon has two parts: its outline and its interior. Its geometry is specified as a series of vertices [(x0, y0), (x1, y1), … (xn, yn)], but the actual perimeter includes one more segment from (xn, yn) back to (x0, y0). In this example, there are five vertices:
 
 To create a new polygon object on a canvas C:
 
@@ -779,17 +745,17 @@ To create a new polygon object on a canvas C:
 Les rectangles
 ==============
 
- Each rectangle is specified as two points: (x0, y0) is the top left corner, and (x1, y1) is the location of the pixel just outside of the bottom right corner.
+Each rectangle is specified as two points: (x0, y0) is the top left corner, and (x1, y1) is the location of the pixel just outside of the bottom right corner.
 
 For example, the rectangle specified by top left corner (100,100) and bottom right corner (102,102) is a square two pixels by two pixels, including pixel (101,101) but not including (102,102).
 
 Rectangles are drawn in two parts:
 
-    The outline lies inside the rectangle on its top and left sides, but outside the rectangle on its bottom and right side. The default appearance is a one-pixel-wide black border.
+* The outline lies inside the rectangle on its top and left sides, but outside the rectangle on its bottom and right side. The default appearance is a one-pixel-wide black border.
 
-    For example, consider a rectangle with top left corner (10,10) and bottom right corner (11,11). If you request no border (width=0) and green fill (fill='green'), you will get one green pixel at (10,10). However, if you request the same options with a black border (width=1), you will get four black pixels at (10,10), (10,11), (11,10), and (11,11).
+  For example, consider a rectangle with top left corner (10,10) and bottom right corner (11,11). If you request no border (width=0) and green fill (fill='green'), you will get one green pixel at (10,10). However, if you request the same options with a black border (width=1), you will get four black pixels at (10,10), (10,11), (11,10), and (11,11).
 
-    The fill is the area inside the outline. Its default appearance is transparent. 
+* The fill is the area inside the outline. Its default appearance is transparent. 
 
 To create a rectangle object on canvas C:
 
@@ -839,7 +805,7 @@ To create a rectangle object on canvas C:
 Les textes
 ==========
 
- You can display one or more lines of text on a canvas C by creating a text object:
+You can display one or more lines of text on a canvas C by creating a text object:
 
 
 .. py:method:: Canvas.create_text(x, y, option, ...)
@@ -877,9 +843,9 @@ Les textes
 
 You can change the text displayed in a text item.
 
-    To retrieve the text from an item with object ID I on a canvas C, call C.itemcget(I, 'text').
+* To retrieve the text from an item with object ID I on a canvas C, call C.itemcget(I, 'text').
 
-    To replace the text in an item with object ID I on a canvas C with the text from a string S, call C.itemconfigure(I, text=S). 
+* To replace the text in an item with object ID I on a canvas C with the text from a string S, call C.itemconfigure(I, text=S). 
 
 A number of canvas methods allow you to manipulate text items. See Section 8.6, “Methods on Canvas widgets”, especially dchars, focus, icursor, index, and insert. 
 
@@ -888,7 +854,7 @@ A number of canvas methods allow you to manipulate text items. See Section 8.6, 
 Les fenêtres
 ============
 
- You can place any Tkinter widget onto a canvas by using a canvas window object. A window is a rectangular area that can hold one Tkinter widget. The widget must be the child of the same top-level window as the canvas, or the child of some widget located in the same top-level window.
+You can place any Tkinter widget onto a canvas by using a canvas window object. A window is a rectangular area that can hold one Tkinter widget. The widget must be the child of the same top-level window as the canvas, or the child of some widget located in the same top-level window.
 
 If you want to put complex multi-widget objects on a canvas, you can use this method to place a Frame widget on the canvas, and then place other widgets inside that frame.
 
