@@ -72,7 +72,8 @@ Pour créer un objet de type Canvas:
         :arg yscrollcommand:
                 Fonctionne de manière similaire à **xscrollcommand**, mais pour une barre de défilement vertical.
 
-Le système de coordonnées
+Le système 
+de coordonnées
 =========================
 
 Parce qu'un canevas peut être plus large que sa fenêtre de visualisation et qu'il peut être équipé de barres de défilement afin de le déplacer, il y a deux systèmes de coordonnées pour chaque canvas:
@@ -179,73 +180,72 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.addtag_all(newTag)
 
-        Attaches the given tag newTag to all the objects on the canvas. 
+        Attache la marque donné à tous les items qui sont présents sur le canevas.
 
 .. py:method:: Canvas.addtag_below(newTag, tagOrID)
 
-        Attaches a new tag to the object just below the one specified by tagOrId in the display list. The newTag argument is a tag string. 
+        Attache la nouvelle marque ``newTag`` à tous les items situés en-dessous de celui qui est indiqué par l'identifiant numérique ou la marque ``tagOrId``. L'argument ``newTag`` est une chaîne de caractères.
 
 .. py:method:: Canvas.addtag_closest(newTag, x, y, halo=None, start=None)
 
-        Adds a tag to the object closest to screen coordinate (x,y). If there are two or more objects at the same distance, the one higher in the display list is selected.
+        Ajoute une marque à l'item le plus proche de la position indiquée par les coordonnées (de la fenêtre de vue). Si un ou plusieurs items sont à la même distanche, celui qui est le plus haut dans la liste d'affichage (qui recouvre les autres) est sélectionné.
+        Utilisez l'argument ``halo`` afin d'augmenter la taille effective du point. Par exemple, une valeur de 5 indique le traitement de tous les objets qui recouvrent le disque de centre `(x, y)`.
 
-        Use the halo argument to increase the effective size of the point. For example, a value of 5 would treat any object within 5 pixels of (x,y) as overlapping.
-
-        If an object ID is passed in the start argument, this method tags the highest qualifying object that is below start in the display list. 
+        Si l'identifiant d'un objet est utilisé pour l'argument start, cette méthode marque l'item qui est le plus haut dans la liste d'affichage tout en étant en dessous de celui qui est aisni identifié.
 
 .. py:method:: Canvas.addtag_enclosed(newTag, x1, y1, x2, y2)
 
-        Add tag newTag to all objects that occur completely within the rectangle whose top left corner is (x1, y1) and whose bottom right corner is (x2, y2). 
+        Ajoute la marque ``newTag`` à tous les items qui sont recouvert complètement par le rectangle dont le coin supérieur gauche est *(x1, y1)* et le coin inférieur droit est *(x2, y2)*. 
 
 .. py:method:: Canvas.addtag_overlapping(newTag, x1, y1, x2, y2)
 
-        Like the previous method, but affects all objects that share at least one point with the given rectangle. 
+        Comme la méthode précédente à cela près que les items marqué sont tous ceux qui ont au moins un point commun avec le rectangle.
 
 .. py:method:: Canvas.addtag_withtag(newTag, tagOrId)
 
-        Adds tag newTag to the object or objects specified by tagOrId. 
+        Ajoute la marque ``newTag`` à (aux) l'objet(s) identifié(s) par ``tagOrId``. 
 
 .. py:method:: Canvas.bbox(tagOrId=None)
 
-        Returns a tuple (x1, y1, x2, y2) describing a rectangle that encloses all the objects specified by tagOrId. If the argument is omitted, returns a rectangle enclosing all objects on the canvas. The top left corner of the rectangle is (x1, y1) and the bottom right corner is (x2, y2). 
+        Retourne un tuple ``(x1, y1, x2, y2)`` qui décrit un rectangle qui renferme tous les objets identifiés par ``tagOrId``. Si l'argument n'est pas précisé, le rectangle retourné est le plus petit qui contient tous les items présents dans le canevas. Le coin supérieur gauche du rectangle est *(x1, y1)* et son coin inférieur droit est (x2, y2).
 
 .. py:method:: Canvas.canvasx(screenx, gridspacing=None)
 
-        Translates a window x coordinate screenx to a canvas coordinate. If gridspacing is supplied, the canvas coordinate is rounded to the nearest multiple of that value. 
+        Retourne la coordonnées x du canevas qui correspond à la coordonnée x d'affichage précisée par ``screenx``. Si l'argument ``gridspacing``est précisé, la valeur de x relative au canevas est arrondi au plus proche multiple de cette valeur.
 
 .. py:method:: Canvas.canvasy(screeny, gridspacing=None)
 
-        Translates a window y coordinate screeny to a canvas coordinate. If gridspacing is supplied, the canvas coordinate is rounded to the nearest multiple of that value. 
+        Similaire à la méthode précédente mais pour y.
 
 .. py:method:: Canvas.coords(tagOrId, x0, y0, x1, y1, ..., xn, yn)
 
-        If you pass only the tagOrId argument, returns a tuple of the coordinates of the lowest or only object specified by that argument. The number of coordinates depends on the type of object. In most cases it will be a 4-tuple (x1, y1, x2, y2) describing the bounding box of the object.
+        Si vous précisez uniquement l'argument ``tagOrId``, elle retourne un tuple contenant les coordonnées du plus en dessous ou de l'unique item précisé par cet argument. Le nombre des coordonnées dépend du type d'item. Dans la plupart des cas, il est de la forme (x1, y1, x2, y2) décrivant la boîte englobant (*bounding box*) de l'item.
 
-        You can move an object by passing in new coordinates. 
+        Vous pouvez déplacer un item en précisant ses nouvelles coordonnées.
 
 .. py:method:: Canvas.dchars(tagOrId, first=0, last=first)
 
-        Deletes characters from a text item or items. Characters between first and last inclusive are deleted, where those values can be integer indices or the string 'end' to mean the end of the text. For example, for a canvas C and an item I, C.dchars(I, 1, 1) will remove the second character. 
+        Supprime des caractères d'un ou d'items textuels. Tous les caractères situés entre first et last (inclus) sont supprimés, ces paramètres indiquant une position entière ou la fin du texte via la chaîne ``'end'``. Par exemple, pour un canevas ``C`` et un item de marque ``'I'``, C.dchars('I', 1, 1) supprime le second caractère.
 
 .. py:method:: Canvas.delete(tagOrId)
 
-        Deletes the object or objects selected by tagOrId. It is not considered an error if no items match tagOrId. 
+        Supprime le ou les items indiqués par ``tagOrId``. Il n'y a pas d'erreurs si aucun item ne correspond à ``tagOrId``.
 
 .. py:method:: Canvas.dtag(tagOrId, tagToDelete)
 
-        Removes the tag specified by tagToDelete from the object or objects specified by tagOrId. 
+        Supprime la marque ``tagToDelete`` de (ou des) l'item(s) associé(s) à ``tagOrId`` from the object or objects specified by tagOrId. 
 
 .. py:method:: Canvas.find_above(tagOrId)
 
-        Returns the ID number of the object just above the object specified by tagOrId. If multiple objects match, you get the highest one. Returns an empty tuple if you pass it the object ID of the highest object. 
+        Retourne l'identifiant numérique de l'item situé juste au dessus de celui qui est associé à ``tagOrId``. Si plusieurs items correspondent, on obtient le plus haut dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus haut, la méthode returne un tuple vide ``()``.
 
 .. py:method:: Canvas.find_all()
 
-        Returns a list of the object ID numbers for all objects on the canvas, from lowest to highest. 
+        Retourne une liste qui contient tous les identifiants numériques de tous les items du canvas, du plus bas au plus haut.
 
 .. py:method:: Canvas.find_below(tagOrId)
 
-        Returns the object ID of the object just below the one specified by tagOrId. If multiple objects match, you get the lowest one. Returns an empty tuple if you pass it the object ID of the lowest object. 
+        Retourne l'identifiant numérique de l'item situé juste en dessous de celui qui est associé à ``tagOrId``. Si plusieurs items correspondent, on obtient le plus bas dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus bas, la méthode retourne un tuple vide ``()``.
 
 .. py:method:: Canvas.find_closest(x, y, halo=None, start=None)
 
