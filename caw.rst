@@ -72,8 +72,7 @@ Pour créer un objet de type Canvas:
         :arg yscrollcommand:
                 Fonctionne de manière similaire à **xscrollcommand**, mais pour une barre de défilement vertical.
 
-Le système 
-de coordonnées
+Le système de coordonnées
 =========================
 
 Parce qu'un canevas peut être plus large que sa fenêtre de visualisation et qu'il peut être équipé de barres de défilement afin de le déplacer, il y a deux systèmes de coordonnées pour chaque canvas:
@@ -176,7 +175,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.addtag_above(newTag, tagOrId)
 
-        Attaches a new tag to the object just above the one specified by tagOrId in the display list. The newTag argument is the tag you want to attach, as a string. 
+        Appose une nouvelle marque ``newTag`` à l'item situé juste au-dessus de celui qui est sélectionné par `tagOrId` dans la liste d'affichage. l'argument ``newTag``, donné sous la forme d'une chaîne de caractère, est la marque qu'on souhaite apposer.
 
 .. py:method:: Canvas.addtag_all(newTag)
 
@@ -418,17 +417,17 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 Les arcs
 ========
 
-An arc object on a canvas, in its most general form, is a wedge-shaped slice taken out of an ellipse. This includes whole ellipses and circles as special cases. See Section 8.11, “Canvas oval objects” for more on the geometry of the ellipse drawn.
+Un arc, dans sa forme générale, est une portion d'ellips. Une ellipse tout entière ou un cercle forment des cas particulier. Reportez-vous à  “Canvas oval objects” pour en savoir plus sur la géométrie des ellipses dessinées.
 
-To create an arc object on a canvas C, use:
+Pour créer un arc sur un canvas, utiliser :
 
 .. py:method:: Canvas.create_arc(x0, y0, x1, y1, option, ...)
 
-        The constructor returns the object ID of the new arc object on canvas C.
+        Le constructeur retourne l'identifiant numérique du nouvel arc créé.
 
-        Point (x0, y0) is the top left corner and (x1, y1) the lower right corner of a rectangle into which the ellipse is fit. If this rectangle is square, you get a circle.
+        Le point (x0, y0) est le coin supérieur gauche et (x1, y1) le coin inférieur droit du rectangle dans lequel s'inscrit l'ellipse. Si le rectangle est un carré, vous obtenez un (arc) de cercle.
 
-        The various options include:
+        Les options possibles sont: 
 
         :arg activedash:
                 These options apply when the arc is in the tk.ACTIVE state, that is, when the mouse is over the arc. For example, the activefill option specifies the interior color when the arc is active. For option values, see dash, fill, outline, outlinestipple, stipple, and width, respectively.
@@ -479,18 +478,18 @@ To create an arc object on a canvas C, use:
 Les bitmaps
 ===========
 
-A bitmap object on a canvas is shown as two colors, the background color (for 0 data values) and the foreground color (for 1 values).
+Un bitmap sur un canevas est une image ayant seulement deux couleurs : la couleur de fond (pour la valeur 0) et la couleur d'avant plan (pour la valeur 1).
 
-To create a bitmap object on a canvas C, use:
+Pour créer un item de type bitmap sur un canevas, utiliser:
 
 
 .. py:method:: Canvas.create_bitmap(x, y, options ...)
 
-        which returns the integer ID number of the image object for that canvas.
+        Retourne l'identifiant numérique de l'image bitmap créé sur le canevas appelant.
 
-        The x and y values are the reference point that specifies where the bitmap is placed.
+        x et y sont les coordonnées du point de référence qui précise où placer le bitmap.
 
-        Options include:
+        Les options sont :
 
         :arg activebackground: 
                 These options specify the background, bitmap, and foreground values when the bitmap is active, that is, when the mouse is over the bitmap.
@@ -518,14 +517,14 @@ To create a bitmap object on a canvas C, use:
 Les images
 ==========
 
-To display a graphics image on a canvas C, use:
+Pour afficher une image sur un canevas, utiliser:
 
 
 .. py:method:: Canvas.create_image(x, y, option, ...)
 
-        This constructor returns the integer ID number of the image object for that canvas.
+        Retourne l'identifiant numérique de l'item image créé sur le canevas appelant.
 
-        The image is positioned relative to point (x, y). Options include:
+        L'image est positionné relativement au point (x, y). Ces options sont :
 
         :arg activeimage: 
                 Image to be displayed when the mouse is over the item. For option values, see image below.
@@ -545,12 +544,12 @@ To display a graphics image on a canvas C, use:
 Les lignes
 ==========
 
-In general, a line can consist of any number of segments connected end to end, and each segment can be straight or curved. To create a canvas line object on a canvas C, use:
+En général, une ligne est une succession de segments connectés les uns aux autres. Pour créer une ligne, utiliser:
 
 
 .. py:method:: Canvas.create_line(x0, y0, x1, y1, ..., xn, yn, option, ...)
 
-        The line goes through the series of points (x0, y0), (x1, y1), … (xn, yn). Options include:
+        La ligne est formée de segments qui joignent les points (x0, y0), (x1, y1), … (xn, yn). Les options possibles sont :
 
         :arg activedash: 
                  These options specify the dash, fill, stipple, and width values to be used when the line is active, that is, when the mouse is over it.
@@ -599,18 +598,11 @@ In general, a line can consist of any number of segments connected end to end, a
 Les ellipses et cercles
 =======================
 
-Ovals, mathematically, are ellipses, including circles as a special case. The ellipse is fit into a rectangle defined by the coordinates (x0, y0) of the top left corner and the coordinates (x1, y1) of a point just outside of the bottom right corner.
-
-The oval will coincide with the top and left-hand lines of this box, but will fit just inside the bottom and right-hand sides.
-
-To create an ellipse on a canvas C, use:
-
+Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carré) (x0, y0), (x1, y1) où les premières coordonnées sont celles du coin supérieur gauche et les secondes celles du coin inférieur droit, utiliser:
 
 .. py:method:: Canvas.create_oval(x0, y0, x1, y1, option, ...)
 
-        which returns the object ID of the new oval object on canvas C.
-
-        Options for ovals:
+        Retourne l'identifiant numérique de l'ellipse créé. Les options sont :
 
         :arg activedash: 
                 These options specify the dash pattern, fill color, outline color, outline stipple pattern, interior stipple pattern, and outline width values to be used when the oval is in the tk.ACTIVE state, that is, when the mouse is over the oval. For option values, see dash, fill, outline, outlinestipple, stipple, and width.
@@ -655,13 +647,11 @@ To create an ellipse on a canvas C, use:
 Les polygones
 =============
 
-As displayed, a polygon has two parts: its outline and its interior. Its geometry is specified as a series of vertices [(x0, y0), (x1, y1), … (xn, yn)], but the actual perimeter includes one more segment from (xn, yn) back to (x0, y0). In this example, there are five vertices:
-
-To create a new polygon object on a canvas C:
+Un polygone est une ligne fermé. Ainsi, il possède une ligne de contour (formé de segments) et une zone intérieure. Pour le définir, on utilise une série de opoints [(x0, y0), (x1, y1), … (xn, yn)]. Le premier point et le dernier sont reliés par un segment afin de le fermé. Pour créer un polygone, utiliser:
 
 .. py:method:: Canvas.create_polygon(x0, y0, x1, y1, ..., option, ...)
 
-        The constructor returns the object ID for that object. Options:
+        Retourne l'identifiant numérique du polygone créé. Ses options sont:
 
         :arg activedash: 
                 These options specify the appearance of the polygon when it is in the tk.ACTIVE state, that is, when the mouse is over it. For option values, see dash, fill, outline, outlinestipple, stipple, and width.
@@ -711,7 +701,7 @@ To create a new polygon object on a canvas C:
 Les rectangles
 ==============
 
-Each rectangle is specified as two points: (x0, y0) is the top left corner, and (x1, y1) is the location of the pixel just outside of the bottom right corner.
+Un rectangle est défini par deux points : (x0, y0) pour son coin supérieur gauche et (x1, y1) pour son coin inférieur droit.
 
 For example, the rectangle specified by top left corner (100,100) and bottom right corner (102,102) is a square two pixels by two pixels, including pixel (101,101) but not including (102,102).
 
@@ -771,12 +761,11 @@ To create a rectangle object on canvas C:
 Les textes
 ==========
 
-You can display one or more lines of text on a canvas C by creating a text object:
-
+Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisant:
 
 .. py:method:: Canvas.create_text(x, y, option, ...)
 
-        This returns the object ID of the text object on canvas C. Options include:
+        Retourne l'identifiant numérique de l'objet textuel ainsi créé. Ses options sont:
 
         :arg activefill: 
                 The text color to be used when the text is active, that is, when the mouse is over it. For option values, see fill below.
@@ -807,28 +796,28 @@ You can display one or more lines of text on a canvas C by creating a text objec
         :arg width:
                 If you don't specify a width option, the text will be set inside a rectangle as long as the longest line. However, you can also set the width option to a dimension, and each line of the text will be broken into shorter lines, if necessary, or even broken within words, to fit within the specified width. See Section 5.1, “Dimensions”.
 
-You can change the text displayed in a text item.
+Vous pouvez modifier ou récupérer le texte affiché:
 
-* To retrieve the text from an item with object ID I on a canvas C, call C.itemcget(I, 'text').
+* Pour récupérer le texte d'un tel item d'identifiant ``id`` sur un canevas ``can``, utiliser ``can.itemcget(id, 'text')``.
 
-* To replace the text in an item with object ID I on a canvas C with the text from a string S, call C.itemconfigure(I, text=S). 
+* Pour remplacer le texte d'un tel item par un chaîne ``ch``, utiliser ``can.itemconfigure(id, text=ch)``.
 
-A number of canvas methods allow you to manipulate text items. See Section 8.6, “Methods on Canvas widgets”, especially dchars, focus, icursor, index, and insert. 
+Plusieurs méthodes des canevas vous permette d'autre manipulation du texte. Voir “Methods on Canvas widgets”, et plus particulièrement :py:meth:`~Canvas.dchars`, :py:meth:`~Canvas.focus`, :py:meth:`~Canvas.icursor`, :py:meth:`~Canvas.index`, et :py:meth:`~Canvas.insert`. 
 
 .. _fenêtres:
 
 Les fenêtres
 ============
 
-You can place any Tkinter widget onto a canvas by using a canvas window object. A window is a rectangular area that can hold one Tkinter widget. The widget must be the child of the same top-level window as the canvas, or the child of some widget located in the same top-level window.
+Il est possible de placer n'importe quel widget de tkinter sur un canevas en utilisant un item fenêtre. Une fenêtre est une zone rectangulaire qui peut contenir un widget de tkinter. Le widget doit être un enfant de la même fenêtre principale que le canevas, ou l'enfant d'un widget lui-même situé dans cette fenêtre principale.
 
-If you want to put complex multi-widget objects on a canvas, you can use this method to place a Frame widget on the canvas, and then place other widgets inside that frame.
+Si vous voulez insérer un objet composé de plusière widget sur un canevas, vous pouvez utiliser cette méthode pour placer un cadre dans le canevas et, ensuite, placer d'autre widgets dans ce cadre.
 
-To create a new canvas window object on a canvas C:
+Pour créer une fenêtre dans un canevas, utiliser:
 
 .. py:method:: Canvas.create_window(x, y, option, ...)
 
-        This returns the object ID for the window object. Options include:
+        Retourne l'identifiant numérique de la fenêtre créé. Ses options sont:
 
         :arg anchor:
                 The default is anchor=tk.CENTER, meaning that the window is centered on the (x, y) position. See Section 5.5, “Anchors” for the possible values. For example, if you specify anchor=tk.E, the window will be positioned so that point (x, y) is on the midpoint of its right-hand (east) edge.
