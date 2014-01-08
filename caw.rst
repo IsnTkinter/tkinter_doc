@@ -237,7 +237,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_above(tagOrId)
 
-        Retourne l'identifiant numérique de l'item situé juste au dessus de celui qui est associé à ``tagOrId``. Si plusieurs items correspondent, on obtient le plus haut dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus haut, la méthode returne un tuple vide ``()``.
+        Retourne l'identifiant numérique de l'item situé juste au dessus de celui qui est sélectionné par ``tagOrId``. S'il y en a plusieurs, on obtient le plus haut dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus haut, la méthode returne un tuple vide ``()``.
 
 .. py:method:: Canvas.find_all()
 
@@ -265,13 +265,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_withtag(tagOrId)
 
-        Returns a list of the object IDs of the object or objects specified by tagOrId. 
+        Retourne la liste des identifiants numérique des items sélectionné par ``tagOrId``.
 
 .. py:method:: Canvas.focus(tagOrId=None)
 
-        Moves the focus to the object specified by tagOrId. If there are multiple such objects, moves the focus to the first one in the display list that allows an insertion cursor. If there are no qualifying items, or the canvas does not have focus, focus does not move.
-
-    If the argument is omitted, returns the ID of the object that has focus, or '' if none of them do. 
+        Donne le focus à l'item sélectionné par ``tagOrId``. Si plusieurs sont sélectionnés, donne le focus au premier de la liste d'affichage qui permet un curseur d'insertion. Si aucun n'item ne satisfait cette condition ou si le caneva n'a pas le focus, le focus n'est pas modifié. Si l'argument est omis, l'identifiant de l'item qui a le focus est retourné ou ``''`` si aucun ne l'a.
 
 .. py:method:: Canvas.gettags(tagOrId)
 
@@ -298,29 +296,21 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
         A string of the form “@x,y”, to return the character of the character containing canvas coordinates (x, y). If those coordinates are above or to the left of the text item, the method returns 0; if the coordinates are to the right of or below the item, the method returns the index of the end of the item. 
 
 
-.. py:method:: Canvas.insert(tagOrId, specifier, text)
+.. py:method:: Canvas.insert(tagOrId, beforeThis, text)
 
-        Inserts the given string into the object or objects specified by tagOrId, at the position given by the specifier argument.
-
-    The specifier values may be:
-
-        Any of the keywords tk.INSERT, tk.END, tk.SEL_FIRST, or tk.SEL_LAST. Refer to the description of the index method above for the interpretation of these codes.
-
-        The position of the desired insertion, using the normal Python convention for positions in strings. 
+        Insère la chaîne de cararctère `text` dans le ou les items donnés via ``tagOrId``, à la position déterminée par ``beforeThis``: 'insert', 'end', 'sel.first' et 'sel.last' ou un entier (index) ou '@x,y' (x et y à remplacer par des entiers).
 
 .. py:method:: Canvas.itemcget(tagOrId, option)
 
-        Returns the value of the given configuration option in the selected object (or the lowest object if tagOrId specifies more than one). This is similar to the .cget() method for Tkinter objects. 
+        Retourne la valeur de l'``option`` de configuration (précisé par une chaîne de caractère) pour l'item sélectionné (ou pour l'item le plus bas si plusieurs sont sélectionnés par ``tagOrId``. C'est très similaire à la méthode ``cget()`` pour les widgets.
 
 .. py:method:: Canvas.itemconfigure(tagOrId, option, ...)
 
-        If no option arguments are supplied, returns a dictionary whose keys are the options of the object specified by tagOrId (the lowest one, if tagOrId specifies multiple objects).
+        Si aucune option n'est indiquée, retourne un dictionnaire dont les clés sont les options possibles pour l'item donné par ``tagOrId`` (ou le plus bas s'il y en a plusieurs). Autrement, modifie la ou les options données sous la forme ``option=valeur``.
 
-    To change the configuration option of the specified item, supply one or more keyword arguments of the form option=value. 
+.. py:method:: Canvas.move(tagOrId, dx, dy)
 
-.. py:method:: Canvas.move(tagOrId, xAmount, yAmount)
-
-        Moves the items specified by tagOrId by adding xAmount to their x coordinates and yAmount to their y coordinates. 
+        Déplace les items donnés via ``tagOrId`` by adding dx à leur coordonnés x et dy à leurs coordonnées y.
 
 .. py:method:: Canvas.postscript(option, ...)
 
@@ -333,83 +323,59 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
         y	Topmost canvas coordinate of the area to print.
         width	How much of the X size of the canvas to print. Default is the visible width of the canvas. 
 
-.. py:method:: Canvas.scale(tagOrId, xOffset, yOffset, xScale, yScale)
+.. py:method:: Canvas.scale(tagOrId, x, y, sx, sy)
 
-        Scale all objects according to their distance from a point P=(xOffset, yOffset). The scale factors xScale and yScale are based on a value of 1.0, which means no scaling. Every point in the objects selected by tagOrId is moved so that its x distance from P is multiplied by xScale and its y distance is multiplied by yScale.
-
-        This method will not change the size of a text item, but may move it. 
+        Mise à l'échelle de tous les objets relativement au point de référence ``P=(x, y)``. Les facteurs d'échelle ``sx`` et ``sy`` sont basés sur une valeur de 1.0 qui signifie aucune mise à l'échelle. Chaque point des items sélectionné sont déplacés de façon que leurs distances en x (resp. en y) au point P sont multipliées par sx (resp. sy). Cette méthode ne modifie pas la taille des textes mais peut les déplacer.
 
 .. py:method:: Canvas.scan_dragto(x, y, gain=10.0)
 
-        See the .scan_mark() method below. 
+        Sert à faire défiler le canevas. voir la méthode :py:meth:`~Canvas.scan_mark()`.
 
 .. py:method:: Canvas.scan_mark(x, y)
 
-        This method is used to implement fast scrolling of a canvas. The intent is that the user will press and hold a mouse button, then move the mouse up to scan (scroll) the canvas horizontally and vertically in that direction at a rate that depends on how far the mouse has moved since the mouse button was depressed.
+        Cette méthode sert à réaliser des défilement rapide du canevas. L'intention est que l'utilisateur puisse faire défiler le canvas en appuyant sur un bouton de la souris (sans relâcher) et en la déplaçant jusqu'au relâchement. Pour réaliser cette fonctionnalité, lier l'événement souris «bouton appuyé» à un gestionnaire qui appelle cette méthode en positionnant x et y à la position de la souris. Ensuite, lier l'événement '<Motion>' à un gestionnaire qui, en supposant que le bouton de la souris n'est pas relâché, appelle :py:meth:`~Canvas.scan_dragto(x, y, gain)` en positionnant x et y aux coordonnées de la souris ; le paramètre ``gain`` sert à contrôler le rythme du défilement, sa valeur par défaut est 10.0. Utiliser une valeur plus grande pour accélérer le défilement.
 
-        To implement this feature, bind the mouse's button-down event to a handler that calls scan_mark(x, y) where x and y are the current mouse coordinates. Bind the <Motion> event to a handler that, assuming the mouse button is still down, calls scan_dragto(x, y, gain) where x and y are the current mouse coordinates.
+.. py:method:: Canvas.select_adjust(tagOrId, index)
 
-        The gain argument controls the rate of scanning. This argument has a default value of 10.0. Use larger numbers for faster scanning. 
+        Trouve l'extrémité de la selection courante la plus proche du caractère donné par ``index`` et l'ajuste de façon que la nouvelle sélection contienne ce caractère. L'autre extrémité de la sélection devient le point d'ancrage pour une utilisation ultérieure de :py:meth:`~Canvas.select_to`. Si il n'y avait aucune sélection, se comporte comme la méthode  :py:meth:`~Canvas.select_to`.
 
-.. py:method:: Canvas.select_adjust(oid, specifier)
-
-        Adjusts the boundaries of the current text selection to include the position given by the specifier argument, in the text item with the object ID oid.
-
-        The current selection anchor is also set to the specified position. For a discussion of the selection anchor, :py:meth:`~Canvas.select_from` see the canvas select_from method below.
-
-        For the values of specifier, :py:meth:`~Canvas.insert` see the canvas insert method above. 
+        Pour les valeurs possible de ``index``, voir :py:meth:`~Canvas.insert`. 
 
 .. py:method:: Canvas.select_clear()
 
-        Removes the current text selection, if it is set. If there is no current selection, does nothing. 
+        Supprime la sélection courante (pas ce qui est sélectionné) si elle existe, autrement ne fait rien.
 
-.. py:method:: Canvas.select_from(oid, specifier)
+.. py:method:: Canvas.select_from(tagOrId, index)
 
-        This method sets the selection anchor to the position given by the specifier argument, within the text item whose object ID is given by oid.
-
-        The currently selected text on a given canvas is specified by three positions: the start position, the end position, and the selection anchor, which may be anywhere within those two positions.
-
-        To change the position of the currently selected text, use this method in combination with the select_adjust, select_from, and select_to canvas methods (q.v.). 
+        Positionne le point d'ancrage de la sélection juste avant le caractère précisé par ``index`` dans le texte de l'item donné par ``tagOrId``. Cette méthode ne modifie pas une sélection existante, elle positionne simplement la marque de fin de sélection pour l'utilisation ultérieur de :py:meth:`~Canvas.select_to`.
 
 .. py:method:: Canvas.select_item()
 
-        If there is a current text selection on this canvas, return the object ID of the text item containing the selection. If there is no current selection, this method returns None. 
+        S'il y a une sélection de texte dans ce canevas, retourne l'identiant de l'item texte qui contient la sélection. Sinon, retourne None.
 
-.. py:method:: Canvas.select_to(oid, specifier)
+.. py:method:: Canvas.select_to(oid, index)
 
-        This method changes the current text selection so that it includes the select anchor and the position given by specifier within the text item whose object ID is given by oid. For the values of specifier, :py:meth:`~Canvas.insert` see the canvas insert method above. 
+        Positionne la sélection afin qu'elle inclue tous les caractères compris entre l'ancre de la sélection et ``index``. La nouvelle sélection contient le caractère à la position ``index``. Elle contient le caractère associé à l'ancre de sélection seulement si ``index`` est supérieur ou égal au point d'ancrage de la sélection. Le point d'ancrage de la sélection est déterminé par la dernière utilisation des méthodes :py:meth:`~Canvas.select_adjust` ou :py:meth:`~Canvas.select_from`.  Si le point d'ancrage de la sélection n'était pas positionné, il est placé à la position ``index`, il est placé à la position ``index``.
 
-.. py:method:: Canvas.tag_bind(tagOrId, sequence=None, function=None, add=None)
+.. py:method:: Canvas.tag_bind(tagOrId, chevt=None, gestionnaire=None, add=None)
 
-        Binds events to objects on the canvas. For the object or objects selected by tagOrId, associates the handler function with the event sequence. If the add argument is a string starting with '+', the new binding is added to existing bindings for the given sequence, otherwise the new binding replaces that for the given sequence.
-
-        For general information on event bindings, see Section 54, “Events”.
-
-        Note that the bindings are applied to items that have this tag at the time of the tag_bind method call. If tags are later removed from those items, the bindings will persist on those items. If the tag you specify is later applied to items that did not have that tag when you called tag_bind, that binding will not be applied to the newly tagged items. 
+        Lie le gestionnaire d'événement ``gestionnaire``, pour l'évenement précisé par ``chevt``, à ou aux items ``tagOrId``. Si l'argument ``add`` est une chaîne qui commence par '+', cette liaison est ajoutées à celles qui ont déjà pu être défini pour cete événement. Autrement, les liaison précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par la suppression d'une marque (ni ajoutée en cas de nouveau marquage).
 
 .. py:method:: Canvas.tag_lower(tagOrId, belowThis)
 
-        Moves the object or objects selected by tagOrId within the display list to a position just below the first or only object specied by the tag or ID belowThis.
-
-        If there are multiple items with tag tagOrId, their relative stacking order is preserved.
-
-        This method does not affect canvas window items. To change a window item's stacking order, use a lower or lift method on the window. 
+        Déplace les items ``tagOrId`` juste en-dessous du premier ou seul item indiqué par ``belowThis``. S'il y en a plusieurs, leur ordre relatif n'est pas modifié. Cette méthode ne s'applique pas aux items fenêtre.
 
 .. py:method:: Canvas.tag_raise(tagOrId, aboveThis)
 
-        Moves the object or objects selected by tagOrId within the display list to a position just above the first or only object specied by the tag or ID aboveThis.
+        Déplace les items sélectionné par ``tagOrId`` juste au-dessus du premier ou seul item sélectionné par ``aboveThis``. S'il y en a plusieurs, leur ordre relatif n'est pas modifié. Cette méthode ne s'applique pas aux items fenêtre.
 
-        If there are multiple items with tag tagOrId, their relative stacking order is preserved.
+.. py:method:: Canvas.tag_unbind(tagOrId, chEvt, gestcId=None)
 
-        This method does not affect canvas window items. To change a window item's stacking order, use a lower or lift method on the window. 
-
-.. py:method:: Canvas.tag_unbind(tagOrId, sequence, funcId=None)
-
-        Removes bindings for handler funcId and event sequence from the canvas object or objects specified by tagOrId. See Section 54, “Events”. 
+        Supprime la liaison entre le ou les items ``tagOrId`` et le gestionnaire ``gestId`` pour la chaîne d'événement ``chEvt``. Voir  “Events”. 
 
 .. py:method:: Canvas.type(tagOrId)
 
-        Returns the type of the first or only object specified by tagOrId. The return value will be one of the strings 'arc', 'bitmap', 'image', 'line', 'oval', 'polygon', 'rectangle', 'text', or 'window'. 
+        Retourne le type du premier ou seul item sélectionné par ``tagOrdId``. La valeur de retour est l'une des chaînes suivante : ``'arc'``, ``'bitmap'``, ``'image'``, ``'line'``, ``'oval'``, ``'polygon'``, ``'rectangle'``, ``'text'``, or ``'window'``. 
 
 .. py:method:: Canvas.xview(tk.MOVETO, fraction)
 
