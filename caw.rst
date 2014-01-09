@@ -164,12 +164,8 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
   * :py:meth:`~Canvas.tag_raise`
   * :py:meth:`~Canvas.tag_unbind`
   * :py:meth:`~Canvas.type`
-  * :py:meth:`~Canvas.xview`
-  * :py:meth:`~Canvas.xview`
   * :py:meth:`~Canvas.xview_moveto`
   * :py:meth:`~Canvas.xview_scroll`
-  * :py:meth:`~Canvas.yview`
-  * :py:meth:`~Canvas.yview`
   * :py:meth:`~Canvas.yview_moveto`
   * :py:meth:`~Canvas.yview_scroll`
 
@@ -256,11 +252,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_overlapping(x1, y1, x2, y2)
 
-        Similaire à la méthode précédente, mais sélectionne tous les items qui au moins un point commun avec le rectangle.
+        Similaire à la méthode précédente, mais sélectionne tous les items qui ont au moins un point commun avec le rectangle.
 
 .. py:method:: Canvas.find_withtag(tagOrId)
 
-        Retourne la liste des identifiants numérique des items sélectionné par ``tagOrId``.
+        Retourne la liste des identifiants numériques des items sélectionné par ``tagOrId``.
 
 .. py:method:: Canvas.focus(tagOrId=None)
 
@@ -272,24 +268,21 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.icursor(tagOrId, index)
 
-        Assuming that the selected item allows text insertion and has the focus, sets the insertion cursor to index, which may be either an integer index or the string 'end'. Has no effect otherwise. 
+        En supposant que l'item sélectionné permet l'insertion de texte et qu'il a le focus, positionne le curseur d'insertion à la position ``index`` lequel est soit un entier ou la chaîne 'end'. N'a pas d'effet autrement.
 
 .. py:method:: Canvas.index(tagOrId, specifier)
 
-        Returns the integer index of the given specifier in the text item specified by tagOrId (the lowest one that, if tagOrId specifies multiple objects). The return value is the corresponding position as an integer, with the usual Python convention, where 0 is the position before the first character.
+        Retourne l'index (entier) du ``specifier`` donné dans l'item textuel sélection par ``tagOrId`` (le plus bas s'il y en a plusieurs). Returns the integer index of the given specifier in the text item specified by tagOrId (the lowest one that, if tagOrId specifies multiple objects). La valeur de retour est une position dans une chaîne qui suit les convention de Python, 0 signifie avant le premier caractère. L'argument ``specifier`` peut être :
 
-    The specifier argument may be any of:
+        * 'insert', pour retourner la position courante du curseur d'insertion.
 
-        tk.INSERT, to return the current position of the insertion cursor.
+        * 'end', pour retourner la position qui suit le dernier caractère.
 
-        tk.END, to return the position after the last character of the item.
+        * 'sel.first', pour retourner la position initiale de la zone de sélection. Si une telle zone n'existe pas, tkinter produira une exception du type ``TclError``.
 
-        tk.SEL_FIRST, to return the position of the start of the current text selection. Tkinter will raise a tk.TclError exception if the text item does not currently contain the text selection.
+        * 'sel.last', pour retourner la position de la fin de la zone de sélection. De même, tkinter lève une exception si une telle zone n'existe pas.
 
-        tk.SEL_LAST, to return the position after the end of the current text selection, or raise tk.TclError if the item does not currently contain the selection.
-
-        A string of the form “@x,y”, to return the character of the character containing canvas coordinates (x, y). If those coordinates are above or to the left of the text item, the method returns 0; if the coordinates are to the right of or below the item, the method returns the index of the end of the item. 
-
+        * Une chaîne de la forme '@x,y' pour retourner l'index du caractère situé à la position (x, y). Si cette position est située au-dessus ou à gauche de l'item textuel, la méthode retourne 0. Si elle est située en-dessous ou à droite, la méthode retourne l'index de fin de l'item. 
 
 .. py:method:: Canvas.insert(tagOrId, beforeThis, text)
 
@@ -372,41 +365,21 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
         Retourne le type du premier ou seul item sélectionné par ``tagOrdId``. La valeur de retour est l'une des chaînes suivante : ``'arc'``, ``'bitmap'``, ``'image'``, ``'line'``, ``'oval'``, ``'polygon'``, ``'rectangle'``, ``'text'``, or ``'window'``. 
 
-.. py:method:: Canvas.xview(tk.MOVETO, fraction)
-
-        This method scrolls the canvas relative to its image, and is intended for binding to the command option of a related scrollbar. The canvas is scrolled horizontally to a position given by offset, where 0.0 moves the canvas to its leftmost position and 1.0 to its rightmost position. 
-
-.. py:method:: Canvas.xview(tk.SCROLL, n, what)
-
-        This method moves the canvas left or right: the what argument specifies how much to move and can be either tk.UNITS or tk.PAGES, and n tells how many units to move the canvas to the right relative to its image (or left, if negative).
-
-        The size of the move for tk.UNITS is given by the value of the canvas's xscrollincrement option; see Section 22, “The Scrollbar widget”.
-
-        For movements by tk.PAGES, n is multiplied by nine-tenths of the width of the canvas. 
-
 .. py:method:: Canvas.xview_moveto(fraction)
 
-        This method scrolls the canvas in the same way as .xview(tk.MOVETO, fraction). 
+        Cette méthode fait défiler le canevas relativement à sa fenêtre de vue. L'intention est de faire une liaison avec l'option command d'un barre de défilement qui aurait été associé à ce canevas. Le défilement est horizontal jusqu'à une position entre 0 et 1 (argument ``fraction``): 0.0 pour sa position la plus à gauche et 1.0 pour sa position la plus à droite. 
 
 .. py:method:: Canvas.xview_scroll(n, what)
 
-        Same as .xview(tk.SCROLL, n, what). 
-
-.. py:method:: Canvas.yview(tk.MOVETO, fraction)
-
-        The vertical scrolling equivalent of .xview(tk.MOVETO,…). 
-
-.. py:method:: Canvas.yview(tk.SCROLL, n, what)
-
-        The vertical scrolling equivalent of .xview(tk.SCROLL,…). 
+        Cette méthode fait défiler le canevas à gauche ou à droite. L'argument ``what`` précise le défilement qui peut être soit 'units' soit 'pages', ``n`` précise le nombre d'unité du déplacement (vers la droite si positif, vers la gauche autrement). 'units' se réfère à l'option ``xscrollincrement`` (voir “The Scrollbar widget”). Pour 'pages', n est multiplier par 90% de la largeur de la page.
 
 .. py:method:: Canvas.yview_moveto(fraction)
 
-        The vertical scrolling equivalent of .xview(). 
+        Même chose que xview_moveto mais verticalement. 
 
 .. py:method:: Canvas.yview_scroll(n, what)
 
-        The vertical scrolling equivalents of .xview(), .xview_moveto(), and .xview_scroll(). 
+        Même chose que xview_scroll mais verticalement.
 
 .. _arcs:
 
@@ -764,31 +737,31 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         Retourne l'identifiant numérique de l'objet textuel ainsi créé. Ses options sont:
 
         :arg activefill: 
-                The text color to be used when the text is active, that is, when the mouse is over it. For option values, see fill below.
+                Couleur de remplissage à utiliser lorsque la souris est au-dessus.
         :arg activestipple: 
                 The stipple pattern to be used when the text is active. For option values, see stipple below.
         :arg anchor:
-                The default is anchor=tk.CENTER, meaning that the text is centered vertically and horizontally around position (x, y). See Section 5.5, “Anchors” for possible values. For example, if you specify anchor=tk.SW, the text will be positioned so its lower left corner is at point (x, y).
+                Par défaut, vaut 'center' ce qui signifie que le texte est centré par rapport à la position (x,y). Voir  “Anchors” pour les valeurs possibles.
         :arg disabledfill: 
-                The text color to be used when the text object's state is tk.DISABLED. For option values, see fill below.
+                Couleur de remplissage lorsque l'item est dans l'état (state) 'disabled'.
         :arg disabledstipple: 
                 The stipple pattern to be used when the text is disabled. For option values, see stipple below.
         :arg fill:
-                The default text color is black, but you can render it in any color by setting the fill option to that color. See Section 5.3, “Colors”.
+                Couleur du texte, noir par défaut. Voir “Colors”.
         :arg font:
-                If you don't like the default font, set this option to any font value. See Section 5.4, “Type fonts”.
+                Utiliser cette option pour changer la police de caractères. Voir “Type fonts”.
         :arg justify:
-                For multi-line textual displays, this option controls how the lines are justified: tk.LEFT (the default), tk.CENTER, or tk.RIGHT.
+                Gère l'alignement en cas d'affichage multiligne : 'left' pour gauche, 'center' pour centré et 'right' pour droit.
         :arg offset: 
                 The stipple offset to be used in rendering the text. For more information, see Section 5.14, “Matching stipple patterns”.
         :arg state: 
-                By default, the text item's state is tk.NORMAL. Set this option to tk.DISABLED to make in unresponsive to mouse events, or set it to tk.HIDDEN to make it invisible.
+                'normal' par défaut. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg stipple:
                 A bitmap indicating how the text will be stippled. Default is stipple='', which means solid. A typical value would be stipple='gray25'. See Section 5.7, “Bitmaps”.
         :arg tags:
-                If a single string, the text object is tagged with that string. Use a tuple of strings to tag the object with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg text:
-                The text to be displayed in the object, as a string. Use newline characters ('\n') to force line breaks.
+                Le texte à afficher sous la forme d'une chaîne de caractères. Utiliser '\n' pour forcer les sauts de ligne.
         :arg width:
                 If you don't specify a width option, the text will be set inside a rectangle as long as the longest line. However, you can also set the width option to a dimension, and each line of the text will be broken into shorter lines, if necessary, or even broken within words, to fit within the specified width. See Section 5.1, “Dimensions”.
 
@@ -816,14 +789,14 @@ Pour créer une fenêtre dans un canevas, utiliser:
         Retourne l'identifiant numérique de la fenêtre créé. Ses options sont:
 
         :arg anchor:
-                The default is anchor=tk.CENTER, meaning that the window is centered on the (x, y) position. See Section 5.5, “Anchors” for the possible values. For example, if you specify anchor=tk.E, the window will be positioned so that point (x, y) is on the midpoint of its right-hand (east) edge.
+                Par défaut, vaut 'center' ce qui signifie que la fenêtre est centrée par rapport à la position (x,y). Voir  “Anchors” pour les valeurs possibles.
         :arg height:
-                The height of the area reserved for the window. If omitted, the window will be sized to fit the height of the contained widget. See Section 5.1, “Dimensions” for possible values.
+                La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenu. Voir “Dimensions” for possible values.
         :arg state: 
-                By default, window items are in the tk.NORMAL state. Set this option to tk.DISABLED to make the window unresponsive to mouse input, or to tk.HIDDEN to make it invisible.
+                'normal' par défaut. Mettre cet option à 'disabled' pour empêcher la fenêtre de réagir à la souris, la mettre à 'hidden' pour la rendre invisible.
         :arg tags:
-                If a single string, the window is tagged with that string. Use a tuple of strings to tag the window with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                The width of the area reserved for the window. If omitted, the window will be sized to fit the width of the contained widget.
+                La largeur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la largeur de son contenu.
         :arg window:
-                Use window=w where w is the widget you want to place onto the canvas. If this is omitted initially, you can later call C.itemconfigure (id, window=w) to place the widget w onto the canvas, where id is the window's object ID.. 
+                Utiliser ``window=w`` où w est le widget que vous souhaitez placer sur le canevas. 
