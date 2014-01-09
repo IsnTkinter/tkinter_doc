@@ -236,7 +236,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_above(tagOrId)
 
-        Retourne l'identifiant numérique de l'item situé juste au dessus de celui qui est sélectionné par ``tagOrId``. S'il y en a plusieurs, on obtient le plus haut dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus haut, la méthode returne un tuple vide ``()``.
+        Retourne l'identifiant numérique de l'item situé juste au dessus de celui qui est sélectionné par ``tagOrId``. S'il y en a plusieurs, on utilise le plus haut dans la liste d'affichage. Si l'item précisé par ``tagOrId`` est le plus haut, la méthode returne un tuple vide ``()``.
 
 .. py:method:: Canvas.find_all()
 
@@ -248,19 +248,15 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_closest(x, y, halo=None, start=None)
 
-        Returns a singleton tuple containing the object ID of the object closest to point (x, y). If there are no qualifying objects, returns an empty tuple.
-
-        Use the halo argument to increase the effective size of the point. For example, halo=5 would treat any object within 5 pixels of (x, y) as overlapping.
-
-        If an object ID is passed as the start argument, this method returns the highest qualifying object that is below start in the display list. 
+        Retourne un tuple contenant l'identifiant numérique d'un seul item, celui qui est le plus proche du point (x, y). Si plusieurs items sont sélectionnés, c'est celui qui est le plus haut dans la liste d'affichage. Si aucun item n'est sélectionné, retourne une liste vide. Utiliser l'argument ``halo`` afin d'augmenter la taille effective du point. Tout item situé à une distance inférieur à ``halo`` de (x, y) le coupe. argument to increase the effective size of the point. For example, halo=5 would treat any object within 5 pixels of (x, y) as overlapping. Si ``start`` est renseigné, en utilisant une marque ou un identifiant (la marque sélectionne l'item le plus bas), l'item le plus proche et situé en-dessous de ``start`` est choisi.
 
 .. py:method:: Canvas.find_enclosed(x1, y1, x2, y2)
 
-        Returns a list of the object IDs of all objects that occur completely within the rectangle whose top left corner is (x1, y1) and bottom right corner is (x2, y2). 
+        Retourne la liste des identifiants numériques des items situés entièrement à l'intérieur du rectangle déterminé par (x1, y1) (coin supérieur gauche) et (x2,y2) (coin inférieur droit). 
 
 .. py:method:: Canvas.find_overlapping(x1, y1, x2, y2)
 
-        Like the previous method, but returns a list of the object IDs of all the objects that share at least one point with the given rectangle. 
+        Similaire à la méthode précédente, mais sélectionne tous les items qui au moins un point commun avec le rectangle.
 
 .. py:method:: Canvas.find_withtag(tagOrId)
 
