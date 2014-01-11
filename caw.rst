@@ -220,7 +220,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.dchars(tagOrId, first=0, last=first)
 
-        Supprime des caractères du ou des items textuels sélectionnés. Tous les caractères situés entre *first* et *last* (inclus) sont supprimés, ces paramètres indiquant une position entière ou la fin du texte via la chaîne ``'end'``. Par exemple, pour un canevas ``C`` et un item de marque ``'I'``, ``C.dchars('I', 1, 1)* supprime le second caractère.
+        Supprime des caractères du ou des items textuels sélectionnés. Tous les caractères situés entre *first* et *last* (inclus) sont supprimés, ces paramètres indiquant une position entière ou la fin du texte via la chaîne ``'end'``. Par exemple, pour un canevas ``C`` et un item de marque ``'I'``, ``C.dchars('I', 1, 1)`` supprime le second caractère.
 
 .. py:method:: Canvas.delete(tagOrId)
 
@@ -303,6 +303,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 .. py:method:: Canvas.postscript(option, ...)
 
         Génère une représentation du contenu actuel du canevas sous la forme d'une image PostScript encapsulé. Ses options sont:
+
         :arg colormode:
                 Utilisez ``'color'`` pour une image couleur, ``'gray'`` pour une image en niveaux de gris, ou ``'mono'`` pour une image en noir et blanc.
         :arg file:
@@ -349,7 +350,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.select_to(oid, index)
 
-        Positionne la sélection afin qu'elle inclue tous les caractères compris entre l'ancre de la sélection et *index*. La nouvelle sélection contient le caractère à la position *index*. Elle contient le caractère associé à l'ancre de sélection seulement si *index* est supérieur ou égal au point d'ancrage de la sélection. Le point d'ancrage de la sélection est déterminé par la dernière utilisation des méthodes :py:meth:`~Canvas.select_adjust` ou :py:meth:`~Canvas.select_from`.  Si le point d'ancrage de la sélection n'était pas positionné, il est placé à la position *index`.
+        Positionne la sélection afin qu'elle inclue tous les caractères compris entre l'ancre de la sélection et *index*. La nouvelle sélection contient le caractère à la position *index*. Elle contient le caractère associé à l'ancre de sélection seulement si *index* est supérieur ou égal au point d'ancrage de la sélection. Le point d'ancrage de la sélection est déterminé par la dernière utilisation des méthodes :py:meth:`~Canvas.select_adjust` ou :py:meth:`~Canvas.select_from`.  Si le point d'ancrage de la sélection n'était pas positionné, il est placé à la position *index*.
 
 .. py:method:: Canvas.tag_bind(tagOrId, chevt=None, gestionnaire=None, add=None)
 
@@ -459,7 +460,7 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
 
 .. py:method:: Canvas.create_bitmap(x, y, options ...)
 
-        Retourne l'identifiant numérique de l'image bitmap créé sur le canevas appelant.
+        Retourne l'identifiant numérique de l'image bitmap créée sur le canevas appelant.
 
         *x* et *y* sont les coordonnées du point de référence qui précise où placer le bitmap.
 
@@ -502,7 +503,7 @@ Pour afficher une image sur un canevas, utiliser:
         :arg activeimage: 
                 Image à afficher lorsque la souris survole l'item. Pour les valeurs possibles, voir l'option **image** ci-dessous.
         :arg anchor:
-                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Voir  “Anchors” pour les valeurs possibles. Par exemple, si ``anchor='s'``, l'image sera positionnée de sorte que le point *(x, y)* soit situé au milieu de son bord supérieur (sud).
+                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x, y)*. Voir  “Anchors” pour les valeurs possibles. Par exemple, si ``anchor='s'``, l'image sera positionnée de sorte que le point *(x, y)* soit situé au milieu de son bord supérieur (sud).
         :arg disabledimage: 
                 Image à afficher lorsque l'item est inactif (à l'état ``'disabled'``). Pour les valeurs possibles, voir **image** ci-dessous.
         :arg image:
@@ -596,7 +597,7 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
         :arg offset: 
                 Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'ellipse. Voir “Matching stipple patterns”.
         :arg outline:
-                Couleur de la bordure. Par défaut,``outline='black'``.
+                Couleur de la bordure. Par défaut, ``outline='black'``.
         :arg outlineoffset: 
                 Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg stipple:
@@ -710,7 +711,7 @@ Pour créer un rectangle sur le canevas:
         :arg offset: 
                 Utiliser cette option pour modifier le décalage du motif en «pointillé» de l'intérieur du rectangle. Voir “Matching stipple patterns”.
         :arg outline:
-                Couleur de la bordure. Par défaut,``outline='black'``.
+                Couleur de la bordure. Par défaut, ``outline='black'``.
         :arg outlineoffset: 
                 Utiliser cette option pour ajuster le motif en «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg outlinestipple: 

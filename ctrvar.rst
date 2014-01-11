@@ -1,91 +1,91 @@
 .. _CTRLVARIABLES:
 
-************************************************
-Control variables: the values behind the widgets
-************************************************
+*******************************************************
+Les variables de contrôle: Les valeurs sous les widgets
+*******************************************************
 
-A Tkinter control variable is a special object that acts like a regular Python variable in that it is a container for a value, such as a number or string.
+Une variable de contrôle de tkinter est un objet spécial qui se comporte comme une variable ordinaire de Python en ce sens que c'est un conteneur pour une valeur comme un nombre ou une chaîne de caractère.
 
-One special quality of a control variable is that it can be shared by a number of different widgets, and the control variable can remember all the widgets that are currently sharing it. This means, in particular, that if your program stores a value ``v`` into a control variable ``c`` with its ``c.set(v)`` method, any widgets that are linked to that control variable are automatically updated on the screen.
+Tout l'intérêt des variables de contrôle, c'est qu'elles peuvent-être partagées entre plusieurs widgets, et qu'elles se souviennent de tous les widgets qui les partagent à un moment donné. En particulier, cela signifie que si votre programme mémorise une valeur ``v`` dans une variable de contrôle ``c`` en utilisant la méthode ``c.set(v)``, tous les widgets qui sont reliés à cette variable de contrôle sont automatiquement mis à jour sur l'écran.
 
-Tkinter uses control variables for a number of important functions, for example:
+Tkinter utilise des variables de contrôles pour réaliser de nombreuses fonctionnalités, par exemple:
 
-* Checkbuttons use a control variable to hold the current state of the checkbutton (on or off).
+* Les boîtes à cocher, *Checkbuttons*, utilisent une variable de contrôle pour mémoriser leur état courant (on ou off).
 
-* A single control variable is shared by a group of radiobuttons and can be used to tell which one of them is currently set. When the user clicks on one radiobutton in a group, the sharing of this control variable is the mechanism by which Tkinter groups radiobuttons so that when you set one, any other set radiobutton in the group is cleared.
+* Un groupe de boutons radio, *radiobuttons*, partage une variable de contrôle qui peut être utilisée pour connaître le bouton qui est actuellement coché. Quand l'utilisateur clique sur l'un des boutons d'un groupe, le mécanisme qui assure qu'un seul des boutons est coché à un moment donné s'appui sur cette variable de contrôle partagée.
 
-* Control variables hold text string for several applications. Normally the text displayed in an Entry widget is linked to a control variable. In several other controls, it is possible to use a string-valued control variable to hold text such as the labels of checkbuttons and radiobuttons and the content of Label widgets.
+* Les variables de contrôles contiennent des textes pour de nombreuses applications. Normalement, le texte affiché dans un widget de saisi, *Entry*, est relié à une variable de contrôle. Il est aussi possible d'utiliser une telle variable de contrôle pour gérer les textes des étiquettes des cases à cocher, des boutons radio et le contenu des widgets étiquettes, *Label*.
 
-  For example, you could link an ``Entry`` widget to a Label widget so that when the user changes the text in the entry and presses the Enter key, the label is automatically updated to show that same text. 
+  Par exemple, vous pourriez relié un widget ``Entry`` (boîte de saisie) à un widget ``Label`` (étiquette) de telle sorte que quand l'utilisateur modifie le texte du premier, le second soit automatiquement mis à jour pour montrer le même texte.
 
-To get a control variable, use one of these class constructors, depending on what type of values you need to store in it::
+Pour obtenir une variable de contrôle, utilisez l'un de ces constructeurs, en fonction du type de valeur que vous souhaitez mémoriser::
 
-    v = tk.DoubleVar()   # Holds a float; default value 0.0
-    v = tk.IntVar()      # Holds an int; default value 0
-    v = tk.StringVar()   # Holds a string; default value ''
+    v = DoubleVar()   # Mémorise un flottant; sa valeur par défaut est 0.0
+    v = IntVar()      # Mémorise un entier; sa valeur par défaut est 0
+    v = StringVar()   # Mémorise une chaîne de caractères; sa valeur par défaut est ''
 
-All control variables have these two methods:
+Toutes les variables de contrôle disposent de ces méthodes:
 
 .. py:method:: get()
 
-           Returns the current value of the variable. 
+        Retourne la valeur courante de la variable de contrôle.
 
-.. py:method:: set(value)
+.. py:method:: set(valeur)
 
-        Changes the current value of the variable. If any widget options are slaved to this variable, those widgets will be updated when the main loop next idles; see ``.update_idletasks()`` in Section 26, “Universal widget methods” for more information on controlling this update cycle. 
+        Modifie la valeur courante de la variable de contrôle. Si les options d'un ou plusieurs widget sont reliées à cette variable, ces widget seront automatiquement mis à jour quand la boucle principales sera à nouveau en attente; voir ``.update_idletasks()`` in Section 26, “Universal widget methods” pour plus d'information sur le contrôle de ce cycle de mise à jour.
 
-Here are some comments on how control variables are used with specific widgets:
+Voici quelques indications sur la façon dont les variables de contrôles sont utilisées avec certains widgets.
 
 ``Button``
 
-    You can set its textvariable to a ``StringVar.`` Anytime that variable is changed, the text on the button will be updated to display the new value. This is not necessary unless the button's text is actually going to change: use the text attribute if the button's label is static. 
+    Vous pouvez renseigner son option **textvariable** avec une ``StringVar``. À chaque fois que cette variable est modifiée, le texte du bouton sera mis à jour pour afficher la nouvelle valeur. Il n'est pas nécessaire d'utiliser cela sauf si le texte du bouton doit changer au cours du temps: utilisez l'option **text** si l'étiquette du bouton ne change pas.
 
 ``Checkbutton``
 
-    Normally, you will set the widget's variable option to an IntVar, and that variable will be set to 1 when the checkbutton is turned on and to 0 when it is turned off. However, you can pick different values for those two states with the ``onvalue`` and ``offvalue`` options, respectively.
+    Normalement, vous relierez son option **variable** à une ``IntVar``, et cette variable aura la valeur 1 lorsque la case est cochée, la valeur 0 lorsqu'elle ne l'est pas. Cependant, vous pouvez choisir d'autres valeurs pour ces deux états en utilisant les option **onvalue** et **offvalue**.
 
-    You can even use a ``StringVar`` as the checkbutton's variable, and supply string values for the ``offvalue`` and ``onvalue.`` Here's an example
+    Vous pouvez même utiliser une ``StringVar`` comme **variable** de la case à cocher en fournissant des chaînes de caractères aux option **onvalue** et **offvalue**. Voici un exemple:
     
     ::
 
-        self.spamVar = tk.StringVar()
-        self.spamCB  = tk.Checkbutton(self, text='Spam?',
-            variable=self.spamVar, onvalue='yes', offvalue='no')
+        spamVar = StringVar()
+        spamCB  = Checkbutton(root, text='Spam?',
+            variable=spamVar, onvalue='oui', offvalue='non')
 
-    If this checkbutton is on, ``self.spamVar.get()`` will return the string ``'yes'``; if the checkbutton is off, that same call will return the string ``'no'``. Furthermore, your program can turn the checkbutton on by calling ``.set('yes').``
+    Si cette case est cochée, ``spamVar.get()`` retournera ``'oui'``; Si elle ne l'est pas, la même instruction renverra ``'non'``. De plus, votre programme peut cocher la case en appelant ``spamVar.set('oui')``.
 
-    You can also the textvariable option of a checkbutton to a StringVar. Then you can change the text label on that checkbutton using the .set() method on that variable. 
+    Vous pouvez encore indiquer une ``StringVar`` pour son option **textvariable**. Il vous suffit alors d'utiliser sa méthode ``.set()`` pour actualiser l'étiquette de cette case à cocher.
 
 ``Entry``
 
-    Set its ``textvariable`` option to a ``StringVar.`` Use that variable's ``.get()`` method to retrieve the text currently displayed in the widget. You can also the variable's ``.set()`` method to change the text displayed in the widget. 
+    Positionnez son option **textvariable** avec une ``StringVar``. Utilisez alors sa méthode ``.get()`` pour récupérer le texte actuellement affiché dans la boîte de saisie. Vous pouvez aussi modifier ce texte en utilisant sa méthode ``.set()``.
     
 ``Label``
 
-    You can set its ``textvariable`` option to a ``StringVar``. Then any call to the variable's ``.set()`` method will change the text displayed on the label. This is not necessary if the label's text is static; use the text attribute for labels that don't change while the application is running. 
+    Positionnez son option **textvariable** avec une ``StringVar``. En appelant sa méthode ``.set()``, vous pourrez modifier le texte affiché sur cette étiquette. Il n'est pas nécessaire d'utiliser cela; si vous ne prévoyez pas de changer son texte, utilisez plutôt son option **text** pour renseigner son contenu.
 
 ``Menubutton``
 
-    If you want to be able to change the text displayed on the menu button, set its ``textvariable`` option to a ``StringVar`` and use that variable's ``.set()`` method to change the displayed text. 
+    Si vous souhaitez être capable de modifier le texte affiché sur un bouton de menu, positionnez son option **textvariable** avec une ``StringVar`` et utilisez sa méthode ``.set()`` pour modifier le texte affiché.
 
 ``Radiobutton``
 
-    The variable option must be set to a control variable, either an ``IntVar`` or a ``StringVar``. All the radiobuttons in a functional group must share the same control variable.
+    Son option **variable** doit-être réglée avec une variable de contrôle, soit une ``IntVar`` soit une ``StringVar``. Tous les boutons radios qui forment un groupe doivent alors partager cette variable de contrôle.
 
-    Set the value option of each radiobutton in the group to a different value. Whenever the user sets a radiobutton, the variable will be set to the value option of that radiobutton, and all the other radiobuttons that share the group will be cleared.
+    Régler l'option **value** de chaque bouton radio du groupe à une valeur différente. Lorsque l'utilisateur coche un bouton, la variable mémorisera la valeur de l'option **value** de ce bouton et tous les autres boutons seront décochés.
 
-    You might wonder, what state is a group of radiobuttons in when the control variable has never been set and the user has never clicked on them? Each control variable has a default value: 0 for an ``IntVar,`` 0.0 for a ``DoubleVar``, and '' for a ``StringVar``. If one of the radiobuttons has that value, that radiobutton will be set initially. If no radiobutton's value option matches the value of the variable, the radiobuttons will all appear to be cleared.
+    Vous pourriez vous demander dans quel état se trouve un groupe de boutons radio lorsque leur variable de contrôle n'a pas encore reçu de valeur et que l'utilisateur n'a pas encore coché l'un des boutons ? Chaque variable de contrôle possède une valeur par défaut: ``0`` pour une ``IntVar``, ``0.0`` pour une ``DoubleVar``, et ``''`` pour une ``StringVar``. Si l'un des boutons radio a cette valeur, il est coché initialement. Si aucun d'eux n'a cette valeur, aucun n'est coché.
 
-    If you want to change the text label on a radiobutton during the execution of your application, set its ``textvariable`` option to a ``StringVar``. Then your program can change the text label by passing the new label text to the variable's ``.set()`` method. 
+    Si vous souhaitez modifier l'étiquette d'un bouton radio pendant l'éxécution du programme, régler son option ``textvariable`` avec une ``StringVar``. Vous serez alors en mesure de la modifier en utilisant la méthode ``.set()`` de cette variable de contrôle.
     
 ``Scale``
 
-    For a scale widget, set its variable option to a control variable of any class, and set its ``from_`` and to options to the limiting values for the opposite ends of the scale.
+    Pour un widget «curseur», *Scale*, positionnez son option **variable** avec une variable de contrôle du type voulu et régler ses options ``from_`` et ``to`` aux valeurs limites qui apparaissent à chaque extrémités du widget.
 
-    For example, you could use an ``IntVar`` and set the scale's ``from_=0`` and ``to=100``. Then every user change to the widget would change the variable's value to some value between 0 and 100 inclusive.
+    Par exemple, vous pourriez utiliser une ``IntVar`` en combinaison avec ``from_=0`` et ``to=100``. Alors, à chaque fois que l'utilisateur modifie la position du curseur, la variable de contrôle est mise à jour avec la valeur sélectionnée de l'intervalle *[0; 100]*.
 
-    Your program can also move the slider by using the ``.set()`` method on the control variable. To continue the above example, ``.set(75)`` would move the slider to a position three-fourths of the way along its trough.
+    Votre programme peut aussi déplacer le curseur du widget en utilisant la méthode ``.set()`` de la variable de contrôle. Dans l'exemple précédent, l'instruction ``.set(75)`` déplacer le curseur au 3/4 de sa barre.
 
-    To set up a ``Scale`` widget for float values, use a ``DoubleVar``.
+    Pour utiliser un widget ``Scale`` avec des valeur flottantes, utilisez une ``DoubleVar``.
 
-    You can use a ``StringVar`` as the control variable of a ``Scale`` widget. You will still need to provide numeric ``from_`` and ``to`` values, but the numeric value of the widget will be converted to a string for storage in the ``StringVar``. Use the scale's digits option to control the precision of this conversion. 
+    Vous pouvez utiliser une ``StringVar`` comme variable de contrôle d'un widget ``Scale``. Il sera tout de même nécessaire de préciser des valeurs numériques pour les options *from\_* et *to*, Mais les valeurs numérique du widget seront converties en une chaîne de caractère pour être mémorisées dans la ``StringVar``. Utilisez l'option **digit** du widget pour contrôler la précision avec laquelle cette conversion est réalisée.
