@@ -31,16 +31,16 @@ Pour créer un objet de type Canvas:
         Le constructeur retourne le nouveau widget canvas. Ses options sont:
 
         :arg borderwidth:
-                (ou **bd**) Largeur de la bordure du canvas. Voir :ref:`dimensions`.
+                (ou **bd**) Largeur de la bordure du canevas. Voir :ref:`dimensions`.
                 La valeur par défaut est 2 pixels. 
         :arg background:
-                (ou **bg**) Couleur de fond du canvas. La valeur par défaut est un gris léger, à peu près ``'#E4E4E4'``.
+                (ou **bg**) Couleur de fond du canevas. La valeur par défaut est un gris léger, à peu près ``'#E4E4E4'``.
         :arg closeenough:
                 Un flottant qui précise la distance minimale entre la souris et un item pour considérer qu'elle est dessus. La valeur par défaut est 1.0.
         :arg confine:
                 Si ``True`` (la valeur par défaut), il n'est pas possible de faire défiler le canvas en dehors de sa zone de visualisation (`scrollregion`), voir ci-dessous.
         :arg cursor:
-                Pointeur de la souris utilisé sur le canvas. Voir “Cursors”.
+                Pointeur de la souris utilisé sur le canevas. Voir “Cursors”.
         :arg height:
             Hauteur du canvas. Voir “Dimensions”.
         :arg highlightbackground:
@@ -52,7 +52,7 @@ Pour créer un objet de type Canvas:
         :arg relief:
                 Le style de relief du canvas. La valeur par défaut est ``'flat'``. Voir “Relief styles”.
         :arg scrollregion:
-                Un tuple ``(w, n, e, s)`` qui défini la zone du canvas accessible par défilement. ``w`` désigne le côté gauche, ``n`` le bord haut, ``e`` le côté droit et ``s`` le bord bas.
+                Un tuple ``(w, n, e, s)`` qui définit la zone du canevas accessible par défilement. ``w`` désigne le côté gauche, ``n`` le bord haut, ``e`` le côté droit et ``s`` le bord bas.
         :arg selectbackground:
                 La couleur de fond utilisée pour afficher l'item sélectionné.
         :arg selectborderwidth:
@@ -60,13 +60,13 @@ Pour créer un objet de type Canvas:
         :arg selectforeground:
                 La couleur d'avant plan utilisée pour mettre en valeur l'item sélectionné.
         :arg takefocus:
-                Normalement, le focus (see Section 53, “Focus: routing keyboard input”) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (see Section 54, “Events” for an overview of keyboard bindings). Si vous positionnez la valeur de cette option à 1, le canvas obtiendra le focus de manière ordinaire. Positionnez la à ``''`` pour obtenir le comportement «normal».
+                Normalement, le focus (see Section 53, “Focus: routing keyboard input”) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (see Section 54, “Events” for an overview of keyboard bindings). Si vous positionnez la valeur de cette option à 1, le canevas obtiendra le focus de manière ordinaire. Positionnez la à ``''`` pour obtenir le comportement «normal».
         :arg width:
-                Largeur du canvas. Voir “Dimensions”.
+                Largeur du canevas. Voir “Dimensions”.
         :arg xscrollincrement:
-                Normalement, on peut faire défiler un canvas horizontalement à n'importe qu'elle position. Vous pouvez obtenir ce comportement en positionnant cette opition à ``0`` . Si vous donnez une valeur positive à cette option, le canvas défile en utilisant des multiples de cette valeur. Elle sera en outre utilisée comme unité de défilement horizontal comme quand l'utilisateur clique sur les flèches situées aux extrémités d'une barre de défilement. Voir “The Scrollbar widget”.
+                Normalement, on peut faire défiler un canevas horizontalement à n'importe quelle position. Vous pouvez obtenir ce comportement en positionnant cette option à ``0`` . Si vous donnez une valeur positive à cette option, le canevas défile en utilisant des multiples de cette valeur. Elle sera en outre utilisée comme unité de défilement horizontal comme quand l'utilisateur clique sur les flèches situées aux extrémités d'une barre de défilement. Voir “The Scrollbar widget”.
         :arg xscrollcommand:
-                Si le canvas est muni d'une barre défilement, positionnez cette option en utilisant la méthode ``set()`` de la barre.
+                Si le canevas est muni d'une barre défilement, positionnez cette option en utilisant la méthode ``set()`` de la barre.
         :arg yscrollincrement:
                 Fonctionne de manière similaire à **xscrollincrement**, mais pour un défilement vertical.
         :arg yscrollcommand:
@@ -75,48 +75,48 @@ Pour créer un objet de type Canvas:
 Le système de coordonnées
 =========================
 
-Parce qu'un canevas peut être plus large que sa fenêtre de visualisation et qu'il peut être équipé de barres de défilement afin de le déplacer, il y a deux systèmes de coordonnées pour chaque canvas:
+Parce qu'un canevas peut être plus large que sa fenêtre de visualisation et qu'il peut être équipé de barres de défilement afin de le déplacer, il y a deux systèmes de coordonnées pour chaque canevas:
 
 * Les coordonnées d'un point dans la fenêtre de vue; elles sont relatives au bord supérieur gauche de cette fenêtre.
 
-* Les coordonnées d'un point dans le canvas lui-même.
+* Les coordonnées d'un point dans le canevas lui-même.
 
 La liste d'affichage
 ====================
 
-La liste d'affichage se réfère à la séquence de tous les items qui se trouvent sur le canvas, de l'arrière plan, (*background* - le bas de la liste d'affichage) vers l'avant plan, (*foreground* - le haut de cette liste).
+La liste d'affichage se réfère à la séquence de tous les items qui se trouvent sur le canevas, de l'arrière plan, (*background* - le bas de la liste d'affichage) vers l'avant plan, (*foreground* - le haut de cette liste).
 
 Si deux items se recouvrent, l'item au-dessus de l'autre dans la liste d'affichage désigne celui qui est le plus proche de l'avant plan, c'est à dire qui est vu comme au-dessus de l'autre sur l'affichage. Par défaut, lorsqu'un item est créé, il est placé tout en haut de la liste d'affichage (et donc il apparaît au dessus des items déjà affichés), mais il est possible de ré-ordonner la liste d'affichage.
 
 Les identifiants numériques
 ===========================
 
-Chaque item affiché sur le canvas possède un identifiant numérique (simple entier) unique, il s'agit de la valeur retournée par le «constructeur» - ``create_*()`` - lors de sa création.
+Chaque item affiché sur le canevas possède un identifiant numérique (simple entier) unique, il s'agit de la valeur retournée par le «constructeur» - ``create_*()`` - lors de sa création.
 
 Les marques (`tags`)
 ====================
 
-Une marque, *tag*, est une chaîne de caractères qu'on peut associer à un ou plusieurs items du canvas.
+Une marque, *tag*, est une chaîne de caractères qu'on peut associer à un ou plusieurs items du canevas.
 
 * Une marque peut être associée à autant d'items que l'on veut sur le canvas, 0 inclus.
 
 * Un item peut posséder autant de marques que souhaité, 0 inclus.
 
-Les marques, *tags*, ont de nombreux usages. Par exemple, si vous dessinez une carte sur un canvas et que vous utilisez des textes pour donner le nom des rivières, vous pourriez marquer tous ces items textuels avec ``'rivEtiq'``. Cela vous permettrait d'agir globalement sur les étiquettes en utilisant cette marque afin, par exemple, de changer leur couleur ou de les supprimer.
+Les marques, *tags*, ont de nombreux usages. Par exemple, si vous dessinez une carte sur un canevas et que vous utilisez des textes pour donner le nom des rivières, vous pourriez marquer tous ces items textuels avec ``'rivEtiq'``. Cela vous permettrait d'agir globalement sur les étiquettes en utilisant cette marque afin, par exemple, de changer leur couleur ou de les supprimer.
 
 Identification des items graphiques
 ===================================
 
-Un argument ``tagOrId`` se réfère à un ou plusieurs items du canvas.
+Un argument ``tagOrId`` se réfère à un ou plusieurs items du canevas.
 
 * Si l'argument ``tagOrId`` est un entier, il est considéré comme un identifiant numérique et il s'applique à l'unique item qui le possède. Voir “Canvas object IDs”.
 
-* Si cet argument est une chaîne de caractère, il est interprété comme une marque et sélectionne tous les items qui ont cette marque (s'il y en a). Voir “Canvas tags”. 
+* Si cet argument est une chaîne de caractères, il est interprété comme une marque et sélectionne tous les items qui ont cette marque (s'il y en a). Voir “Canvas tags”. 
 
 Méthodes des Canevas
 ====================
 
-Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer des items et qui sont présentées plus loin):
+Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer des items et qui sont présentées plus loin):
 
 .. hlist::
   :columns: 4
@@ -171,11 +171,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.addtag_above(newTag, tagOrId)
 
-        Appose une nouvelle marque *newTag* à l'item situé juste au-dessus de celui qui est sélectionné par *tagOrId* dans la liste d'affichage. l'argument *newTag*, donné sous la forme d'une chaîne de caractère, est la marque qu'on souhaite apposer.
+        Appose une nouvelle marque *newTag* à l'item situé juste au-dessus de celui qui est sélectionné par *tagOrId* dans la liste d'affichage. L'argument *newTag*, donné sous la forme d'une chaîne de caractère, est la marque qu'on souhaite apposer.
 
 .. py:method:: Canvas.addtag_all(newTag)
 
-        Attache la marque donné à tous les items qui sont présents sur le canevas.
+        Attache la marque donnée à tous les items qui sont présents sur le canevas.
 
 .. py:method:: Canvas.addtag_below(newTag, tagOrID)
 
@@ -206,7 +206,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.canvasx(screenx, gridspacing=None)
 
-        Retourne la coordonnées x du canevas qui correspond à la coordonnée x d'affichage précisée par *screenx*. Si l'argument *gridspacing* est précisé, la valeur de x relative au canevas est arrondi au plus proche multiple de cette valeur.
+        Retourne la coordonnée x du canevas qui correspond à la coordonnée x d'affichage précisée par *screenx*. Si l'argument *gridspacing* est précisé, la valeur de x relative au canevas est arrondi au plus proche multiple de cette valeur.
 
 .. py:method:: Canvas.canvasy(screeny, gridspacing=None)
 
@@ -236,7 +236,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.find_all()
 
-        Retourne une liste qui contient tous les identifiants numériques de tous les items du canvas, du plus bas au plus haut.
+        Retourne une liste qui contient tous les identifiants numériques de tous les items du canevas, du plus bas au plus haut.
 
 .. py:method:: Canvas.find_below(tagOrId)
 
@@ -260,11 +260,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.focus(tagOrId=None)
 
-        Donne le focus à l'item sélectionné par *tagOrId*. Si plusieurs sont sélectionnés, donne le focus au premier de la liste d'affichage qui permet un curseur d'insertion. Si aucun n'item ne satisfait cette condition ou si le caneva n'a pas le focus, le focus n'est pas modifié. Si l'argument est omis, l'identifiant de l'item qui a le focus est retourné ou ``''`` si aucun ne l'a.
+        Donne le focus à l'item sélectionné par *tagOrId*. Si plusieurs sont sélectionnés, donne le focus au premier de la liste d'affichage qui permet un curseur d'insertion. Si aucun item ne satisfait cette condition ou si le canevas n'a pas le focus, le focus n'est pas modifié. Si l'argument est omis, l'identifiant de l'item qui a le focus est retourné ou ``''`` si aucun ne l'a.
 
 .. py:method:: Canvas.gettags(tagOrId)
 
-        Si *tagOrId* est un identifant numérique, elle retourne la liste de toutes les marques qui sont associées à cet item. Si c'est une marque, elle retourne la liste de toutes les marques de l'item le plus bas parmi ceux qui sont sélectionné.
+        Si *tagOrId* est un identifant numérique, elle retourne la liste de toutes les marques qui sont associées à cet item. Si c'est une marque, elle retourne la liste de toutes les marques de l'item le plus bas parmi ceux qui sont sélectionnés.
 
 .. py:method:: Canvas.icursor(tagOrId, index)
 
@@ -286,11 +286,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.insert(tagOrId, beforeThis, text)
 
-        Insère la chaîne de cararctère *text* dans le ou les items sélectionné par *tagOrId*, à la position déterminée par *beforeThis*: ``'insert'``, ``'end'``, ``'sel.first'`` et ``'sel.last'`` ou un entier (index) ou ``'@x,y'`` (*x* et *y* à remplacer par des entiers).
+        Insère la chaîne de caractères *text* dans le ou les items sélectionné par *tagOrId*, à la position déterminée par *beforeThis*: ``'insert'``, ``'end'``, ``'sel.first'`` et ``'sel.last'`` ou un entier (index) ou ``'@x,y'`` (*x* et *y* à remplacer par des entiers).
 
 .. py:method:: Canvas.itemcget(tagOrId, option)
 
-        Retourne la valeur de l'*option* de configuration (précisé par une chaîne de caractère) pour l'item sélectionné (ou pour l'item le plus bas si plusieurs sont sélectionnés par *tagOrId*. C'est très similaire à la méthode ``cget()`` pour les widgets.
+        Retourne la valeur de l'*option* de configuration (précisée par une chaîne de caractères) pour l'item sélectionné (ou pour l'item le plus bas si plusieurs sont sélectionnés par *tagOrId*. C'est très similaire à la méthode ``cget()`` pour les widgets.
 
 .. py:method:: Canvas.itemconfigure(tagOrId, option, ...)
 
@@ -309,7 +309,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
         :arg file:
                 Pour préciser un fichier dans lequel le code PostScript sera écrit. Si non renseigné, le PostScript est retourné sous la forme d'une chaîne de caractère.
         :arg height:
-                Hauteur du canevas à prendre en compte. Par défaut, la hauteur visible du canvas.
+                Hauteur du canevas à prendre en compte. Par défaut, la hauteur visible du canevas.
         :arg rotate:
                 Si ``False``, la page est rendue en mode «portrait»; si ``True``, en mode «paysage».
         :arg x:
@@ -320,7 +320,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.scale(tagOrId, x, y, sx, sy)
 
-        Mise à l'échelle de tous les objets relativement au point de référence ``P=(x, y)``. Les facteurs d'échelle *sx* et *sy* sont basés sur une valeur de 1.0 qui signifie aucune mise à l'échelle. Chaque point des items sélectionnés sont déplacés de façon que leurs distances en *x* (resp. en *y*) au point ``P`` sont multipliées par *sx* (resp. *sy*). Cette méthode ne modifie pas la taille des textes mais peut les déplacer.
+        Mise à l'échelle de tous les objets relativement au point de référence ``P=(x, y)``. Les facteurs d'échelle *sx* et *sy* sont basés sur une valeur de 1.0 qui signifie aucune mise à l'échelle. Chaque point des items sélectionnés est déplacé de façon que leurs distances en *x* (resp. en *y*) au point ``P`` sont multipliées par *sx* (resp. *sy*). Cette méthode ne modifie pas la taille des textes mais peut les déplacer.
 
 .. py:method:: Canvas.scan_dragto(x, y, gain=10.0)
 
@@ -328,7 +328,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.scan_mark(x, y)
 
-        Cette méthode sert à réaliser des défilement rapide du canevas. L'intention est que l'utilisateur puisse faire défiler le canvas par cliquer-glisser c'est à dire en appuyant sur un bouton de la souris (sans relâcher) et en la déplaçant jusqu'au relâchement. Pour réaliser cette fonctionnalité, lier l'événement souris «bouton appuyé» à un gestionnaire qui appelle cette méthode en positionnant *x* et *y* à la position de la souris. Ensuite, lier l'événement ``'<Motion>'`` à un gestionnaire qui, en supposant que le bouton de la souris n'est pas relâché, appelle :py:meth:`~Canvas.scan_dragto(x, y, gain)` en positionnant *x* et *y* aux coordonnées de la souris ; le paramètre *gain* sert à contrôler le rythme du défilement, sa valeur par défaut est ``10.0``. Utiliser une valeur plus grande pour accélérer le défilement.
+        Cette méthode sert à réaliser des défilement rapide du canevas. L'intention est que l'utilisateur puisse faire défiler le canevas par cliquer-glisser c'est à dire en appuyant sur un bouton de la souris (sans relâcher) et en la déplaçant jusqu'au relâchement. Pour réaliser cette fonctionnalité, lier l'événement souris «bouton appuyé» à un gestionnaire qui appelle cette méthode en positionnant *x* et *y* à la position de la souris. Ensuite, lier l'événement ``'<Motion>'`` à un gestionnaire qui, en supposant que le bouton de la souris n'est pas relâché, appelle :py:meth:`~Canvas.scan_dragto(x, y, gain)` en positionnant *x* et *y* aux coordonnées de la souris ; le paramètre *gain* sert à contrôler le rythme du défilement, sa valeur par défaut est ``10.0``. Utiliser une valeur plus grande pour accélérer le défilement.
 
 .. py:method:: Canvas.select_adjust(tagOrId, index)
 
@@ -350,11 +350,11 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.select_to(oid, index)
 
-        Positionne la sélection afin qu'elle inclue tous les caractères compris entre l'ancre de la sélection et *index*. La nouvelle sélection contient le caractère à la position *index*. Elle contient le caractère associé à l'ancre de sélection seulement si *index* est supérieur ou égal au point d'ancrage de la sélection. Le point d'ancrage de la sélection est déterminé par la dernière utilisation des méthodes :py:meth:`~Canvas.select_adjust` ou :py:meth:`~Canvas.select_from`.  Si le point d'ancrage de la sélection n'était pas positionné, il est placé à la position *index*.
+        Positionne la sélection afin qu'elle inclut tous les caractères compris entre l'ancre de la sélection et *index*. La nouvelle sélection contient le caractère à la position *index*. Elle contient le caractère associé à l'ancre de sélection seulement si *index* est supérieur ou égal au point d'ancrage de la sélection. Le point d'ancrage de la sélection est déterminé par la dernière utilisation des méthodes :py:meth:`~Canvas.select_adjust` ou :py:meth:`~Canvas.select_from`.  Si le point d'ancrage de la sélection n'est pas positionné, il est placé à la position *index*.
 
 .. py:method:: Canvas.tag_bind(tagOrId, chevt=None, gestionnaire=None, add=None)
 
-        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutées à celles qui ont déjà pu être défini pour cet événement. Autrement, les liaison précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par la suppression d'une marque (ni ajoutée en cas de nouveau marquage).
+        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutée à celles qui ont déjà pu être définies pour cet événement. Autrement, les liaison précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par la suppression d'une marque (ni ajoutée en cas de nouveau marquage).
 
 .. py:method:: Canvas.tag_lower(tagOrId, belowThis)
 
@@ -374,7 +374,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 
 .. py:method:: Canvas.xview_moveto(fraction)
 
-        Cette méthode fait défiler le canevas relativement à sa fenêtre de vue. L'intention est de faire une liaison avec l'option *command* d'un barre de défilement qui aurait été associé à ce canevas. Le défilement est horizontal jusqu'à une position entre 0 et 1 (argument *fraction*): 0.0 pour sa position la plus à gauche et 1.0 pour sa position la plus à droite. 
+        Cette méthode fait défiler le canevas relativement à sa fenêtre de vue. L'intention est de faire une liaison avec l'option *command* d'une barre de défilement qui aurait été associée à ce canevas. Le défilement est horizontal jusqu'à une position entre 0 et 1 (argument *fraction*): 0.0 pour sa position la plus à gauche et 1.0 pour sa position la plus à droite. 
 
 .. py:method:: Canvas.xview_scroll(n, what)
 
@@ -393,7 +393,7 @@ Tous les Canvas disposent de ces méthodes (outre celles qui servent à créer d
 Les arcs
 ========
 
-Un arc, dans sa forme générale, est une portion d'ellips. Une ellipse tout entière ou un cercle forment des cas particulier. Reportez-vous à  “Canvas oval objects” pour en savoir plus sur la géométrie des ellipses dessinées.
+Un arc, dans sa forme générale, est une portion d'ellipse. Une ellipse tout entière ou un cercle forment des cas particulier. Reportez-vous à  “Canvas oval objects” pour en savoir plus sur la géométrie des ellipses dessinées.
 
 Pour créer un arc sur un canvas, utiliser :
 
@@ -413,9 +413,9 @@ Pour créer un arc sur un canvas, utiliser :
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hâchurée autour de l'arc. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour de l'arc. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
+                Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 Ces options servent à préciser l'apparence de l'arc lorsque son état est ``'disabled'``.
         :arg disabledfill:
@@ -483,7 +483,7 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
         :arg foreground: 
                 La couleur d'avant plan (son 1) du bitmap. Sa valeur par défaut est ``foreground='black'``.
         :arg state: 
-                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
+                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg tags: 
                 Si c'est une chaîne seule, elle sert à marquer (*tag*) le bitmap. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
 
@@ -498,7 +498,7 @@ Pour afficher une image sur un canevas, utiliser:
 
         Retourne l'identifiant numérique de l'item image créé sur le canevas appelant.
 
-        L'image est positionné relativement au point *(x, y)*. Ces options sont :
+        L'image est positionnée relativement au point *(x, y)*. Ces options sont :
 
         :arg activeimage: 
                 Image à afficher lorsque la souris survole l'item. Pour les valeurs possibles, voir l'option **image** ci-dessous.
@@ -536,9 +536,9 @@ En général, une ligne est une succession de segments connectés les uns aux au
         :arg capstyle:
                 Utiliser cette option pour préciser la forme des extrémités de la ligne. Voir :ref:`style-extr`. La valeur par défaut est ``'butt'``.
         :arg dash: 
-                Pour produire une ligne hâchurée, donner une valeur à cette option. Voir :ref:`Motifs-brise`. L'apparence par défaut est une ligne pleine.
+                Pour produire une ligne hachurée, donner une valeur à cette option. Voir :ref:`Motifs-brise`. L'apparence par défaut est une ligne pleine.
         :arg dashoffset: 
-                Si vous préciser un motif de hâchure, le comportement par défaut est d'utiliser le motif dès le début de la ligne. Utiliser cette option pour décaler la bordure du motif hâchuré à une certaine distance par rapport au début de la ligne. Voir :ref:`Motifs-brise`.
+                Si vous préciser un motif de hâchure, le comportement par défaut est d'utiliser le motif dès le début de la ligne. Utiliser cette option pour décaler la bordure du motif hachuré à une certaine distance par rapport au début de la ligne. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 Ces options servent à préciser l'apparence de la ligne lorsque son état est ``'disabled'``.
         :arg disabledfill:
@@ -551,7 +551,7 @@ En général, une ligne est une succession de segments connectés les uns aux au
         :arg offset: 
                 Pour les lignes en pointillés, cette option sert à régler finement le motif en cohérence avec ceux des objets adjacents. Voir “Matching stipple patterns”..
         :arg smooth:
-                La bordure par défaut est formée de segments pour connecter les points qui définissent la ligne; Utilisez ``smooth=0`` pour obtenir ce comportement. Si vous utilisez ``smooth=1``, vous obtenez une courbe qui passe par ces points. Pour obtenir un segmente avec ``smooth=1``, dupliquer les coordonnées de ses extrémités.
+                La bordure par défaut est formée de segments pour connecter les points qui définissent la ligne; Utilisez ``smooth=0`` pour obtenir ce comportement. Si vous utilisez ``smooth=1``, vous obtenez une courbe qui passe par ces points. Pour obtenir un segment avec ``smooth=1``, dupliquer les coordonnées de ses extrémités.
         :arg splinesteps:
                 Si ``smooth=1``, chaque morceau de la courbe (entre deux points) est rendu à l'aide d'un certain nombre de petits segments. Cette option précise le nombre de segments utilisés pour cela; Sa valeur par défaut est ``splinesteps=12``.
         :arg state: 
@@ -582,9 +582,9 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hâchurée autour de l'ellipse. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour de l'ellipse. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
+                Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 Ces options servent à préciser l'apparence de l'ellipse lorsque son état est ``'disabled'``.
         :arg disabledfill:
@@ -630,9 +630,9 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hâchurée autour du polygone. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour du polygone. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
+                Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 Ces options servent à préciser l'apparence du polygone lorsque son état est ``'disabled'``.
         :arg disabledfill:
@@ -655,9 +655,9 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
         :arg smooth:
                 La bordure par défaut est formée de segments pour connecter les points qui définissent le polygone; Utilisez ``smooth=0`` pour obtenir ce comportement. Si vous utilisez ``smooth=1``, vous obtenez une courbe qui passe par ces points. Pour obtenir un segmente avec ``smooth=1``, dupliquer les coordonnées de ses extrémités.
         :arg splinesteps:
-                Si ``smooth=1``, chaque morceau de la courbe (entre deux points) est rendu à l'aide d'un certain nombre de petits segments. Cette option précise le nombre de segment utilisé pour cela; Sa valeur par défaut est ``splinesteps=12``.
+                Si ``smooth=1``, chaque morceau de la courbe (entre deux points) est rendu à l'aide d'un certain nombre de petits segments. Cette option précise le nombre de segments utilisés pour cela; Sa valeur par défaut est ``splinesteps=12``.
         :arg state: 
-                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
+                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
                 Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur du polygone. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg tags:
@@ -696,9 +696,9 @@ Pour créer un rectangle sur le canevas:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hâchurée autour du rectangle. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour du rectangle. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
+                Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
                 Ces options servent à préciser l'apparence du rectangle lorsque son état est ``'disabled'``.
         :arg disabledfill:
@@ -717,7 +717,7 @@ Pour créer un rectangle sur le canevas:
         :arg outlinestipple: 
                 Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg state: 
-                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
+                ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
                 Un bitmap pour indiquer le motif en pointillé à utiliser pour remplir l'intérieur du rectangle. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg tags:
@@ -769,9 +769,9 @@ Vous pouvez modifier ou récupérer le texte affiché:
 
 * Pour récupérer le texte d'un tel item d'identifiant ``id`` sur un canevas ``can``, utiliser ``can.itemcget(id, 'text')``.
 
-* Pour remplacer le texte d'un tel item par un chaîne ``ch``, utiliser ``can.itemconfigure(id, text=ch)``.
+* Pour remplacer le texte d'un tel item par une chaîne ``ch``, utiliser ``can.itemconfigure(id, text=ch)``.
 
-Plusieurs méthodes des canevas vous permette d'autre manipulation du texte. Voir “Methods on Canvas widgets”, et plus particulièrement :py:meth:`~Canvas.dchars`, :py:meth:`~Canvas.focus`, :py:meth:`~Canvas.icursor`, :py:meth:`~Canvas.index`, et :py:meth:`~Canvas.insert`. 
+Plusieurs méthodes des canevas vous permettent d'autres manipulations du texte. Voir “Methods on Canvas widgets”, et plus particulièrement :py:meth:`~Canvas.dchars`, :py:meth:`~Canvas.focus`, :py:meth:`~Canvas.icursor`, :py:meth:`~Canvas.index`, et :py:meth:`~Canvas.insert`. 
 
 .. _fenêtres:
 
@@ -780,20 +780,20 @@ Les fenêtres
 
 Il est possible de placer n'importe quel widget de tkinter sur un canevas en utilisant un item fenêtre. Une fenêtre est une zone rectangulaire qui peut contenir un widget de tkinter. Le widget doit être un enfant de la même fenêtre principale que le canevas, ou l'enfant d'un widget lui-même situé dans cette fenêtre principale.
 
-Si vous voulez insérer un objet composé de plusière widget sur un canevas, vous pouvez utiliser cette méthode pour placer un cadre (*frame*) dans le canevas et, ensuite, placer d'autre widgets dans ce cadre.
+Si vous voulez insérer un objet composé de plusieurs widgets sur un canevas, vous pouvez utiliser cette méthode pour placer un cadre (*frame*) dans le canevas et, ensuite, placer d'autres widgets dans ce cadre.
 
 Pour créer une fenêtre dans un canevas, utiliser:
 
 .. py:method:: Canvas.create_window(x, y, option, ...)
 
-        Retourne l'identifiant numérique de la fenêtre créé. Ses options sont:
+        Retourne l'identifiant numérique de la fenêtre créée. Ses options sont:
 
         :arg anchor:
                 Par défaut, vaut ``'center'`` ce qui signifie que la fenêtre est centrée par rapport à la position *(x,y)*. Voir  “Anchors” pour les valeurs possibles.
         :arg height:
                 La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenu. Voir “Dimensions” pour les valeurs possibles.
         :arg state: 
-                ``'normal'`` par défaut. Mettre cet option à ``'disabled'`` pour empêcher la fenêtre de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
+                ``'normal'`` par défaut. Mettre cette option à ``'disabled'`` pour empêcher la fenêtre de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
         :arg tags:
                 Si c'est une chaîne seule, elle sert à marquer (*tag*) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
