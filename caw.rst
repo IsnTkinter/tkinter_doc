@@ -399,47 +399,47 @@ Pour créer un arc sur un canvas, utiliser :
         Les options possibles sont: 
 
         :arg activedash:
-                These options apply when the arc is in the tk.ACTIVE state, that is, when the mouse is over the arc. For example, the activefill option specifies the interior color when the arc is active. For option values, see dash, fill, outline, outlinestipple, stipple, and width, respectively.
+                Ces options servent à préciser l'apparence de l'arc lorsque son état est 'active', c'est à dire lorsque la souris le survole. Pour les valeurs possibles, voir les options dash, fill, outline, outlinestipple, stipple, and width. 
         :arg activefill:
         :arg activeoutline:
         :arg activeoutlinestipple:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Dash pattern for the outline. See Section 5.13, “Dash patterns”.
+                Sert à réaliser une bordure hâchurée autour de l'arc. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Dash pattern offset for the outline. See Section 5.13, “Dash patterns”.
+                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
-                These options apply when the arc's state is tk.DISABLED.
+                Ces options servent à préciser l'apparence de l'arc lorsque son état est 'disabled'.
         :arg disabledfill:
         :arg disabledoutline:
         :arg disabledoutlinestipple:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg extent:
-                Width of the slice in degrees. The slice starts at the angle given by the start option and extends counterclockwise for extent degrees.
+                Largeur angulaire de l'arc en degrés. L'arc commence à l'angle précisé par l'option **start** et s'étend de **extent** degrés dans le sens direct (sens contraire des aiguilles d'une montre).
         :arg fill:
-                By default, the interior of an arc is transparent, and fill='' will select this behavior. You can also set this option to any color and the interior of the arc will be filled with that color.
+                Par défaut, l'intérieur de l'arc est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Stipple pattern offset for the interior of the arc. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'arc. Voir “Matching stipple patterns”.
         :arg outline:
-                The color of the border around the outside of the slice. Default is black.
+                Couleur de la bordure. Par défaut,``outline='black'``.
         :arg outlineoffset: 
-                Stipple pattern offset for the outline. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg outlinestipple:
-                If the outline option is used, this option specifies a bitmap used to stipple the border. Default is black, and that default can be specified by setting outlinestipple=''.
+                Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg start:
-                Starting angle for the slice, in degrees, measured from +x direction. If omitted, you get the entire ellipse.
+                Angle (en degré), mesuré à partir de l'axe des x (dirigé horizontalement et vers la droite), qui précise le point de départ de l'arc. Si cette option n'est pas renseignée, on obtient une ellipse.
         :arg state: 
-                This option is tk.NORMAL by default. It may be set to tk.HIDDEN to make the arc invisible or to tk.DISABLED to gray out the arc and make it unresponsive to events.
+                'normal' par défaut. Il vaut 'active' lorsque la souris le survole. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg stipple: 
-                A bitmap indicating how the interior fill of the arc will be stippled. Default is stipple='' (solid). You'll probably want something like stipple='gray25'. Has no effect unless fill has been set to some color.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'arc. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg style: 
-                The default is to draw the whole arc; use style=tk.PIESLICE for this style. To draw only the circular arc at the edge of the slice, use style=tk.ARC. To draw the circular arc and the chord (a straight line connecting the endpoints of the arc), use style=tk.CHORD.
+                Par défaut, l'arc est dessiné avec ses rayons; utiliser ``style='pieslice'`` pour obtenir cela. Pour dessiner l'arc sans ses rayons, utiliser ``style='arc'. tPour tracer l'arc et sa corde, c'est à dire le segment qui joint ses extrémtités, utiliser ``style='chord'``.
         :arg tags: 
-                If a single string, the arc is tagged with that string. Use a tuple of strings to tag the arc with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) l'arc. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                Width of the border around the outside of the arc. Default is 1 pixel. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
 
 
 .. _can_bitmaps:
@@ -461,25 +461,25 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
         Les options sont :
 
         :arg activebackground: 
-                These options specify the background, bitmap, and foreground values when the bitmap is active, that is, when the mouse is over the bitmap.
+                Ces options précise la couleur de fond, le bitmap et la couleur d'avant plan lorsque le bitmap est 'active', c'est à dire lors du survol de la souris.
         :arg activebitmap:
         :arg activeforeground:
         :arg anchor:
-                The bitmap is positioned relative to point (x, y). The default is anchor=tk.CENTER, meaning that the bitmap is centered on the (x, y) position. See Section 5.5, “Anchors” for the various anchor option values. For example, if you specify anchor=tk.NE, the bitmap will be positioned so that point (x, y) is located at the northeast (top right) corner of the bitmap.
+                Le bitmap est positionné relativement au point (x, y). La valeur par défaut est ``anchor='center', ce qui centre le bitmap sur la position (x, y). Voir “Anchors” pour les valeurs d'ancrage. Par exemple, si vous indiquez ``anchor='ne', le bitmap est positionné de telle sorte que le point (x, y) est situé dans le coin supérieur droit (nord est) du bitmap.
         :arg background: 
-                The color that will appear where there are 0 values in the bitmap. The default is background='', meaning transparent.
+                La couleur de fond du bitmap (son 0). Sa valeur par défaut est ``background=''`` ce qui veut dire transparent.
         :arg bitmap: 
-                The bitmap to be displayed; Voir :ref:`bitmaps`.
+                Le bitmap à afficher. Voir :ref:`bitmaps`.
         :arg disabledbackground: 
-                These options specify the background, bitmap, and foreground to be used when the bitmap's state is tk.DISABLED.
+                Ces options précisent la couleur de fond, le bitmap et la couleur d'avant plan utilisés lorsque le bitmap est dans l'état (*state*) 'disabled'.
         :arg disabledbitmap:
         :arg disabledforeground:
         :arg foreground: 
-                The color that will appear where there are 1 values in the bitmap. The default is foreground='black'.
+                La couleur d'avant plan (son 1) du bitmap. Sa valeur par défaut est ``foreground='black'``.
         :arg state: 
-                By default, items are created with state=tk.NORMAL. Use tk.DISABLED to make the item grayed out and unresponsive to events; use tk.HIDDEN to make the item invisible.
+                'normal' par défaut. Il vaut 'active' lorsque la souris le survole. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg tags: 
-                If a single string, the bitmap is tagged with that string. Use a tuple of strings to tag the bitmap with multiple tags. See Section 8.4, “Canvas tags”. 
+                Si c'est une chaîne seule, elle sert à marquer (tag) le bitmap. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
 
 .. _can_images:
 
@@ -496,17 +496,17 @@ Pour afficher une image sur un canevas, utiliser:
         L'image est positionné relativement au point (x, y). Ces options sont :
 
         :arg activeimage: 
-                Image to be displayed when the mouse is over the item. For option values, see image below.
+                Image à afficher lorsque la souris survole l'item.  For option values, see image below.
         :arg anchor:
-                The default is anchor=tk.CENTER, meaning that the image is centered on the (x, y) position. See Section 5.5, “Anchors” for the possible values of this option. For example, if you specify anchor=tk.S, the image will be positioned so that point (x, y) is located at the center of the bottom (south) edge of the image.
+                Par défaut, vaut 'center' ce qui signifie que le texte est centré par rapport à la position (x,y). Voir  “Anchors” pour les valeurs possibles. Par exemple, si anchor='s', l'image sera positionnée de sorte que le point (x, y) soit situé au milieu de son bord supérieur (sud).
         :arg disabledimage: 
-                Image to be displayed when the item is inactive. For option values, see image below.
+                Image à afficher lorsque l'item est inactif (à l'état 'disabled'). Pour les valeurs possibles, voir **image** ci-dessous.
         :arg image:
-                The image to be displayed. See Section 5.9, “Images”, above, for information about how to create images that can be loaded onto canvases.
+                L'image à afficher, voir “Images”, pour avoir des informations à propos de la création d'image qui peuvent être chargées dans les canevas.
         :arg state: 
-                Normally, image objects are created in state tk.NORMAL. Set this value to tk.DISABLED to make it grayed-out and unresponsive to the mouse. If you set it to tk.HIDDEN, the item is invisible.
+                'normal' par défaut. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg tags:
-                If a single string, the image is tagged with that string. Use a tuple of strings to tag the image with multiple tags. See Section 8.4, “Canvas tags”. 
+                Si c'est une chaîne seule, elle sert à marquer (tag) l'image. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
 
 .. _lignes:
 
@@ -521,46 +521,43 @@ En général, une ligne est une succession de segments connectés les uns aux au
         La ligne est formée de segments qui joignent les points (x0, y0), (x1, y1), … (xn, yn). Les options possibles sont :
 
         :arg activedash: 
-                 These options specify the dash, fill, stipple, and width values to be used when the line is active, that is, when the mouse is over it.
+                Ces options servent à préciser l'apparence de la ligne lorsque son état est 'active', c'est à dire lorsque la souris la survole. Pour les valeurs possibles, voir les options dash, fill, stipple, and width. 
         :arg activefill:
         :arg activestipple:
         :arg activewidth:
         :arg arrow:
-                The default is for the line to have no arrowheads. Use arrow=tk.FIRST to get an arrowhead at the (x0, y0) end of the line. Use arrow=tk.LAST to get an arrowhead at the far end. Use arrow=tk.BOTH for arrowheads at both ends.
+                Par défaut, la ligne n'est pas terminée par une flèche. Utiliser ``arrow='first'`` pour obtenir une flèche au point (x0, y0) de la ligne. Utilisez ``arrow='last'`` pour obtenir une flèche à l'autre extrémité. Utilisez ``arrow='both'`` pour en avoir à chaque extrémité.
         :arg arrowshape:
-                A tuple (d1, d2, d3) that describes the shape of the arrowheads added by the arrow option. Default is (8,10,3).
-        :arg capstyle: 
-                You can specify the shape of the ends of the line with this option; seeVoir :ref:`style-extr`.
-                The default option is tk.BUTT.
+                Un tupe (d1, d2, d3) qui décrit la forme des flèches ajoutées par l'option **arrow**. La valeur par défaut est (8,10,3). Voir les flèches.
+        :arg capstyle:
+                Utiliser cette option pour préciser la forme des extrémités de la ligne. Voir :ref:`style-extr`. La valeur par défaut est 'butt'.
         :arg dash: 
-                To produce a dashed line, specify this option; Voir :ref:`Motifs-brise`.
-                The default appearance is a solid line.
+                Pour produire une ligne hâchurée, donner une valeur à cette option. Voir :ref:`Motifs-brise`. L'apparence par défaut est une ligne pleine.
         :arg dashoffset: 
-                 If you specify a dash pattern, the default is to start the specified pattern at the beginning of the line. The dashoffset option allows you to specify that the start of the dash pattern occurs at a given distance after the start of the line. See Section 5.13, “Dash patterns”.
+                Si vous préciser un motif de hâchure, le comportement par défaut est d'utiliser le motif dès le début de la ligne. Utiliser cette option pour décaler la bordure du motif hâchuré à une certaine distance par rapport au début de la ligne. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
-                The dash, fill, stipple, and width values to be used when the item is in the tk.DISABLED state.
+                Ces options servent à préciser l'apparence de la ligne lorsque son état est 'disabled'.
         :arg disabledfill:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                The color to use in drawing the line. Default is fill='black'.
+                La couleur utiliser par dessiner la ligne. La valeur par défaut est fill='black'.
         :arg joinstyle: 
-                For lines that are made up of more than one line segment, this option controls the appearance of the junction between segments. For more details, Voir :ref:`style-extr`.
-                The default style is ROUND
+                Cette option contrôle l'apparence des jointures des côtés adjacents (lorsqu'il y en a plusieurs) de la ligne. Voir “Cap and join styles”. La valeur par défaut est 'round'.
         :arg offset: 
-                For stippled lines, the purpose of this option is to match the item's stippling pattern with those of adjacent objects. See Section 5.14, “Matching stipple patterns”..
+                Pour les lignes en pointillés, cette option sert à régler finement le motif en cohérence avec ceux des objets adjacents. Voir “Matching stipple patterns”..
         :arg smooth:
-                If true, the line is drawn as a series of parabolic splines fitting the point set. Default is false, which renders the line as a set of straight segments.
+                La bordure par défaut est formée de segments pour connecté les points qui définissent la ligne; Utilisez smooth=0 pour obtenir ce comportement. Si vous utilisez smooth=1, vous obtenez une courbe qui passe par ces points. Pour obtenir un segmente avec smooth=1, dupliquer les coordonnées de ces extrémités.
         :arg splinesteps:
-                If the smooth option is true, each spline is rendered as a number of straight line segments. The splinesteps option specifies the number of segments used to approximate each section of the line; the default is splinesteps=12.
+                Si smooth=1, chaque morceau de la courbe (entre deux points) est rendu à l'aide d'un certain nombre de petits segments. Cette option précise le nombre de segment utilisé pour cela; Sa valeur par défaut est splinesteps=12.
         :arg state: 
-                Normally, line items are created in state tk.NORMAL. Set this option to tk.HIDDEN to make the line invisible; set it to tk.DISABLED to make it unresponsive to the mouse.
+                'normal' par défaut. Il vaut 'active' lorsque la souris survole la ligne. Mettre cette option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour la rendre invisible.
         :arg stipple:
-                To draw a stippled line, set this option to a bitmap that specifies the stippling pattern, such as stipple='gray25'. See Section 5.7, “Bitmaps” for the possible values.
+                Pour dessiner une ligne en pointillé, indiquez un bitmap qui précise le motif à utiliser, par exemple stipple='gray25'. Voir “Bitmaps” pour les valeurs possibles.
         :arg tags:
-                If a single string, the line is tagged with that string. Use a tuple of strings to tag the line with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) la ligne. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                The line's width. Default is 1 pixel. See Section 5.1, “Dimensions” for possible values. 
+                L'épaisseur de la ligne. Vaut 1 pixel par défaut. Voir “Dimensions” pour les valeurs possibles.
 
 .. _ellipses-et-cercles:
 
@@ -574,96 +571,95 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
         Retourne l'identifiant numérique de l'ellipse créé. Les options sont :
 
         :arg activedash: 
-                These options specify the dash pattern, fill color, outline color, outline stipple pattern, interior stipple pattern, and outline width values to be used when the oval is in the tk.ACTIVE state, that is, when the mouse is over the oval. For option values, see dash, fill, outline, outlinestipple, stipple, and width.
+                Ces options servent à préciser l'apparence du rectangle lorsque son état est 'active', c'est à dire lorsque la souris le survole. Pour les valeurs possibles, voir les options dash, fill, outline, outlinestipple, stipple, and width. 
         :arg activefill:
         :arg activeoutline:
         :arg activeoutlinestipple:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                To produce a dashed border around the oval, set this option to a dash pattern; Voir :ref:`Motifs-brise`.
+                Sert à réaliser une bordure hâchurée autour de l'ellipse. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
         :arg dashoffset: 
-                When using the dash option, the dashoffset option is used to change the alignment of the border's dash pattern relative to the oval. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
-                These options specify the appearance of the oval when the item's state is tk.DISABLED.
+                Ces options servent à préciser l'apparence de l'ellipse lorsque son état est 'disabled'.
         :arg disabledfill:
         :arg disabledoutline:
         :arg disabledoutlinestipple:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                The default appearance of an oval's interior is transparent, and a value of fill='' will select this behavior. You can also set this option to any color and the interior of the ellipse will be filled with that color; Voir :ref:`couleurs`.
+                Par défaut, l'intérieur de l'ellipse  est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Stipple pattern offset of the interior. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'ellipse. Voir “Matching stipple patterns”.
         :arg outline:
-                The color of the border around the outside of the ellipse. Default is outline='black'.
+                Couleur de la bordure. Par défaut,``outline='black'``.
         :arg outlineoffset: 
-                Stipple pattern offset of the border. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg stipple:
-                A bitmap indicating how the interior of the ellipse will be stippled. Default is stipple='', which means a solid color. A typical value would be stipple='gray25'. Has no effect unless the fill has been set to some color. See Section 5.7, “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'ellipse.  Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg outlinestipple: 
-                Stipple pattern to be used for the border. For option values, see stipple below.
+                Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap (voir stipple ci-dessus); Voir :ref:`bitmaps`.
         :arg state: 
-                By default, oval items are created in state tk.NORMAL. Set this option to tk.DISABLED to make the oval unresponsive to mouse actions. Set it to tk.HIDDEN to make the item invisible.
+                'normal' par défaut. Il vaut 'active' lorsque la souris le survole. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg tags:
-                If a single string, the oval is tagged with that string. Use a tuple of strings to tag the oval with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) l'ellipse. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                Width of the border around the outside of the ellipse. Default is 1 pixel; Voir :ref:`dimensions`.
-                for possible values. If you set this to zero, the border will not appear. If you set this to zero and make the fill transparent, you can make the entire oval disappear. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
 
 .. _polygones:
 
 Les polygones
 =============
 
-Un polygone est une ligne fermé. Ainsi, il possède une ligne de contour (formé de segments) et une zone intérieure. Pour le définir, on utilise une série de opoints [(x0, y0), (x1, y1), … (xn, yn)]. Le premier point et le dernier sont reliés par un segment afin de le fermé. Pour créer un polygone, utiliser:
+Un polygone est une ligne fermé. Ainsi, il possède une ligne de contour (formé de segments) et une zone intérieure. Pour le définir, on utilise une série de opoints [(x0, y0), (x1, y1), … (xn, yn)]. Le premier point et le dernier sont reliés par un segment afin de le fermer. Pour créer un polygone, utiliser:
 
 .. py:method:: Canvas.create_polygon(x0, y0, x1, y1, ..., option, ...)
 
         Retourne l'identifiant numérique du polygone créé. Ses options sont:
 
         :arg activedash: 
-                These options specify the appearance of the polygon when it is in the tk.ACTIVE state, that is, when the mouse is over it. For option values, see dash, fill, outline, outlinestipple, stipple, and width.
+                Ces options servent à préciser l'apparence du polygone lorsque son état est 'active', c'est à dire lorsque la souris le survole. Pour les valeurs possibles, voir les options dash, fill, outline, outlinestipple, stipple, and width. 
         :arg activefill:
         :arg activeoutline:
         :arg activeoutlinestipple:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Use this option to produce a dashed border around the polygon. See Section 5.13, “Dash patterns”.
+                Sert à réaliser une bordure hâchurée autour du polygone. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Use this option to start the dash pattern at some point in its cycle other than the beginning. See Section 5.13, “Dash patterns”.
+                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
-                These options specify the appearance of the polygon when its state is tk.DISABLED.
+                Ces options servent à préciser l'apparence du rectangle lorsque son état est 'disabled'.
         :arg disabledfill:
         :arg disabledoutline:
         :arg disabledoutlinestipple:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                You can color the interior by setting this option to a color. The default appearance for the interior of a polygon is transparent, and you can set fill='' to get this behavior. See Section 5.3, “Colors”.
+                Par défaut, l'intérieur du polygone est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg joinstyle: 
-                This option controls the appearance of the intersections between adjacent sides of the polygon. See Section 5.12, “Cap and join styles”.
+                Cette option contrôle l'apparence des jointures des côtés adjacents du polygone. Voir “Cap and join styles”.
         :arg offset: 
-                Offset of the stipple pattern in the interior of the polygon. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur du polygone. Voir “Matching stipple patterns”.
         :arg outline:
-                Color of the outline; defaults to outline='', which makes the outline transparent.
+                Couleur de la bordure; par défaut, outline='', ce qui rend la bordure transparente.
         :arg outlineoffset: 
-                Stipple offset for the border. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg outlinestipple: 
-                Use this option to get a stippled border around the polygon. The option value must be a bitmap; Voir :ref:`bitmaps`.
+                Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg smooth:
-                The default outline uses straight lines to connect the vertices; use smooth=0 to get that behavior. If you use smooth=1, you get a continuous spline curve. Moreover, if you set smooth=1, you can make any segment straight by duplicating the coordinates at each end of that segment.
+                La bordure par défaut est formée de segments pour connecté les points qui définissent le polygone; Utilisez smooth=0 pour obtenir ce comportement. Si vous utilisez smooth=1, vous obtenez une courbe qui passe par ces points. Pour obtenir un segmente avec smooth=1, dupliquer les coordonnées de ces extrémités.
         :arg splinesteps:
-                If the smooth option is true, each spline is rendered as a number of straight line segments. The splinesteps option specifies the number of segments used to approximate each section of the line; the default is splinesteps=12.
+                Si smooth=1, chaque morceau de la courbe (entre deux points) est rendu à l'aide d'un certain nombre de petits segments. Cette option précise le nombre de segment utilisé pour cela; Sa valeur par défaut est splinesteps=12.
         :arg state: 
-                By default, polygons are created in the tk.NORMAL state. Set this option to tk.HIDDEN to make the polygon invisible, or set it to tk.DISABLED to make it unresponsive to the mouse.
+                'normal' par défaut. Il vaut 'active' lorsque la souris le survole. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg stipple:
-                A bitmap indicating how the interior of the polygon will be stippled. Default is stipple='', which means a solid color. A typical value would be stipple='gray25'. Has no effect unless the fill has been set to some color. See Section 5.7, “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur du polygone. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg tags:
-                If a single string, the polygon is tagged with that string. Use a tuple of strings to tag the polygon with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) le polygone. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                Width of the outline; defaults to 1. See Section 5.1, “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
 
 .. _rectangles:
 
@@ -672,58 +668,58 @@ Les rectangles
 
 Un rectangle est défini par deux points : (x0, y0) pour son coin supérieur gauche et (x1, y1) pour son coin inférieur droit.
 
-For example, the rectangle specified by top left corner (100,100) and bottom right corner (102,102) is a square two pixels by two pixels, including pixel (101,101) but not including (102,102).
+Par exemple, un rectangle dont le coin supérieur gauche est (100,100) et le coin inférieur droit est (102,102) est un carré de deux pixels par deux pixels qui inclut le pixel (101,101) mais pas le pixel (102,102).
 
-Rectangles are drawn in two parts:
+Les rectangles sont formés deux parties:
 
-* The outline lies inside the rectangle on its top and left sides, but outside the rectangle on its bottom and right side. The default appearance is a one-pixel-wide black border.
+* Les bords haut et gauche de la ligne de bordure font partie du rectangle mais pas les bords bas et droit. Par défaut cette bordure est noir et a une épaisseur de 1 pixel.
 
-  For example, consider a rectangle with top left corner (10,10) and bottom right corner (11,11). If you request no border (width=0) and green fill (fill='green'), you will get one green pixel at (10,10). However, if you request the same options with a black border (width=1), you will get four black pixels at (10,10), (10,11), (11,10), and (11,11).
+  Par exemple, considérons le rectangle dont le coin supérieur gauche est (10,10) et le coin inférieur droit est (11,11). Si vous annulez la bordure (width=0) et utilisez une couleur de remplissage verte (fill='green'), vous obtenez un pixel vert à la position (10, 10). Cependant, dans les même conditions, si vous laissez par défaut la valeur de width, vous obtenez quatre pixels noirs aux positions (10,10), (10,11), (11,10), and (11,11).
 
-* The fill is the area inside the outline. Its default appearance is transparent. 
+* L'intérieur du rectangle est la zone délimité par la ligne de bordure. par défaut, il est transparent. 
 
-To create a rectangle object on canvas C:
+Pour créer un rectangle sur le canevas: 
 
 .. py:method:: Canvas.create_rectangle(x0, y0, x1, y1, option, ...)
 
-        This constructor returns the object ID of the rectangle on that canvas. Options include:
+        Retourne l'identifiant numérique du rectangle créé. Ses options sont: 
 
         :arg activedash: 
-                These options specify the appearance of the rectangle when its state is tk.ACTIVE, that is, when the mouse is on top of the rectangle. For option values, refer to dash, fill, outline, outlinestipple, stipple, and width below.
+                Ces options servent à préciser l'apparence du rectangle lorsque son état est 'active', c'est à dire lorsque la souris le survole. Pour les valeurs possibles, voir les options dash, fill, outline, outlinestipple, stipple, and width. 
         :arg activefill:
         :arg activeoutline:
         :arg activeoutlinestipple:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                To produce a dashed border around the rectangle, use this option to specify a dash pattern. See Section 5.13, “Dash patterns”.
+                Sert à réaliser une bordure hâchurée autour du rectangle. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
         :arg dashoffset: 
-                Use this option to start the border's dash pattern at a different point in the cycle; Voir :ref:`Motifs-brise`.
+                Utiliser cette option pour décaler la bordure du motif hâchuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
-                These options specify the appearance of the rectangle when its state is tk.DISABLED.
+                Ces options servent à préciser l'apparence du rectangle lorsque son état est 'disabled'.
         :arg disabledfill:
         :arg disabledoutline:
         :arg disabledoutlinestipple:
         :arg disabledstipple:
         :arg disabledwidth:
         :arg fill:
-                By default, the interior of a rectangle is empty, and you can get this behavior with fill=''. You can also set the option to a color; Voir :ref:`couleurs`.
+                Par défaut, l'intérieur du rectangle est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Use this option to change the offset of the interior stipple pattern. See Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur du rectangle. Voir “Matching stipple patterns”.
         :arg outline:
-                The color of the border. Default is outline='black'.
+                Couleur de la bordure. Par défaut,``outline='black'``.
         :arg outlineoffset: 
-                Use this option to adjust the offset of the stipple pattern in the outline; see Section 5.14, “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
         :arg outlinestipple: 
-                Use this option to produce a stippled outline. The pattern is specified by a bitmap; Voir :ref:`bitmaps`.
+                Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg state: 
-                By default, rectangles are created in the tk.NORMAL state. The state is tk.ACTIVE when the mouse is over the rectangle. Set this option to tk.DISABLED to gray out the rectangle and make it unresponsive to mouse events.
+                'normal' par défaut. Il vaut 'active' lorsque la souris le survole. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg stipple:
-                A bitmap indicating how the interior of the rectangle will be stippled. Default is stipple='', which means a solid color. A typical value would be stipple='gray25'. Has no effect unless the fill has been set to some color. See Section 5.7, “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur du rectangle. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
         :arg tags:
-                If a single string, the rectangle is tagged with that string. Use a tuple of strings to tag the rectangle with multiple tags. See Section 8.4, “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) le rectangle. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg width:
-                Width of the border. Default is 1 pixel. Use width=0 to make the border invisible. See Section 5.1, “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
 
 .. _textes:
 
@@ -739,13 +735,13 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg activefill: 
                 Couleur de remplissage à utiliser lorsque la souris est au-dessus.
         :arg activestipple: 
-                The stipple pattern to be used when the text is active. For option values, see stipple below.
+                Le motif en pointillé à utiliser lorsque le texte est 'active' (au survol de la souris). Pour des valeurs possible, voir l'option stipple ci-dessous.
         :arg anchor:
                 Par défaut, vaut 'center' ce qui signifie que le texte est centré par rapport à la position (x,y). Voir  “Anchors” pour les valeurs possibles.
         :arg disabledfill: 
                 Couleur de remplissage lorsque l'item est dans l'état (state) 'disabled'.
         :arg disabledstipple: 
-                The stipple pattern to be used when the text is disabled. For option values, see stipple below.
+                Le motif en pointillé à utiliser lorsque le texte est 'disabled'. Pour des valeurs possible, voir l'option stipple ci-dessous.
         :arg fill:
                 Couleur du texte, noir par défaut. Voir “Colors”.
         :arg font:
@@ -753,17 +749,17 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg justify:
                 Gère l'alignement en cas d'affichage multiligne : 'left' pour gauche, 'center' pour centré et 'right' pour droit.
         :arg offset: 
-                The stipple offset to be used in rendering the text. For more information, see Section 5.14, “Matching stipple patterns”.
+                Le décalage du motif en pointillé à utiliser pour le texte. Pour plus d'informations, voir “Matching stipple patterns”.
         :arg state: 
                 'normal' par défaut. Mettre cet option à 'disabled' pour l'empêcher de réagir à la souris, la mettre à 'hidden' pour le rendre invisible.
         :arg stipple:
-                A bitmap indicating how the text will be stippled. Default is stipple='', which means solid. A typical value would be stipple='gray25'. See Section 5.7, “Bitmaps”.
+                Un bitmap qui indique le motif pointillé qui sera utilisé pour le rendu du texte. La valeur par défaut est `` stipple=''``, ce qui indique un rendu «solide».Une valeur typique serait ``stipple='gray25'``. Voir “Bitmaps”.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (tag) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (tag) le texte. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
         :arg text:
                 Le texte à afficher sous la forme d'une chaîne de caractères. Utiliser '\n' pour forcer les sauts de ligne.
         :arg width:
-                If you don't specify a width option, the text will be set inside a rectangle as long as the longest line. However, you can also set the width option to a dimension, and each line of the text will be broken into shorter lines, if necessary, or even broken within words, to fit within the specified width. See Section 5.1, “Dimensions”.
+                Si aucune valeur n'est indiquée, le texte est affiché dans un rectangle aussi long que la plus longue ligne. Si vous indiquez explicitement une largeur, chaque ligne du texte sera coupée afin de ne pas dépasser cette largeur. Voir “Dimensions”.
 
 Vous pouvez modifier ou récupérer le texte affiché:
 
