@@ -4,44 +4,44 @@
 Focus: routing keyboard input
 *****************************
 
-To say a widget has focus means that keyboard input is currently directed to that widget.
+Dire qu'un widget a le focus signifie que les saisis au clavier sont actuellement dirigées vers ce widget.
 
-* By focus traversal, we mean the sequence of widgets that will be visited as the user moves from widget to widget with the tab key. See below for the rules for this sequence.
+* Par «traversée du focus», nous entendons la séquence des widgets qui sont visités (qui obtiennent le focus) lorsque l'utilisateur navigue de widget en widget en utilisant la touche Tab. Voir ci-dessous pour les règles qui régissent la traversée du focus.
 
-* You can traverse backwards using shift-tab.
+* Vous pouvez déplacer le focus dans l'autre sens en utilisant la combinaison Maj+Tab.
 
-* The Entry and Text widgets are intended to accept keyboard input, and if an entry or text widget currently has the focus, any characters you type into it will be added to its text. The usual editing characters such as ← and → will have their usual effects.
+* Les widget ``Entry`` et ``Text`` sont conçus pour accepter les entrées au clavier, et si l'un de ces widges possède le focus, chaque caractère que vous tapez seront ajoutés au texte. Les caractères d'édition habituels comme ← et →  auront l'effet habituels.
 
-* Because Text widgets can contain tab characters, you must use the special key sequence control-tab to move the focus past a text widget.
+* Comme un widget ``Text`` peut contenir des tabulations, vous devez utiliser la combinaison Control+Tab pour déplacer le focus au-delà d'un tel widget.
 
-* Most of the other types of widgets will normally be visited by focus traversal, and when they have focus:
+* La plupart des autres type de widgets seront normalement visités par la traversées du focus, et lorsqu'ils ont le focus:
 
-  + Button widgets can be “pressed” by pressing the spacebar.
+  + Les ``Button`` peuvent être «cliqués» en utilisant la barre d'espace.
 
-  + Checkbutton widgets can be toggled between set and cleared states using the spacebar.
+  + Les ``Checkbutton`` peuvent être basculés entre coché et non coché en utilisant la barre d'espace.
 
-  + In Listbox widgets, the ↑ and ↓ keys scroll up or down one line; the PageUp and PageDown keys scroll by pages; and the spacebar selects the current line, or de-selects it if it was already selected.
+  + Dans les ``Listbox``, les touches ↑ et ↓  servent à faire défiler une ligne vers le bas ou vers le haut; les touches PageUp et PageDown font défiler d'une «page»; et la barre espace sélectionne la ligne courante ou la dé-sélection si elle était déjà sélectionnée.
 
-  + You can set a Radiobutton widget by pressing the spacebar.
+  + Vous pouvez cocher un bouton radio en appuyant sur la barre espace.
 
-  + Horizontal Scale widgets respond to the ← and → keys, and vertical ones respond to ↑ and ↓.
+  + Un ``Scale`` horizontal répond aux touches ←  et → , et s'ils sont orienté verticalement, ils répondent aux touches ↑ et ↓.
 
-  + In a Scrollbar widget, the PageUp and PageDown keys move the scrollbar by pageloads. The ↑ and ↓ keys will move vertical scrollbars by units, and the ← and → keys will move horizontal scrollbars by units. 
+  + Pour un widget ``Scrollbar``, les touches PageUp et PageDown déplace la barre de défilement d'une page. Les touches ↑ et ↓ déplace les barres de défilement verticale d'une unité et les touches ←  et →  auront un effet similaire avec une bare de défilement horizontale.
 
-* Many widgets are provided with an outline called the focus highlight that shows the user which widget has the highlight. This is normally a thin black frame located just outside the widget's border (if any). For widgets that don't normally have a focus highlight (specifically, frames, labels, and menus), you can set the highlightthickness option to a nonzero value to make the focus highlight visible.
+* La plupart des widgets disposent d'une ligne de contour qui indique à l'utilisateur le composant graphique qui possède actuellement le focus. Il s'agit, normalement, d'un cadre fin noir situé juste autour du bord du widget (s'il en possède un). Pour les widgets qui n'ont pas par défaut de mise en valeur du focus (précisément, les cadres, les étiquettes et les menus), vous pouvez donner une valeur non nulle à l'option **highlightthickness** afin de rendre la mise en valeur du focus visible.
 
-* You can also change the color of the focus highlight using the highlightcolor option.
+* Vous pouvez aussi changer la couleur de la ligne de mise en valeur de focus en utilisant l'option **highlightcolor**. 
 
-* Widgets of class Frame, Label, and Menu are not normally visited by the focus. However, you can set their takefocus options to 1 to get them included in focus traversal. You can also take any widget out of focus traversal by setting its takefocus option to 0. 
+* Les widgets qui appartiennent au classes ``Frame``, ``Label``, et ``Menu`` ne sont pas visité par la traversée du focus (par défaut). Vous pouvez cependant mettre leur option **takefocus** à 1 pour les rendre accessible à la traversée du focus. Vous pouvez aussi sortir n'importe quel widget de cette traversée en donnant la valeur 0 à son option **takefocus**.
 
-The order in which the tab key traverses the widgets is:
+L'ordre dans lequel la touche Tab visite les widgets est:
 
-* For widgets that are children of the same parent, focus goes in the same order the widgets were created.
+* Pour les enfant d'un même parent, le focus suit l'ordre dans lequel les widgets ont été créés.
 
-* For parent widgets that contain other widgets (such as frames), focus visits the parent widget first (unless its takefocus option is 0), then it visits the child widgets, recursively, in the order they were created. 
+* Pour les widgets qui peuvent en contenir d'autres, comme les cadres Frame, le conteneur (parent) est visité en premier (sauf si son option **takefocus** est à 0), puis il visite les widgets enfants, récursivement, dans l'ordre où ils ont été créés.
 
-To sum up: to set up the focus traversal order of your widgets, create them in that order. Remove widgets from the traversal order by setting their takefocus options to 0, and for those whose default takefocus option is 0, set it to 1 if you want to add them to the order.
+En résumé: pour contrôler l'ordre de la traversée du focus de vos widgets, créés les dans cet ordre. Si vous ne souhaitez pas qu'un widget soit visité, positionnez son option **takefocus** à 0, et pour ceux qui ne sont pas visités par défaut, positionnez cette option à 1 si vous souhaitez qu'ils le soient.
 
-The above describes the default functioning of input focus in Tkinter. There is another, completely different way to handle it—let the focus go wherever the mouse goes. Under Section 26, “Universal widget methods”, refer to the .tk_focusFollowsMouse() method.
+La description précédente décrit le fonctionnement par défaut système de focus pour la saisie clavier de tkinter. Il y a une autre façon, complètement différent, de le gérer en laissant aller le focus là où la souris va. Dans “Universal widget methods”, référez-vous à la méthode ``.tk_focusFollowsMouse()``. 
 
-You can also add, change or delete the way any key on the keyboard functions inside any widget by using event bindings. See Section 54, “Events” for the details. 
+Vous pouvez aussi ajouter, modifier, supprimer des comportements relatifs à l'utilisation du clavier ou de la souris pour chacun de vos widgets en utilisant des liaisons par événements. Voir “Events” pour en savoir plus.
