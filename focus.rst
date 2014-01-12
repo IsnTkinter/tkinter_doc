@@ -1,8 +1,8 @@
 .. _FOCUS:
 
-*****************************
-Focus: routing keyboard input
-*****************************
+**************************************
+Le focus: réception des saisis clavier
+**************************************
 
 Dire qu'un widget a le focus signifie que les saisis au clavier sont actuellement dirigées vers ce widget.
 
@@ -10,7 +10,7 @@ Dire qu'un widget a le focus signifie que les saisis au clavier sont actuellemen
 
 * Vous pouvez déplacer le focus dans l'autre sens en utilisant la combinaison Maj+Tab.
 
-* Les widget ``Entry`` et ``Text`` sont conçus pour accepter les entrées au clavier, et si l'un de ces widges possède le focus, chaque caractère que vous tapez seront ajoutés au texte. Les caractères d'édition habituels comme ← et →  auront l'effet habituels.
+* Les widget ``Entry`` et ``Text`` sont conçus pour accepter les entrées au clavier, et si l'un de ces widges possède le focus, chaque caractère que vous tapez est ajouté au texte. Les caractères d'édition habituels comme ← et →  auront l'effet habituels.
 
 * Comme un widget ``Text`` peut contenir des tabulations, vous devez utiliser la combinaison Control+Tab pour déplacer le focus au-delà d'un tel widget.
 
@@ -20,11 +20,11 @@ Dire qu'un widget a le focus signifie que les saisis au clavier sont actuellemen
 
   + Les ``Checkbutton`` peuvent être basculés entre coché et non coché en utilisant la barre d'espace.
 
-  + Dans les ``Listbox``, les touches ↑ et ↓  servent à faire défiler une ligne vers le bas ou vers le haut; les touches PageUp et PageDown font défiler d'une «page»; et la barre espace sélectionne la ligne courante ou la dé-sélection si elle était déjà sélectionnée.
+  + Dans les ``Listbox``, les touches ↑ et ↓  servent à faire défiler une ligne vers le bas ou vers le haut; les touches PageUp et PageDown font défiler d'une «page»; et la barre espace sélectionne la ligne courante ou la désélectionne si elle était déjà sélectionnée.
 
   + Vous pouvez cocher un bouton radio en appuyant sur la barre espace.
 
-  + Un ``Scale`` horizontal répond aux touches ←  et → , et s'ils sont orienté verticalement, ils répondent aux touches ↑ et ↓.
+  + Un ``Scale`` horizontal répond aux touches ←  et → , et s'ils est orienté verticalement, il répond aux touches ↑ et ↓.
 
   + Pour un widget ``Scrollbar``, les touches PageUp et PageDown déplace la barre de défilement d'une page. Les touches ↑ et ↓ déplace les barres de défilement verticale d'une unité et les touches ←  et →  auront un effet similaire avec une bare de défilement horizontale.
 
@@ -40,7 +40,7 @@ L'ordre dans lequel la touche Tab visite les widgets est:
 
 * Pour les widgets qui peuvent en contenir d'autres, comme les cadres Frame, le conteneur (parent) est visité en premier (sauf si son option **takefocus** est à 0), puis il visite les widgets enfants, récursivement, dans l'ordre où ils ont été créés.
 
-En résumé: pour contrôler l'ordre de la traversée du focus de vos widgets, créés les dans cet ordre. Si vous ne souhaitez pas qu'un widget soit visité, positionnez son option **takefocus** à 0, et pour ceux qui ne sont pas visités par défaut, positionnez cette option à 1 si vous souhaitez qu'ils le soient.
+**En résumé:** pour contrôler l'ordre de la traversée du focus de vos widgets, créés les dans cet ordre. Si vous ne souhaitez pas qu'un widget soit visité, positionnez son option **takefocus** à 0, et pour ceux qui ne sont pas visités par défaut, positionnez cette option à 1 si vous souhaitez qu'ils le soient.
 
 La description précédente décrit le fonctionnement par défaut système de focus pour la saisie clavier de tkinter. Il y a une autre façon, complètement différent, de le gérer en laissant aller le focus là où la souris va. Dans “Universal widget methods”, référez-vous à la méthode ``.tk_focusFollowsMouse()``. 
 

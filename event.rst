@@ -1,54 +1,53 @@
 .. _EVENTS:
 
-*****************************
-Events: responding to stimuli
-*****************************
+******************************************************
+Les événements: répondre aux actions de l'utilisateur.
+******************************************************
 
-An event is something that happens to your application—for example, the user presses a key or clicks or drags the mouse—to which the application needs to react.
+Un événement est la survenue de quelquechose dans votre application - par exemple, l'utilisateur appuie sur une touche, clique avec ou déplace sa souris - à quoi votre application à besoin de réagir.
 
-The widgets normally have a lot of built-in behaviors. For example, a button will react to a mouse click by calling its command callback. For another example, if you move the focus to an entry widget and press a letter, that letter gets added to the content of the widget.
+Les widgets ont normalement un grand nombre de comportement prédéfini. Par exemple, un bouton réagira à un clic souris en appelant sa fonction de rappel associé à son option command. Un autre exemple, si vous déplacez le focus sur un widget de saisi et appuyer sur une lettre, cette lettre sera ajoutée au contenu du widget.
 
-However, the event binding capability of Tkinter allows you to add, change, or delete behaviors.
+Cependant, tkinter fournit tous les moyens pour ajouter, changer ou détruire de tels comportements.
 
-First, some definitions:
+Première, quelques définitions:
 
-* An event is some occurrence that your application needs to know about.
+* Un événement est la survenue d'une action (clavier, souris) dont votre application à besoin d'être informée.
 
-* An event handler is a function in your application that gets called when an event occurs.
+* Un gestionnaire d'événement est une fonction de votre application qui sera appelée lorsqu'un certain événement a lieu.
 
-* We call it binding when your application sets up an event handler that gets called when an event happens to a widget.
+* Nous parlons de liaison lorsque votre application définie un gestionnaire d'événement qui sera appelé lorsqu'un événement ce produit sur un widget.
     
-Levels of binding
-=================
+Les niveaux de liaisons
+=======================
 
-You can bind a handler to an event at any of three levels:
+Vous pouvez lier un gestionnaire à un événement à l'un de ces trois niveaux:
 
-1) Instance binding: You can bind an event to one specific widget. For example, you might bind the PageUp key in a canvas widget to a handler that makes the canvas scroll up one page. To bind an event of a widget, call the .bind() method on that widget (see Section 26, “Universal widget methods”).
+1) **Liaison d'instance**: Vous pouvez lier un événement à un widget particulier. Par exemple, vous pourriez lier la touche PageUp dans un canevas à un gestionnaire qui s'occuperait de le faire défiler d'une page vers le haut. Pour lié un événement à un widget, appelez la méthode ``.bind()`` sur ce widget (voir “Universal widget methods”).
 
-   For example, suppose you have a canvas widget named self.canv and you want to draw an orange blob on the canvas whenever the user clicks the mouse button 2 (the middle button). To implement this behavior:
-
-   ::
-
-        self.canv.bind('<Button-2>', self.__drawOrangeBlob)
-
-   The first argument is a sequence descriptor that tells Tkinter that whenever the middle mouse button goes down, it is to call the event handler named self.__drawOrangeBlob. (See Section 54.6, “Writing your handler: The Event class”, below, for an overview of how to write handlers such as .__drawOrangeBlob()). Note that you omit the parentheses after the handler name, so that Python will pass in a reference the handler instead of trying to call it right away.
-
-2) Class binding: You can bind an event to all widgets of a class. For example, you might set up all Button widgets to respond to middle mouse button clicks by changing back and forth between English and Japanese labels. To bind an event to all widgets of a class, call the .bind_class() method on any widget (see Section 26, “Universal widget methods”, above).
-
-   For example, suppose you have several canvases, and you want to set up mouse button 2 to draw an orange blob in any of them. Rather than having to call .bind() for every one of them, you can set them all up with one call something like this:
+   Par exemple, supposez que vous ayez un canevas référencé par ``can`` et que vous souhaitiez dessiner un disque orange sur canevas à chaque fois que l'utilisateur appui sur le bouton 2 de la souris (celui du milieu). Pour définir ce comportement:
 
    ::
 
-        self.bind_class('Canvas', '<Button-2>',
-                           self.__drawOrangeBlob)
+        can.bind('<Button-2>', dessineDisqueOrange)
 
-3) Application binding: You can set up a binding so that a certain event calls a handler no matter what widget has the focus or is under the mouse. For example, you might bind the PrintScrn key to all the widgets of an application, so that it prints the screen no matter what widget gets that key. To bind an event at the application level, call the .bind_all() method on any widget (see Section 26, “Universal widget methods”).
+   Le premier argument est un descripteur de séquence qui indique à tkinter que lorsque le bouton centrale de la souris est pressé, il faut qu'il appelle le gestionnaire d'événement appelé ``dessineDisqueOrange`` (Voir “Writing your handler: The Event class”, ci-dessous, pour une vue d'ensemble sur la manière d'écrire un gestionnaire comme ``dessineDisqueOrange``). Notez qu'il faut omettre les parenthèses du gestionnaire d'événement afin que Python utilise la référence au gestionnaire plutôt que d'essayer de l'appeler sur le champ.
 
-   Here's how you might bind the PrintScrn key, whose “key name” is 'Print':
+2) **Liaison au niveau d'une classe**: Vous pouvez lier un événement à tous les widgets d'une classe donnée. Par exemple, vous pourriez souhaitez régler tous les boutons pour qu'ils réagissent à l'appui sur le bouton centrale de la souris en changeant leur étiquette du français vers l'anglais et vice vers. Pour lier un événement à tous les widgets d'une classe, utiliser la méthode ``.bind_clas()`` sur n'importe quel widget (voir “Universal widget methods”, ci-dessous).
+
+   Par exemple, supposez que vous ayez plusieurs canevas, et que vous souhaitiez régler les choses de telle sorte que lorsque l'utilisateur clique sur le bouton centrale de la souris, un disque orange soit tracé dans celui sur lequel se trouve la souris. Plutôt que d'appeler la méthode ``.bind()`` pour chaque canevas, vous pouvez définir ce comportement en une fois en utilisant quelquechose de ce genre:
+
+   ::
+
+       root.bind_class('Canvas', '<Button-2>', dessineDisqueOrange) # root est la fenêtre principale
+
+3) **Liaison au niveau de l'application**: Vous pouvez définir une liaison d'événement de telle sorte que le gestionnaire d'événement soit appelé indépendament du widget qui a le focus ou qui se trouve sous la souris. Par exemple, vous pourriez souhaitez lié l'événement «appuis sur la touche ImprÉcran» à tous les widgets de l'applicatoin de telle sorte que l'écran soit imprimé indépendamment du widget qui a effectivement reçu l'appui sur la touche. Pour lié un événement au niveau de l'application, appelez la méthode ``.bind_all()`` sur n'importe quel widget (voir “Universal widget methods”).
+
+   Voici comment vous pourriez lier l'appui sur la touche, *Key*, ImprÉcran, *Print*, à l'effet désiré:
 
    ::
   
-        self.bind_all('<Key-Print>', self.__printScreen)
+        root.bind_all('<Key-Print>', imprimeEcran)
 
 Event sequences
 ===============
