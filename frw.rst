@@ -4,42 +4,41 @@
 Les cadres ``Frame``
 ********************
 
- A frame is basically just a container for other widgets.
+Un cadre est simplement un conteneur pour d'autre widgets.
 
-    Your application's root window is basically a frame.
+* La fenêtre principale de votre application est basiquement un cadre.
 
-    Each frame has its own grid layout, so the gridding of widgets within each frame works independently.
+* Chaque cadre possède son propre gestionnaire de positionnement. Ainsi, la disposition des widgets dans chaque cadre est indépendante.
 
-    Frame widgets are a valuable tool in making your application modular. You can group a set of related widgets into a compound widget by putting them into a frame. Better yet, you can declare a new class that inherits from Frame, adding your own interface to it. This is a good way to hide the details of interactions within a group of related widgets from the outside world. 
+* Les widgets ``Frame`` (les cadres), sont de bons outils pour rendre votre application modulaire. Vous pouvez grouper un ensemble cohérent de widgets en les plaçant dans un cadre. Mieux encore, vous pouvez créer votre propre classe de cadre en la faisant hériter de ``Frame``, et en réalisant votre propre interface pour ce cadre. C'est une bonne technique pour cacher les détails des interactions des widgets d'un groupe.
 
-To create a new frame widget in a root window or frame named parent:
+Pour créer un nouveau cadre dans une fenêtre mère ou dans un cadre parent:
 
 .. py:class:: Frame(parent, option, ...)
 
-        The constructor returns the new Frame widget. Options:
+        Le constructeur retourne le cadre créé. Ses options sont:
 
-        :arg bg: or background
-                The frame's background color. Voir :ref:`couleurs`.
-        :arg bd: or borderwidth
-                Width of the frame's border. The default is 0 (no border). For permitted values, Voir :ref:`dimensions`.
+        :arg bg: 
+                (ou **background**) La couleur de fond du cadre. Voir :ref:`couleurs`.
+        :arg bd: 
+                (ou **borderwidth**) Largeur de la bordure du cadre. Par défaut, vaut 0 (aucune bordure). Pour les valeurs permises, voir :ref:`dimensions`.
         :arg cursor:
-                The cursor used when the mouse is within the frame widget; Voir :ref:`pointeurs`.
+                Le pointeur de souris utilisé lorsque la souris est à l'intérieur du cadre; voir :ref:`pointeurs`.
         :arg height:
-                The vertical dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`.
+                La hauteur du cadre. Ne sera pas prise en compte sauf si vous appelez la méthode ``grid_propagate(0)`` sur le cadre; voir :ref:`autres-meth-grille`.
         :arg highlightbackground:
-                Color of the focus highlight when the frame does not have focus. See Section 53, “Focus: routing keyboard input”.
+                Couleur de la mise en valeur du focus lorsque le cadre a perdu le focus. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                Color shown in the focus highlight when the frame has the focus.
+                Couleur de la ligne de focus lorsque le cadre obtient le focus.
         :arg highlightthickness:
-                Thickness of the focus highlight.
+                Épaisseur de la zone de mise en valeur du focus.
         :arg padx: 
-                Normally, a Frame fits tightly around its contents. To add N pixels of horizontal space inside the frame, set padx=N.
+                Normalement, un cadre s'ajuste à son contenu. Pour ajouter N pixels d'espace supplémentaire horizontalement: ``padx=N``.
         :arg pady: 
-                Used to add vertical space inside a frame. See padx above.
+                Similaire à **padx** dans la direction verticale.
         :arg relief:
-                The default relief for a frame is tk.FLAT, which means the frame will blend in with its surroundings. To put a border around a frame, set its borderwidth to a positive value and set its relief to one of the standard relief types; Voir :ref:`reliefs`.
+                Le relief par défaut d'un cadre est ``'flat'``, ce qui veut dire qu'il ne se détache pas de ce qui l'entoure. Pour avoir une bordure autour du cadre, donner l'un des styles de reliefs à cette option. Voir :ref:`reliefs`.
         :arg takefocus:
-                Normally, frame widgets are not visited by input focus (see Section 53, “Focus: routing keyboard input” for an overview of this topic). However, you can set takefocus=1 if you want the frame to receive keyboard input. To handle such input, you will need to create bindings for keyboard events; see Section 54, “Events” for more on events and bindings.
+                Normalement, un cadre n'obtient pas le focus (voir “Focus: routing keyboard input” pour une vue d'ensemble de ce sujet). Cependant, donner la valeur 1 à cette option si vous voulez que le cadre soit sensible aux saisies clavier. Pour réagir aux saisies clavier, vous aurez besoin de créer une liaison pour les événements du clavier; voir “Events” pour plus d'informations sur les événements et les liaisons.
         :arg width:
-                The horizontal dimension of the new frame. Voir :ref:`dimensions`.
-                This value be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`. 
+                La largeur du cadre. Voir :ref:`dimensions`. Cette valeur est ignorée sauf si vous appelez la méthode ``grid_propagate(0)`` sur le cadre; Voir :ref:`autres-meth-grille`. 

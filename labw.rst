@@ -4,72 +4,66 @@
 Les étiquettes ``Label``
 ************************
 
-Label widgets can display one or more lines of text in the same style, or a bitmap or image. 
-To create a label widget in a root window or frame parent:
+Les widget ``Label`` (étiquette) servent à afficher une ou plusieurs lignes de texte avec le même style, un bitmap ou une image.
+Pour créer une étiquette dans une fenêtre principale ou dans un cadre ``parent``: 
 
 .. py:class:: Label(parent, option, ...)
 
-   The constructor returns the new Label widget. Options include:
-
+   Le constructeur retourne l'étiquette crée. Ses options sont:
 
    :arg activebackground:
-       Background color to be displayed when the mouse is over the widget.
-   
+           Couleur de fond lorsque la souris survole l'étiquette.
    :arg activeforeground:
-       Foreground color to be displayed when the mouse is over the widget.
+           Couleur du texte lorsque la souris survole l'étiquette.
    :arg anchor:
-       This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=tk.CENTER, which centers the text in the available space. For other values, Voir :ref:`ancrage`.
-       For example, if you use anchor=tk.NW, the text would be positioned in the upper left-hand corner of the available space.
+           Cette option précise la postion du texte si le widget dispose de plus de place que de besoin pour le texte. La valeur par défaut est ``'center'``, ce qui a pour effet de centrer le texte par rapport à l'espace disponible. Pour d'autres valeur, Voir :ref:`ancrage`. Par exemple, si vous utilisez ``anchor='nw'``, le texte sera positionné dans le coin supérieur gauche de l'espace disponible.
    :arg background: 
-      or bg	The background color of the label area. Voir :ref:`couleurs`.
+           (ou **bg**) La couleur de fond de l'étiquette. Voir :ref:`couleurs`.
    :arg bitmap:
-      Set this option equal to a bitmap or image object and the label will display that graphic. Voir :ref:`bitmaps`.
-      and Voir :ref:`images`.
+           Donner à cet option un bitmap ou un objet image et l'étiquette sera affichée avec ce graphique. Voir :ref:`bitmaps` et :ref:`images`.
    :arg borderwidth:
-      or border .Width of the border around the label; Voir :ref:`dimensions`.
-      The default value is two pixels.
+           (ou **bd**) Épaisseur de la bordure autour de l'étiquette; voir :ref:`dimensions`. La valeur par défaut est 2 pixels.
    :arg compound:
-      If you would like the Label widget to display both text and a graphic (either a bitmap or an image), the compound option specifies the relative orientation of the graphic relative to the text. Values may be any of tk.LEFT, tk.RIGHT, tk.CENTER, tk.BOTTOM, or tk.TOP. For example, if you specify compound=BOTTOM, the graphic will be displayed below the text.
+           Si vous souhaitez que l'étique affiche à la fois un texte et un graphique (soit un bitmap, soit une image), cette option sert à préciser l'orientation relative de l'image par rapport au texte. Les valeur peuvent-être ``'left'``, ``'right'``, ``'center'``, ``'bottom'`` ou ``'top'``. Par exemple, si ``compound=BOTTOM``, le graphique sera affiché en-dessous du texte.
    :arg cursor:
-      Cursor that appears when the mouse is over this label. Voir :ref:`pointeurs`.
+           Le pointeur de la souris lorsqu'elle survole l'étiquette. Voir :ref:`pointeurs`.
    :arg disabledforeground:
-      The foreground color to be displayed when the widget's state is tk.DISABLED.
+           La couleur d'avant plan à afficher lorsque l'étiquette est ``'disabled'``.
    :arg font:
-      If you are displaying text in this label (with the text or textvariable option, the font option specifies in what font that text will be displayed. Voir :ref:`polices`.
+           Si vous affichez du texte dans cette étiquette (avec l'option **text** ou **textvariable**), cette option sert à préciser la police de caractères utilisée pour afficher le texte. Voir :ref:`polices`.
    :arg foreground:
-      or fg ; If you are displaying text or a bitmap in this label, this option specifies the color of the text. If you are displaying a bitmap, this is the color that will appear at the position of the 1-bits in the bitmap. Voir :ref:`couleurs`.
+           (ou **fg**) Couleur d'avant plan de l'étiquette. Elle sera utilisée pour le texte ou pour les bits à 1 du bitmap. Voir :ref:`couleurs`.
    :arg height:	
-      Height of the label in lines (not pixels!). If this option is not set, the label will be sized to fit its contents.
+           Hauteur de l'étiquette en nombre de lignes (non en pixels). Si cette option n'est pas précisée, l'étiquette s'ajuste à son contenu.
    :arg highlightbackground:
-      Color of the focus highlight when the widget does not have focus.
+           Couleur de mise en valeur du focus quand le widget l'a perdu.
    :arg highlightcolor:
-      The color of the focus highlight when the widget has focus.
+           Couleur de mise en valeur du focus quand le widget l'a obtenu.
    :arg highlightthickness:
-      Thickness of the focus highlight.
+           Épaisseur de la ligne de mise en valeur du focus.
    :arg image:
-      To display a static image in the label widget, set this option to an image object. Voir :ref:`images`.
+           Pour afficher une image dans une étiquette, indiquer un objet image pour cette option. Voir :ref:`images`.
    :arg justify:
-      Specifies how multiple lines of text will be aligned with respect to each other: tk.LEFT for flush left, tk.CENTER for centered (the default), or tk.RIGHT for right-justified.
+           Précise l'alignement du texte: 'left' pour un alignement à gauche, 'center' pour centrer et 'right' pour un alignement à droite.
    :arg padx:
-      Extra space added to the left and right of the text within the widget. Default is 1.
+           Espace horizontal supplémentaire à insérer à gauche et à droite dans l'étiquette. Sa valeur par défaut est 1.
    :arg pady:	
-      Extra space added above and below the text within the widget. Default is 1.
+           Similaire à **padx** mais pour la direction verticale.
    :arg relief:
-      Specifies the appearance of a decorative border around the label. The default is tk.FLAT; for other values, Voir :ref:`reliefs`.
+           Précise l'apparence de la bordure décorative autour de l'étiquette. Par défaut, vaut ``'flat'``; pour d'autres valeurs, voir :ref:`reliefs`.
    :arg state:
-      By default, an Entry widget is in the tk.NORMAL state. Set this option to tk.DISABLED to make it unresponsive to mouse events. The state will be tk.ACTIVE when the mouse is over the widget.
+           Par défaut, une étiquette est dans l'état 'normal'. Les autres états possibles sont 'disabled' et 'active' (les couleurs d'arrière plan et d'avant plan pour ces états sont alors utilisées).
    :arg takefocus:
-      Normally, focus does not cycle through Label widgets; see Section 53, “Focus: routing keyboard input”. If you want this widget to be visited by the focus, set takefocus=1.
+           Normalement, une étiquette n'obtient pas le focus; voir “Focus: routing keyboard input”. Si vous souhaitez que l'étiquette le reçoive, mettre 1 pour cette option.
    :arg text:
-      To display one or more lines of text in a label widget, set this option to a string containing the text. Internal newlines ('\n') will force a line break.
+           Pour afficher une ou plusieurs ligne de texte dans une étiquette, indiquer une chaîne de caractères qui contient le texte. Le caractère spécial ``'\n'`` forcera la retour à la ligne.
    :arg textvariable:
-      To slave the text displayed in a label widget to a control variable of class StringVar, set this option to that variable. SeeSection 52, “Control variables: the values behind the widgets”.
+           Pour pouvoir faire varier le texte affiché en même temps que la valeur d'une variable de contrôle de type ``StringVar``, régler cette option avec cette variable. Voir “Control variables: the values behind the widgets”.
    :arg underline:
-      You can display an underline (_) below the nth letter of the text, counting from 0, by setting this option to n. The default is underline=-1, which means no underlining.
+           Vous pouvez souligner l'un des caractères du texte en indiquant sa position (à partir de 0). Par défaut, ``underline=-1``, ce qui signifie aucun soulignement.
    :arg width:
-      Width of the label in characters (not pixels!). If this option is not set, the label will be sized to fit its contents.
+           Largeur de l'étiquette exprimée en nombre de caractères (non en pixels). Si cette option n'est pas précisée, l'étiquette s'ajuste à son contenu.
    :arg wraplength:
-      You can limit the number of characters in each line by setting this option to the desired number. The default value, 0, means that lines will be broken only at newlines.
+           Vous pouvez limiter le nombre de caractère sur chaque ligne en le précisant pour cette option. La valeur par défaut est 0, ce qui signifie que les lignes ne seront coupées que si il y a un saut de ligne.
 
-
-There are no special methods for label widgets other than the common ones (see Section 26, “Universal widget methods”). 
+Il n'y a pas de méthodes spécifiques aux étiquettes. Voir “Universal widget methods”. 
