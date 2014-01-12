@@ -354,7 +354,7 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
 
 .. py:method:: Canvas.tag_bind(tagOrId, chevt=None, gestionnaire=None, add=None)
 
-        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutée à celles qui ont déjà pu être définies pour cet événement. Autrement, les liaison précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par la suppression d'une marque (ni ajoutée en cas de nouveau marquage).
+        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutée à celles qui ont déjà pu être définies pour cet événement. Autrement, les liaisons précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par le retrait d'une marque (ni ajoutée en cas de nouveau marquage).
 
 .. py:method:: Canvas.tag_lower(tagOrId, belowThis)
 

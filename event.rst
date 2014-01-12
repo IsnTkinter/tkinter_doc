@@ -4,28 +4,28 @@
 Les événements: répondre aux actions de l'utilisateur.
 ******************************************************
 
-Un événement est la survenue de quelquechose dans votre application - par exemple, l'utilisateur appuie sur une touche, clique avec ou déplace sa souris - à quoi votre application à besoin de réagir.
+Un événement est la survenue de quelquechose dans votre application - par exemple, l'utilisateur appuie sur une touche, clique avec sa souris ou la déplace - à quoi votre application à besoin de réagir.
 
-Les widgets ont normalement un grand nombre de comportement prédéfini. Par exemple, un bouton réagira à un clic souris en appelant sa fonction de rappel associé à son option command. Un autre exemple, si vous déplacez le focus sur un widget de saisi et appuyer sur une lettre, cette lettre sera ajoutée au contenu du widget.
+Les widgets ont normalement un grand nombre de comportements prédéfinis. Par exemple, un bouton réagira à un clic souris en appelant sa fonction de rappel associé à son option *command*. Un autre exemple, si vous déplacez le focus sur un widget de saisi et que vous appuyez sur une lettre, cette lettre sera ajoutée au contenu du widget.
 
-Cependant, tkinter fournit tous les moyens pour ajouter, changer ou détruire de tels comportements.
+Cependant, tkinter fourni tous les moyens pour ajouter, changer ou supprimer de tels comportements.
 
-Première, quelques définitions:
+Premièrement, quelques définitions:
 
-* Un événement est la survenue d'une action (clavier, souris) dont votre application à besoin d'être informée.
+* Un événement est la survenue d'une action (clavier, souris) dont votre application a besoin d'être informée.
 
-* Un gestionnaire d'événement est une fonction de votre application qui sera appelée lorsqu'un certain événement a lieu.
+* Un gestionnaire d'événement est une fonction de votre application qui sera appelée lorsqu'un certain événement se produira.
 
-* Nous parlons de liaison lorsque votre application définie un gestionnaire d'événement qui sera appelé lorsqu'un événement ce produit sur un widget.
+* Nous parlons de liaison lorsque votre application défini un gestionnaire d'événement qui sera appelé lorsqu'un événement se produit sur un widget.
     
-Les niveaux de liaisons
-=======================
+Niveaux de liaisons
+===================
 
 Vous pouvez lier un gestionnaire à un événement à l'un de ces trois niveaux:
 
-1) **Liaison d'instance**: Vous pouvez lier un événement à un widget particulier. Par exemple, vous pourriez lier la touche PageUp dans un canevas à un gestionnaire qui s'occuperait de le faire défiler d'une page vers le haut. Pour lié un événement à un widget, appelez la méthode ``.bind()`` sur ce widget (voir “Universal widget methods”).
+1) **Liaison au niveau d'un widget**: Vous pouvez lier un événement à un widget particulier. Par exemple, vous pourriez lier la touche PageUp dans un canevas à un gestionnaire qui s'occuperait de le faire défiler d'une page vers le haut. Pour lier un événement à un widget, appelez la méthode ``.bind()`` sur ce widget (voir “Universal widget methods”).
 
-   Par exemple, supposez que vous ayez un canevas référencé par ``can`` et que vous souhaitiez dessiner un disque orange sur canevas à chaque fois que l'utilisateur appui sur le bouton 2 de la souris (celui du milieu). Pour définir ce comportement:
+   Par exemple, supposez que vous ayez un canevas référencé par ``can`` et que vous souhaitiez dessiner un disque orange sur ce canevas à chaque fois que l'utilisateur appui sur le bouton 2 de la souris (celui du milieu). Pour définir ce comportement:
 
    ::
 
@@ -33,56 +33,55 @@ Vous pouvez lier un gestionnaire à un événement à l'un de ces trois niveaux:
 
    Le premier argument est un descripteur de séquence qui indique à tkinter que lorsque le bouton centrale de la souris est pressé, il faut qu'il appelle le gestionnaire d'événement appelé ``dessineDisqueOrange`` (Voir “Writing your handler: The Event class”, ci-dessous, pour une vue d'ensemble sur la manière d'écrire un gestionnaire comme ``dessineDisqueOrange``). Notez qu'il faut omettre les parenthèses du gestionnaire d'événement afin que Python utilise la référence au gestionnaire plutôt que d'essayer de l'appeler sur le champ.
 
-2) **Liaison au niveau d'une classe**: Vous pouvez lier un événement à tous les widgets d'une classe donnée. Par exemple, vous pourriez souhaitez régler tous les boutons pour qu'ils réagissent à l'appui sur le bouton centrale de la souris en changeant leur étiquette du français vers l'anglais et vice vers. Pour lier un événement à tous les widgets d'une classe, utiliser la méthode ``.bind_clas()`` sur n'importe quel widget (voir “Universal widget methods”, ci-dessous).
+2) **Liaison au niveau d'une classe**: Vous pouvez lier un événement à tous les widgets d'une classe donnée. Par exemple, vous pourriez souhaiter régler tous les boutons pour qu'ils réagissent à l'appui sur le bouton centrale de la souris en changeant leur étiquette du français vers l'anglais et vice versa. Pour lier un événement à tous les widgets d'une classe, utiliser la méthode ``.bind_clas()`` sur n'importe quel widget (voir “Universal widget methods”, ci-dessous).
 
-   Par exemple, supposez que vous ayez plusieurs canevas, et que vous souhaitiez régler les choses de telle sorte que lorsque l'utilisateur clique sur le bouton centrale de la souris, un disque orange soit tracé dans celui sur lequel se trouve la souris. Plutôt que d'appeler la méthode ``.bind()`` pour chaque canevas, vous pouvez définir ce comportement en une fois en utilisant quelquechose de ce genre:
+   Par exemple, supposez que vous ayez plusieurs canevas, et que vous souhaitiez régler les choses de telle sorte que lorsque l'utilisateur clique sur le bouton central de la souris, un disque orange soit tracé dans celui sur lequel se trouve la souris. Plutôt que d'appeler la méthode ``.bind()`` pour chaque canevas, vous pouvez définir ce comportement en une fois en utilisant quelquechose de ce genre:
 
    ::
 
-       root.bind_class('Canvas', '<Button-2>', dessineDisqueOrange) # root est la fenêtre principale
+       # w est un widget arbitraire
+       w.bind_class('Canvas', '<Button-2>', dessineDisqueOrange) 
 
-3) **Liaison au niveau de l'application**: Vous pouvez définir une liaison d'événement de telle sorte que le gestionnaire d'événement soit appelé indépendament du widget qui a le focus ou qui se trouve sous la souris. Par exemple, vous pourriez souhaitez lié l'événement «appuis sur la touche ImprÉcran» à tous les widgets de l'applicatoin de telle sorte que l'écran soit imprimé indépendamment du widget qui a effectivement reçu l'appui sur la touche. Pour lié un événement au niveau de l'application, appelez la méthode ``.bind_all()`` sur n'importe quel widget (voir “Universal widget methods”).
+3) **Liaison au niveau de l'application**: Vous pouvez définir une liaison d'événement de telle sorte que le gestionnaire d'événement soit appelé indépendament du widget qui a le focus ou qui se trouve sous la souris. Par exemple, vous pourriez souhaiter lier l'événement «appui sur la touche ImprÉcran» à tous les widgets de l'applicatoin de telle sorte que l'écran soit imprimé indépendamment du widget qui a effectivement reçu l'appui sur la touche. Pour lier un événement au niveau de l'application, appeler la méthode ``.bind_all()`` sur n'importe quel widget (voir “Universal widget methods”).
 
    Voici comment vous pourriez lier l'appui sur la touche, *Key*, ImprÉcran, *Print*, à l'effet désiré:
 
    ::
   
-        root.bind_all('<Key-Print>', imprimeEcran)
+        w.bind_all('<Key-Print>', imprimeEcran)
 
-Event sequences
-===============
+Séquence d'événement
+====================
 
-Tkinter has a powerful and general method for allowing you to define exactly which events, both specific and general, you want to bind to handlers.
+Tkinter dispose d'une méthode générale et puissante pour vous permettre d'indiquer précisément à quels événements vos gestionnaires sont liés.
 
-In general, an event sequence is a string containing one or more event patterns. Each event pattern describes one thing that can happen. If there is more than one event pattern in a sequence, the handler will be called only when all the patterns happen in that same sequence.
+En général, une séquence d'événement est une chaîne de caractère qui contient un ou plusieurs motifs d'événements. Chaque motif d'événement décrit quelquechose qui peut survenir pendant l'éxécution de votre application. S'il y a plus d'un motif dans une séquence d'événements, le gestionnaire associé sera appelé seulement si tous les motifs de la séquences se produisent en effet.
 
-The general form of an event pattern is:
+La forme générale d'un motif d'événement est la suivante:
 
 
-        ``<[modifier-]...type[-detail]>``
+        ``<[modificateur-]...type[-detail]>``
 
-* The entire pattern is enclosed inside <…>.
+* Le motif est enfermé entre des chevrons <…>.
 
-* The event type describes the general kind of event, such as a key press or mouse click. See Section 54.3, “Event types”.
+* Le type de l'événement décrit le genre général de celui-ci, comme l'appui sur une touche ou un clic souris. Voir “Event types”.
 
-* You can add optional modifier items before the type to specify combinations such as the shift or control keys being depressed during other key presses or mouse clicks. Section 54.4, “Event modifiers”
+* Vous pouvez indiquer un ou plusieurs modificateurs avant son type pour décrire une combinaison comme l'appui sur la touche Maj ou Control pendant qu'une autre touche ou qu'un bouton de la souris est enfoncé. Voir “Event modifiers”
 
-* You can add optional detail items to describe what key or mouse button you're looking for. For mouse buttons, this is 1 for button 1, 2 for button 2, or 3 for button 3.
+* Vous pouvez ajouter d'autres détails après le type pour décrire la touche ou le bouton précis qui vous intéresse. Pour les boutons de la souris, 1 indique normalement le bouton de gauche, 2 celui du milieu et 3 celui de droite.
 
-  + The usual setup has button 1 on the left and button 3 on the right, but left-handers can swap these positions.
+  + Notez qu'il est possible que les boutons de la souris soit inversés si un gaucher à effectuer le réglage correspondant de son système.
 
-  + For keys on the keyboard, this is either the key's character (for single-character keys like the A or * key) or the key's name; see Section 54.5, “Key names” for a list of all key names. 
+  + Pour les touches du clavier, il s'agit soit d'un caractère (pour un caractère unique comme pour la touche A ou \*) ou le nom d'une touche; voir  “Key names” pour une liste de tous ces noms.
 
-Here are some examples to give you the flavor of event patterns:
+Voici quelques exemples de motif d'événement:
 
-``<Button-1>`` 	The user pressed the first mouse button.
+* ``<Button-1>``: L'utilisateur à appuyer sur le premier bouton de la souris (celui de gauche normalement).
+* ``<KeyPress-H>``: L'utilisateur à appuyer sur la touche H.
+* ``<Control-Shift-KeyPress-H>``: L'utilsateur a appuyer simultanément sur les touches Control, Maj et H.
 
-``<KeyPress-H>`` 	The user pressed the H key.
-
-``<Control-Shift-KeyPress-H>`` 	The user pressed control-shift-H.
-
-Event types
-===========
+Types d'événements
+==================
 
 The full set of event types is rather large, but a lot of them are not commonly used. Here are most of the ones you'll need:
 
@@ -91,504 +90,498 @@ The full set of event types is rather large, but a lot of them are not commonly 
    :widths: 10 10 80
    
    * - Type
-     - Name
+     - Nom
      - Description
    * - 36
      - ``Activate`` 
-     - A widget is changing from being inactive to being active. This refers to changes in the state option of a widget such as a button changing from inactive (grayed out) to active.
+     - Un widget est passé de l'état inactif à l'état actif. Se rapporte au changement de l'option **state** des widgets comme un bouton qui est inactif (grisé) et devient actif.
    * - 4
      - ``Button`` 
-     - The user pressed one of the mouse buttons. The detail part specifies which button. For mouse wheel support under Linux, use Button-4 (scroll up) and Button-5 (scroll down). Under Linux, your handler for mouse wheel bindings will distinguish between scroll-up and scroll-down by examining the .num field of the Event instance; see Section 54.6, “Writing your handler: The Event class”.
+     - L'utilisateur a appuyé sur l'un des boutons de la souris. La partie détail précise le bouton. Pour la molette de la souris sous LinuxT, utilisez (défilement vers le haut) et (défilement vers le bas). Sous Linux, votre gestionnaire pour la molette de la souris distinguera entre le défilement vers le haut et le défilement vers le bas en examinant l'attribut ``.num`` de l'instance d'événement qui lui est fourni; voir “Writing your handler: The Event class”.
    * - 5
      - ``ButtonRelease`` 
-     - The user let up on a mouse button. This is probably a better choice in most cases than the Button event, because if the user accidentally presses the button, they can move the mouse off the widget to avoid setting off the event.
+     - L'utilisateur relâche un bouton de la souris. C'est probablement un meilleur choix dans la plupart des cas d'utiliser ce type d'événement plutôt que ``Button`` parce que si les utilsateurs appuient accidentellement sur le bouton, ils peuvent bouger la souris en-dehors du widget pour éviter de lancer l'action.
    * - 22
      - ``Configure`` 
-     - The user changed the size of a widget, for example by dragging a corner or side of the window.
+     - L'utilisateur à modifier la taille d'un widget, par exemple en déplaçant un coin ou un côté de la fenêtre.
    * - 37
      - ``Deactivate`` 
-     - A widget is changing from being active to being inactive. This refers to changes in the state option of a widget such as a radiobutton changing from active to inactive (grayed out).
+     - Un widget est passé de l'état actif à l'état inactif. Se rapporte au changment de l'option **state** des widgets comme pour un bouton radio qui change d'état en devenant grisé.
    * - 17
      - ``Destroy`` 
-     - A widget is being destroyed.
+     - Un widget a été détruit.
    * - 7
      - ``Enter`` 
-     - The user moved the mouse pointer into a visible part of a widget. (This is different than the enter key, which is a KeyPress event for a key whose name is actually 'return'.)
+     - L'utilisateur a bougé la souris qui est entrée dans la partie visible d'un widget. (Ne pas confondre avec la touche Entrée, qui est événement de type ``KeyPress`` pour une touche dont le nom est 'return'.)
    * - 12
      - ``Expose`` 
-     - This event occurs whenever at least some part of your application or widget becomes visible after having been covered up by another window.
+     - Cette événement se produit à chaque fois qu'au moins une partie de votre application ou d'un widget devient visible après avoir été recouvert par une autre fenêtre.
    * - 9
      - ``FocusIn`` 
-     - A widget got the input focus (see Section 53, “Focus: routing keyboard input” for a general introduction to input focus.) This can happen either in response to a user event (like using the tab key to move focus between widgets) or programmatically (for example, your program calls the .focus_set() on a widget).
+     - Un widget obtient le focus (voir “Focus: routing keyboard input” pour une introduction générale à la notion de focus). Cela peut se produire soit en réponse à une action de l'utilisateur (comme en utilisant la touche Tab pour déplacer le focus entre les widgets) ou de manière programmée (par exemple lorsque votre programme appelle la méthode ``.focus_set()`` sur un widget).
    * - 10
      - ``FocusOut`` 
-     - The input focus was moved out of a widget. As with FocusIn, the user can cause this event, or your program can cause it.
+     - Le focus a été perdu par un widget. Comme avec ``FocusIn``, l'utilisateur peut produire un tel événement ou il peut se produire de manière programmée.
    * - 2
      - ``KeyPress`` 
-     - The user pressed a key on the keyboard. The detail part specifies which key. This keyword may be abbreviated Key.
+     - L'utilisateur a appuyé sur une touche du clavier. La partie détail précise la touche particulière. Ce mot clé peut être abrégé par ``Key``.
    * - 3
      - ``KeyRelease`` 
-     - The user let up on a key.
+     - L'utilisateur à relâché une touche du clavier.
    * - 8
      - ``Leave`` 
-     - The user moved the mouse pointer out of a widget.
+     - L'utilisateur à déplacer le pointeur de la souris en dehors d'un widget.
    * - 19
      - ``Map`` 
-     - A widget is being mapped, that is, made visible in the application. This will happen, for example, when you call the widget's .grid() method.
+     - Un widget a été «mappé» (associé), c'est à dire, a été rendu visible dans l'application. Cela arrive, par exemple, lorsque vous appelez la méthode ``.grid()`` d'un widget.
    * - 6
      - ``Motion`` 
-     - The user moved the mouse pointer entirely within a widget.
+     - L'utilisateur a déplacé la souris à l'intérieur d'un widget.
    * - 38
      - ``MouseWheel`` 
-     - The user moved the mouse wheel up or down. At present, this binding works on Windows and MacOS, but not under Linux. For Windows and MacOS, see the discussion of the .delta field of the Event instance in Section 54.6, “Writing your handler: The Event class”. For Linux, see the note above under Button.
+     - L'utilisateur a tourné la molette de la souris, vers le haut ou vers le bas. Pour l'instant, cela n'est pris en compte que par Windows ou MacOS, mais pas par Linux. Pour ces systèmes, voir la discussion de l'attribut ``.delta`` d'une instance d'un objet de classe ``Event`` dans “Writing your handler: The Event class”. Pour Linux, se rapporter à la note ci-dessus pour le type ``Button``.
    * - 18
      - ``Unmap`` 
-     - A widget is being unmapped and is no longer visible. This happens, for example, when you use the widget's .grid_remove() method.
+     - Un widget a perdu l'association (le «mappage») et n'est plus visible. Cela arrive, par exemple, lorsque vous appelez la méthode ``.grid_remove()`` d'un widget.
    * - 15
      - ``Visibility`` 
-     - Happens when at least some part of the application window becomes visible on the screen.
+     - Se produit lorsqu'au moins une partie de la fenêtre d'application est devenue visible à l'écran.
 
-Event modifiers
-===============
+Modificateurs d'événement
+=========================
 
-The modifier names that you can use in event sequences include:
+Les noms des modificateurs que vous pouvez utiliser dans une séquence d'événements sont, entre autres:
 
-* ``Alt`` : True when the user is holding the alt key down.
+* ``Alt`` : Vrai si l'utilisateur est en train de maintenir enfoncée la touche Alt.
 
-* ``Any`` : This modifier generalizes an event type. For example, the event pattern '<Any-KeyPress>' applies to the pressing of any key.
+* ``Any`` : Ce modificateur généralise un type d'événement. Par exemple, le motif d'événement ``'<Any-KeyPress>'`` correspond à l'appui sur une touche arbitraire.
 
-* ``Control`` : True when the user is holding the control key down.
+* ``Control`` : Vrai si l'utilisateur est en train de maintenir enfoncée la touche Ctrl.
 
-* ``Double`` : Specifies two events happening close together in time. For example, <Double-Button-1> describes two presses of button 1 in rapid succession.
+* ``Double`` : Indique que deux événements se sont produit en un cours laps de temps. Par exemple, ``<Double-Button-1>`` indique un double clic sur le bouton gauche (normalement) de la souris.
 
-* ``Lock`` : True when the user has pressed shift lock.
+* ``Lock`` : Vrai si l'utilisateur a verrouiller le mode Majuscule.
 
-* ``Shift`` : True when the user is holding down the shift key.
+* ``Shift`` : Vrai si l'utilisateur est en train de maintenir enfoncée la touche Maj.
 
-* ``Triple`` : Like Double, but specifies three events in rapid succession.
+* ``Triple`` : Comme ``Double``, mais pour l'apparition de 3 événement dans un cours laps de temps.
 
-You can use shorter forms of the events. Here are some examples:
+Vous pouvez utiliser des formes courtes pour préciser un événenemt. Voici quelques exemples:
 
-    ``'<1>'`` is the same as ``'<Button-1>'``.
+    ``'<1>'`` revient au même que ``'<Button-1>'``.
 
-    ``'x'`` is the same as ``'<KeyPress-x>'``. 
+    ``'x'`` revient au même que ``'<KeyPress-x>'``. 
 
-Note that you can leave out the enclosing ``'<…>'`` for most single-character keypresses, but you can't do that for the space character (whose name is ``'<space>'``) or the less-than (``<``) character (whose name is ``'<less>'``).
+Remarquez que vous pouvez omettre les chevrons ``'<…>'`` pour la plupart des caractères, mais que vous ne pouvez pas le faire pour l'espace (dont le nom est ``'<space>'``) ou pour le caractère inférieur à < (dont le nom est ``'<less>'``).
 
-Key names
-=========
+Noms des touches
+================
 
-The detail part of an event pattern for a KeyPress or KeyRelease event specifies which key you're binding. (See the Any modifier, above, if you want to get all keypresses or key releases).
+La partie detail d'un motif pour un événement ``KeyPress`` ou ``KeyRelease`` précise la touche que vous souhaitez surveiller. (Voir le modificateur ``Any`` ci-dessus si vous souhaitez surveiller toutes les touches). 
 
-The table below shows several different ways to name keys. See Section 54.6, “Writing your handler: The Event class”, below, for more information on Event objects, whose attributes will describe keys in these same ways.
+Le tableau ci-dessous montre plusieurs façons de nommer les touches. Voir “Writing your handler: The Event class”, ci-dessous, pour plus d'information sur les objets Event, dont les attributs décrivent les touches de la même manière)
 
-* The .keysym column shows the “key symbol”, a string name for the key. This corresponds to the .keysym attribute of the Event object.
+* La colonne ``keysym`` montre le «symbole de touche», une chaîne de caractère pour la touche. Cela correpond à l'attribut ``keysym`` des objets ``Event``.
 
-* The .keycode column is the “key code.” This identifies which key was pressed, but the code does not reflect the state of various modifiers like the shift and control keys and the NumLock key. So, for example, both a and A have the same key code.
+* La colonne ``keycode`` correpond au «code de touche». C'est un identifiant de touche qui permet de savoir quelle touche a été enfoncée. Notez cependant qu'il ne permet pas de savoir si une touche modificatrice (Maj, Ctrl et VerrMaj) a été ou est enfoncé; ainsi, par exemple, a et A ont le même code de touche.
 
-* The .keysym_num column shows a numeric code equivalent to the key symbol. Unlike .keycode, these codes are different for different modifiers. For example, the digit 2 on the numeric keypad (key symbol KP_2) and the down arrow on the numeric keypad (key symbol KP_Down) have the same key code (88), but different .keysym_num values (65433 and 65458, respectively).
+* La colonne ``keysym_num`` montre un code numérique équivalent au symbole de la touche. Il a la particularité d'être différent selon qu'une touche modificatrice a été ou est enfoncé. Par exemple, le chiffre 2 du clavier numérique (dont le symbole de touche est ``KP_2``) et la flèche «sud» du clavier numérique (de symbole ``KP_Down``) ont le même code de touche (88), mais leurs codes numériques ``keysym_num`` sont différents (65433 et 65458, respectivement).
 
-* The “Key” column shows the text you will usually find on the physical key, such as tab. 
+* La colonne “Touche” montre le texte que vous trouverez habituellement sur la touche de votre clavier, comme Tab par exemple.
 
-There are many more key names for international character sets. This table shows only the “Latin-1” set for the usual USA-type 101-key keyboard. For the currently supported set, see the manual page for Tk keysym values.
+Il y a beaucoup de noms de touche pour couvrir de nombreux ensembles de caractères internationaux. Ce tableau montre uniquement l'ensemble “Latin-1” pour un clavier type. Pour connaître l'ensemble des possibilités, reportez-vous à la page de manuel de Tk.
 
 .. list-table::
    :widths: 15 10 10 65
    :header-rows: 1
 
-   * - ``.keysym``
-     - `.keycode`
-     - `.keysym_num`
-     - Key
+   * - ``keysym``
+     - `keycode`
+     - `keysym_num`
+     - Touche
    * - ``Alt_L``
      - `64`
      - `65513`
-     - The left-hand alt key
-   * - ``Alt_R``
-     - `113`
-     - `65514`
-     - The right-hand alt key
+     - La touche Alt située à gauche.
    * - ``BackSpace``
      - `22`
      - `65288`
-     - backspace
+     - La touche Retour Arrières
    * - ``Cancel``
      - `110`
      - `65387`
-     - break
+     - ???
    * - ``Caps_Lock``
      - `66`
-     - `65549`
-     - CapsLock
+     - `65509`
+     - Verr Maj
    * - ``Control_L``
      - `37`
      - `65507`
-     - The left-hand control key
+     - La touche Ctrl de gauche
    * - ``Control_R``
-     - `109`
+     - `105`
      - `65508`
-     - The right-hand control key
+     - La touche Ctrl de droite
    * - ``Delete``
-     - `107`
+     - `119`
      - `65535`
-     - Delete
+     - Suppr
    * - ``Down``
-     - `104`
+     - `116`
      - `65364`
      - ↓
    * - ``End``
-     - `103`
+     - `115`
      - `65367`
-     - end
+     - Fin
    * - ``Escape``
      - `9`
      - `65307`
-     - esc
+     - Echap
    * - ``Execute``
      - `111`
      - `65378`
-     - SysReq
+     - ???
    * - ``F1``
      - `67`
      - `65470`
-     - Function key F1
+     - La touche fonction F1
    * - ``F2``
      - `68`
      - `65471`
-     - Function key F2
+     - La touche fonction F2
    * - ``Fi``
      - `66+i`
      - `65469+i`
-     - Function key Fi
+     - La touche fonction Fi
    * - ``F12``
      - `96`
      - `65481`
-     - Function key F12
+     - La touche fonction F12
    * - ``Home``
-     - `97`
+     - `110`
      - `65360`
-     - home
+     - Début
    * - ``Insert``
-     - `106`
+     - `118`
      - `65379`
-     - insert
+     - inser
    * - ``Left``
-     - `100`
+     - `113`
      - `65361`
      - ←
    * - ``Linefeed``
      - `54`
      - `106`
-     - Linefeed (control-J)
+     - ??? Linefeed (control-J)
    * - ``KP_0``
      - `90`
-     - `65438`
-     - 0 on the keypad
+     - `65456`
+     - 0 sur le clavier numérique
    * - ``KP_1``
      - `87`
-     - `65436`
-     - 1 on the keypad
+     - `65457`
+     - 1 sur le clavier numérique
    * - ``KP_2``
      - `88`
-     - `65433`
-     - 2 on the keypad
+     - `65458`
+     - 2 sur le clavier numérique
    * - ``KP_3``
      - `89`
-     - `65435`
-     - 3 on the keypad
+     - `65459`
+     - 3 sur le clavier numérique
    * - ``KP_4``
      - `83`
-     - `65430`
-     - 4 on the keypad
+     - `65460`
+     - 4 sur le clavier numérique
    * - ``KP_5``
      - `84`
-     - `65437`
-     - 5 on the keypad
+     - `65461`
+     - 5 sur le clavier numérique
    * - ``KP_6``
      - `85`
-     - `65432`
-     - 6 on the keypad
+     - `65462`
+     - 6 sur le clavier numérique
    * - ``KP_7``
      - `79`
-     - `65429`
-     - 7 on the keypad
+     - `65463`
+     - 7 sur le clavier numérique
    * - ``KP_8``
      - `80`
-     - `65431`
-     - 8 on the keypad
+     - `65464`
+     - 8 sur le clavier numérique
    * - ``KP_9``
      - `81`
-     - `65434`
-     - 9 on the keypad
+     - `65465`
+     - 9 sur le clavier numérique
    * - ``KP_Add``
      - `86`
      - `65451`
-     - \+ on the keypad
+     - \+ sur le clavier numérique
    * - ``KP_Begin``
      - `84`
      - `65437`
-     - The center key (same key as 5) on the keypad
+     - La touche centrale (même que 5) sur le clavier numérique
    * - ``KP_Decimal``
      - `91`
-     - `65439`
-     - Decimal (.) on the keypad
+     - `65454`
+     - Symbole de la ponctuation décimale (,) sur le clavier numérique
    * - ``KP_Delete``
      - `91`
      - `65439`
-     - delete on the keypad
+     - Suppr sur le clavier numérique
    * - ``KP_Divide``
-     - `112`
+     - `106`
      - `65455`
-     - / on the keypad
+     - / sur le clavier numérique
    * - ``KP_Down``
      - `88`
      - `65433`
-     - ↓ on the keypad
+     - ↓ sur le clavier numérique
    * - ``KP_End``
      - `87`
      - `65436`
-     - end on the keypad
+     - Fin sur le clavier numérique
    * - ``KP_Enter``
-     - `108`
+     - `104`
      - `65421`
-     - enter on the keypad
+     - Entrée sur le clavier numérique
    * - ``KP_Home``
      - `79`
      - `65429`
-     - home on the keypad
+     - Début sur le clavier numérique
    * - ``KP_Insert``
      - `90`
      - `65438`
-     - insert on the keypad
+     - insert sur le clavier numérique
    * - ``KP_Left``
      - `83`
      - `65430`
-     - ← on the keypad
+     - ←  sur le clavier numérique
    * - ``KP_Multiply``
      - `63`
      - `65450`
-     - × on the keypad
+     - × sur le clavier numérique
    * - ``KP_Next``
      - `89`
      - `65435`
-     - PageDown on the keypad
+     - PageDown sur le clavier numérique
    * - ``KP_Prior``
      - `81`
      - `65434`
-     - PageUp on the keypad
+     - PageUp sur le clavier numérique
    * - ``KP_Right``
      - `85`
      - `65432`
-     - → on the keypad
+     - →  sur le clavier numérique
    * - ``KP_Subtract``
      - `82`
      - `65453`
-     - \- on the keypad
+     - \- sur le clavier numérique
    * - ``KP_Up``
      - `80`
      - `65431`
-     - ↑ on the keypad
+     - ↑ sur le clavier numérique
    * - ``Next``
-     - `105`
+     - `117`
      - `65366`
      - PageDown
    * - ``Num_Lock``
      - `77`
      - `65407`
-     - NumLock
+     - Verr Num
    * - ``Pause``
-     - `110`
+     - `127`
      - `65299`
-     - pause
+     - Pause
    * - ``Print``
      - `111`
      - `65377`
-     - PrintScrn
+     - ImprÉcran
    * - ``Prior``
-     - `99`
+     - `112`
      - `65365`
      - PageUp
    * - ``Return``
      - `36`
      - `65293`
-     - The enter key (control-M). The name Enter refers to a mouse-related event, not a keypress; see Section 54, “Events”
+     - La touche Entrée (control-M). Le nom ``Enter`` se réfère à un événement associé à la souris et non au clavier; voir “Events”
    * - ``Right``
-     - `102`
+     - `114`
      - `65363`
      - →
    * - ``Scroll_Lock``
      - `78`
      - `65300`
-     - ScrollLock
+     - ???ScrollLock
    * - ``Shift_L``
      - `50`
      - `65505`
-     - The left-hand shift key
+     - La touche Maj de gauche
    * - ``Shift_R``
      - `62`
      - `65506`
-     - The right-hand shift key
+     - La touche Maj de droite
    * - ``Tab``
      - `23`
      - `65289`
-     - The tab key
+     - La touche de Tabulation, Tab
    * - ``Up``
-     - `98`
+     - `111`
      - `65362`
      - ↑
 
-Writing your handler: The Event class
-=====================================
+Écrire son gestionnaire: la classe ``Event``
+============================================
 
-The sections above tell you how to describe what events you want to handle, and how to bind them. Now let us turn to the writing of the handler that will be called when the event actually happens.
+Les sections précédentes vous ont expliqué comment décrire l'événement auquel vous souhaitez réagir et comment le lié à l'application. À présent, intéressons-nous à l'écriture du gestionnaire d'événement qui sera appelé lorsque l'événement aura lieu.
 
-The handler will be passed an Event object that describes what happened. The handler can be either a function or a method. Here is the calling sequence for a regular function:
-
-.. code-block:: python
-
-        def handlerName(event):
-
-
-And as a method:
+Le gestionnaire d'événement recevra un objet de type ``Event`` qui sert à décrire les circonstances de l'événement. Le gestionnaire peut être une fonction ou une méthode. Voici la forme de la déclaration d'une fonction:
 
 .. code-block:: python
 
-        def handlerName(self, event):
+        def nomGestionnaire(evt):
 
-The attributes of the Event object passed to the handler are described below. Some of these attributes are always set, but some are set only for certain types of events.
+
+Et pour une méthode:
+
+.. code-block:: python
+
+        def nomGestionnaire(self, evt):
+
+Les attributs de l'objet de type ``Event`` passé au gestionnaire, par l'intermédiaire de son paramètre ``evt``, sont décrit ci-dessous. Certains attributs possède toujours une valeur, mais d'autres n'en possède une que pour certains types d'événements.
 
 .. list-table::
    :widths: 15 85
    :header-rows: 0
 
-   * - ``.char`` 
-     - If the event was related to a KeyPress or KeyRelease for a key that produces a regular ASCII character, this string will be set to that character. (For special keys like delete, see the .keysym attribute, below.)
-   * - ``.delta`` 
-     - For MouseWheel events, this attribute contains an integer whose sign is positive to scroll up, negative to scroll down. Under Windows, this value will be a multiple of 120; for example, 120 means scroll up one step, and -240 means scroll down two steps. Under MacOS, it will be a multiple of 1, so 1 means scroll up one step, and -2 means scroll down two steps. For Linux mouse wheel support, see the note on the Button event binding in Section 54.3, “Event types”.
-   * - ``.height`` 
-     - If the event was a Configure, this attribute is set to the widget's new height in pixels.
-   * - ``.keycode`` 
-     - For KeyPress or KeyRelease events, this attribute is set to a numeric code that identifies the key. However, it does not identify which of the characters on that key were produced, so that “x” and “X” have the same .keyCode value. For the possible values of this field, see Section 54.5, “Key names”.
-   * - ``.keysym`` 
-     - For KeyPress or KeyRelease events involving a special key, this attribute is set to the key's string name, e.g., 'Prior' for the PageUp key. See Section 54.5, “Key names” for a complete list of .keysym names.
-   * - ``.keysym_num`` 
-     - For KeyPress or KeyRelease events, this is set to a numeric version of the .keysym field. For regular keys that produce a single character, this field is set to the integer value of the key's ASCII code. For special keys, refer to Section 54.5, “Key names”.
-   * - ``.num`` 
-     - If the event was related to a mouse button, this attribute is set to the button number (1, 2, or 3). For mouse wheel support under Linux, bind Button-4 and Button-5 events; when the mouse wheel is scrolled up, this field will be 4, or 5 when scrolled down.
-   * - ``.serial`` 
-     - An integer serial number that is incremented every time the server processes a client request. You can use .serial values to find the exact time sequence of events: those with lower values happened sooner.
-   * - ``.state`` 
-     - An integer describing the state of all the modifier keys. See the table of modifier masks below for the interpretation of this value.
-   * - ``.time`` 
-     - This attribute is set to an integer which has no absolute meaning, but is incremented every millisecond. This allows your application to determine, for example, the length of time between two mouse clicks.
-   * - ``.type`` 
-     - A numeric code describing the type of event. For the interpretation of this code, see Section 54.3, “Event types”.
-   * - ``.widget`` 
-     - Always set to the widget that caused the event. For example, if the event was a mouse click that happened on a canvas, this attribute will be the actual Canvas widget.
-   * - ``.width`` 
-     - If the event was a Configure, this attribute is set to the widget's new width in pixels.
-   * - ``.x`` 
-     - The x coordinate of the mouse at the time of the event, relative to the upper left corner of the widget.
-   * - ``.y`` 
-     - The y coordinate of the mouse at the time of the event, relative to the upper left corner of the widget.
-   * - ``.x_root`` 
-     - The x coordinate of the mouse at the time of the event, relative to the upper left corner of the screen.
-   * - ``.y_root`` 
-     - The y coordinate of the mouse at the time of the event, relative to the upper left corner of the screen.
+   * - ``char`` 
+     - Si l'événement est produit par l'appui ou le relâchement d'un touche qui produit un caractère ASCII régulier, cet attribut est le caractère sous la forme d'une chaîne. (Pour des touches spéciales comme Suppr, voir l'attribut ``keysym`` ci-dessous)
+   * - ``delta`` 
+     - Pour un événement du type ``MouseWheel``, cet attribut contient un entier dont le signe est positif pour un déplacement vers le haut, négatif pour un déplacement vers le bas. Sous Windows, cette valeur sera un multiple de 120; par exemple, 120 désigne un défilement vers le haut en une étape et -240 un défilement vers le bas en deux étapes. Sous MacOS, on aurait obtenu les valeurs 1 et -2 dans cet exemple. Pour le support de la molette sous Linux, voir les note sur l'événement de type Button dans “Event types”.
+   * - ``height`` 
+     - Si l'événement est du type ``Configure``, cet attribut porte la nouvelle hauteur du widget en pixels.
+   * - ``keycode`` 
+     - Pour un événement de type ``KeyPress`` ou ``KeyRelease``, cet attribut contient le code de touche. Cependant, cet entier n'identifie pas quel caractère de la touche a été produit, ainsi "x" ou "X" ne se différencient pas leur code de touche. Pour des valeurs possibles de cet attribut, voir “Key names”.
+   * - ``keysym`` 
+     - Pour un événement de type ``KeyPress`` ou ``KeyRelease`` impliquant une touche spéciale, cet attribut porte le nom de touche, par exemple 'Prior' pour la touche PageUp. Voir “Key names” pour une liste complète des nom de touches.
+   * - ``keysym_num`` 
+     - Pour un événement de type ``KeyPress`` ou ``KeyRelease``, cet attribut est une version numérique de l'attribut ``keysym``. Pour une touche régulière qui produit un seul caractère, cet attribut prend pour valeur le code ASCII du caractère. Pour des touches spéciales, référez-vous à “Key names”.
+   * - ``num`` 
+     - Si l'événement est associé à un bouton de la souris, cet attribut porte la valeur entière qui indique le numéro du bouton (1, 2 ou 3). Pour le support de la molette sous linux, lier les événements ``Button-4`` et ``Button-5``; lorsque la molette de la souris tourne vers l'avant, cet attribut prend la valeur 4, il prend la valeur 5 dans l'autre sens.
+   * - ``serial`` 
+     - Un entier qui est incrémenté à chaque fois que le serveur répond à une requête du client. Vous pouvez utiliser cet attribut pour découvrir la séquence temporelle des événements: ceux qui ont eu lieu plus tôt ont une valeur plus petite.
+   * - ``state`` 
+     - Un entier qui décrit l'état de toutes les touches modificatrice. Reportez-vous à la table des masques des modificateurs pour l'interprétation de cette valeur.
+   * - ``time`` 
+     - Cet attribut porte un entier qui n'a pas de signification dans l'absolu, mais qui est incrémenté chaque milliseconde. Cela permet à votre application de déterminer, par exemple, le temps écoulé entre deux clic souris.
+   * - ``type`` 
+     - Un code numérique qui décrit le type de l'événement. Pour l'interprétation de ce code, reportez-vous à “Event types”.
+   * - ``widget`` 
+     - Porte toujours la référence du widget qui a causé l'événement. Par exemple, si l'événement était un clic souris sur un canevas, cette attricut serait ce canevas.
+   * - ``width`` 
+     - Si l'événement était du type ``Configure``, cet attribut est la nouvelle largeur du widget en pixels.
+   * - ``x`` 
+     - L'abscisse de la souris en pixels au moment de l'événement. Elle est relative au coin supérieur gauche du widget sur lequel se trouve la souris.
+   * - ``y`` 
+     - Similaire à ``x`` mais dans la direction verticale.
+   * - ``x_root`` 
+     - L'abscisse de la souris au moment de où survient l'événement, relativement au coin supérieur gauche de l'écran.
+   * - ``y_root`` 
+     - Similaire à ``x_root`` mais dans la direction verticale.
 
-
-Use these masks to test the bits of the .state value to see what modifier keys and buttons were pressed during the event:
+Utilisez ces masques pour tester les bits de la valeur de l'attribut ``state`` pour savoir quel(s) touche(s) modificatrice(s) et/ou bouton(s) ont été utilisé(s) pendant l'événement.
 
 .. list-table::
    :widths: 10 30
    :header-rows: 1
 
-   * - Mask
-     - Modifier
+   * - Masque
+     - Modificateur
    * - `0x0001` 
-     - Shift.
+     - Maj.
    * - `0x0002` 
-     - Caps Lock.
+     - Verr Maj.
    * - `0x0004` 
      - Control.
    * - `0x0008` 
-     - Left-hand Alt.
+     - Touche Alt de gauche.
    * - `0x0010` 
-     - Num Lock.
+     - Verr Num.
    * - `0x0080` 
-     - Right-hand Alt.
+     - Touche Alt de droite.
    * - `0x0100` 
-     - Mouse button 1.
+     - Bouton 1 de la souris.
    * - `0x0200` 
-     - Mouse button 2.
+     - Bouton 2 de la souris.
    * - `0x0400` 
-     - Mouse button 3.
+     - Bouton 3 de la souris.
 
-Here's an example of an event handler. Under Section 54.1, “Levels of binding”, above, there is an example showing how to bind mouse button 2 clicks on a canvas named self.canv to a handler called self.__drawOrangeBlob(). Here is that handler:
+Voici un exemple de gestionnaire d'événement. Plus haut, “Levels of binding”, vous trouverez un exemple qui vous montre commment lié l'appui sur le bouton central de la souris à un gestionnaire nommé dessineDisqueOrangeabove. Voici ce gestionnaire:
 
 .. code-block:: python
 
-    def __drawOrangeBlob(self, event):
-        '''Draws an orange blob in self.canv where the mouse is.
+    def dessineDisqueOrange(evt):
+        '''Dessine un disque orange là où se trouve la souris
         '''
-        r = 5   # Blob radius
-        self.canv.create_oval(event.x-r, event.y-r,
+        r = 5   # Son rayon
+        can.create_oval(event.x-r, event.y-r,
             event.x+r, event.y+r, fill='orange')
 
-When this handler is called, the current mouse position is (event.x, event.y). The .create_oval() method draws a circle whose bounding box is square and centered on that position and has sides of length 2*r.
+Lorsque ce gestionnaire est appelé, la position courante de la souris est *(event.x, event.y)*. La méthode ``create_oval()`` dessine un cercle dont la boîte englobante est un carré centré sur cette position et dont les côtés mesure 2*r.
 
-The extra arguments trick
-=========================
+Truc pour des arguments en plus
+===============================
 
-Sometimes you would like to pass other arguments to a handler besides the event.
+Parfois, vous souhaiterez passer d'autres arguments à un gestionnaire (en plus de l'objet ``Event``)
 
-Here is an example. Suppose your application has an array of ten checkbuttons whose widgets are stored in a list self.cbList, indexed by the checkbutton number in range(10).
+Voici un exemple. Supposez que votre application comporte un tableau de cases à cocher dont les widget sont mémorisés dans une liste ``ccList``, indexée par le numéro de la case à cocher situé dans ``range(10)``.
 
-Suppose further that you want to write one handler named .__cbHandler for <Button-1> events in all ten of these checkbuttons. The handler can get the actual Checkbutton widget that triggered it by referring to the .widget attribute of the Event object that gets passed in, but how does it find out that checkbutton's index in self.cbList?
+Supposer en outre que vous souhaitiez n'écrire qu'un gestionnaire ``ccGest`` pour l'événement ``'<Button-1>'`` sur l'une de ces 10 cases. Votre gestionnaire peut connaître la case sur laquelle a eu lieu le clic en utilisant l'attribut ``widget`` de l'objet ``Event``, mais comment faire pour retrouver son index dans la liste ``ccList`` ?
 
-It would be nice to write our handler with an extra argument for the checkbutton number, something like this:
-
-.. code-block:: python
-
-    def __cbHandler(self, event, cbNumber):
-
-But event handlers are passed only one argument, the event. So we can't use the function above because of a mismatch in the number of arguments.
-
-Fortunately, Python's ability to provide default values for function arguments gives us a way out. Have a look at this code:
+Il serait agréable d'écrire notre gestionnaire avec un argument supplémentaire pour le numéro de la case à cocher, quelquechose comme:
 
 .. code-block:: python
 
-    def __createWidgets(self):
+    def ccGest(evt, ccNb):
+
+Mais un gestionnaire d'événement ne reçoit qu'un argument, l'objet de type ``Event``. Il n'est donc pas possible d'utiliser la fonction ci-dessus qui comporte un argument de trop.
+
+Heureusement, il est possible d'exploiter les valeurs par défaut des fonctions pour parvenir à l'objectif. Observer le code suivant:
+
+.. code-block:: python
+
+     ccListe = [] 
+     def creerWidgets():
         #...
-        self.cbList = []    # Create the checkbutton list
         for i in range(10):
-            cb = tk.Checkbutton(self, ...)
-            self.cbList.append(cb)
-            cb.grid(row=1, column=i)
-            def handler(event, self=self, i=i):   1
-                return self.__cbHandler(event, i)
-            cb.bind('<Button-1>', handler)
+            cc = Checkbutton(root, ...)
+            ccList.append(cb)
+            cc.grid(row=1, column=i)
+            def gest(evt, i=i):   1
+                return ccGest(evt, i)
+            cc.bind('<Button-1>', gest)
         #...
-    def __cbHandler(self, event, cbNumber):
+    def ccGest(evt, ccNb):
         #...
 
-These lines define a new function handler that expects three arguments. The first argument is the Event object passed to all event handlers, and the second and third arguments will be set to their default values—the extra arguments we need to pass it.
+Ces lignes définissent un gestionnaire, ``gest()`` qui attend deux arguments. Le premier est l'objet de type ``Event`` habituel et le second a une valeur par défaut qui est exactement celle que nous avons besoin de connaître. Il suffit ensuite de définir le gestionnaire d'événement «réel», ``ccGest()`` pour atteindre le but que nous nous étions fixés.
 
-This technique can be extended to supply any number of additional arguments to handlers. 
+Cette technique peut être étendue pour fournir autant d'arguments que souhaité à un gestionnaire d'événements.
 
-Virtual events
-==============
+Événements virtuels
+===================
 
-You can create your own new kinds of events called virtual events. You can give them any name you want so long as it is enclosed in double pairs of <<…>>.
-For example, suppose you want to create a new event called <<panic>>, that is triggered either by mouse button 3 or by the pause key. To create this event, call this method on any widget w::
+Vous pouvez créer vos propres genres d'événements appelés «événements virtuels». Vous pouvez leur donner le nom que vous souhaitez du moment qu'il est entouré par des doubles paires de chevrons <<…>>.
+Par exemple, supposez que vous vouliez créer un nouvel événement appelé <<panic>>, qui est déclenché pour le bouton 3 de la souris ou par la touche Pause. Pour créer cet événement, appeler cette méthode sur un widget ``w`` arbitraire::
 
-    w.event_add('<<panic>>', '<Button-3>',
-                  '<KeyPress-Pause>')
+    w.event_add('<<panic>>', '<Button-3>', '<KeyPress-Pause>')
 
-You can then use '<<panic>>' in any event sequence. For example, if you use this call::
+Vous pouvez alors utiliser ``'<<panic>>'`` dans n'importe quel séquence d'événement. Par exemple::
 
-    w.bind('<<panic>>', h)
+    w.bind('<<panic>>', g)
 
-any mouse button 3 or pause keypress in widget w will trigger the handler h.
+L'appui sur le bouton 3 de la souris ou sur la touche pause dans le widget ``w`` déclenchera le gestionnaire ``g``.
 
-See .event_add(), .event_delete(), and .event_info() under Section 26, “Universal widget methods” for more information about creating and managing virtual events.
+Voir .event_add(), .event_delete(), and .event_info(),  “Universal widget methods” pour plus d'informations sur la création et la gestion des événements virtuels.

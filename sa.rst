@@ -357,19 +357,19 @@ Le nommage des Fenêtres (`Window`)
 
 Le terme fenêtre (`window`) se rapporte à une zone rectangulaire du bureau.
 
-    * Une fenêtre racine (`top-level` ou `root widow`) est une fenêtre qui a une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation utilisé. Elle est décorée avec les motifs et boutons habituels du système et peut être déplacée et redimensionnée. Votre application peut utiliser n'importe quel nombre de fenêtre racine.
+* Une fenêtre racine (`top-level` ou `root widow`) est une fenêtre qui a une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation utilisé. Elle est décorée avec les motifs et boutons habituels du système et peut être déplacée et redimensionnée. Votre application peut utiliser n'importe quel nombre de fenêtre racine.
     
-    * Le terme fenêtre s'applique aussi à n'importe quel widget qui fait partie d'une fenêtre mère.
+* Le terme fenêtre s'applique aussi à n'importe quel widget qui fait partie d'une fenêtre mère.
     
 tkinter nomme toutes ces fenêtres en utilisant un nommage «hiérarchique» :
 
-    * La fenêtre principale est nommée ``'.'``
+* La fenêtre principale est nommée ``'.'``
     
-    * Une fenêtre enfant aura un nom de la forme ``'.n'``, où ``n`` est un entier sous la forme d'une chaîne. Par exemple, une fenêtre nommée ``'.135932060'`` est un enfant de la fenêtre racine (``'.'``).
+* Une fenêtre enfant aura un nom de la forme ``'.n'``, où ``n`` est un entier sous la forme d'une chaîne. Par exemple, une fenêtre nommée ``'.135932060'`` est un enfant de la fenêtre racine (``'.'``).
     
-    * Les fenêtres enfants des fenêtres enfants auront des noms de la forme ``'.p.n'`` où ``p`` est le nom de la fenêtre parente et ``n`` est un certain entier. Par exemple, une fenêtre nommée '.135932060.137304468' a une fenêtre parent ``'.135932060'``, c'est donc un petit enfant de la fenêtre racine.
+* Les fenêtres enfants des fenêtres enfants auront des noms de la forme ``'.p.n'`` où ``p`` est le nom de la fenêtre parente et ``n`` est un certain entier. Par exemple, une fenêtre nommée ``'.135932060.137304468'`` a une fenêtre parent ``'.135932060'``, c'est donc un petit enfant de la fenêtre racine.
     
-    * Le nom relatif d'une fenêtre est la partie qui suit le dernier ``'.'`` dans le nom complet. En poursuivant l'exemple précédent, la fenêtre petit enfant a pour nom relatif ``'137304468'``.
+* Le nom relatif d'une fenêtre est la partie qui suit le dernier ``'.'`` dans le nom complet. En poursuivant l'exemple précédent, la fenêtre petit enfant a pour nom relatif ``'137304468'``.
     
 Pour obtenir le nom d'un widget ``w``, utilisez ``str(w)``.
 
