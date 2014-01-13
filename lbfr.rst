@@ -4,47 +4,45 @@
 Les cadres étiquetés ``LabelFrame``
 ***********************************
 
- The LabelFrame widget, like the Frame widget, is a spatial container—a rectangular area that can contain other widgets. However, unlike the Frame widget, the LabelFrame widget allows you to display a label as part of the border around the area.
+Le widget «cadre étiquetté», ``LabelFrame``, comme le widget ``Frame``, est avant tout un conteneur. Il se présente comme une zone rectangulaire dans laquelle il est possible de mettre d'autres widgets. Cependant, contrairemet au cadre ``Frame``, ce cadre vous permet d'afficher une étiquette sur sa bordure.
 
-Here is an example of a LabelFrame widget containing two Button widgets. Note that the label “Important controls” interrupts the border. This widget illustrates the default GROOVE relief (Voir :ref:`reliefs`).
-and the default 'nw' label anchor, which positions the label at the left side of the top of the frame.
+Voici un exemple de cadre étiqueté qui contient deux boutons. Remarquer que l'étiquette “Important controls” interrompt la bordure. Cette figure illustre les valeurs par défauts du widget: un relief 'groove' (Voir :ref:`reliefs`) et une étique ancrée au nord ouest, ``'nw'``, c'est à dire en haut du cadre à gauche.
 
-To create a new LabelFrame widget inside a root window or frame parent:
+Pour créer un cadre étiqueté dans une fenêtre mère ou un cadre ``parent``:
 
 .. py:class:: LabelFrame(parent, option, ...)
 
-        This constructor returns the new LabelFrame widget. Options:
+        Retourne le cadre étiqueté créé. Ses options sont:
 
-        :arg bg: or background 
-                The background color to be displayed inside the widget; Voir :ref:`couleurs`.
-        :arg bd: or borderwidth 
-                Width of the border drawn around the perimeter of the widget; Voir :ref:`dimensions`.
-                The default value is two pixels.
+        :arg bg: 
+                (ou **background**) La couleur de fond appliqué à l'intérieur du widget; Voir :ref:`couleurs`.
+        :arg bd:
+                (ou **borderwidth**) Largeur de la bordure du cadre. Voir :ref:`dimensions`. Sa valeur par défaut est 2 pixels.
         :arg cursor: 
-                Selects the cursor that appears when the mouse is over the widget; Voir :ref:`pointeurs`.
+                Le pointeur de souris utilisé lorsque la souris est à l'intérieur du cadre; voir :ref:`pointeurs`.
         :arg fg: or foreground 
-                Color to be used for the label text.
+                Couleur utilisé pour l'étiquette.
         :arg height: 
-                The vertical dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`.
+                La hauteur du cadre. Ne sera pas prise en compte sauf si vous appelez la méthode ``grid_propagate(0)`` sur le cadre; voir :ref:`autres-meth-grille`.
         :arg highlightbackground: 
-                Color of the focus highlight when the widget does not have focus.
+                Couleur de la mise en valeur du focus lorsque le cadre a perdu le focus. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                The color of the focus highlight when the widget has focus.
+                Couleur de la ligne de focus lorsque le cadre obtient le focus.
         :arg highlightthickness: 
-                Thickness of the focus highlight.
+                Épaisseur de la zone de mise en valeur du focus.
         :arg labelanchor: 
-                Use this option to specify the position of the label on the widget's border. The default position is 'nw', which places the label at the left end of the top border. For the nine possible label positions, refer to this diagram:
+                Utilisez cette option pour positionner l'étiquette sur le bord du cadre. Sa position par défaut est ``'nw'`` ce qui place l'étiquette en haut à gauche. Pour les neuf positions possibles:
         :arg labelwidget: 
                 Instead of a text label, you can use any widget as the label by passing that widget as the value of this option. If you supply both labelwidget and text options, the text option is ignored.
         :arg padx: 
-                Use this option to add additional padding inside the left and right sides of the widget's frame. The value is in pixels.
+                Normalement, un cadre s'ajuste à son contenu. Pour ajouter N pixels d'espace supplémentaire horizontalement: ``padx=N``.
         :arg pady: 
-                Use this option to add additional padding inside the top and bottom of the widget's frame. The value is in pixels.
+                Similaire à **padx** dans la direction verticale.
         :arg relief: 
-                This option controls the appearance of the border around the outside of the widget. The default style is tk.GROOVE; for other values, Voir :ref:`reliefs`.
+                Le relief par défaut est 'groove'. Pour d'autres valeurs, voir :ref:`reliefs`.
         :arg takefocus: 
-                Normally, the widget will not receive focus; supply a True value to this option to make the widget part of the focus traversal sequence. For more information, see Section 53, “Focus: routing keyboard input”.
+                Normalement, un cadre n'obtient pas le focus (voir “Focus: routing keyboard input” pour une vue d'ensemble de ce sujet). Cependant, donner la valeur 1 à cette option si vous voulez que le cadre soit sensible aux saisies clavier. Pour réagir aux saisies clavier, vous aurez besoin de créer une liaison pour les événements du clavier; voir “Events” pour plus d'informations sur les événements et les liaisons.
         :arg text: 
                 Text of the label.
         :arg width: 
-                The horizontal dimension of the new frame. This will be ignored unless you also call .grid_propagate(0) on the frame; Voir :ref:`autres-meth-grille`.
+                La largeur du cadre. Voir :ref:`dimensions`. Cette valeur est ignorée sauf si vous appelez la méthode ``grid_propagate(0)`` sur le cadre; Voir :ref:`autres-meth-grille`. 
