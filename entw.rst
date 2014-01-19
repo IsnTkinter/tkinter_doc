@@ -4,33 +4,33 @@
 Les boîtes de saisie ``Entry``
 ******************************
 
-Une boîte de saisie ``Entry`` est utile pour permettre à l'utilisateur de modifier une ligne de texte.The purpose of an Entry widget is to let the user see and modify a single line of text.
+Une boîte de saisie ``Entry`` est utile pour permettre à l'utilisateur de modifier une ligne de texte.
 
-* Si vous souhaitez afficher plusieurs lignes de textes modifiables, If you want to display multiple lines of text that can be edited, voir “The Text widget”.
+* Si vous souhaitez afficher plusieurs lignes de textes modifiables,voir “The Text widget”.
 
-* Si vous souhaitez afficher une ou plusieurs lignes de textes qui ne peuvent pas être directement modifiées par l'utilisateur, If you want to display one or more lines of text that cannot be modified by the user, Voir :ref:`Label`.
+* Si vous souhaitez afficher une ou plusieurs lignes de textes qui ne peuvent pas être directement modifiées par l'utilisateur, voir :ref:`Label`.
 
 Quelques définitions:
 
-* La sélection est la région du texte mise en valeur (surlignement) dans une boîte de saisie, s'il y en a une.The selection is a highlighted region of the text in an Entry widget, if there is one.
+* La sélection est la région du texte mise en valeur (surlignement) dans une boîte de saisie, s'il y en a une.
 
-* Typiquement, la selection est réalisé par l'utilisateur avec la souris, et le texte sélectionné est copié dans le  Typically the selection is made by the user with the mouse, and selected text is copied to the system's clipboard. Cependant, Tkinter vous permet de choisir si oui ou non, la sélection est copié. Vous pouvez aussi réaliser des sélections contrôlé par le programme. However, Tkinter allows you to control whether or not selected text gets copied to the clipboard. You can also select text in an Entry under program control.
+* Typiquement, la selection est réalisé par l'utilisateur avec la souris, et le texte sélectionné est copié dans le  presse-papiers du système. Cependant, Tkinter vous permet de choisir si oui ou non, la sélection est copié dans le presse-papiers. Vous pouvez aussi réaliser des sélections contrôlées par le programme.
 
-* Le curseur d'insertion indique où le texte sera inséré. Il est affiché lorsque l'utilisateur clique sur la boîte saisie. Il apparaît normalement comme une ligne verticale qui clignote dans le composant. Vous pouvez régler finement son apparence de plusieurs façons.The insertion cursor shows where new text will be inserted. It is displayed only when the user clicks the mouse somewhere in the widget. It usually appears as a blinking vertical line inside the widget. You can customize its appearance in several ways.
+* Le curseur d'insertion indique où le texte sera inséré. Il est affiché lorsque l'utilisateur clique sur la boîte saisie. Il apparaît normalement comme une ligne verticale qui clignote dans le composant. Vous pouvez régler finement son apparence de plusieurs façons.
 
-* Les positions à l'intérieur du texte affiché dans la boîte sont précisées à l'aide d'un index. Il y a plusieurs façons d'exprimer un index:Positions within the widget's displayed text are given as an index. There are several ways to specify an index:
+* Les positions à l'intérieur du texte affiché dans la boîte sont précisées à l'aide d'un index. Il y a plusieurs façons d'exprimer un index:
 
-  - En utilisant un entier qui débute en 0 comme pour les chaînes de caractère de Python.As normal Python indexes, starting from 0.
+  - En utilisant un entier qui débute à 0 comme pour les chaînes de caractère de Python.
 
-  - La constante ``'end'`` qui se réfère à la position située après le texte en cours.The constant tk.END refers to the position after the existing text.
+  - La constante ``'end'`` qui se réfère à la position située après le texte.
 
-  - La constante ``'insert'`` qui se réfère à la position courante du curseur d'insertion.The constant tk.INSERT refers to the current position of the insertion cursor.
+  - La constante ``'insert'`` qui se réfère à la position courante du curseur d'insertion.
 
-  - La constante ``'anchor'`` qui se réfère au premier caractère de la sélection courante, s'il y en a une.The constant tk.ANCHOR refers to the first character of the selection, if there is a selection.
+  - La constante ``'anchor'`` qui se réfère au premier caractère de la sélection courante, s'il y en a une.
 
-  - Vous pouvez avoir besoin de comprendre quel caractère se trouve à une position déterminée par la souris. Pour simplifier cela, vous pouvez utiliser un index à l'aide d'une chaîne de caractères de la forme ``'@n'`` où n est la distance horizontale en pixels entre le côté gauche de la boîte de saisie et la souris. Un tel index déterminera le caractère situé à cette distance horizontale du côté gauche de la boîte. You may need to figure out which character position in the widget corresponds to a given mouse position. To simplify that process, you can use as an index a string of the form '@n', where n is the horizontal distance in pixels between the left edge of the Entry widget and the mouse. Such an index will specify the character at that horizontal mouse position. 
+  - Vous pouvez avoir besoin de récupérer le caractère qui se trouve à une position déterminée par la souris. Pour simplifier cela, vous pouvez utiliser un index à l'aide d'une chaîne de caractères de la forme ``'@n'`` où n est la distance horizontale en pixels entre le côté gauche de la boîte de saisie et la souris. Un tel index déterminera le caractère situé à cette distance horizontale du côté gauche de la boîte.
 
-Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans un cadre ``parent``:To create a new Entry widget in a root window or frame named parent:
+Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans un cadre ``parent``:
 
 .. py:class:: Entry(parent, option, ...)
 
@@ -89,7 +89,7 @@ Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans u
         :arg takefocus:
                 By default, the focus will tab through entry widgets. Set this option to 0 to take the widget out of the sequence. For a discussion of focus, see Section 53, “Focus: routing keyboard input”.
         :arg textvariable:
-                In order to be able to retrieve the current text from your entry widget, you must set this option to an instance of the StringVar class; see Section 52, “Control variables: the values behind the widgets”. You can retrieve the text using v.get(), or set it using v.set(), where v is the associated control variable.
+                Pour pouvoir récupérer le texte courant de la boîte de saisie, vous devez configurer cette option avec une instance de ``StringVar``; voir “Control variables: the values behind the widgets”. Vous pouvez alors récupérer ou modifier le texte en utilisant les méthodes ``get()`` ou ``set()`` de cette variable de contrôle ``StringVar``.
         :arg validate: 
                 Vous pouvez utiliser cette option pour indiquer que la boîte utilise une fonction de validation qui sera appelée automatiquement à certains instants. You can use this option to set up the widget so that its contents are checked by a validation function at certain times. Voir :ref:`validation`.
         :arg validatecommand: 
@@ -175,7 +175,7 @@ Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans u
 Défilement du contenu
 =====================
 
-Pour pouvoir faire défiler le contenu d'une boîte de saisie, il faudra ajouter un peu de code en plus afin d'adapter la fonction de rappelle d'une barre de défilement ``Scrollbar`` aux méthodes fournies par la boîte de saisie. Voici quelques fragments de code qui illustre le réglage. Première, la création et la liaison de la barre de défilement et de la boîte de saisie.Making an Entry widget scrollable requires a little extra code on your part to adapt the Scrollbar widget's callback to the methods available on the Entry widget. Here are some code fragments illustrating the setup. First, the creation and linking of the Entry and Scrollbar widgets::
+Pour pouvoir faire défiler le contenu d'une boîte de saisie, il faudra ajouter un peu de code en plus afin d'adapter la fonction de rappel d'une barre de défilement ``Scrollbar`` aux méthodes fournies par la boîte de saisie. Voici quelques fragments de code qui illustre un tel réglage. Premièrement, la création et la liaison de la barre de défilement et de la boîte de saisie::
 
     entry = Entry(root, width=10)
     entry.grid(row=0, sticky='ew')
@@ -185,7 +185,7 @@ Pour pouvoir faire défiler le contenu d'une boîte de saisie, il faudra ajouter
     entryScroll.grid(row=1, sticky='ew')
     entry['xscrollcommand'] = entryScroll.set
 
-Voici la fonction de rappel du code précédent Here's the adapter function referred to above::
+Ensuite, la définition de la fonction de rappel du code précédent::
 
     def scrollHandler(L):
         op, howMany = L[0], L[1]
@@ -202,78 +202,78 @@ Voici la fonction de rappel du code précédent Here's the adapter function refe
 Gérer la validation
 ===================
 
-In some applications, you will want to check the contents of an Entry widget to make sure they are valid according to some rule that your application must enforce. You define what is valid by writing a callback function that checks the contents and signals whether it is valid or not.
+Dans certaines applications, vous souhaiterez vérifier le contenu d'une boîte de saisie pour vous assurez qu'il est valide selon certains critères nécessaires au bon fonctionnement de votre application. Pour préciser ce qui est valide, vous définirez une fonction de rappel qui vérifiera ce contenu et signalera s'il est oui ou non valide.
 
-Here is the procedure for setting up validation on a widget.
+Voici la procédure à suivre pour mettre en oeuvre une telle validation.
 
-* Write a callback function that checks the text in the Entry and returns True if the text is valid, or False if not. If the callback returns False, the user's attempt to edit the text will be refused, and the text will be unchanged.
+* Écrire une fonction de rappel qui vérifie le contenu de la boîte saisie et retourne ``True`` s'il est considéré comme valide, ou ``False`` sinon. Si la fonction de rappel retourne ``False``, les tentatives de l'utilisateur pour modifier le contenu de la boîte de saisie seront refusées et le texte restera inchangé.
 
-* Register the callback function. In this step, you will produce a Tcl wrapper around a Python function.
+* Enregistrez cette fonction de rappel: cela consiste à produire un «emballage Tcl» autour de votre fonction Python.
 
-* Suppose your callback function is a function named isOkay. To register this function, use the universal widget method .register(isOkay). This method returns a character string that Tkinter can use to call your function.
+  Supposez que votre fonction de rappel soit ``estOk``. Pour pouvoir associer cette fonction à la boîte de saisie, vous devez utilisez la méthode universelle (valable pour tout widget) ``register(estOk)``. Cette méthode crée «l'emballage Tcl» voulu et retourne une chaîne de caractères que tkinter peut utiliser pour appeler votre fonction.
 
-* When you call the Entry constructor, use the validatecommand option in the Entry constructor to specify your callback, and use the validate option to specify when the callback will be called to validate the text in the callback. The values of these options are discussed in more detail below. 
+* Lorsque vous appelez le constructeur de la boîte de saisie ``Entry``, utilisez son option **validatecommand** pour préciser votre fonction de validation (par l'intermédiaire de la chaîne retournée par ``register()``, et utilisez son option **validate** pour préciser les circonstances de l'appel de la fonction de validation. Les valeurs de ces options sont discutées avec plus de détails ci-dessous.
 
-Here are the values of the validate option and what they mean.
+Voici les valeurs admissibles pour l'option **validate** et leur signification.Here are the values of the validate option and what they mean.
 
 ``'focus'``
 
-        Validate whenever the Entry widget gets or loses focus (see Section 53, “Focus: routing keyboard input”). 
+        La validation est déclenchée à chaque fois que la boîte de saisie obtient ou perd le focus (voir “Focus: routing keyboard input”). 
 
 ``'focusin'``
 
-        Validate whenever the widget gets focus. 
+        Elle est déclenchée lorsque la boîte de saisie obtient le focus.
 
 ``'focusout'``
 
-    Validate whenever the widget loses focus. 
+        Elle est déclenchée lorsque la boîte perd le focus.
 
 ``'key'``
 
-    Validate whenever any keystroke changes the widget's contents. 
+        Elle est déclenchée à chaque fois que l'appui sur une touche modifie le contenu.
 
 ``'all'``
 
-    Validate in all the above situations. 
+        Lorsque l'une quelconque des situations précédentes a lieu.
 
 ``'none'``
 
-    Turn off validation. This is the default option value. Note that this is the string 'none', not the special Python value None. 
+        Désactive la validation. C'est la valeur par défaut de l'option. Notez que c'est la chaîne de caractère 'none', non la valeur spéciale de Python ``None``. 
 
-The value of the validatecommand option depends on what arguments you would like your callback to receive.
+La valeur de l'option **validatecommand** dépend des arguments que vous souhaitez transmettre à la fonction de validation.option depends on what arguments you would like your callback to receive.
 
-* Perhaps the only thing the callback needs to know is what text currently appears in the Entry. If that is the case, it can use the .get() method of the textvariable associated with the widget to retrieve that text.
+* Peut-être que la seule chose dont à besoin votre fonction de validation est le texte qui apparaît actuellement dans la boîte de saisie. Si c'est le cas, elle peut utiliser la méthode ``get()`` de la variable de contrôle qui a servi à configuer l'option **textvariable** de la boîte de saisie. Perhaps the only thing the callback needs to know is what text currently appears in the Entry. If that is the case, it can use the .get() method of the textvariable associated with the widget to retrieve that text.
 
-* In this case, all you need is the option “validatecommand=f”, where f is the name of your callback function.
+  Dans ce cas, il suffit d'indiquer ``validatecommand=f``, où ``f`` est le nom de votre fonction de validation.
 
-* Tkinter can also provide a number of items of information to the callback. If you would like to use some of these items, when you call the Entry constructor, use the option validatecommand=(f, s1, s2, ...), where f is the name of your callback function, and each additional si is a substitution code. For each substitution code that you provide, the callback will receive a positional argument containing the appropriate value. 
+* Tkinter peut aussi fournir un certain nombre d'informations à votre fonction de validation. Si vous souhaitez utiliser cela, lors de l'appel du constructeur de la boîte de saisie, utilisez l'option ``validatecommand=(f, s1, s2, ...)``, où ``f`` est le nom «enregistré» de votre fonction de rappel, et chaque élément ``si`` additionnel un code de substitution. Pour chaque code de substitution fourni, la fonction de rappel reçoit un argument positionnel qui contient la valeur appropriée.
 
-Here are the substitution codes.
+Voici les codes de substitution possibles.
 
 Table 18. Callback substitution codes
-'%d' 	Action code: 0 for an attempted deletion, 1 for an attempted insertion, or -1 if the callback was called for focus in, focus out, or a change to the textvariable.
-'%i' 	When the user attempts to insert or delete text, this argument will be the index of the beginning of the insertion or deletion. If the callback was due to focus in, focus out, or a change to the textvariable, the argument will be -1.
-'%P' 	The value that the text will have if the change is allowed.
-'%s' 	The text in the entry before the change.
-'%S' 	If the call was due to an insertion or deletion, this argument will be the text being inserted or deleted.
+'%d' 	Code d'action: 0 pour une tentative de suppression, 1 pour une tentative d'insertion ou -1 si l'appel a eu lieu par gain ou perte du focus, ou par modification de la variable de contrôle **textvariable**.
+'%i' 	Lorque l'utilisateur tente d'insérer ou de supprimer du texte, cet argument sera la position (index) du début (cas d'une sélection) de l'insertion ou suppression. Si l'appel a eu lieu par gain ou perte de focus, ou par modification de la variable de contrôle **textvariable**, l'argument vaut -1.
+'%P' 	La valeur que le texte aurait si la modification avait lieu.
+'%s' 	Le texte dans la boîte de saisie avant le changement.
+'%S' 	Si l'appel est du à une insertion ou une suppression, l'argument sera le texte à insérer ou à supprimer.
 '%v' 	The current value of the widget's validate option.
-'%V' 	The reason for this callback: one of 'focusin', 'focusout', 'key', or 'forced' if the textvariable was changed.
-'%W' 	The name of the widget.
+'%V' 	La raison de l'appel, parmi: ``'focusin'``, ``'focusout'``, ``'key'``, ou ``'forced'`` si la variable de contrôle **textvariable** a été modifiée.
+'%W' 	Le nom de la boîte de saisie.
 
-Here is a small example. Suppose you want your callback to receive the '%d' to find out why it was called; '%i' to find out where the insertion or deletion would occur; and '%S' to find out what is to be inserted or deleted. Your method might look like this::
+Voici un petit exemple. Supposez que vous souhaitiez que votre fonction de validation reçoive le ``'%d'`` pour déterminer les circonstances de son appel; ``'%i'`` pour déterminer où l'ajout ou la suppresion doit avoir lieu; et ``'%S'`` pour déterminer ce qui doit être insérer ou supprimer. Votre fonction pourrait ressembler à cela::
 
-    def isOkay(self, why, where, what):
+    def estOK( pourquoi, ou, quoi):
         ...
 
-Next you use the universal .register() method to wrap this function. We assume that self is some widget::
+Ensuite, vous utilisez la méthode universelle ``register()`` pour «emballer» cette fonction. Nous supposons que ``w`` est un widget arbitraire::
 
-    okayCommand = self.register(isOkay)
+    okCommand = w.register(estOK)
 
-To set up this callback, you would use these two options in the Entry constructor::
+Pour activer cette fonction de rappel, vous aurez besoin d'utiliser ces deux options du constructeur ``Entry``::
 
-    self.w = Entry(self, validate='all',
-         validatecommand=(okayCommand, '%d', '%i', '%S'), ...)
+    saisi = Entry(root, validate='all',
+         validatecommand=(okCommand, '%d', '%i', '%S'), ...)
 
-Suppose that the Entry currently contains the string 'abcdefg', and the user selects 'cde' and then presses Backspace. This would result in a call isOkay(0, 2, 'cde'): 0 for deletion, 2 for the position before 'c', and 'cde' for the string to be deleted. If isOkay() returns True, the new text will be 'abfg'; if it returns False, the text will not change.
+Supposez que la boîte de saisie contienne actuellement la chaîne ``'abcdefg'``, et que l'utilisateur sélectionne ``'cde'`` puis appui sur la touche Retour Arrière. Il s'ensuivrait l'appelle estOK(0, 2, 'cde'): 0 pour indiquer la suppression, 2 pour la position avant le 'c' et 'cde' pour la chaîne à détruire. Si estOK() retourne True, le nouveau texte est ``'abfg'``; sinon, le texte est inchangé.
 
-The Entry widget also supports an invalidcommand option that specifies a callback function that is called whenever the validatecommand returns False. This command may modify the text in the widget by using the .set() method on the widget's associated textvariable. Setting up this option works the same as setting up the validatecommand. You must use the .register() method to wrap your Python function; this method returns the name of the wrapped function as a string. Then you will pass as the value of the invalidcommand option either that string, or as the first element of a tuple containing substitution codes. 
+Le widget ``Entry`` possède aussi une option **invalidcommand** qui sert à préciser une fonction de rappel qui est appelée à chaque fois que la fonction de validation retourne False. Cette commande peut modifier le texte de la boîte de saisie en utilisant la méthode ``set()`` de la variable de contrôle qui a servi à configurer l'option ``textvariable``. Le réglage de cette option fonctionne de la même façon que celle de l'option **validatecommand**. Vous devez utiliser la méthode universelle ``register()`` pour envelopper votre fonction; cette méthode retourne le nom de la fonction envelopper sous la forme d'une chaîne de caractère. Ensuite, passez cette valeur à l'option **invalidcommand** soit directement, soit comme le premier élément d'un tuple qui contient les codes de substitutions qui vous intéresse.
