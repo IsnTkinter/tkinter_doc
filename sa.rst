@@ -75,11 +75,11 @@ Selon votre système d'exploitation, il peut y avoir jusqu'à trois façons d'in
 
     Exemples :  ``('Helvetica', '16')`` pour une police Helvetica régulière de 16 points; ``('Times', '24', 'bold italic')`` pour une police Times de 16 points en gras italique; Pour une police Times en gras de 20 pixels, utilisez ``('Times', -20, 'bold')``.
 
-* Vous pouvez créer un «objet fonte» en important le module tkFont et en utilisant le constructeur Font:
+* Vous pouvez créer un «objet fonte» en important le sous-module ``tkinter.font`` et en utilisant le constructeur ``Font``:
 
     .. code-block:: python
 
-        import tkFont
+        import tkinter.font as tkFont # ou «import TkFont» pour python 2
     
         #....
         font = tkFont.Font(option, ...)
