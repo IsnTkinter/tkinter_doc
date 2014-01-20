@@ -41,11 +41,11 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg height:
             Hauteur du bouton en nombre de ligne (si le bouton possède une étiquette textuelle) ou en pixel (pour les images).
     :arg highlightbackground:
-             Couleur de ligne indiquant que le bouton n'a pas le focus.
+            Couleur de la ligne qui indique que le bouton n'a pas le focus.
     :arg highlightcolor:
-             Couleur de ligne indiquant que le bouton a le focus.
+            Couleur de ligne qui indique que le bouton a le focus.
     :arg highlightthickness:
-             Épaisseur de la ligne de focus.
+            Épaisseur de la ligne de focus.
     :arg image:
             Image a afficher sur le bouton (à la place du texte).
     :arg justify:
@@ -63,7 +63,7 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg repeatinterval:
             Normalement, un bouton est déclenché une seule fois lorsque l'utilisateur relâche le bouton de la souris. si vous souhaitez que le bouton soit déclenché à des intervalles réguliers lorsque l'utilisateur maintient le bouton de la souris enfoncé, positionner cette option a un certain nombre de millisecondes à attendre entre chaque répétition et donner une valeur à l'option repeatdelay (ms) pour indiquer un délai après lequel le bouton est déclenché. Par exemple, si ``repeatdelay=500`` et ``repeatinterval=100``, le bouton sera déclenché après une demi-seconde puis redéclenché tous les dixièmes de secondes juqu'à ce que l'utilisateur relâche le bouton de la souris. Si l'utilisateur relache le bouton avant la durée repeatdelay, le bouton se déclenche normalement.
     :arg state:
-            Positionner cette option à ``'disabled'`` pour le griser et le rendre inactif. Sa valeur est 'active' lorsque la souris est sur le bouton et ``'normal'`` autrement.
+            Positionner cette option à ``'disabled'`` pour griser le bouton et le rendre inactif. Sa valeur est 'active' lorsque la souris est sur le bouton et ``'normal'`` autrement.
     :arg takefocus:
             Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (see Section 53, “Focus: routing keyboard input”), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre **takefocus** a zéro pour empêcher cela.
     :arg text:

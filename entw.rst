@@ -37,90 +37,88 @@ Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans u
         Ce constructeur retourne la nouvelle boîte de saisie. Ses options incluent:This constructor returns the new Entry widget. Options include:
 
         :arg bg:
-                (ou **background**) La couleur de fond de la zone de saisie. C'est un gris légé par défaut.round color inside the entry area. Default is a light gray.
+                (ou **background**) La couleur de fond de la zone de saisie. C'est un gris léger par défaut.
         :arg bd: 
-                (ou borderwidth) L'épaisseur de la bordure qui entoure la zone de saisie. The width of the border around the entry area; Voir :ref:`dimensions`. Sa valeur est 2 pixels par défaut.
-                The default is two pixels.
+                (ou borderwidth) L'épaisseur de la bordure qui entoure la zone de saisie. Voir :ref:`dimensions`. Sa valeur est 2 pixels par défaut.
         :arg cursor:
-                The cursor used when the mouse is within the entry widget; Voir :ref:`pointeurs`.
+                Pour indiquer le pointeur de la souris à afficher lorsqu'on survole le bouton. Voir :ref:`pointeurs`.
         :arg disabledbackground: 
-                The background color to be displayed when the widget is in the tk.DISABLED state. For option values, see bg above.
+                La couleur d'arrière plan qui est utilisée lorsque le widget est dans l'état 'disabled'.
         :arg disabledforeground: 
-                The foreground color to be displayed when the widget is in the tk.DISABLED state. For option values, see fg below.
+                Couleur du texte lorsque la boîte de saisie est dans l'état 'disabled'.
         :arg exportselection: 
-                Par défaut, si vous sélectionnez du texte, il est automatiquement exporté vers le presse-papiers. Pour empêcher cela, utiliser ``exportselection=0``.By default, if you select text within an Entry widget, it is automatically exported to the clipboard. To avoid this exportation, use exportselection=0.
+                Par défaut, si vous sélectionnez du texte, il est automatiquement exporté vers le presse-papiers. Pour empêcher cela, utiliser ``exportselection=0``.
         :arg fg: or foreground
-                The color used to render the text. Default is black.
+                La couleur utilisée pour afficher le texte. Noir par défaut.
         :arg font:
-                The font used for text entered in the widget by the user. Voir :ref:`polices`.
+                Police de caractère a utiliser pour le texte saisi dans la boîte. Voir :ref:`polices`.
         :arg highlightbackground:
-                Color of the focus highlight when the widget does not have focus. See Section 52, “Focus: routing keyboard input”.
+                Couleur de la ligne qui indique que le bouton n'a pas le focus. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                Color shown in the focus highlight when the widget has the focus.
+                Couleur de ligne qui indique que le bouton a le focus.
         :arg highlightthickness:
-                Thickness of the focus highlight.
+                Épaisseur de la ligne de focus.
         :arg insertbackground:
-                Par défaut, le curseur d'insertion (qui indique l'endroit où le texte sera inséré) est noir. Précisez une autre couleur si vous le souhaitez.By default, the insertion cursor (which shows the point within the text where new keyboard input will be inserted) is black. To get a different color of insertion cursor, set insertbackground to any color; Voir :ref:`couleurs`.
+                Par défaut, le curseur d'insertion (qui indique l'endroit où le texte sera inséré) est noir. Précisez une autre couleur pour cette option si vous souhaitez la modifier. Voir :ref:`couleurs`.
         :arg insertborderwidth:
                 Par défaut, le curseur d'insertion est un simple rectangle. By default, the insertion cursor is a simple rectangle. Vous pouvez obtenir un effet de relief ``raised`` You can get the cursor with the tk.RAISED relief effect (Voir :ref:`reliefs`) en configurant cette option avec la dimension de la bordure 3-d. Si vous faites cela, assurez-vous que l'option insertwidth vaut au moins le double de cette valeur.by setting insertborderwidth to the dimension of the 3-d border. If you do, make sure that the insertwidth option is at least twice that value.
         :arg insertofftime:
-                Par défaut, le curseur d'insertion clignote. Vous pouvez configurez cette option à une valeur en millisecondes pour préciser la durée de sa disparition dans le clignotement. La valeur par défaut est 300. Si vous utilisez ``insertofftime=0``, le curseur ne clignotera plus du tout.By default, the insertion cursor blinks. You can set insertofftime to a value in milliseconds to specify how much time the insertion cursor spends off. Default is 300. If you use insertofftime=0, the insertion cursor won't blink at all.
+                Par défaut, le curseur d'insertion clignote. Vous pouvez configurer cette option à une valeur en millisecondes pour préciser la durée de sa disparition dans le clignotement. La valeur par défaut est 300. Si vous utilisez ``insertofftime=0``, le curseur ne clignotera plus du tout.
         :arg insertontime:
-                Similaire à l'option insertofftime: durée de son apparition dans le clignotement. 600 millisecondes par défaut.Similar to insertofftime, this option specifies how much time the cursor spends on per blink. Default is 600 (milliseconds).
+                Similaire à l'option **insertofftime**: durée de son apparition dans le clignotement. 600 millisecondes par défaut.
         :arg insertwidth:
-                Normalement, le curseur d'insertion fait 2 pixels de large. Vous pouvez ajuster cela en indiquant une dimension arbitraire.By default, the insertion cursor is 2 pixels wide. You can adjust this by setting insertwidth to any dimension.
+                Normalement, le curseur d'insertion fait 2 pixels de large. Vous pouvez ajuster cela en indiquant une dimension arbitraire.
         :arg justify:
-                This option controls how the text is justified when the text doesn't fill the widget's width. The value can be tk.LEFT (the default), tk.CENTER, or tk.RIGHT.
+                Cette option contrôle l'alignement du texte lorsque celui-ci ne rempli pas complètement la boîte. Les valeurs possibles sont 'left', 'center' et 'right'.
         :arg readonlybackground: 
-                The background color to be displayed when the widget's state option is 'readonly'.
+                La couleur de fond utilisée lorsque le widget est dans l'état 'readonly'.
         :arg relief:
-                Selects three-dimensional shading effects around the text entry. Voir :ref:`reliefs`.
-                The default is relief=tk.SUNKEN.
+                Sert à indiquer le relief utilisé pour dessiner le contour de la boîte. Voir :ref:`reliefs`. La valeur par défaut est 'sunken'.
         :arg selectbackground:
-                La couleur de fond utilisée pour le texte sélectionnée.he background color to use displaying selected text. Voir :ref:`couleurs`.
+                La couleur de fond utilisée pour mettre en valeur le texte sélectionné. Voir :ref:`couleurs`.
         :arg selectborderwidth:
-                La largeur de la bordure qui entoure le texte sélectionné. 1 pixel par défaut.The width of the border to use around selected text. The default is one pixel.
+                La largeur de la bordure qui entoure le texte sélectionné. 1 pixel par défaut.
         :arg selectforeground:
-                La couleur du texte sélectionné.The foreground (text) color of selected text.
+                La couleur du texte sélectionné.
         :arg show:
-                Normalement, le texte que l'utilisateur saisie apparaît dans la zone de saisie. Pour une saisie de type mot de passe, indiquer le caractère de remplacement à afficher, souvent show='*'.Normally, the characters that the user types appear in the entry. To make a “password” entry that echoes each character as an asterisk, set show='*'.
+                Normalement, le texte que l'utilisateur saisi apparaît dans la zone de saisie. Pour une saisie de type mot de passe, indiquer le caractère de remplacement à afficher, souvent show='*'.
         :arg state:
-                Use this option to disable the Entry widget so that the user can't type anything into it. Use state=tk.DISABLED to disable the widget, state=tk.NORMAL to allow user input again. Your program can also find out whether the cursor is currently over the widget by interrogating this option; it will have the value tk.ACTIVE when the mouse is over it. You can also set this option to 'disabled', which is like the tk.DISABLED state, but the contents of the widget can still be selected or copied.
+                Utilisez cette option pour désactiver la boîte de saisie de telle sorte que l'utilisateur ne puisse plus y insérer de texte.``state=tk.DISABLED`` pour le désactiver, ``state=tk.NORMAL`` pour le réactiver. Votre programme peut savoir si la souris survole la boîte de saisie en interrogeant cette option qui devrait alors avoir la valeur 'active'.
         :arg takefocus:
-                By default, the focus will tab through entry widgets. Set this option to 0 to take the widget out of the sequence. For a discussion of focus, see Section 53, “Focus: routing keyboard input”.
+                Par défaut, le widget sera visité par le focus lorsque l'utilisateur utilisera la touche Tab. Configurez cette option avec la valeur 0 pour retirer le widget de la «traversée du focus». Pour plus d'informations sur le focus, voir “Focus: routing keyboard input”.
         :arg textvariable:
                 Pour pouvoir récupérer le texte courant de la boîte de saisie, vous devez configurer cette option avec une instance de ``StringVar``; voir “Control variables: the values behind the widgets”. Vous pouvez alors récupérer ou modifier le texte en utilisant les méthodes ``get()`` ou ``set()`` de cette variable de contrôle ``StringVar``.
         :arg validate: 
-                Vous pouvez utiliser cette option pour indiquer que la boîte utilise une fonction de validation qui sera appelée automatiquement à certains instants. You can use this option to set up the widget so that its contents are checked by a validation function at certain times. Voir :ref:`validation`.
+                Vous pouvez utiliser cette option pour indiquer que la boîte utilise une fonction de validation qui sera appelée automatiquement à certains instants. Voir :ref:`validation`.
         :arg validatecommand: 
-                Une fonction de validation pour la boîte de saisie.A callback that validates the text of the widget. Voir :ref:`validation`.
+                Une fonction de validation pour la boîte de saisie. Voir :ref:`validation`.
         :arg width:
-                The size of the entry in characters. The default is 20. For proportional fonts, the physical length of the widget will be based on the average width of a character times the value of the width option.
+                La taille de la boîte de saisie mesurée en nombre de caractères. La valeur par défaut est 20. Pour les polices de caractères à chasse variable (fontes proportionnelles), la taille de la boîte de saisie s'obtient en multipliant la moyenne de la largeur des caractères de la fonte multipliée par la valeur de cette option.
         :arg xscrollcommand:
-                If you expect that users will often enter more text than the onscreen size of the widget, you can link your entry widget to a scrollbar. Set this option to the .set method of the scrollbar. For more information, see Section 10.1, “Scrolling an Entry widget”.
+                Si vous vous attendez à ce que les utilisateurs saisissent plus de texte que la partie visible de la boîte peut contenir, vous pouvez lier votre boîte de saisie à une barre de défilement ``Scrollbar``. Configurez alors cette option avec la méthode ``set()`` de la barre de défilement. Pour plus d'information, voir “Scrolling an Entry widget”.
 
-        Les méthodes disponibles pour les boîtes de saisie ``Entry`` incluent:Methods on Entry objects include:
+        Les méthodes disponibles pour les boîtes de saisie ``Entry`` incluent:
 
 
         .. py:method:: delete(first, last=None)
 
-                Supprime les caractères de la position ``first`` jusqu'à, mais sans inclure, la position ``last``. Si le deuxième argument n'est pas précisé, seul le caractère à la position ``first`` est supprimé. sans inclure le caractère Deletes characters from the widget, starting with the one at index first, up to but not including the character at position last. If the second argument is omitted, only the single character at position first is deleted. 
+                Supprime les caractères de la position ``first`` jusqu'à, mais sans inclure, la position ``last``. Si le deuxième argument n'est pas précisé, seul le caractère à la position ``first`` est supprimé. 
 
         .. py:method:: get()
 
-                Retourne le texte que contient la boîte de saisie lors de son appel.eturns the entry's current text as a string. 
+                Retourne le texte que contient la boîte de saisie lors de son appel.
 
         .. py:method:: icursor(index)
 
-                Déplace le curseur d'instruction juste avant le caractère ayant la position ``index``.Set the insertion cursor just before the character at the given index. 
+                Déplace le curseur d'instruction juste avant le caractère ayant la position ``index``.
 
         .. py:method:: index(index)
 
-                Fait défiler le contenu de la boîte de saisie de telle sorte que le caractère de position index soit à la première position visible à gauche. N'a pas d'effet si le texte tient tout entier dans la boîte de saisie.Shift the contents of the entry so that the character at the given index is the leftmost visible character. Has no effect if the text fits entirely within the entry. 
+                Fait défiler le contenu de la boîte de saisie de telle sorte que le caractère de position index soit à la première position visible à gauche. N'a pas d'effet si le texte tient tout entier dans la boîte de saisie.
 
         .. py:method:: insert(index, s)
 
-                Insère la chaîne de caractères ``s`` juste avant le caractère situé à la position ``index``.Inserts string s before the character at the given index. 
+                Insère la chaîne de caractères ``s`` juste avant le caractère situé à la position ``index``.
 
         .. py:method:: scan_dragto(x)
 
@@ -128,47 +126,47 @@ Pour créer une nouvelle boîte de saisie dans une fenêtre principale ou dans u
 
         .. py:method:: scan_mark(x)
 
-                Use this option to set up fast scanning of the contents of the Entry widget that has a scrollbar that supports horizontal scrolling.
+                Utilisez cette méthode pour initialiser le défilement rapide du contenu d'une boîte de saisie munie d'une barre de défilement horizontale.
 
-                To implement this feature, bind the mouse's button-down event to a handler that calls scan_mark(x), where x is the current mouse x position. Then bind the <Motion> event to a handler that calls scan_dragto(x), where x is the current mouse x position. The scan_dragto method scrolls the contents of the Entry widget continuously at a rate proportional to the horizontal distance between the position at the time of the scan_mark call and the current position. 
+                Pour réaliser cela, lier l'événement «bouton de la souris enfoncé» à un gestionnaire d'événement qui appelera ``scan_mark(x)``, où x représente la position horizontale courante de la souris. Ensuite, lier l'événement ``'<Motion'`` (déplacement de la souris) à un gestionnaire qui appelera ``scan_dragto(x)``, où x représente la position horizontale courante de la souris. La méthode ``scan_dragto`` fait défiler le contenu de la boîte de saisie de manière continue et à un rythme proportionnel à la distance (horizontale) entre la position lors de l'appel de ``scan_mark`` et la position courante.
 
         .. py:method:: select_adjust(index)
 
-                This method is used to make sure that the selection includes the character at the specified index. If the selection already includes that character, nothing happens. If not, the selection is expanded from its current position (if any) to include position index. 
+                Cette méthode sert à ajuster la sélection pour être sûr qu'elle contient le caractère situé à la position précisée par index. Si la sélection contient déjà le caractère, rien ne se produit. Autrement, la sélection est étendue à partir de sa position courante (s'il y en a une) pour inclure la position ayant l'index indiqué.
 
         .. py:method:: select_clear()
 
-                Efface la sélection (sans supprimé son contenu). N'a pas d'effet si il n'y a aucune sélection courante. If there isn't currently a selection, has no effect. 
+                Éfface la sélection (sans supprimer son contenu). N'a pas d'effet si il n'y a aucune sélection courante.
 
         .. py:method:: select_from(index)
 
-                Positionne l'index de l'ancre de sélection, 'anchor', à la position du caractère sélectionné par ``index`` et sélectionne ce caractère.Sets the tk.ANCHOR index position to the character selected by index, and selects that character. 
+                Positionne l'index de l'ancre de sélection, ``'anchor'``, à la position du caractère sélectionné par ``index`` et sélectionne ce caractère.
 
         .. py:method:: select_present()
 
-                Retourne True s'il y a une sélection, False autrement.If there is a selection, returns true, else returns false. 
+                Retourne True s'il y a une sélection, False autrement.
 
         .. py:method:: select_range(start, end)
 
-                Pour régler la sélection depuis l'application. Sélectionne le texte de la position ``start`` jusqu'à, mais sans inclure, la position ``end``. la position ``start`` doit être avant la position ``end``. Sets the selection under program control. Selects the text starting at the start index, up to but not including the character at the end index. The start position must be before the end position.
+                Pour régler la sélection depuis l'application. Sélectionne le texte de la position ``start`` jusqu'à, mais sans inclure, la position ``end``. la position ``start`` doit être avant la position ``end``.
 
-                Pour sélectionner tout le texte de la boîte de saisie ``e``, utiliser ``e.select_range(0, 'end')``.To select all the text in an entry widget e, use e.select_range(0, tk.END). 
+                Pour sélectionner tout le texte de la boîte de saisie ``e``, utiliser ``e.select_range(0, 'end')``.
 
         .. py:method:: select_to(index)
 
-                Selects all the text from the tk.ANCHOR position up to but not including the character at the given index. 
+                Sélection tout le text à partir de la position 'anchor' jusqu'à, mais sans inclure, le caractère de position index.
 
         .. py:method:: xview(index)
 
-                Same as .xview(). This method is useful in linking the Entry widget to a horizontal scrollbar. Voir :ref:`Défilement`.
+                Fait défiler le texte de telle sorte que le caractère de position index soit situé au début de la boîte. Cette méthode est très utile dans la liaison entre une boîte de saisie et une barre de défilement. Voir :ref:`Défilement`.
 
         .. py:method:: xview_moveto(f)
 
-                Positions the text in the entry so that the character at position f, relative to the entire text, is positioned at the left edge of the window. The f argument must be in the range [0,1], where 0 means the left end of the text and 1 the right end. 
+                Positionne le texte dans la boîte de saisie de telle sorte que le caractère situé à la position relative f (par rapport à l'intégralité du texte) soit positionné sur le bord gauche de la boîte. L'argument f doit appartenir à l'intervalle [0;1], où 0 signifie tout à gauche et 1 tout à droite.
 
         .. py:method:: xview_scroll(number, what)
 
-                Used to scroll the entry horizontally. The what argument must be either tk.UNITS, to scroll by character widths, or tk.PAGES, to scroll by chunks the size of the entry widget. The number is positive to scroll left to right, negative to scroll right to left. For example, for an entry widget e, e.xview_scroll(-1, tk.PAGES) would move the text one “page” to the right, and e.xview_scroll(4, tk.UNITS) would move the text four characters to the left. 
+                Sert à faire déiler le contenu de la boîte de saisie horizontalement. L'argument what est soit 'units', pour indiquer un défilement par caractères, 'page', pour un défilement par la largeur de la boîte de saisie. Si l'argument nombre est positif, le défilement se fait de la gauche vers la droite, s'il est négatif, le défilement se fait de la droite vers la gauche. Par exemple, pour une boîte de saisie ``e``, ``e.xview_scroll(-1, 'pages')`` fera bouger le texte d'une «page» vers la droite et ``e.xview_scroll(4, 'units')`` le fait défiler de 4 caractères vers la gauche.
 
 .. _Défilement:
 
@@ -242,7 +240,7 @@ Voici les valeurs admissibles pour l'option **validate** et leur signification.H
 
 La valeur de l'option **validatecommand** dépend des arguments que vous souhaitez transmettre à la fonction de validation.option depends on what arguments you would like your callback to receive.
 
-* Peut-être que la seule chose dont à besoin votre fonction de validation est le texte qui apparaît actuellement dans la boîte de saisie. Si c'est le cas, elle peut utiliser la méthode ``get()`` de la variable de contrôle qui a servi à configuer l'option **textvariable** de la boîte de saisie. Perhaps the only thing the callback needs to know is what text currently appears in the Entry. If that is the case, it can use the .get() method of the textvariable associated with the widget to retrieve that text.
+* Peut-être que la seule chose dont à besoin votre fonction de validation est le texte qui apparaît actuellement dans la boîte de saisie. Si c'est le cas, elle peut utiliser la méthode ``get()`` de la variable de contrôle qui a servi à configuer l'option **textvariable** de la boîte de saisie. 
 
   Dans ce cas, il suffit d'indiquer ``validatecommand=f``, où ``f`` est le nom de votre fonction de validation.
 
