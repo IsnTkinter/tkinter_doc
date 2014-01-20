@@ -1,90 +1,90 @@
 .. _MENUBUTTON:
 
-*****************
-Menubutton widget
-*****************
+*********************
+``Menubutton`` widget
+*********************
 
- A menubutton is the part of a drop-down menu that stays on the screen all the time. Every menubutton is associated with a Menu widget (see above) that can display the choices for that menubutton when the user clicks on it.
+Un bouton de menu ``Menubutton`` est la partie visible d'un menu déroulant. A menubutton is the part of a drop-down menu that stays on the screen all the time. Every menubutton is associated with a Menu widget (see above) that can display the choices for that menubutton when the user clicks on it.
 
-To create a menubutton within a root window or frame parent:
+Pour créer un bouton de menu à l'intérieur d'une fenêtre principale ou d'un cadre référencé par parent:
 
 .. py:class:: Menubutton(parent, option, ...)
 
-            The constructor returns the new Menubutton widget. Options:
+        Le constructeur retourne le nouveau bouton de menu. Ses options sont:
 
         :arg activebackground: 
-                The background color when the mouse is over the menubutton. See Section 5.3, “Colors”.
+                La couleur de fond utilisée lorsque la souris survole le widget. Voir “Colors”.
         :arg activeforeground: 
-                The foreground color when the mouse is over the menubutton.
+                La couleur d'avant plan (texte) utilisée lorsque la souris survole le widget.
         :arg anchor:
-                This options controls where the text is positioned if the widget has more space than the text needs. The default is anchor=tk.CENTER, which centers the text. For other options, see Section 5.5, “Anchors”. For example, if you use anchor=tk.W, the text would be centered against the left side of the widget.
-        :arg bg: or background
-                The background color when the mouse is not over the menubutton.
+                Cette option sert à préciser la position du texte du bouton si celui-ci dispose de plus de place que de besoin pour le texte. Sa valeur par défaut est 'center' ce qui centre le texte sur bouton. Pour d'autres valeur possibles, voir Section 5.5, “Anchors”. Par exemple, si anchor='w', le texte sera centré verticalement contre le bord gauche du bouton.
+        :arg bg: 
+                (ou **background**) La couleur de fond utilisée lorsque la souris ne survole pas le bouton.
         :arg bitmap:
-                To display a bitmap on the menubutton, set this option to a bitmap name; see Section 5.7, “Bitmaps”.
-        :arg bd: or borderwidth
-                Width of the border around the menubutton. Default is two pixels. For possible values, see Section 5.1, “Dimensions”.
+                Pour afficher un bitmap sur le bouton de menu, configurez cette option avec le nom de ce bitmap; voir “Bitmaps”.
+        :arg bd: 
+                (ou **borderwidth**) Epaisseur de la bordure dessiné autour du bouton de menu. 2 pixels par défaut. Pour les valeurs possibles, voir “Dimensions”.
         :arg compound: 
-                If you specify both text and a graphic (either a bitmap or an image), this option specifies where the graphic appears relative to the text. Possible values are tk.NONE (the default value), tk.TOP, tk.BOTTOM, tk.LEFT, tk.RIGHT, and tk.CENTER. For example, compound=tk.RIGHT would position the graphic to the right of the text. If you specify compound=tk.NONE, the graphic is displayed but the text (if any) is not.
+                Si vous utilisez à la fois du texte et un graphique (soit un bitmap soit une image), cette option sert à indiquer où le graphique apparaît par rapport au texte. Les valeurs possibles sont 'none' (par défaut), 'top', 'bottom', 'left', 'right' et 'center'. Par exemple, compound='right' possitionnera le graphique à la droite du texte. Si vous conservez compound='none', le graphique sera affiché mais pas le texte.
         :arg cursor:
-                The cursor that appears when the mouse is over this menubutton. See Section 5.8, “Cursors”.
+                Le pointeur de souris utilisé lorsqu'elle survole ce widget. Voir “Cursors”.
         :arg direction:
-                Normally, the menu will appear below the menubutton. Set direction=tk.LEFT to display the menu to the left of the button; use direction=tk.RIGHT to display the menu to the right of the button; or use direction='above' to place the menu above the button.
+                Normalement, le menu apparaît en dessous du bouton de menu. Utilisez ``direction='left'`` pour afficher le menu sur le côté gauche du bouton, ``direction='right'`` pour l'afficher à sa droite; ``direction='above'`` pour l'afficher au-dessus.
         :arg disabledforeground:
-                The foreground color shown on this menubutton when it is disabled.
-        :arg fg: or foreground
-                The foreground color when the mouse is not over the menubutton.
+                La couleur d'avant plan (texte) utilisée lorsque le bouton de menu est désactivé.
+        :arg fg: 
+                (ou **foreground**) La couleur d'avant plan utilisée lorsque la souris ne survole pas le bouton.
         :arg font: 
-                Specifies the font used to display the text; see Section 5.4, “Type fonts”.
+                Sert à préciser la police de caractère utilisée pour afficher le texte. Voir “Type fonts”.
         :arg height:
-                The height of the menubutton in lines of text (not pixels!). The default is to fit the menubutton's size to its contents.
+                La hauteur du bouton de menu exprimé en ligne de texte (non en pixels !). Par défaut, le bouton s'ajuste à son contenu.
         :arg highlightbackground: 
-                Color of the focus highlight when the widget does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de focus lorsque le widget n'a pas le focus. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                Color shown in the focus highlight when the widget has the focus.
+                Couleur de la ligne de focus lorsque le widget a le focus.
         :arg highlightthickness:
-                Thickness of the focus highlight.
+                Epaisseur de la ligne de focus.
         :arg image:
-                To display an image on this menubutton, set this option to the image object. See Section 5.9, “Images”.
+                Pour afficher une image sur un bouton de menu, passer la référence à l'image à cette option. Voir “Images”.
         :arg justify:
                 This option controls where the text is located when the text doesn't fill the menubutton: use justify=tk.LEFT to left-justify the text (this is the default); use justify=tk.CENTER to center it, or justify=tk.RIGHT to right-justify.
         :arg menu:
-                To associate the menubutton with a set of choices, set this option to the Menu object containing those choices. That menu object must have been created by passing the associated menubutton to the constructor as its first argument. See below for an example showing how to associate a menubutton and menu.
+                Pour associer un ensemble de choix au bouton de menu, configurer cette option avec un widget ``Menu`` qui contient ces choix. Ce widget ``Menu`` doit avoir été créé en utilisant le bouton de menu comme premier argument de son constructeur. Voir plus loin pour un exemple qui montre comment associer un bouton de menu avec un menu.
         :arg padx:
-                How much space to leave to the left and right of the text of the menubutton. Default is 1.
+                Sert à indiquer un espace horizontal à mettre de chaque côté (gauche et droit) du bouton. 1 pixel par défaut.
         :arg pady:
-                How much space to leave above and below the text of the menubutton. Default is 1.
+                Similaire à **padx** mais dans la direction verticale. 1 pixels par défaut.
         :arg relief:
-                Normally, menubuttons will have tk.RAISED appearance. For other 3-d effects, see Section 5.6, “Relief styles”.
+                Sert à préciser le relief à utiliser pour dessiner les contours du bouton; 'raised' par défaut. Pour d'autres effets, voir “Relief styles”.
         :arg state:
-                Normally, menubuttons respond to the mouse. Set state=tk.DISABLED to gray out the menubutton and make it unresponsive.
+                Normalement, un bouton de menu est réactif à la souris. Utilisez state='disabled' pour le griser et le rendre inactif.
         :arg takefocus: 
-                Normally, menubuttons do not take keyboard focus (see Section 53, “Focus: routing keyboard input”). Use takefocus=True to add the menubutton to the focus traversal order.
+                Normalement, les boutons de menu n'obtiennet pas le focus lorsque l'utilisateur appuie sur la touche Tab (voir “Focus: routing keyboard input”). Utilisez ``takefocus=True`` pour qu'il puisse obtenir le focus comme cela.
         :arg text:
-                To display text on the menubutton, set this option to the string containing the desired text. Newlines ('\n') within the string will cause line breaks.
+                Pour afficher un texte sur le bouton de menu, configurez cette option avec le texte voulu donné sous la forme d'une chaîne de caractères. Utiliser le caractère spécial '\n' pour faire des sauts de ligne.
         :arg textvariable:
-                You can associate a control variable of class StringVar with this menubutton. Setting that control variable will change the displayed text. See Section 52, “Control variables: the values behind the widgets”.
+                Vous pouvez associée une variable de contrôle StringVar à ce bouton de menu par l'intermédiaire de cette option. Toute modification de sa valeur est répercutée sur le bouton et vice versa. Voir “Control variables: the values behind the widgets”.
         :arg underline:
-                Normally, no underline appears under the text on the menubutton. To underline one of the characters, set this option to the index of that character.
+                Set à souligner l'un des caractères du texte en précisant sa position (index) dans le texte. Par défaut, aucun caractère n'est souligné.
         :arg width:
                 Width of the menubutton in characters (not pixels!). If this option is not set, the label will be sized to fit its contents.
         :arg wraplength:
                 Normally, lines are not wrapped. You can set this option to a number of characters and all lines will be broken into pieces no longer than that number.
 
-Here is a brief example showing the creation of a menubutton and its associated menu with two checkboxes::
+Voici un court exemple qui illustre la création d'un bouton de menu et du menu associé composé de deux cases à cocher::
 
-    self.mb = tk.Menubutton(self, text='condiments',
+    mb = Menubutton(root, text='condiments',
                              relief=RAISED)
-    self.mb.grid()
+    mb.grid()
 
-    self.mb.menu = tk.Menu(self.mb, tearoff=0)
-    self.mb['menu'] = self.mb.menu
+    mb.menu = Menu(mb, tearoff=0)
+    mb['menu'] = mb.menu
 
-    self.mayoVar  = tk.IntVar()
-    self.ketchVar = tk.IntVar()
-    self.mb.menu.add_checkbutton(label='mayo',
-        variable=self.mayoVar)
-    self.mb.menu.add_checkbutton(label='ketchup',
-        variable=self.ketchVar)
+    mayoVar  = IntVar()
+    ketchVar = IntVar()
+    mb.menu.add_checkbutton(label='mayo',
+        variable=mayoVar)
+    mb.menu.add_checkbutton(label='ketchup',
+        variable=ketchVar)
 
-This example creates a menubutton labeled condiments. When clicked, two checkbuttons labeled mayo and ketchup will drop down. 
+Dans cet exemple, on crée un bouton de menu étiqueté "condiments". Lorsque qu'on clique dessus, deux cases à cocher étiqueté "mayo" et "ketchup" s'affiche en dessous. will drop down. 
