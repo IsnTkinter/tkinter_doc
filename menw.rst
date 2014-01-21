@@ -1,199 +1,220 @@
 .. _MENU:
 
-***************
-The Menu widget
-***************
+******************
+Le widget ``Menu``
+******************
 
-“Drop-down” menus une façon populaire to present the user with a number of choices, yet take up minimal space on the face of the application when the user is not making a choice.
+Les menus surgissant sont une façon populaire de présenter à l'utilisateur des choix possibles sans pour autant encombrer l'interface lorsque l'utilisateur n'est pas en train de faire un choix.
 
-        A menubutton is the part that always appears on the application.
+        Un bouton de menu, ``Menubutton``, est la partie visible d'un tel menu.
 
-        A menu is the list of choices that appears only after the user clicks on the menubutton.
+        Un menu, ``Menu``, est la liste des choix qui apparaîssent seulement après que l'utilisateur ait cliqué sur le bouton de menu.
 
-To select a choice, the user can drag the mouse from the menubutton down onto one of the choices. Alternatively, they can click and release the menubutton: the choices will appear and stay until the user clicks one of them.
+Pour faire une sélection, l'utilisateur peut faire un cliquer-glisser du bouton vers le choix. Il peut aussi, cliquer le bouton de menu: le menu apparaît et reste à l'écran tant que l'utilisateur n'a pas fait un choix en cliquant sur l'un d'eux.
 
-The Unix version of Tkinter (at least) supports “tear-off menus.” If you as the designer wish it, a dotted line will appear above the choices. The user can click on this line to “tear off” the menu: a new, separate, independent window appears containing the choices. 
+La version de Tkinter pour Unix (au moins) supporte les menus «amovibles». Si cette fonctionnalité est activée, une ligne en pointillé apparaît au-dessus des choix du menu. L'utilisateur peut cliquer sur cette ligne pour détacher le menu afin qu'il puisse être déplacé librement: une nouvelle fenêtre indépendante qui contient tous les choix du menu apparaît.
 
-Refer to Section 16, “The Menubutton widget”, below, to see how to create a menubutton and connect it to a menu widget. First let's look at the Menu widget, which displays the list of choices.
+Reportez vous à “The Menubutton widget”, below, pour voir comment créer un bouton de menu et connecter celui-ci à un menu. Mais attardons-nous avant sur le widget ``Menu`` qui sert à afficher la liste des choix possibles.
 
-The choices displayed on a menu may be any of these things:
+Les choix affichés sur un menu peuvent être:
 
-        A simple command: a text string (or image) that the user can select to perform some operation.
+        Une simple commande: une chaîne de caractères (ou une image) que l'utilisateur peut sélectionner pour réaliser une certaine opération.
 
-        A cascade: a text string or image that the user can select to show another whole menu of choices.
+        Une «cascade»: une chaîne de caractères ou une image que l'utilisateur peut sélectionner pour faire afficher un autre menu de choix.
 
-        A checkbutton (see Section 9, “The Checkbutton widget”).
+        Un texte à cocher «checkbutton» (voir “The Checkbutton widget”).
 
-        A group of radiobuttons (see Section 20, “The Radiobutton widget”). 
+        Un groupe de boutons «radio» (voir “The Radiobutton widget”). 
 
-To create a menu widget, you must first have created a Menubutton, which we will call mb:
+Pour créer un widget menu, vous devez avoir créé au préalable un bouton de menu ``Menubutton`` que nous écrirons ``mb``:
 
 .. py:class:: Menu(mb, option, ...)
 
-        This constructor returns the new Menu widget. Options include:
+        Ce constructeur retourne le nouveau widget Menu. Ses options incluent:
 
         :arg activebackground:
-                 The background color that will appear on a choice when it is under the mouse. See Section 5.3, “Colors”.
+                Couleur de fond utilisée pour le choix qui est survolé par la souris. Voir “Colors”.
         :arg activeborderwidth:
-                Specifies the width of a border drawn around a choice when it is under the mouse. Default is 1 pixel. For possible values, see Section 5.1, “Dimensions”.
+                Précise l'épaisseur de la bordure qui entoure le choix actuellement survolé par la souris. 1 pixel pas défaut. Voir “Dimensions”.
         :arg activeforeground:
-                The foreground color that will appear on a choice when it is under the mouse.
-        :arg bg: or background
-                The background color for choices not under the mouse.
-        :arg bd: or borderwidth
-                The width of the border around all the choices; see Section 5.1, “Dimensions”. The default is one pixel.
+                Couleur d'avant plan qui est utilisée pour le choix qui est survolé par la souris.
+        :arg bg: 
+                 (ou **background**) La couleur de fond utilisée pour les choix qui ne sont pas survolés par la souris.
+        :arg bd:
+               (ou **borderwidth**) L'épaisseur de la bordure qui entoure chaque item de choix. Voir “Dimensions”. 1 pixels par défaut.
         :arg cursor:
-                The cursor that appears when the mouse is over the choices, but only when the menu has been torn off. See Section 5.8, “Cursors”.
+                Le pointeur de souris utilisé lorsque la souris survole les choix du menu, mais seulement lorsque le menu a été arraché (détaché). Voir “Cursors”.
         :arg disabledforeground: 
-                The color of the text for items whose state is tk.DISABLED.
+                La couleur du texte pour les items de choix ayant l'état 'disabled'.
         :arg font:
-                The default font for textual choices. See Section 5.4, “Type fonts”.
-        :arg fg: or foreground
-                The foreground color used for choices not under the mouse.
+                La police de caractère utilisée pour afficher les textes des choix. Voir “Type fonts”.
+        :arg fg: 
+                 (ou **foreground**) La couleur d'avant plan utilisée pour colorer les choix qui ne sont pas sous le pointeur de la souris.
         :arg postcommand:
-                You can set this option to a procedure, and that procedure will be called every time someone brings up this menu.
+                Vous pouvez configurer cette option avec une fonction, et cette fonction sera appelée à chaque fois que qu'un utilisateur actualisera ce menu. brings up this menu.
         :arg relief:
-                The default 3-D effect for menus is relief=tk.RAISED. For other options, see Section 5.6, “Relief styles”.
+                La valeur par défaut de l'effet de relief pour les menus est ``relief='raised'``. Pour d'autres valeurs, voir “Relief styles”.
         :arg selectcolor:
-                Specifies the color displayed in checkbuttons and radiobuttons when they are selected.
+                Sert à préciser la couleur affichée pour les cases à cocher ou les boutons radio lorsqu'il sont sélectionnés.
         :arg tearoff:
-                Normally, a menu can be torn off: the first position (position 0) in the list of choices is occupied by the tear-off element, and the additional choices are added starting at position 1. If you set tearoff=0, the menu will not have a tear-off feature, and choices will be added starting at position 0.
+                Normalement, un menu peut être «arraché» (il occupe alors une zone qui peut être déplacée à l'écran indépendamment du bouton qui a servi à l'ouvrir): la première position (position 0) dans la liste des choix est occupée par «l'élément graphique d'arrachement» (l'élément de tear-off), et les autres choix sont ajoutés en partant de la position 1. Si ``tearoff=0``, le menu n'a plus d'élément graphique d'arrachement, et les choix sont ajoutés à partir de la position 0.
         :arg tearoffcommand:
-                If you would like your program to be notified when the user clicks on the tear-off entry in a menu, set this option to your procedure. It will be called with two arguments: the window ID of the parent window, and the window ID of the new tear-off menu's root window.
+                Si vous souhaitez que votre application soit avertie lorsque l'utilisateur clique sur l'élément graphique d'arrachement du menu, régler cette option avec une fonction qui sera appelée si l'arrachement a lieu. Cette fonction sera appelée avec deux arguments: l'identifiant de fenêtre de la fenêtre mère et l'identifiant de la fenêtre qui contient le menu «arraché».
         :arg title:
-                Normally, the title of a tear-off menu window will be the same as the text of the menubutton or cascade that lead to this menu. If you want to change the title of that window, set the title option to that string.
+                Normalement, le titre de la fenêtre qui contient le menu arraché est le texte du bouton de menu ou du titre de la cascade qui mène à ce menu. Si vous souhaitez changer le titre de cette fenêtre, régler cette option avec la chaîne de caractères correspondante.
 
-        These methods are available on Menu objects. The ones that create choices on the menu have their own particular options; see Section 15.1, “Menu item creation (coption) options”.
+        Les méthodes qui suivent sont communes à tous les widget ``Menu``. Celle qui servent à créer des items de choix ont leur propre jeu d'options; voir “Menu item creation (coption) options”.
 
-        .. py:method:: add(kind, coption, ...)
+         .. hlist::
+                :columns: 4
 
-        Add a new element of the given kind as the next available choice in this menu. The kind argument may be any of 'cascade', 'checkbutton', 'command', 'radiobutton', or 'separator'. Depending on the kind argument, this method is equivalent to .add_cascade(), .add_checkbutton(), and so on; refer to those methods below for details. 
+                * :py:meth:`~add`          
+                * :py:meth:`~add_cascade`
+                * :py:meth:`~add_checkbutton`
+                * :py:meth:`~add_command`
+                * :py:meth:`~add_radiobutton`
+                * :py:meth:`~add_separator`
+                * :py:meth:`~delete`
+                * :py:meth:`~entrycget`
+                * :py:meth:`~entryconfigure`
+                * :py:meth:`~index`
+                * :py:meth:`~insert_cascade`
+                * :py:meth:`~insert_checkbutton`
+                * :py:meth:`~insert_command`
+                * :py:meth:`~insert_radiobutton`
+                * :py:meth:`~insert_separator`
+                * :py:meth:`~invoke`
+                * :py:meth:`~post`
+                * :py:meth:`~type`
+                * :py:meth:`~yposition`
+
+        .. py:method:: add(genre, coption, ...)
+
+                Ajoute un nouvel item de choix du ``genre`` indiqué à la suite des choix existants. L'argument genre peut être ``'cascade'``, ``'checkbutton'``, ``'command'``, ``'radiobutton'``, ou ``'separator'``. En fonction du genre indiqué, cette méthode est équivalente à ``.add_cascade()``, ``.add_checkbutton()``, etc. Pour plus de détails, reportez-vous à ces méthodes données ci-dessous.
 
         .. py:method:: add_cascade(coption, ...)
 
-                Add a new cascade element as the next available choice in this menu. Use the menu option in this call to connect the cascade to the next level's menu, an object of type Menu. 
+                Ajoute un élément de type cascade à la liste des éléments de choix déjà présents dans ce menu. Servez-vous de l'option **menu** pour préciser l'objet menu du prochain niveau de menu.
 
         .. py:method:: add_checkbutton(coption, ...)
 
-                 Add a new checkbutton as the next available choice in self. The options allow you to set up the checkbutton much the same way as you would set up a Checkbutton object; see Section 15.1, “Menu item creation (coption) options”. 
+                 Ajoute un bouton à coche à la liste des élements de choix déjà présents dans ce menu. Les options vous permettront de régler cet item à peu près de la même façon qu'on configure une case à cocher ``Checkbutton``. Voir “Menu item creation (coption) options”. 
 
         .. py:method:: add_command(coption, ...)
 
-                 Add a new command as the next available choice in self. Use the label, bitmap, or image option to place text or an image on the menu; use the command option to connect this choice to a procedure that will be called when this choice is picked. 
+                 Ajoute une commande aux choix existants. Utilisez les options label, bitmap,our image pour placer du texte ou une image sur le menu; utiliser l'option command pour connecter cet élément à une fonction qui sera appelée lorsque cet élément est sélectionné.
 
         .. py:method:: add_radiobutton(coption, ...)
 
-                 Add a new radiobutton as the next available choice in self. The options allow you to set up the radiobutton in much the same way as you would set up a Radiobutton object; see Section 20, “The Radiobutton widget”. 
+                 Ajoute un bouton radio aux choix existants. Les options vous permettent de configurer un tel bouton à peu près de la même façon qu'un widget ``Radiobutton``; voir “The Radiobutton widget”. 
 
         .. py:method:: add_separator()
 
-                 Add a separator after the last currently defined option. This is just a ruled horizontal line you can use to set off groups of choices. Separators are counted as choices, so if you already have three choices, and you add a separator, the separator will occupy position 3 (counting from 0). 
+                 Ajoute un séparateur après le dernier choix courant du menu. Il s'agit juste d'une ligne horizontale qui peut servir à grouper des choix. Les séparateurs ont une position comme les autres choix, ainsi, si vous avez déjà trois choix et que vous ajoutez un séparateur, il occupera la position 3 (si on compte à partir de 0).
 
         .. py:method:: delete(index1, index2=None)
 
-                 This method deletes the choices numbered from index1 through index2, inclusive. To delete one choice, omit the index2 argument. You can't use this method to delete a tear-off choice, but you can do that by setting the menu object's tearoff option to 0. 
+                 Cette méthode supprime les choix du menu situé entre la position index1 jusqu'à la position index2 inclue. Pour supprimer un seul choix, il suffit d'omettre le deuxième argument. Vous ne pouvez pas utiliser cette méthode pour détruire le choix d'arrachement (tear-off), mais vous pouvez faire cela en mettant l'option **tearoff** du menu à 0.
 
         .. py:method:: entrycget(index, coption)
 
-                 To retrieve the current value of some coption for a choice, call this method with index set to the index of that choice and coption set to the name of the desired option. 
+                 Sert à récupérer la valeur courante d'une option du choix ayant la position index dans le menu. l'option est à fournir sous la forme d'une chaîne de caractères. 
 
         .. py:method:: entryconfigure(index, coption, ...)
 
-                 To change the current value of some coption for a choice, call this method with index set to the index of that choice and one or more coption=value arguments. 
+                 Pour modifier la valeur courante d'une ou de plusieurs options de l'élément de choix ayant la position index dans le menu, appeler cette méthode avec l'index adéquat et un ou plusieurs arguments de la forme ``coption=valeur``. 
 
         .. py:method:: index(i)
 
-                 Returns the position of the choice specified by index i. For example, you can use .index(tk.END) to find the index of the last choice (or None if there are no choices). 
+                 Retourne la position du choix indiqué via l'index i. Par exemple, vous pouvez utilisez  ``.index(tk.END)`` pour savoir quel est le numéro d'index du dernier choix. Retourne None si aucun choix n'est trouvé.
 
         .. py:method:: insert_cascade(index, coption, ...)
 
-                 Inserts a new cascade at the position given by index, counting from 0. Any choices after that position move down one. The options are the same as for .add_cascade(), above. 
+                 Insère une cascade à la position index, en partant de 0. Chaque choix situé après cette position est décalé vers le bas d'une unité. Les options sont les mêmes que pour la méthode ``.add_cascade()``, ci-dessus. 
 
         .. py:method:: insert_checkbutton(index, coption, ...)
 
-                 Insert a new checkbutton at the position specified by index. Options are the same as for .add_checkbutton(), above. 
+                 Insère un choix à cocher à la position index. Les options sont les mêmes que pour la méthode ``add_checkbutton()`` ci-dessus
 
         .. py:method:: insert_command(index, coption, ...)
 
-                 Insert a new command at position index. Options are the same as for .add_command(), above. 
+                 Insère un choix de type commande à la position index. Les options sont les mêmes que pour la méthode ``add_command()``, ci-dessus.
 
         .. py:method:: insert_radiobutton(index, coption, ...)
 
-                 Insert a new radiobutton at position index. Options are the same as for .add_radiobutton(), above. 
+                 Insère un choix de type bouton radio à la position index. Les options sont les mêmes que pour la méthode ``add_radiobutton()``, ci-dessu.
 
         .. py:method:: insert_separator(index)
 
-                 Insert a new separator at the position specified by index. 
+                 Insère un séparteur à la position index.
 
         .. py:method:: invoke(index)
 
-                 Calls the command callback associated with the choice at position index. If a checkbutton, its state is toggled between set and cleared; if a radiobutton, that choice is set. 
+                 Appelle la fonction de rappel associé à l'élément de choix situé à la position index. Si c'est un choix à cocher, son état est basculé entre actif ou inactif. Si c'est un choix de type bouton radio, le bouton est activé.
 
         .. py:method:: post(x, y)
 
-                 Display this menu at position (x, y) relative to the root window. 
+                 Affiche le menu à la position (x, y) relativement à la fenêtre principale.
 
         .. py:method:: type(index)
 
-                 Returns the type of the choice specified by index: either tk.CASCADE, tk.CHECKBUTTON, tk.COMMAND, tk.RADIOBUTTON, tk.SEPARATOR, or tk.TEAROFF. 
+                 Retourne le type du choix de position index: 'cascade', 'checkbutton', 'command', 'radiobutton', 'separator', ou 'tearoff'. 
 
         .. py:method:: yposition(n)
 
-                 For the nth menu choice, return the vertical offset in pixels relative to the menu's top. The purpose of this method is to allow you to place a popup menu precisely relative to the current mouse position.
+                 Retourne le décalage vertical en pixel relatif au haut du menu de l'élément de choix numéro ``n``. La raison d'être de cette méthode est de vous permettre de calculer précisément la position où placer un menu surgissant (popup) par rapport à la position courante de la souris.
 
-Menu item creation (coption) options
-====================================
+Options des items de choix d'un menu (coption)
+==============================================
 
- Wherever the menu methods described above allow a coption, you may apply a value to any of the option names below by using the option name as a keyword argument with the desired value. For example, to make a command's text appear with red letters, use “foreground='red'” as an option to the add_command method call.
+À chaque fois qu'une méthode de menu décrite plus haut possède un argument ``coption``, vous pouvez indiquer une valeur pour chaque nom d'option donné ci-dessous sous la forme ``coption=valeur``. Par exemple, pour créer un choix de type commande dont le texte est rouge, utiliser ``foreground='red'`` comme argument de la méthode ``add_command``.
 
-Menu item coption values
+Les options des items de choix de menu sont:
 
 accelerator 
-        To display an “accelerator” keystroke combination on the right side of a menu choice, use the option “accelerator=s” where s is a string containing the characters to be displayed. For example, to indicate that a command has Control-X as its accelerator, use the option “accelerator='^X'”. Note that this option does not actually implement the accelerator; use a keystroke binding to do that.
+        Pour indiquer qu'une combinaison de touches devrait déclencher (accélérer) le choix correspondant. Utilisez l'option ``accelerator=s`` où ``s`` est une chaîne de caractères qui sera affichée sur le côté droit du choix. Par exemple, pour indiquer qu'un choix de type command est déclenché par la combinaison Control-X, utilisez ``accelerator='^X'``. Notez bien que cette option n'implémente pas l'accélérateur; Il faudra réaliser un gestionnaire d'événement pour déclencher l'action.
 activebackground 
-        The background color used for choices when they are under the mouse.
+        La couleur d'arrière plan utilisée lorsque la souris survole le choix.
 activeforeground
-        The foreground color used for choices when they are under the mouse.
+        La couleur d'avant plan (texte) utilisée lorsque la souris survole le choix.
 background
-        The background color used for choices when they are not under the mouse. Note that this cannot be abbreviated as bg.
+        La couleur d'arrière plan utilisée lorsque la souris ne survole pas le choix. Notez qu'on ne peut pas utiliser l'abbréviation bg.
 bitmap
-        Display a bitmap for this choice; see Section 5.7, “Bitmaps”.
+        Affiche un bitmap pour figurer le choix; voir “Bitmaps”.
 columnbreak
-        Normally all the choices are displayed in one long column. If you set columnbreak=1, this choice will start a new column to the right of the one containing the previous choice.
-columnbreak 
-        Use option “columnbreak=True” to start a new column of choices with this choice.
+        Normalement tous les choix sont disposés les uns au dessous des autres (dans une longue colonne). Si ``columnbreak=1``, ce choix sera disposé à la droite de celui qui le précède (démarrant ainsi une nouvelle colonne).
 command
-        A procedure to be called when this choice is activated.
+        Une fonction de rappel qui sera appelée lorsque le choix est activé.
 compound 
-        If you want to display both text and a graphic (either a bitmap or an image) on a menu choice, use this coption to specify the location of the graphic relative to the text. Values may be any of tk.LEFT, tk.RIGHT, tk.TOP, tk.BOTTOM, tk.CENTER, or tk.NONE. For example, a value of “compound=tk.TOP” would position the graphic above the text.
+        Si vous souhaitez afficher à la fois du texte et un graphique (soit un bitmap soi une image) sur un choix de menu, utilisez cette option pour préciser la position du graphique relativement au texte. Les valeurs possibles sont 'left', 'right', 'top', 'bottom', 'center' ou 'none'. Par exemple, si compound='top', le graphique est placé au-dessus du texte.
 font
-        The font used to render the label text. See Section 5.4, “Type fonts”
+        La police de caractères utilisée pour l'étiquette. Voir “Type fonts”
 foreground
-        The foreground color used for choices when they are not under the mouse. Note that this cannot be abbreviated as fg.
+        La couleur d'avant plan du choix lorsque la souris ne le survole pas. Notez qu'il n'est pas possible d'utiliser l'abbréviation fg.
 hidemargin 
-        By default, a small margin separates adjacent choices in a menu. Use the coption “hidemargin=True” to suppress this margin. For example, if your choices are color swatches on a palette, this option will make the swatches touch without any other intervening color.
+        Par défaut, une petite marge sépare deux choix adjacents dans le menu. Utilisez ``hidemargin=True`` pour supprimer cette marge. Par exemple, si vos choix sont les couleurs d'une palette, cette option permet de réaliser une transition continue entre les couleurs.
 image
-        Display an image for this choice; see Section 5.9, “Images”.
+        Affiche une image pour ce choix; voir “Images”.
 label
-        The text string to appear for this choice.
+        La chaîne de caractères qui contient le texte à afficher pour ce choix.
 menu
-        This option is used only for cascade choices. Set it to a Menu object that displays the next level of choices.
+        Cette option est disponible uniquement pour les choix de type cascade. Configurez là avec un widget Menu qui sera chargé de contenir le prochain niveau de choix.
 offvalue
-        Normally, the control variable for a checkbutton is set to 0 when the checkbutton is off. You can change the off value by setting this option to the desired value. See Section 52, “Control variables: the values behind the widgets”.
+        Normalement, la variable de contrôle pour un choix à cocher est 0 si ce choix est désactivé. Vous pouvez modifier la valeur associé à l'état désactivé en en utilisant cette option. Voir “Control variables: the values behind the widgets”.
 onvalue
-        Normally, the control variable for a checkbutton is set to 1 when the checkbutton is on. You can change the on value by setting this option to the desired value.
+        Normalement, la variable de contrôle pour un choix à cocher est 1 si ce choix est activé. Vous pouvez modifer la valeur associée à l'état activé en utilisant cette option.
 selectcolor
-        Normally, the color displayed in a set checkbutton or radiobutton is red. Change that color by setting this option to the color you want; see Section 5.3, “Colors”.
+        Normalement, la couleur utilisée pour un ensemble de choix à cocher ou de boutons radio est rouge. Modifiez cette couleur en configurant cette option avec la couleur voulue; voir “Colors”.
 selectimage 
-        If you are using the image option to display a graphic instead of text on a menu radiobutton or checkbutton, if you use selectimage=I, image I will be displayed when the item is selected.
+        Si vous utilisez l'option image pour afficher un graphique à la place du texte d'un choix à cocher ou d'un bouton radio, en utilisant selectimage=I , l'image I sera affichée lorsque l'élément est sélectionné.
 state
-        Normally, all choices react to mouse clicks, but you can set state=tk.DISABLED to gray it out and make it unresponsive. This coption will be tk.ACTIVE when the mouse is over the choice.
+        Normalement, tous les choix réagissent aux clics souris, mais vous pouvez utiliser state='disabled' pour griser et rendre le choix courant insensible à la souris. Cette option prend la valeur 'active' lorsque la souris survole le choix.
 underline
-        Normally none of the letters in the label are underlined. Set this option to the index of a letter to underline that letter.
+        Normalement, aucun caractère de l'étiquette n'est souligné. Configurez cette option avec l'index du caractère que vous souhaitez souligner.
 value
-        Specifies the value of the associated control variable (see Section 52, “Control variables: the values behind the widgets”) for a radiobutton. This can be an integer if the control variable is an IntVar, or a string if the control variable is a StringVar.
+        Sert à préciser la valeur de la variable de contrôle associée à ce choix (voir “Control variables: the values behind the widgets”) pour un bouton radio. Vous pouvez utiliser un entier si la variable de contrôle est une ``IntVar``, ou une chaîne de caractères si c'est une ``StringVar``.
 variable
-        For checkbuttons or radiobuttons, this option should be set to the control variable associated with the checkbutton or group of radiobuttons. See Section 52, “Control variables: the values behind the widgets”. 
+        Pour les choix à cocher ou les choix de type bouton radio, cette option devrait être configurée en utilisant une variable de contrôle (partagée par un ensemble de boutons radio). Voir “Control variables: the values behind the widgets”. 
 
 Top-level menus
 ===============
