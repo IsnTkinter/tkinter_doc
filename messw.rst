@@ -15,34 +15,34 @@ Pour créer un nouveau message comme l'enfant d'une fenêtre ou d'un cadre nomm�
         :arg aspect: 
                 Utilisez cette option pour spécifier le rapport largeur sur hauteur en pourcentage. Par exemple, aspect=100 vous donnerait un message en forme de texte dans un carré; avec aspect=200, la zone de texte serait deux fois plus large que haute. La valeur par défaut est 150, c'est-à-dire que le texte apparaît dans une boîte 50% plus large que haute.
         :arg bg: or background 
-                La couleur de fond derrière le texte, voir la section 5.3 "Les couleurs".
+                La couleur de fond derrière le texte, voir la section 5.3, "Les couleurs".
         :arg bd: or borderwidth 
-                Largeur de la bordure autour du widget, voir la section 5.1 "Les dimensions". La valeur par défaut est de deux pixels. Cette option est visible uniquement lorsque l'option de relief n'est pas 'flat'.
+                Largeur de la bordure autour du widget, voir la section 5.1, "Les dimensions". La valeur par défaut est de deux pixels. Cette option est visible uniquement lorsque l'option de relief n'est pas 'flat'.
         :arg cursor: 
-                Specifies the cursor that appears when the mouse is over the widget; see Section 5.8, “Cursors”.
+                Définit le curseur qui s'affiche lorsque la souris est sur le widget, voir la section 5.8, "Le pointeur de la souris".
         :arg font: 
-                Specifies the font used to display the text in the widget; see Section 5.4, “Type fonts”.
+                Définit la police utilisée pour afficher le texte dans le widget, voir la section 5.4, "Les polices de caractère".
         :arg fg: or foreground 
-                Specifies the text color; see Section 5.3, “Colors”.
+                Définit la couleur du texte; voir la section 5.3, “Les couleurs”.
         :arg highlightbackground: 
-                Color of the focus highlight when the widget does not have focus. See Section 53, “Focus: routing keyboard input”.
+                Couleur de mise en valeur du focus quand le widget l’a perdu. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                Color shown in the focus highlight when the widget has the focus.
+                Couleur de mise en valeur du focus quand le widget l’a obtenu.
         :arg highlightthickness:
-                Thickness of the focus highlight.
+                Épaisseur de la ligne de mise en valeur du focus.
         :arg justify: 
-                Use this option to specify how multiple lines of text are aligned. Use justify=tk.LEFT to get a straight left margin; justify=tk.CENTER to center each line; and justify=tk.RIGHT to get a straight right margin.
+                Définit l’alignement de plusieurs lignes de texte: ‘left’ pour un alignement à gauche, ‘center’ pour centrer et ‘right’ pour un alignement à droite.
         :arg padx: 
-                Use this option to add extra space inside the widget to the left and right of the text. The value is in pixels.
+                Espace horizontal supplémentaire à insérer à gauche et à droite dans l’étiquette. Sa valeur est en pixels.
         :arg pady: 
-                Use this option to add extra space inside the widget above and below the text. The value is in pixels.
+                Espace vertical supplémentaire à insérer au-dessus et en dessous dans l’étiquette. Sa valeur est en pixels.
         :arg relief: 
-                This option specifies the appearance of the border around the outside of the widget; see Section 5.6, “Relief styles”. The default style is tk.FLAT.
+                Précise l’apparence de la bordure décorative autour de l’étiquette. Par défaut, vaut 'flat'; pour d’autres valeurs, voir la section 5.6, “Les styles de relief”.
         :arg takefocus: 
-                Normally, a Message widget will not acquire focus (see Section 53, “Focus: routing keyboard input”). Use takefocus=True to add the widget to the focus traversal list.
+                Normalement, un message n’obtient pas le focus; voir “Focus: routing keyboard input”. Utilisez takefocus=True pour ajouter le widget à la liste de traversée du foyer.
         :arg text: 
-                The value of this option is the text to be displayed inside the widget.
+                La valeur de cette option est le texte qui doit être affiché à l'intérieur du widget.
         :arg textvariable: 
-                If you would like to be able to change the message under program control, associate this option with a StringVar instance (see Section 52, “Control variables: the values behind the widgets”). The value of this variable is the text to be displayed. If you specify both text and textvariable options, the text option is ignored.
+                Pour pouvoir faire varier le texte affiché en même temps que la valeur d’une variable de contrôle de type StringVar, régler cette option avec cette variable. Voir “Control variables: the values behind the widgets”.  La valeur de cette variable est le texte à afficher. Si vous spécifiez les options text et textVariable, l'option text est ignorée.
         :arg width: 
-                Use this option to specify the width of the text area in the widget, in pixels. The default width depends on the displayed text and the value of the aspect option. 
+                Utilisez cette option pour spécifier la largeur de la zone de texte dans le widget, en pixels. La largeur par défaut dépend du texte affiché et de la valeur de l'option aspect.
