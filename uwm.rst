@@ -1,51 +1,52 @@
 .. _UNIVERSAL:
 
-************************
-Universal widget methods
-************************
+************************************
+Méthodes communes à tous les widgets
+************************************
 
- The methods are defined below on all widgets. In the descriptions, w can be any widget of any type.
+Les méthodes données ci-après sont communes à tous les widgets (composants graphiques). Dans les description, ``w`` désigne un widget de type arbitraire.
 
-.. py:method:: after(delay_ms, callback=None, \*args)
+.. py:method:: after(delai_ms, foncRapp=None, \*args)
 
-            Requests Tkinter to call function callback with arguments args after a delay of at least delay_ms milliseconds. There is no upper limit to how long it will actually take, but your callback won't be called sooner than you request, and it will be called only once.
+            Demande à Tkinter d'appeller la fonction de rappel ``foncRapp`` avec les arguments ``args`` après l'écoulement du délai ``delai_ms`` donné en millisecondes. Votre fonction de rappel ne peut pas être appelée avant ce délai (même si son appel effectif peut le dépasser) et elle ne sera appelée qu'une fois.
+            
+            Elle retourne un entier qui sert d'identifiant et qui peut être passé à la méthode ``after_cancel`` pour annuler la demande d'appel de ``foncRapp``.
 
-            This method returns an integer “after identifier” that can be passed to the .after_cancel() method if you want to cancel the callback.
-
-            If you do not pass a callback argument, this method waits delay_ms milliseconds, as in the .sleep() function of the standard Python time module. 
+            Si vous ne donnez aucune fonction de rappel, cette fonction arrête l'exécution du programme pendant la durée du délai indiqué (comme la fonction standard sleep du module time).
+            
 .. py:method:: after_cancel(id)
 
-    Cancels a request for callback set up earlier .after(). The id argument is the result returned by the original .after() call. 
+            Annule la demande d'appel d'une fonction après un certain délai définie par la méthode ``after``. L'argument id est l'identifiant numérique retourné lors de l'appel originel de la méthode ``after``.
 
-.. py:method:: after_idle(func, \*args)
+.. py:method:: after_idle(fonc, \*args)
 
-    Requests that Tkinter call function func with arguments args next time the system is idle, that is, next time there are no events to be processed. The callback will be called only once. If you want your callback to be called again, you must call the .after_idle method again. 
+            Demande à Tkinter d'appeler la fonction ``fonc`` avec les arguments ``args`` la prochaîne fois qu'il se trouvera en "sommeil", c'est à dire, la prochaîne fois qu'il n'aura plus aucun événement à traiter. La fonction fonc n'est appelée qu'une seule fois. Si vous souhaiter la rappeler, il faudra utiliser à nouveau cette méthode. Requests that Tkinter call function func with arguments args next time the system is idle, that is, next time there are no events to be processed. The callback will be called only once. If you want your callback to be called again, you must call the .after_idle method again. 
 
 .. py:method:: bell()
 
-    Makes a noise, usually a beep. 
+             Produit un son, généralement un bip. 
 
-.. py:method:: bind(sequence=None, func=None, add=None)
+.. py:method:: bind(sequence=None, evtGest=None, add=None)
 
-    This method is used to attach an event binding to a widget. See Section 54, “Events” for the overview of event bindings.
+             Cette méthode est utilisée pour attachée un gestionnaire d'événement (fonction) à la survenue d'un événement, précisé par sequence, sur le widget appelant (sur lequel cette méthode a été appliquée). Voir “Events” pour une vue d'ensemble sur le moyen de rendre votre application sensible aux actions de l'utilisateur.f
 
-    The sequence argument describes what event we expect, and the func argument is a function to be called when that event happens to the widget. If there was already a binding for that event for this widget, normally the old callback is replaced with func, but you can preserve both callbacks by passing add='+'. 
+             L'argument sequence sert à décrire le type d'événement (action de l'utilisateur) auquel il faut réagir par le moyen du gestionnaire evtGest, c'est à dire en appelant cette fonction lorsque survient l'événement surveillé sur le widget. Si une liaison avait déjà été définie sur ce widget, l'ancien gestionnaire d'événement est remplacé par le nouveau sauf si vous utilisez add='+':  les deux gestionnaires (ou plus) sont alors préservés.
 
 .. py:method:: bind_all(sequence=None, func=None, add=None)
 
-    Like .bind(), but applies to all widgets in the entire application. 
+             Similaire à la méthode bind(), mais s'applique à tous les widgets de l'application.
 
-.. py:method:: bind_class(className, sequence=None, func=None, add=None)
+.. py:method:: bind_class(type, sequence=None, func=None, add=None)
 
-    Like .bind(), but applies to all widgets named className (e.g., 'Button'). 
+             Similaire à la méthode ``bind()``, mais s'applique à tous les widget de type ``type`` (par exemple 'Button').
 
 .. py:method:: bindtags(tagList=None)
 
-    If you call this method, it will return the “binding tags” for the widget as a sequence of strings. A binding tag is the name of a window (starting with '.') or the name of a class (e.g., 'Listbox').
+             Si vous appelez cette méthode, elle vous retournera une marque (tag) "de liaison" pour le widget appelant comme une liste de chaînes de caractères. Une marque de liaison est le nom d'une fenêtre (qui débute par un '.') ou un type de widgtet (par exemple 'Listbox').If you call this method, it will return the “binding tags” for the widget as a sequence of strings. A binding tag is the name of a window (starting with '.') or the name of a class (e.g., 'Listbox').
 
-    You can change the order in which binding levels are called by passing as an argument the sequence of binding tags you want the widget to use.
+             Vous pouvez modifier l'ordre dans lequel les niveaux de liaison sont appelés en passant à la méthode la liste des marques de liaison qui vous souhaitez que le widget utilisent.les niveaux de liaison You can change the order in which binding levels are called by passing as an argument the sequence of binding tags you want the widget to use.
 
-    See Section 54, “Events” for a discussion of binding levels and their relationship to tags. 
+             Voir, “Events” pour une discussion sur les niveaux de liaison et leur relation avec les marques. for a discussion of binding levels and their relationship to tags. 
 
 .. py:method:: cget(option)
 
