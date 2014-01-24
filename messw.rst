@@ -1,23 +1,23 @@
 .. _MESSAGE:
 
 ******************
-The Message widget
+Les Messages Message
 ******************
 
- This widget is similar to the Label widget (see Section 12, “The Label widget”), but it is intended for displaying messages over multiple lines. All the text will be displayed in the same font; if you need to display text with more than one font, see Section 24, “The Text widget”.
+ Ce widget est semblable au widget Label (voir la section 12, «Les étiquettes"), mais il est destiné à l'affichage des messages sur plusieurs lignes. Tout le texte sera affiché dans la même police, si vous avez besoin d'afficher du texte avec plusieurs polices, voir la section 24, «Le widget texte".
 
-To create a new Message widget as the child of a root window or frame named parent:
+Pour créer un nouveau message comme l'enfant d'une fenêtre ou d'un cadre nommé parent:
 
 .. py:class:: Message(parent, option, ...)
 
-        This constructor returns the new Message widget. Options may be any of these:
+       Le constructeur renvoie le nouveau widget Message. Ses options sont:
 
         :arg aspect: 
-                Use this option to specify the ratio of width to height as a percentage. For example, aspect=100 would give you a text message fit into a square; with aspect=200, the text area would be twice as wide as high. The default value is 150, that is, the text will be fit into a box 50% wider than it is high.
+                Utilisez cette option pour spécifier le rapport largeur sur hauteur en pourcentage. Par exemple, aspect=100 vous donnerait un message en forme de texte dans un carré; avec aspect=200, la zone de texte serait deux fois plus large que haute. La valeur par défaut est 150, c'est-à-dire que le texte apparaît dans une boîte 50% plus large que haute.
         :arg bg: or background 
-                The background color behind the text; see Section 5.3, “Colors”.
+                La couleur de fond derrière le texte, voir la section 5.3 "Les couleurs".
         :arg bd: or borderwidth 
-                Width of the border around the widget; see Section 5.1, “Dimensions”. The default is two pixels. This option is visible only when the relief option is not tk.FLAT.
+                Largeur de la bordure autour du widget, voir la section 5.1 "Les dimensions". La valeur par défaut est de deux pixels. Cette option est visible uniquement lorsque l'option de relief n'est pas 'flat'.
         :arg cursor: 
                 Specifies the cursor that appears when the mouse is over the widget; see Section 5.8, “Cursors”.
         :arg font: 
