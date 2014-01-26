@@ -4,129 +4,134 @@
 Standardizing appearance and the option database
 ************************************************
 
-It's easy to apply colors, fonts, and other options to the widgets when you create them. However,
+Il est facile d'appliquer des couleurs, des polices de caractères et tout un tas d'option aux widgets lorsque vous les créer. Cependant,
 
-* if you want a lot of widgets to have the same background color or font, it's tedious to specify each option each time, and
+* Si vous souhaitez que plusieurs widgets aient la même couleur de fond ou la même police de caractères, il est laborieux d'indiquer à chaque fois la même option pour chaque widget, et
 
-* it's nice to let the user override your choices with their favorite color schemes, fonts, and other choices. 
+* il est sympathique de laisser l'utilisateur faire ses propres choix pour ces options, lesquelles surchargeront les valeurs choisies par défaut pour l'application.
 
-Accordingly, we use the idea of an option database to set up default option values.
+En conséquence, Tkinter utilise l'idée de base de données des options pour régler les valeurs d'options qui seront utilisées par défaut.
 
-* Your application can specify a file (such as the standard .Xdefaults file used by the X Window System) that contains the user's preferences. You can set up your application to read the file and tell Tkinter to use those defaults. See the section on the .option_readfile() method, above, in the section on Section 26, “Universal widget methods”, for the structure of this file.
+* Votre application pour utiliser un fichier (comme le fichier standard .Xdefaults utilisé par le système X Window) qui contient les préférences de l'utilisateur. Vous pouvez configurer votre application pour qu'elle liste ce fichier et qu'elle indique à Tkinter d'utiliser ses valeurs par défaut. Voir la section sur la méthode option_readfile() ci-dessous, in the section on Section 26, “Universal widget methods”, for the structure of this file.
 
-* Your application can directly specify defaults for one or many types of widgets by using the .option_add() method; see this method under Section 26, “Universal widget methods”. 
+* Votre application peut aussi préciser de nombreuses valeurs d'options pour un ou plusieurs types de widget en utilisant la méthode option_add(); see this method under Section 26, “Universal widget methods”. 
 
-Before we discuss how options are set, consider the problem of customizing the appearance of GUIs in general. We could give every widget in the application a name, and then ask the user to specify every property of every name. But this is cumbersome, and would also make the application hard to reconfigure—if the designer adds new widgets, the user would have to describe every property of every new widget.
+Avant d'expliquer la manière de configurer ces options, réfléchissons au problème de la personnalisation des interfaces graphiques en général. Nous pourrions donner à chaque widget de l'application un nom et demander à l'utilisateur de préciser les options pour chaque widget nommé. Mais cela serait très fastidieux et rendrait difficile la tâche de reconfiguration de l'application dans le cas où le designer ajouterait de nouveaux widgets: l'utilisateur devrait alors configurer complètement chaque nouveau composant.
 
-So, the option database allows the programmer and the user to specify general patterns describing which widgets to configure.
+Pour ces raisons, la base de données des options permet au programmeur et à l'utilisateur d'indiquer des schémas généraux pour décrire les widgets à configurer.
 
-These patterns operate on the names of the widgets, but widgets are named using two parallel naming schemes:
+Ces schémas opèrent sur les noms des widgets, mais les widgets sont nommés en utilisant deux schéma de nommage parallèles:
 
-a) Every widget has a class name. By default, the class name is the same as the class constructor: 'Button' for buttons, 'Frame' for a frame, and so on. However, you can create new classes of widgets, usually inheriting from the Frame class, and give them new names of your own creation. See Section 27.1, “How to name a widget class” for details.
+a) Chaque widget possède un nom de classe. Par défaut, ce nom de classe est le même que celui du constructeur: 'Button' pour les boutons, 'Frame' pour les cadres et ainsi de suite. Cependant, vous pouvez créer de nouvelles classes de widgets, ordinairement en héritant de la classe générale 'Frame' et en donnant un nom votre classe dérivée. Voir “How to name a widget class” pour des détails supplémentaires.
 
-b) You can also give any widget an instance name. The default name of a widget is usually a meaningless number (see Section 5.11, “Window names”). However, as with widget classes, you can assign a name to any widget. See the section Section 27.2, “How to name a widget instance” for details. 
+b) Vous pouvez aussi donner à chaque widget un nom d'instance. Par défaut, le nom d'un widget est un nombre sans signification particulière (voir “Window names”). Cependant, comme pour les classes de widget, vous pouvez donner un nom à n'importe quel widget. Voir “How to name a widget instance” pour plus de détails.
 
-Every widget in every application therefore has two hierarchies of names—the class name hierarchy and the instance name hierarchy. For example, a button embedded in a text widget which is itself embedded in a frame would have the class hierarchy Frame.Text.Button. It might also have an instance hierarchy something like .mainFrame.messageText.panicButton if you so named all the instances. The initial dot stands for the root window; see Section 5.11, “Window names” for more information on window path names.
+Ainsi, chaque widget de chaque application possède deux hiérarchies de noms: la hiérarchie des noms de classes et la hiérarchie des nom d'instances. Par exemple, un bouton qui fait partie d'un widget Text lui-même inclus dans un widget Frame (un cadre) aura comme nom hiérachique de classe Frame.Text.Button. Il peut aussi avoir un nom hiérachique d'instancei, quelquechose comme .mainFrame.messageText.panicButton si vous avez choisis ces noms pour chaque instance. Le point initial d'un tel nom se rapporte à la fenêtre principale (racine); voir “Window names” pour plus d'information sur les chemins de nommage des fenêtres. 
 
-The option database mechanism can make use of either class names or instance names in defining options, so you can make options apply to whole classes (e.g., all buttons have a blue background) or to specific instances (e.g., the Panic Button has red letters on it). After we look at how to name classes and instances, in Section 27.3, “Resource specification lines”, we'll discuss how the options database really works.
+Le mécanisme de la base de données des options peut se servir de l'un ou l'autre de ces systèmes de nommage (celui des classes ou celui des instances) pour définir les options. Vous pouvez ainsi appliquer un jeu d'options à une classe entière de widgets (par exemple, tous les boutons auront une couleur d'arrière plan bleu) ou à des instances spécifiques (par exemple, le bouton panique aura un texte en rouge). 
 
-How to name a widget class
-==========================
+Nous commencerons par décrire les moyens de donner un nom aux classes puis aux instances. Ensuite, nous décrirons le fonctionnement de la base de données des options dans “Resource specification lines”.
 
-For example, suppose that Jukebox is a new widget class that you have created. It's probably best to have new widget classes inherit from the Frame class, so to Tkinter it acts like a frame, and you can arrange other widgets such as labels, entries, and buttons inside it.
+Donner un nom à une classe de widget
+====================================
 
-You set the new widget's class name by passing the name as the class\_ option to the parent constructor in your new class's constructor. Here is a fragment of the code that defines the new class::
+Par exemple, supposons que Jukebox soit une nouvelle classe de widget que vous avez créé. Vous l'aurez probablement dérivé de la classe ``Frame`` de telle sorte que, pour Tkinter, son comportement général soit celui d'un cadre, dans lequel vous pouvez donc insérer et arranger d'autres widgets comme des étiquettes, des boîtes de saisie et des boutons.
 
-    class Jukebox(tk.Frame):
-        def __init__(self, master):
-            '''Constructor for the Jukebox class
-            '''
-            tk.Frame.__init__(self, master, class_='Jukebox')
-            self.__createWidgets()
+Vous configurez le nom de cette nouvelle classe de widget en l'indiquant à l'option class\_ du constructeur parent (celui de Frame dans cette exemple). Voici un fragment de code pour illuster la définition de cette nouvelle classe::
+
+    class Jukebox(Frame):
+        def __init__(self, parent):
+            '''Le constructeur de la classe Jukebox
+            '''i
+            # on appelle le constructeur de la classe Frame dont dérive celle-ci
+            Frame.__init__(self, parent, class_='Jukebox')
+            # on appelle une méthode privée pour la construction des autres widgets
+            # qui composent le Jukebox
+            self.__creerWidgets()
             ...
 
-To give an instance name to a specific widget in your application, set that widget's name option to a string containing the name.
+Pour donner un nom d'instance à un widget particulier de votre application, configurer son option name avec la chaîne qui contient le nom voulu.To give an instance name to a specific widget in your application, set that widget's name option to a string containing the name.
 
-How to name a widget instance
-=============================
+Donner un nom d'instance à un widget particulier
+================================================
 
-Here's an example of an instance name. Suppose you are creating several buttons in an application, and you want one of the buttons to have an instance name of panicButton. Your call to the constructor might look like this::
+Voici un exemple d'une instance nommé. Supposez que vous créer plusieur boutons pour l'application et que vous souhaitiez que l'un des boutons reçoive le nom d'instance panicButton. L'appel du constructeur pour cet instance devrait ressembler à cela::
 
-    self.panic = tk.Button(self, name='panicButton', text='Panic', ...)
+    panic = Button(root, name='panicButton', text='Panic', ...)
     
-Each line in an option file specifies the value of one or more options in one or more applications and has one of these formats::
+Chaque ligne d'un fichier d'options précise la valeur d'une ou de plusieurs options d'une ou de plusieurs applications. Une telle ligne est de l'une des formes suivantes::
 
-    app option-pattern: value
-    option-pattern: value
+    app option-pattern: valeur
+    option-pattern: valeur
 
-The first form sets options only when the name of the application matches app; the second form sets options for all applications.
+La première forme sert à configurer une ou plusieurs options pour une application particulière dont le nom est app; la deuxième forme configure une ou plusieurs options de toutes les applications qui utiliseront le fichier.
 
-For example, if your application is called xparrot, a line of the form::
+Par exemple, si votre application s'appelle pacman, une ligne de la forme::
 
-    xparrot*background: LimeGreen
+    pacman*background: LimeGreen
 
-sets all background options in the xparrot application to lime green. (Use the -name option on the command line when launching your application to set the name to 'xparrot'.)
+toutes les options background (couleur d'arrière plan) prendrons la valeur vert citron. (Utilisez l'option -name sur la ligne de commande au moment de lancer votre application pour lui donner le nom 'pacman'.)
 
-The option-pattern part has this syntax::
+La partie option-pattern possède la syntaxe suivante::
 
     {{*|.}name}...option
 
-That is, each option-pattern is a list of zero or more names, each of which is preceded by an asterisk or period. The last name in the series is the name of the option you are setting. Each of the rest of the names can be either:
+Ce qui veut dire que chaque option-pattern est une liste de 0 ou plusieurs noms, chacun desquels est précédé par une astérisk * ou par un point. Le dernier nom de la série est le nom de l'option que vous souhaitez configurer. Les autres noms peuvent être:
 
-* the name of a widget class (capitalized), or
+* Le nom d'une classe de widget (première lettre en majuscule), ou
 
-* the name of an instance (lowercased). 
+* le nom d'une instance (en minuscule). 
 
-The way the option patterns work is a little complicated. Let's start with a simple example::
+La manière dont le schéma d'option fonctionne un est un peu compliqué. Commençons avec un exemple simple::
 
     *font: times 24
 
-This line says that all font options should default to 24-point Times. The * is called the loose binding symbol, and means that this option pattern applies to any font option anywhere in any application. Compare this example::
+Cette ligne précise que l'option de police de caractères *font* sera par défaut une fonte Times de 24 point. Le symbole * signifie: appliquer cette valeur à toutes les options font de tous les widgets de toutes les applications. Comparez avec cet exemple::
 
     *Listbox.font: lucidatypewriter 14
 
-The period between Listbox and font is called the tight binding symbol, and it means that this rule applies only to font options for widgets in class Listbox.
+Ici, la règle vaut pour l'option font de tous les widgets de classe Listbox de toutes les applications.
 
-As another example, suppose your xparrot application has instances of widgets of class Jukebox. In order to set up a default background color for all widgets of that class Jukebox, you could put a line in your options file like this::
+Donnons encore un exemple. Supposez que votre application pacman possède des instances de widget de classe Jukebox. Si vous souhaitiez régler la couleur d'arrière plan de tous les widgets situé dans un widget arbitraire de classe Jukebox, vous pourriez préciser cela dans votre fichier d'option avec une ligne comme celle-ci::
 
-    xparrot*Jukebox*background: PapayaWhip
+    pacman*Jukebox*background: PapayaWhip
 
-The loose-binding (*) symbol between Jukebox and background makes this rule apply to any background option of any widget anywhere inside a Jukebox. Compare this option line::
+L'astérisk * situé entre Jukebox et background indique que la valeur (vert papaye) de l'option background doit être appliquée par défaut à tous les composants de tous les Jukebox de l'application pacman. Comparez encore avec cette ligne::
 
-    xparrot*Jukebox.background: NavajoWhite
+    pacman*Jukebox.background: NavajoWhite
 
-This rule will apply to the frame constituting the Jukebox widget itself, but because of the tight-binding symbol it will not apply to widgets that are inside the Jukebox widget.
+Cette règle ne s'appliquera qu'au cadre (Frame) dont dérive directement le widget Jukebox. Le point qui sépare Jukebox et background précise que la règle ne s'applique pas aux enfants du Jukebox.
 
-In the next section we'll talk about how Tkinter figures out exactly which option value to use if there are multiple resource specification lines that apply. 
+Dans la section suivante, nous parlerons de la manière précise avec laquelle Tkinter détermine quelle valeur d'option utiliser lorsqu'il rencontre plusieurs lignes de spécifications qui pourraient être appliquées.
 
-Rules for resource matching
-===========================
+Priorités des règles de spécifications
+======================================
 
-When you are creating a widget, and you don't specify a value for some option, and two or more resource specifications apply to that option, the most specific one applies.
+Lorsque vous créez un widget, que vous ne précisez pas les valeurs de certaines options et que plusieurs règles s'appliquent pour une option donnée, la règle la plus spécifique s'applique.
 
-For example, suppose your options file has these two lines::
+Par exemple, supposons que votre fichier d'options aient les deux lignes suivantes::
 
     *background: LimeGreen
     *Listbox*background: FloralWhite
 
-Both specifications apply to the background option in a Listbox widget, but the second one is more specific, so it will win.
+Les deux lignes s'appliquent à l'option background d'un widget Listbox, mais la deuxième est plus spécifique, c'est donc elle qui sera appliquée.
 
-In general, the names in a resource specification are a sequence n1, n2, n3, ..., o where each ni is a class or instance name. The class names are ordered from the highest to the lowest level, and o is the name of an option.
+En général, les noms d'une ligne de spécification forment une séquence n1, n2, n3, ..., o où chaque ni est un nom de classe ou d'instance. Les noms de classes sont ordonnés du plus haut niveau (hiérarchique) au plus bas et o est le nom d'une option.
 
-However, when Tkinter is creating a widget, all it has is the class name and the instance name of that widget.
+Cependant, lorsque Tkinter est en train de créer un widget, il ne dispose que du nom de classe et dun nom d'instance de ce widget.
 
-Here are the precedence rules for resource specifications:
+Voici les règles de priorité pour appliquer les spécifications:
 
-1) The name of the option must match the o part of the option-pattern. For example, if the rule is
+1) Le nom d'une option doit correspondre à la partie notée o du schéma d'option. Par exemple, si la règle est:The name of the option must match the o part of the option-pattern. For example, if the rule is
 
-   xparrot*indicatoron: 0
+   ``pacman*indicatoron: 0``
 
-   this will match only options named indicatoron.
+   la correspondance n'aura lieu que pour l'option indicatoron.
 
-2) The tight-binding operator (.) is more specific than the loose-binding operator (*). For example, a line for \*Button.font is more specific than a line for \*Button*font.
+2) L'opérateur point (.) est plus spécifique que l'opérateur astérisk (*). Par exemple, une ligne comme ``*Button.font`` est plus spécifique qu'une ligne ``*Button*font``.
 
-3) References to instances are more specific than references to classes. For example, if you have a button whose instance name is panicButton, a rule for \*panicButton*font is more specific than a rule for \*Button\*font.
+3) Les référnece à des instances sont plus spécifiques que les référence à des classes. Par exemple, si vous avez un bouton dont le nom d'instance est panicButton, la règle ``*panicButton*font`` est plus spécifique que la règle ``*Button\*font``.
 
-4) A rule with more levels is more specific. For example, a rule for \*Button*font is more specific than a rule for \*font.
+4) Plus une règle a de niveau plus elle est spécifique. Par exemple, la règle ``*Button*font`` est plus spécifique que la règle ``*font``.
 
-5) If two rules have same number of levels, names earlier in the list are more specific than later names. For example, a rule for xparrot*font is more specific than a rule for \*Button*font. 
+5) Si deux règle ont le même nombre de niveaux, les noms qui apparaîssent plus tôt dans la liste sont plus spécifiques que ceux qui apparaîssent plus tard. Par exemple, la règle ``xparrot*font`` est plus spécifique que la règle ``*Button*font``. 
