@@ -1,7 +1,7 @@
 .. _MESSAGE:
 
 ******************
-Les Messages Message
+Les Messages ``Message``
 ******************
 
  Ce widget est semblable au widget Label (voir la section 12, «Les étiquettes"), mais il est destiné à l'affichage des messages sur plusieurs lignes. Tout le texte sera affiché dans la même police, si vous avez besoin d'afficher du texte avec plusieurs polices, voir la section 24, «Le widget texte".
