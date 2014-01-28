@@ -12,7 +12,7 @@ Pour créer un nouveau widget OptionMenu en tant qu'enfant d'une fenêtre ou un 
 
 .. py:class:: OptionMenu(parent, variable, choix1, choix2, ...)
 
-        Le constructeur renvoie le nouveau widget OptionMenu. La variable est une instance de la classe StringVar (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets") qui est associée au widget, et les arguments restants sont les choix à afficher dans le widget sous forme de chaînes.
+        Ce constructeur renvoie le nouveau widget OptionMenu. La variable est une instance de la classe StringVar (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets") qui est associée au widget, et les arguments restants sont les choix à afficher dans le widget sous forme de chaînes.
 
         L'illustration ci-dessus a été créée avec cet extrait de code
         
