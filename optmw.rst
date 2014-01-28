@@ -1,20 +1,20 @@
 .. _OPTIONMENU:
 
 *********************
-The OptionMenu widget
+Les options d'un menu ``OptionMenu``
 *********************
 
- The purpose of this widget is to offer a fixed set of choices to the user in a drop-down menu.
+ Le but de ce widget est d'offrir un ensemble fixe de choix à l'utilisateur dans un menu déroulant.
 
-The illustrations above shows an OptionMenu in two states. The left-hand example shows the widget in its initial form. The right-hand example shows how it looks when the mouse has clicked on it and dragged down to the 'boat' choice.
+Les illustrations ci-dessus montrent un OptionMenu dans deux états. L'exemple de gauche montre le widget dans sa forme initiale. L'exemple de droite montre à quoi il ressemble lorsqu'avec la souris on a cliqué dessus et qu'on a choisi 'boat'.
 
-To create a new OptionMenu widget as the child of a root window or frame named parent:
+Pour créer un nouveau widget OptionMenu en tant qu'enfant d'une fenêtre ou un cadre nommé parent:
 
-.. py:class:: OptionMenu(parent, variable, choice1, choice2, ...)
+.. py:class:: OptionMenu(parent, variable, choix1, choix2, ...)
 
-        This constructor returns the new OptionMenu widget. The variable is a StringVar instance (see Section 52, “Control variables: the values behind the widgets”) that is associated with the widget, and the remaining arguments are the choices to be displayed in the widget as strings.
+        Le constructeur renvoie le nouveau widget OptionMenu. La variable est une instance de la classe StringVar (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets") qui est associée au widget, et les arguments restants sont les choix à afficher dans le widget sous forme de chaînes.
 
-        The illustration above was created with this code snippet
+        L'illustration ci-dessus a été créée avec cet extrait de code
         
         .. code-block:: python
 
@@ -24,4 +24,4 @@ To create a new OptionMenu widget as the child of a root window or frame named p
                 self.om = tk.OptionMenu(self, self.v, \*optionList)
 
 
-        To find out which choice is currently selected in an OptionMenu widget, the .get() method on the associated control variable will return that choice as a string. 
+        Pour savoir quel choix est sélectionné dans un widget OptionMenu, la méthode .get() sur la variable de contrôle associée retournera ce choix comme une chaîne.
