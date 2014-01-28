@@ -14,7 +14,7 @@ Pour faire une sélection, l'utilisateur peut faire un cliquer-glisser du bouton
 
 La version de Tkinter pour Unix (au moins) supporte les menus «amovibles». Si cette fonctionnalité est activée, une ligne en pointillé apparaît au-dessus des choix du menu. L'utilisateur peut cliquer sur cette ligne pour détacher le menu afin qu'il puisse être déplacé librement: une nouvelle fenêtre indépendante qui contient tous les choix du menu apparaît.
 
-Reportez vous à “The Menubutton widget”, below, pour voir comment créer un bouton de menu et connecter celui-ci à un menu. Mais attardons-nous avant sur le widget ``Menu`` qui sert à afficher la liste des choix possibles.
+Reportez vous à “Les boutons de menu”, ci-dessous, pour voir comment créer un bouton de menu et connecter celui-ci à un menu. Mais attardons-nous avant sur le widget ``Menu`` qui sert à afficher la liste des choix possibles.
 
 Les choix affichés sur un menu peuvent être:
 
@@ -22,9 +22,9 @@ Les choix affichés sur un menu peuvent être:
 
 * Une « **cascade** »: une chaîne de caractères ou une image que l'utilisateur peut sélectionner pour faire apparaître un sous menu.
 
-* Un **choix  à cocher** «checkbutton» (voir “The Checkbutton widget”).
+* Un **choix à cocher** «checkbutton» (voir “Les cases à cocher”).
 
-* Un groupe de **boutons «radio»** (voir “The Radiobutton widget”). 
+* Un groupe de **boutons radio** «radiobutton» (voir “Les boutons radio”). 
 
 Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de menu ``Menubutton`` que nous écrirons ``mb`` (à moins que vous ne souhaitiez créer une barre de menu, voir ...):
 
@@ -33,7 +33,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
         Ce constructeur retourne le nouveau widget Menu. Ses options incluent:
 
         :arg activebackground:
-                Couleur de fond utilisée pour le choix qui est survolé par la souris. Voir “Colors”.
+                Couleur de fond utilisée pour le choix qui est survolé par la souris. Voir “Les couleurs”.
         :arg activeborderwidth:
                 Précise l'épaisseur de la bordure qui entoure le choix actuellement survolé par la souris. 1 pixel pas défaut. Voir “Dimensions”.
         :arg activeforeground:
@@ -43,7 +43,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
         :arg bd:
                (ou **borderwidth**) L'épaisseur de la bordure qui entoure chaque item de choix. Voir “Dimensions”. 1 pixels par défaut.
         :arg cursor:
-                Le pointeur de souris utilisé lorsque la souris survole les choix du menu, mais seulement lorsque le menu a été «détaché». Voir “Cursors”.
+                Le pointeur de souris utilisé lorsque la souris survole les choix du menu, mais seulement lorsque le menu a été «détaché». Voir “Le pointeur de la souris”.
         :arg disabledforeground: 
                 La couleur du texte pour les items de choix ayant l'état 'disabled'.
         :arg font:
