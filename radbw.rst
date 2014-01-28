@@ -1,28 +1,28 @@
 .. _RADIOBUTTON:
 
 **********************
-The Radiobutton widget
+Les boutons radio ``Radiobutton``
 **********************
 
-Radiobuttons are sets of related widgets that allow the user to select only one of a set of choices. Each radiobutton consists of two parts, the indicator and the label:
+Les boutons radio sont des ensembles de widgets connexes qui permettent à l'utilisateur de sélectionner un seul d'un ensemble de choix. Chaque bouton radio se compose de deux parties, l'indicateur et l'étiquette:
 
-    The indicator is the diamond-shaped part that turns red in the selected item.
+    L'indicateur est la partie en forme de losange qui vire au rouge à l'élément sélectionné.
 
-    The label is the text, although you can use an image or bitmap as the label.
+    L'étiquette est le texte, mais vous pouvez utiliser une image bitmap en guise d'étiquette.
 
-    If you prefer, you can dispense with the indicator. This makes the radiobuttons look like “push-push” buttons, with the selected entry appearing sunken and the rest appearing raised.
+    Si vous préférez, vous pouvez vous passer de l'indicateur. Les boutons radio ressemblent alors à des boutons "push-push", avec l'entrée sélectionnée apparaissant enfoncée et les autres entrées apparaissant soulevées.
 
-    To form several radiobuttons into a functional group, create a single control variable (see Section 52, “Control variables: the values behind the widgets”, below), and set the variable option of each radiobutton to that variable.
+    Pour réunir plusieurs boutons radio dans un groupe fonctionnel, créer une variable de contrôle unique (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets", ci-dessous), et réglez l'option variable de chaque bouton radio à cette variable.
 
-    The control variable can be either an IntVar or a StringVar. If two or more radiobuttons share the same control variable, setting any of them will clear the others.
+    La variable de contrôle peut être soit un IntVar, soit un StringVar. Si deux ou plusieurs boutons radio partagent la même variable de contrôle, régler l'un d'entre eux remplacera le réglage des autres.
 
-    Each radiobutton in a group must have a unique value option of the same type as the control variable. For example, a group of three radiobuttons might share an IntVar and have values of 0, 1, and 99. Or you can use a StringVar control variable and give the radiobuttons value options like 'too hot', 'too cold', and 'just right'. 
+    Chaque bouton radio dans un groupe doit avoir une unique option de valeur du même type que la variable de contrôle. Par exemple, un groupe de trois boutons radio pourrait partager un IntVar et avoir pour valeurs 0, 1 et 99. Ou vous pouvez utiliser une variable de contrôle StringVar et donner aux boutons radio comme options de valeur 'trop chaud', 'trop froid' et 'correct'.
 
-To create a new radiobutton widget as the child of a root window or frame named parent:
+Pour créer un nouveau widget bouton radio en tant qu'enfant d'une fenêtre ou d'un cadre nommé parent:
 
 .. py:class:: Radiobutton(parent, option, ...)
 
-        This constructor returns the new Radiobutton widget. Options:
+        Ce constructeur renvoie le nouveau widget Radiobutton. Les options sont:
 
         :arg activebackground:
                 The background color when the mouse is over the radiobutton. See Section 5.3, “Colors”.
