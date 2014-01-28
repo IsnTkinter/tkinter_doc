@@ -1,7 +1,7 @@
 .. _CANEVAS:
 
 ************************
-Les Canevas (``Canvas``)
+Les Canevas ``Canvas``
 ************************
 
 Un canevas est une zone rectangulaire destinée à contenir des dessins ou d'autres figures complexes. Vous pouvez y placer des graphiques, du texte, des composants graphiques (*widgets*) ou des cadres (*frames*). Veuillez consulter les sections suivantes pour les méthodes qui servent à créer de tels objet sur un canevas:
