@@ -1,7 +1,7 @@
 .. _APPEARANCE:
 
 ************************************************
-Standardizing appearance and the option database
+Normaliser l'apparence et les options de la base de données
 ************************************************
 
 Il est facile d'appliquer des couleurs, des polices de caractères et tout un tas d'option aux widgets lorsque vous les créer. Cependant,
