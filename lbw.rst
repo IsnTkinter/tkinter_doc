@@ -1,89 +1,73 @@
 .. _LISTBOX:
 
-******************
-The Listbox widget
-******************
+*********************
+Le widget ``Listbox``
+*********************
 
-The purpose of a listbox widget is to display a set of lines of text. Generally they are intended to allow the user to select one or more items from a list. All the lines of text use the same font. If you need something more like a text editor, see Section 24, “The Text widget”.
+Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à “The Text widget”.
 
-To create a new listbox widget inside a root window or frame parent:
+Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un cadre désigné par ``parent``:
 
 .. py:class:: Listbox(parent, option, ...)
 
-        This constructor returns the new Listbox widget. Options:
+        Ce constructeur retourne la nouvelle liste de sélection créée. Ses options incluent:
 
         :arg activestyle:
-                This option specifies the appearance of the active line. It may have any of these values:
-                'underline': The active line is underlined. This is the default option.
-
-                'dotbox': The active line is enclosed in a dotted line on all four sides. 
-
-                'none': The active line is given no special appearance.
-
-        :arg bg: or background 
-                The background color in the listbox.
-        :arg bd: or borderwidth 
-                The width of the border around the listbox. Default is two pixels. For possible values, Voir :ref:`dimensions`.
+                Cette option sert à préciser l'apparence de la ligne active. Elle peut prendre l'une de ces valeurs: ``'underline'`` - la ligne active est souslignée (valeur par défaut) ; ``'dotbox'`` - La ligne active est mise en valeur par une ligne pointillée ; ``'none'`` - aucune mise en valeur.
+        :arg bg: 
+                (ou *background*) La couleur de fond de la liste de sélection.
+        :arg bd: 
+                (ou *borderwidth*) La largeur de la bordure de la liste de sélection. 2 pixels par défaut. Pour les valeurs possibles, voir :ref:`dimensions`.
         :arg cursor: 
-                The cursor that appears when the mouse is over the listbox. Voir :ref:`pointeurs`.
+                La cursor utilisée lorsque la souris survole le widget. Voir :ref:`pointeurs`.
         :arg disabledforeground: 
-                The color of the text in the listbox when its state is tk.DISABLED.
+                La couleur du texte lorsque l'état du widget est ``'disabled'``.
         :arg exportselection: 
-                By default, the user may select text with the mouse, and the selected text will be exported to the clipboard. To disable this behavior, use exportselection=0.
+                Par défaut, l'utilisateur peut sélectionner le texte à la souris qui est alors copier dans le presse-papier. Pour désactiver ce comportement, utiliser ``exportselection=0``.
         :arg font: 
-                The font used for the text in the listbox. Voir :ref:`polices`.
-        :arg fg: or foreground 
-                The color used for the text in the listbox. Voir :ref:`couleurs`.
+                La police de caractère utilisée pour le texte de la liste de sélection. Voir :ref:`polices`.
+        :arg fg: 
+                (ou *foreground*) La couleur utilisée pour le texte. Voir :ref:`couleurs`.
         :arg height: 
-                Number of lines (not pixels!) shown in the listbox. Default is 10.
+                Nombre de lignes (pas en pixels!) montrées dans la liste de sélection. 10 par défaut.
         :arg highlightbackground: 
-                Color of the focus highlight when the widget does not have focus. See Section 53, “Focus: routing keyboard input”.
+                Couleur de la ligne de focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                Color shown in the focus highlight when the widget has the focus.
+                Couleur de la ligne de focus lorsque le widget l'obtient.
         :arg highlightthickness: 
-                Thickness of the focus highlight.
+                Epaisseur de la ligne de focus.
         :arg listvariable:
-                A StringVar that is connected to the complete list of values in the listbox (see Section 52, “Control variables: the values behind the widgets”.
-                If you call the .get() method of the listvariable, you will get back a string of the form "('v0', 'v1', ...)", where each vi is the contents of one line of the listbox.
-                To change the entire set of lines in the listbox at once, call .set(s) on the listvariable, where s is a string containing the line values with spaces between them.
-                For example, if listCon is a StringVar associated with a listbox's listvariable option, this call would set the listbox to contain three lines:
-                listCon.set('ant bee cicada')
-                This call would return the string "('ant', 'bee', 'cicada')":
-                listCon.get()
+                Une ``StringVar`` qui est associée à la liste de sélection dans son ensemble (Voir “Control variables: the values behind the widgets”. L'appel de la méthode get() de cette variable de contrôle retourne une chaîne de la forme ``"('t0', 't1', ...)"`` où chaque ti est le contenu d'une ligne de la boîte de sélection. Pour modifier toutes les lignes de la boîte, appelez la méthode set(s) sur la boîte, où s est une chaîne qui contient les valeurs de chaque ligne séparés avec des espaces entre elles. Par exemple, si ``listCon`` est une ``StringVar`` associé à l'option *listvariable* d'une boîte de sélection, l'appel ``listCon.set('un deux trois')`` remplira la boîte avec trois lignes et l'appel ``listCon.get()`` retournera ``"('un', 'deux', 'trois')"``.
         :arg relief: 
-                Selects three-dimensional border shading effects. The default is tk.SUNKEN. For other values, Voir :ref:`reliefs`.
+                Sert à régler le relief de la bordure. 'sunken' par défaut. Pour d'autres valeurs, voir :ref:`reliefs`.
         :arg selectbackground: 
-                The background color to use displaying selected text.
+                La couleur de fond utilisée pour la ligne sélectionnée.
         :arg selectborderwidth: 
-                The width of the border to use around selected text. The default is that the selected item is shown in a solid block of color selectbackground; if you increase the selectborderwidth, the entries are moved farther apart and the selected entry shows tk.RAISED relief (Voir :ref:`reliefs`).
+                L'épaisseur de la bordure de la ligne de texte sélectionnée. 0 par défaut. Elle est utilisée pour produire un effet de relief 'raised' plus ou moins fort autour du texte sélectionné (Voir :ref:`reliefs`).
         :arg selectforeground: 
-                The foreground color to use displaying selected text.
-        :arg selectmode: 
-                Determines how many items can be selected, and how mouse drags affect the selection:
-                        tk.BROWSE: Normally, you can only select one line out of a listbox. If you click on an item and then drag to a different line, the selection will follow the mouse. This is the default.
-                        tk.SINGLE: You can only select one line, and you can't drag the mouse—wherever you click button 1, that line is selected.
-                        tk.MULTIPLE: You can select any number of lines at once. Clicking on any line toggles whether or not it is selected.
-                        tk.EXTENDED: You can select any adjacent group of lines at once by clicking on the first line and dragging to the last line. 
+                La couleur du texte sélectionné.
+        :arg selectmode:
+                Détermine le nombre d'items qu'il est possible de sélectionner et la gestion du cliquer-glisser sur la sélection. 'browse' -  Valeur par défaut, le cliquer-glisser modifie la sélection. 'single' - Une seule ligne peut être sélectionné et il n'est pas possible de déplacer la sélection par cliquer-glissé. 'multiple' - Vous pouvez sélectionner plusieurs ligne à la fois. Le fait de cliquer sur une ligne déjà sélectionnée la déselectionne et vice versa. 'extended' - vous pouvez sélectionner des lignes adjacentes par cliquer-glissé. 
         :arg state: 
-                By default, a listbox is in the tk.NORMAL state. To make the listbox unresponsive to mouse events, set this option to tk.DISABLED.
+                Par défaut, une liste de sélection est dans l'état 'normal'. Pour désactiver la liste relativement à la souris, mettre la valeur 'disabled'.
         :arg takefocus: 
-                Normally, the focus will tab through listbox widgets. Set this option to 0 to take the widget out of the sequence. See Section 53, “Focus: routing keyboard input”.
+                Ce widget obtient le focus normalement. Mettre 0 pour sortir ce widget de le liste du traversée du focus. Voir “Focus: routing keyboard input”.
         :arg width: 
-                The width of the widget in characters (not pixels!). The width is based on an average character, so some strings of this length in proportional fonts may not fit. The default is 20.
+                La largeur du widget mesurée en caractères (non en pixels). La largeur effective est basée sur la largeur moyenne des caractères de la fonte utilisée. 20 par défaut.
         :arg xscrollcommand: 
-                If you want to allow the user to scroll the listbox horizontally, you can link your listbox widget to a horizontal scrollbar. Set this option to the .set method of the scrollbar. See Section 14.1, “Scrolling a Listbox widget” for more on scrollable listbox widgets.
+                Si vous souhaitez que l'utilisateur puisse faire défiler la liste horizontalement, vous pouvez lier votre liste de sélection à une barre de défilement horizontale. Configurer cette option avec la méthode set() de la barre de défilement. Voir “Scrolling a Listbox widget” pour plus d'informations.
         :arg yscrollcommand: 
-                If you want to allow the user to scroll the listbox vertically, you can link your listbox widget to a vertical scrollbar. Set this option to the .set method of the scrollbar. See Section 14.1, “Scrolling a Listbox widget”.
+                Similaire à l'option précédente mais pour un défilement vertical.
 
-        A special set of index forms is used for many of the methods on listbox objects:
+        Les méthodes des listes de sélection utilisent fréquement des indexes:
 
-            If you specify an index as an integer, it refers to the line in the listbox with that index, counting from 0.
+        * If you specify an index as an integer, it refers to the line in the listbox with that index, counting from 0.
 
-            Index tk.END refers to the last line in the listbox.
+        * Index tk.END refers to the last line in the listbox.
 
-            Index tk.ACTIVE refers to the selected line. If the listbox allows multiple selections, it refers to the line that was last selected.
+        * Index tk.ACTIVE refers to the selected line. If the listbox allows multiple selections, it refers to the line that was last selected.
 
-            An index string of the form '@x,y' refers to the line closest to coordinate (x,y) relative to the widget's upper left corner. 
+         * An index string of the form '@x,y' refers to the line closest to coordinate (x,y) relative to the widget's upper left corner. 
 
         Methods on Listbox objects include:
 
