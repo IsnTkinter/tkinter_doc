@@ -4,7 +4,7 @@
 Le widget ``Listbox``
 *********************
 
-Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à “The Text widget”.
+Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de lignes de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à “The Text widget”.
 
 Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un cadre désigné par ``parent``:
 
@@ -15,9 +15,9 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         :arg activestyle:
                 Cette option sert à préciser l'apparence de la ligne active. Elle peut prendre l'une de ces valeurs: ``'underline'`` - la ligne active est souslignée (valeur par défaut) ; ``'dotbox'`` - La ligne active est mise en valeur par une ligne pointillée ; ``'none'`` - aucune mise en valeur.
         :arg bg: 
-                (ou *background*) La couleur de fond de la liste de sélection.
+                (ou **background**) La couleur de fond de la liste de sélection.
         :arg bd: 
-                (ou *borderwidth*) La largeur de la bordure de la liste de sélection. 2 pixels par défaut. Pour les valeurs possibles, voir :ref:`dimensions`.
+                (ou **borderwidth**) La largeur de la bordure de la liste de sélection. 2 pixels par défaut. Pour les valeurs possibles, voir :ref:`dimensions`.
         :arg cursor: 
                 La cursor utilisée lorsque la souris survole le widget. Voir :ref:`pointeurs`.
         :arg disabledforeground: 
@@ -27,7 +27,7 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         :arg font: 
                 La police de caractère utilisée pour le texte de la liste de sélection. Voir :ref:`polices`.
         :arg fg: 
-                (ou *foreground*) La couleur utilisée pour le texte. Voir :ref:`couleurs`.
+                (ou **foreground**) La couleur utilisée pour le texte. Voir :ref:`couleurs`.
         :arg height: 
                 Nombre de lignes (pas en pixels!) montrées dans la liste de sélection. 10 par défaut.
         :arg highlightbackground: 
@@ -35,41 +35,41 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         :arg highlightcolor: 
                 Couleur de la ligne de focus lorsque le widget l'obtient.
         :arg highlightthickness: 
-                Epaisseur de la ligne de focus.
+                Épaisseur de la ligne de focus.
         :arg listvariable:
-                Une ``StringVar`` qui est associée à la liste de sélection dans son ensemble (Voir “Control variables: the values behind the widgets”. L'appel de la méthode get() de cette variable de contrôle retourne une chaîne de la forme ``"('t0', 't1', ...)"`` où chaque ti est le contenu d'une ligne de la boîte de sélection. Pour modifier toutes les lignes de la boîte, appelez la méthode set(s) sur la boîte, où s est une chaîne qui contient les valeurs de chaque ligne séparés avec des espaces entre elles. Par exemple, si ``listCon`` est une ``StringVar`` associé à l'option *listvariable* d'une boîte de sélection, l'appel ``listCon.set('un deux trois')`` remplira la boîte avec trois lignes et l'appel ``listCon.get()`` retournera ``"('un', 'deux', 'trois')"``.
+                Une ``StringVar`` qui est associée à la liste de sélection dans son ensemble (Voir “Control variables: the values behind the widgets”). L'appel de la méthode ``get()`` de cette variable de contrôle retourne une chaîne de la forme ``"('t0', 't1', ...)"`` où chaque ti est le contenu d'une ligne de la boîte de sélection. Pour modifier toutes les lignes de la boîte, appelez la méthode ``set(s)`` sur la variable de contrôle, où s est une chaîne qui contient les valeurs de chaque ligne séparées avec des espaces. Par exemple, si ``listCon`` est une ``StringVar`` associé à l'option **listvariable** d'une boîte de sélection, l'appel ``listCon.set('un deux trois')`` remplira la boîte avec trois lignes et l'appel ``listCon.get()`` retournera ``"('un', 'deux', 'trois')"``.
         :arg relief: 
-                Sert à régler le relief de la bordure. 'sunken' par défaut. Pour d'autres valeurs, voir :ref:`reliefs`.
+                Sert à régler le relief de la bordure. ``'sunken'`` par défaut. Pour d'autres valeurs, voir :ref:`reliefs`.
         :arg selectbackground: 
-                La couleur de fond utilisée pour la ligne sélectionnée.
+                La couleur de fond utilisée pour les lignes sélectionnées.
         :arg selectborderwidth: 
-                L'épaisseur de la bordure de la ligne de texte sélectionnée. 0 par défaut. Elle est utilisée pour produire un effet de relief 'raised' plus ou moins fort autour du texte sélectionné (Voir :ref:`reliefs`).
+                L'épaisseur de la bordure des lignes de texte sélectionnées. 0 par défaut. Elle est utilisée pour produire un effet de relief ``'raised'`` plus ou moins fort autour du texte sélectionné (Voir :ref:`reliefs`).
         :arg selectforeground: 
                 La couleur du texte sélectionné.
         :arg selectmode:
-                Détermine le nombre d'items qu'il est possible de sélectionner et la gestion du cliquer-glisser sur la sélection. 'browse' -  Valeur par défaut, le cliquer-glisser modifie la sélection. 'single' - Une seule ligne peut être sélectionné et il n'est pas possible de déplacer la sélection par cliquer-glissé. 'multiple' - Vous pouvez sélectionner plusieurs ligne à la fois. Le fait de cliquer sur une ligne déjà sélectionnée la déselectionne et vice versa. 'extended' - vous pouvez sélectionner des lignes adjacentes par cliquer-glissé. 
-        :arg state: 
-                Par défaut, une liste de sélection est dans l'état 'normal'. Pour désactiver la liste relativement à la souris, mettre la valeur 'disabled'.
+                Détermine le nombre d'items qu'il est possible de sélectionner et la gestion du cliquer-glisser sur la sélection. ``'browse'`` -  Valeur par défaut, le cliquer-glisser modifie la sélection. ``'single'`` - Une seule ligne peut être sélectionnée et il n'est pas possible de déplacer la sélection par cliquer-glisser. ``'multiple'`` - Vous pouvez sélectionner plusieurs lignes à la fois. Le fait de cliquer sur une ligne déjà sélectionnée la déselectionne et vice versa. ``'extended'`` - vous pouvez sélectionner des lignes adjacentes par cliquer-glisser. 
+        :arg state:
+                Par défaut, une liste de sélection est dans l'état ``'normal'``. Pour désactiver la liste relativement à la souris, mettre la valeur ``'disabled'``.
         :arg takefocus: 
-                Ce widget obtient le focus normalement. Mettre 0 pour sortir ce widget de le liste du traversée du focus. Voir “Focus: routing keyboard input”.
+                Ce widget obtient le focus normalement. Mettre 0 pour sortir ce widget de la liste de «traversée du focus». Voir “Focus: routing keyboard input”.
         :arg width: 
                 La largeur du widget mesurée en caractères (non en pixels). La largeur effective est basée sur la largeur moyenne des caractères de la fonte utilisée. 20 par défaut.
         :arg xscrollcommand: 
-                Si vous souhaitez que l'utilisateur puisse faire défiler la liste horizontalement, vous pouvez lier votre liste de sélection à une barre de défilement horizontale. Configurer cette option avec la méthode set() de la barre de défilement. Voir “Scrolling a Listbox widget” pour plus d'informations.
+                Si vous souhaitez que l'utilisateur puisse faire défiler la liste horizontalement, vous pouvez lier votre liste de sélection à une barre de défilement horizontale. Configurer cette option avec la méthode ``set()`` de la barre de défilement. Voir “Scrolling a Listbox widget” pour plus d'informations.
         :arg yscrollcommand: 
                 Similaire à l'option précédente mais pour un défilement vertical.
 
-        Les méthodes des listes de sélection utilisent fréquement des indexes:
+        Les méthodes des listes de sélection utilisent fréquement des index:
 
-        * If you specify an index as an integer, it refers to the line in the listbox with that index, counting from 0.
+        * Si vous utilisez un entier comme index, il se rapporte à la ligne de la liste de sélection qui possède cet index, en comptant à partir de 0.
 
-        * Index tk.END refers to the last line in the listbox.
+        * L'index ``'end'`` correspond à la dernière ligne de la liste de sélection.
 
-        * Index tk.ACTIVE refers to the selected line. If the listbox allows multiple selections, it refers to the line that was last selected.
+        * L'index ``'active'`` correspond à la ligne sélectionnée. Si la liste de sélection permet la multisélection, il correspond à la dernière ligne sélectionnée.
 
-         * An index string of the form '@x,y' refers to the line closest to coordinate (x,y) relative to the widget's upper left corner. 
+        * Un index de la forme ``'@x,y'`` correspond à la ligne qui est la plus proche du point de coordonnées (x,y) relativement au coin supérieur gauche du widget.
 
-        Methods on Listbox objects include:
+        Les méthodes des listes de sélection incluent:
 
         .. hlist::
                 :columns: 4
@@ -101,139 +101,134 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
 
         .. py:method:: activate(index)
 
-                Selects the line specifies by the given index. 
+                Sélectionne la ligne ayant l'*index* indiqué.
 
         .. py:method:: bbox(index)
 
-                Returns the bounding box of the line specified by index as a 4-tuple (xoffset, yoffset, width, height), where the upper left pixel of the box is at (xoffset, yoffset) and the width and height are given in pixels. The returned width value includes only the part of the line occupied by text.
+                Retourne la boîte englobante - *bounding box* - de la ligne ayant l'*index* indiqué sous la forme d'un tuple à 4 éléments ``(x, y, largeur, hauteur)``, où le pixel le plus en haut et à gauche de cette ligne est situé en ``(x,y)`` et la *largeur* et *hauteur* sont données en pixels. La *largeur* correspond à la partie de la ligne qui contient le texte.
 
-                If the line specified by the index argument is not visible, this method returns None. If it is partially visible, the returned bounding box may extend outside the visible area. 
+                Si la ligne de numéro *index* n'est pas visible, cette méthode retourne ``None``. Si elle est partiellement visible, la boîte englobante peut excéder la zone visible.
 
         .. py:method:: curselection()
 
-                Returns a tuple containing the line numbers of the selected element or elements, counting from 0. If nothing is selected, returns an empty tuple. 
+                Retourne un tuple qui contient les numéros ou index de la ou des lignes sélectionnées, en comptant à partir de 0. Si aucune ligne n'est sélectionnée, le tuple est vide.
 
-        .. py:method:: delete(first, last=None)
+        .. py:method:: delete(debut, fin=None)
 
-                Deletes the lines whose indices are in the range [first, last], inclusive (contrary to the usual Python idiom, where deletion stops short of the last index), counting from 0. If the second argument is omitted, the single line with index first is deleted. 
+                Supprime les lignes dont les indices sont dans l'intervalle [*debut*, *fin*] (extrémités incluses). Si le deuxième argument est omis, seule la ligne d'index *debut* est supprimée.
 
-        .. py:method:: get(first, last=None)
+        .. py:method:: get(debut, fin=None)
 
-                Returns a tuple containing the text of the lines with indices from first to last, inclusive. If the second argument is omitted, returns the text of the line closest to first. 
+                Retourne un tuple qui contient les textes des lignes dont les indices appartiennent à l'intervalle [*deb*, *fin*]. Si le deuxième argument est omis, seul le texte de la ligne d'indice *debut* est retourné.
 
         .. py:method:: index(i)
 
-                If possible, positions the visible part of the listbox so that the line containing index i is at the top of the widget. 
+                Si c'est possible, positionne la partie visible de la liste de sélection de telle sorte qui la ligne numéro *i* soit tout en haut de la liste.
 
         .. py:method:: insert(index, *elements)
 
-                Insert one or more new lines into the listbox before the line specified by index. Use tk.END as the first argument if you want to add new lines to the end of the listbox. 
+                Insert une ou plusieurs lignes (autant que d'*éléments* fournis après le premier argument) dans la liste avant la ligne de numéro *index*. Utiliser ``'end'`` comme premier argument si vous souhaitez ajouter de nouvelles lignes à la fin de la liste.
 
         .. py:method:: itemcget(index, option)
 
-                Retrieves one of the option values for a specific line in the listbox. For option values, see itemconfig below. If the given option has not been set for the given line, the returned value will be an empty string. 
+                Retourne l'une des valeurs d'option de la ligne de numéro *index* de la liste. Pour les options possibles, voir la méthode ``itemconfig()`` ci-dessous. Si l'option donnée n'a pas été configurée pour la ligne indiquée, la valeur de retour est une chaîne vide.
 
         .. py:method:: itemconfig(index, option=value, ...)
 
-                Change a configuration option for the line specified by index. Option names include:
+                Modifie une ou des options de configuration de la ligne de numéro *index*. Les options incluent:
 
-                        background
-
-                                The background color of the given line. 
-
-                        foreground
-
-                                The text color of the given line. 
-
-                        selectbackground
-
-                                The background color of the given line when it is selected. 
-
-                        selectforeground
-
-                                The text color of the given line when it is selected. 
+                :arg background:
+                        La couleur de fond de la ligne.
+                :arg foreground:
+                        La couleur du texte de la ligne.
+                :arg selectbackground:
+                        La couleur de fond utilisée lorsque la ligne est sélectionnée.
+                :arg selectforeground:
+                        La couleur du texte utilisée lorsque la ligne est sélectionnée.
 
         .. py:method:: nearest(y)
 
-                Return the index of the visible line closest to the y-coordinate y relative to the listbox widget. 
+                Retourne l'index de la ligne visible la plus proche du niveau *y* (vertical) exprimé en pixels relativement au bord supérieur du widget.
 
         .. py:method:: scan_dragto(x, y)
 
-                See scan_mark below. 
+                Voir la méthode ``scan_mark()`` ci-dessous. 
 
         .. py:method:: scan_mark(x, y)
 
-                Use this method to implement scanning—fast steady scrolling—of a listbox. To get this feature, bind some mouse button event to a handler that calls scan_mark with the current mouse position. Then bind the <Motion> event to a handler that calls scan_dragto with the current mouse position, and the listbox will be scrolled at a rate proportional to the distance between the position recorded by scan_mark and the current position. 
+                Utilisez cette méthode pour implémenter le défilement rapide de la liste de sélection à la souris. Pour réaliser cette fonctionnalité, lier un événement «appui sur l'un des boutons de la souris» à un gestionnaire qui se chargera d'appeler la méthode ``scan_mark()`` à la position courante de la souris. Ensuite, lier l'événement «déplacement de la souris» (*Motion*) à un gestionnaire qui appelera ``scan_dragto()`` avec la position courante de la souris. La liste de sélection défilera alors à un rythme proportionnel à la distance qui sépare la position enregisrée par ``scan_mark`` et la position courante.
 
         .. py:method:: see(index)
 
-                Adjust the position of the listbox so that the line referred to by index is visible. 
+                Ajuste la position de la liste de sélection de telle sorte que la ligne de numéro *index* soit visible.
 
         .. py:method:: selection_anchor(index)
 
-                Place the “selection anchor” on the line selected by the index argument. Once this anchor has been placed, you can refer to it with the special index form tk.ANCHOR.
+                Positionne l'«ancre de sélection» sur la ligne de numéro *index*. Une fois que cette ancre a été positionnée, vous pouvez y faire référence en utilisant l'index spécial ``'anchor'``.
 
-                For example, for a listbox named lbox, this sequence would select lines 3, 4, and 5:
+                Par exemple, si votre liste est ``lbox``, ces instructions sélectionnerons les lignes 3, 4 et 5:
+
+                ::
 
                         lbox.selection_anchor(3)
                         lbox.selection_set(tk.ANCHOR,5)
 
 
-        .. py:method:: selection_clear(first, last=None)
+        .. py:method:: selection_clear(debut, fin=None)
 
-                Unselects all of the lines between indices first and last, inclusive. If the second argument is omitted, unselects the line with index first. 
+                Déselectionne toutes les lignes dont les index appartiennent à l'intervalle [*debut*, *fin*]. Si le second argument est omis, seule la ligne de numéro *debut* est déselectionnée.
 
         .. py:method:: selection_includes(index)
 
-                Returns 1 if the line with the given index is selected, else returns 0. 
+                Retourne 1 si la ligne d'index donné est sélectionnée et retourne 0 autrement.
 
-        .. py:method:: selection_set(first, last=None)
+        .. py:method:: selection_set(debut, fin=None)
 
-                Selects all of the lines between indices first and last, inclusive. If the second argument is omitted, selects the line with index first. 
+                Sélectionne toute les lignes dont les index appartiennent à l'intervalle [*debut*, *fin*]. Si le deuxième argument est omis, seule la ligne d'index *debut* est sélectionnée.
 
         .. py:method:: size()
 
-                Returns the number of lines in the listbox. 
+                Retourne le nombre de lignes de la liste de sélection.
 
         .. py:method:: xview()
 
-                To make the listbox horizontally scrollable, set the command option of the associated horizontal scrollbar to this method. See Section 14.1, “Scrolling a Listbox widget”. 
+                Pour faire défiler la liste horizontalement, configurez l'option *command* du widget barre de défilement horizontale avec cette méthode. Voir “Scrolling a Listbox widget”. 
 
         .. py:method:: xview_moveto(fraction)
 
-                Scroll the listbox so that the leftmost fraction of the width of its longest line is outside the left side of the listbox. Fraction is in the range [0,1]. 
+                Fait défiler la liste de sélection horizontalement de telle sorte que le côté gauche de la *fraction* de sa ligne la plus longue soit placé contre le bord gauche de la zone visible. L'argument *fraction* appartient à l'intervalle [0,1].
 
-        .. py:method:: xview_scroll(number, what)
+        .. py:method:: xview_scroll(nombre, quoi)
 
-                Scrolls the listbox horizontally. For the what argument, use either tk.UNITS to scroll by characters, or tk.PAGES to scroll by pages, that is, by the width of the listbox. The number argument tells how many to scroll; negative values move the text to the right within the listbox, positive values leftward. 
+                Fait défiler la liste de sélection horizontalement. Pour l'argument *quoi*, utiliser soit ``'units'`` pour un défilement d'unité «un caractère», ou ``'pages'`` pour un défilement où l'unité est la «largeur effective de la liste de sélection». L'argument *nombre* indique le nombre d'unités du défilement: les valeurs négatives font défiler vers la droite, les positives vers la gauche.
 
         .. py:method:: yview()
 
-                To make the listbox vertically scrollable, set the command option of the associated vertical scrollbar to this method. See Section 14.1, “Scrolling a Listbox widget”. 
+                Similaire à la méthode ``xview()``, mais pour un défilement vertical.
 
         .. py:method:: yview_moveto(fraction)
 
-                Scroll the listbox so that the top fraction of the width of its longest line is outside the left side of the listbox. Fraction is in the range [0,1]. 
+                Similaire à la méthode ``xview_moveto()`` pour un défilement vertical.
 
-        .. py:method:: yview_scroll(number, what)
+        .. py:method:: yview_scroll(nombre, quoi)
 
-                Scrolls the listbox vertically. For the what argument, use either tk.UNITS to scroll by lines, or tk.PAGES to scroll by pages, that is, by the height of the listbox. The number argument tells how many to scroll; negative values move the text downward inside the listbox, and positive values move the text up. 
+                Similaire à la méthode ``xview_scroll()`` mais pour un défilement vertical. ``'units'`` se réfère à l'unité «ligne» et ``'pages'`` à l'unité «hauteur visible de la liste».
                 
-Scrolling a Listbox widget
-==========================
+Défilement d'une liste de sélection
+===================================
 
-Here is a code fragment illustrating the creation and linking of a listbox to both a horizontal and a vertical scrollbar::
+Voici un fragment de code qui illustre la création et la liaison d'une liste de sélection avec des barres de défilement verticale et horizontale::
 
-    self.yScroll = tk.Scrollbar(self, orient=tk.VERTICAL)
-    self.yScroll.grid(row=0, column=1, sticky=tk.N+tk.S)
+    yDefilB = Scrollbar(root, orient='vertical')
+    yDefilB.grid(row=0, column=1, sticky='ns')
 
-    self.xScroll = tk.Scrollbar(self, orient=tk.HORIZONTAL)
-    self.xScroll.grid(row=1, column=0, sticky=tk.E+tk.W)
+    xDefilB = Scrollbar(root, orient='horizontal')
+    xDefilB.grid(row=1, column=0, sticky='ew')
 
-    self.listbox = tk.Listbox(self,
-         xscrollcommand=self.xScroll.set,
-         yscrollcommand=self.yScroll.set)
-    self.listbox.grid(row=0, column=0, sticky=tk.N+tk.S+tk.E+tk.W)
-    self.xScroll['command'] = self.listbox.xview
-    self.yScroll['command'] = self.listbox.yview
+    listSel = Listbox(root,
+         xscrollcommand=xDefilB.set,
+         yscrollcommand=yDefilB.set)
+    listSel.grid(row=0, column=0, sticky='nsew')
+    xDefilB['command'] = listSel.xview
+    yDefilB['command'] = listSel.yview
 
