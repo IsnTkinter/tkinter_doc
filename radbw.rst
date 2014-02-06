@@ -6,17 +6,17 @@ Les boutons radio ``Radiobutton``
 
 Les boutons radio sont des ensembles de widgets connexes qui permettent à l'utilisateur de sélectionner un seul d'un ensemble de choix. Chaque bouton radio se compose de deux parties, l'indicateur et l'étiquette:
 
-    L'indicateur est la partie en forme de losange qui vire au rouge à l'élément sélectionné.
+* L'indicateur est la partie en forme de losange qui vire au rouge à l'élément sélectionné.
 
-    L'étiquette est le texte, mais vous pouvez utiliser une image bitmap en guise d'étiquette.
+* L'étiquette est le texte, mais vous pouvez utiliser une image bitmap en guise d'étiquette.
 
-    Si vous préférez, vous pouvez vous passer de l'indicateur. Les boutons radio ressemblent alors à des boutons "push-push", avec l'entrée sélectionnée apparaissant enfoncée et les autres entrées apparaissant soulevées.
+* Si vous préférez, vous pouvez vous passer de l'indicateur. Les boutons radio ressemblent alors à des boutons "push-push", avec l'entrée sélectionnée apparaissant enfoncée et les autres entrées apparaissant soulevées.
 
-    Pour réunir plusieurs boutons radio dans un groupe fonctionnel, créer une variable de contrôle unique (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets", ci-dessous), et réglez l'option variable de chaque bouton radio à cette variable.
+* Pour réunir plusieurs boutons radio dans un groupe fonctionnel, créer une variable de contrôle unique (voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets", ci-dessous), et réglez l'option variable de chaque bouton radio à cette variable.
 
-    La variable de contrôle peut être soit un IntVar, soit un StringVar. Si deux ou plusieurs boutons radio partagent la même variable de contrôle, régler l'un d'entre eux remplacera le réglage des autres.
+* La variable de contrôle peut être soit un IntVar, soit un StringVar. Si deux ou plusieurs boutons radio partagent la même variable de contrôle, régler l'un d'entre eux remplacera le réglage des autres.
 
-    Chaque bouton radio dans un groupe doit avoir une unique option de valeur du même type que la variable de contrôle. Par exemple, un groupe de trois boutons radio pourrait partager un IntVar et avoir pour valeurs 0, 1 et 99. Ou vous pouvez utiliser une variable de contrôle StringVar et donner aux boutons radio comme options de valeur 'trop chaud', 'trop froid' et 'correct'.
+* Chaque bouton radio dans un groupe doit avoir une unique option de valeur du même type que la variable de contrôle. Par exemple, un groupe de trois boutons radio pourrait partager un IntVar et avoir pour valeurs 0, 1 et 99. Ou vous pouvez utiliser une variable de contrôle StringVar et donner aux boutons radio comme options de valeur 'trop chaud', 'trop froid' et 'correct'.
 
 Pour créer un nouveau widget bouton radio en tant qu'enfant d'une fenêtre ou d'un cadre nommé parent:
 
