@@ -1,19 +1,19 @@
 .. _CONNECTING:
 
-************************************************
-Connecting your application logic to the widgets
-************************************************
+*******************************************************
+Connecter la logique de votre applications aux widgets
+*******************************************************
 
-The preceding sections talked about how to arrange and configure the widgets—the front panel of the application.
+Les sections précédentes vous ont appris à placer et à configurer les widgets qui forment l'interface graphique de votre application.
 
-Next, we'll talk about how to connect up the widgets to the logic that carries out the actions that the user requests.
+Nous allons à présent aborder le problème de la gestion des actions de l'utilisateur sur l'interface ainsi créée: Il s'agit de connecter la logique de votre application avec les actions de l'utilisateur sur l'interface graphique.
 
-* To make your application respond to events such as mouse clicks or keyboard inputs, there are two methods:
+* Pour rendre votre application réactive à des événements comme l'appui sur un bouton de la souris ou sur une touche du clavier, il y a deux méthodes:
 
-  + Some controls such as buttons have a command attribute that lets you specify a procedure, called a handler, that will be called whenever the user clicks that control.
+  + Certains widgets commes les boutons - ``Button`` - possèdent une option **command** qui vous permet de préciser une procédure (fonction sans arguments), appelé gestionnaire ou *handler*, qui sera appelé à chaque fois que l'utilisateur clique dessus.
 
-    The sequence of events for using a Button widget is very specific, though. The user must move the mouse pointer onto the widget with mouse button 1 up, then press mouse button 1, and then release mouse button 1 while still on the widget. No other sequence of events will “press” a Button widget.
+    La séquence des événements pour utiliser un widget ``Button`` est très précise: l'utilisateur doit déplacer son pointeur de souris au-dessus du widget sans appuyer sur le bouton gauche de la souris, puis il doit appuyer sur ce bouton gauche et, ensuite, le relâcher tandis que le pointeur de la souris est toujours au-dessus du widget. Aucune autre séquence d'événements ne produira "l'enfoncement" du widget Button.
 
-  + There is a much more general mechanism that can let your application react to many more kinds of inputs: the press or release of any keyboard key or mouse button; movement of the mouse into, around, or out of a widget; and many other events. As with command handlers, in this mechanism you write handler procedures that will be called whenever certain types of events occur. This mechanism is discussed under Section 54, “Events”. 
+  + Il y a un mécanisme bien plus général qui permet de rendre votre application réactive à toute sorte d'action de la part de l'utilisateur: l'appui ou le relâchement d'une touche arbitraire du clavier ou d'un bouton de la souris; le déplacement de la souris à l'intérieur, autour, ou en dehors d'un widget; et beaucoup d'autres actions ou événements. Comme avec un gestionnaire associé à **command**, dans ce mécanisme vous écrivez une fonction de type gestionnaire (*handler*) qui sera appelée à chaque fois que certains types d'événements se produisent. Ce mécanisme est décrit de manière détaillé dans la section “Events”. 
 
-* Many widgets require you to use control variables, special objects that connect widgets together and to your program, so that you can read and set properties of the widgets. Control variables will be discussed in the next section.
+* La plupart des widget attendent que vous leur fournissiez une ou plusieurs variables de contrôle; ce sont des objets spéciaux qui servent à connecter certains widgets entre eux et avec votre programme, cela afin que vous puissiez lire et modifier les propriétés de ces widgets. Les variables de contrôles seront abordées dans la prochaîne section.

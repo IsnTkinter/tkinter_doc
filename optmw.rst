@@ -6,7 +6,7 @@ Les options d'un menu ``OptionMenu``
 
 Le but de ce widget est d'offrir un ensemble fixe de choix à l'utilisateur dans un menu déroulant.
 
-.. img:: img/menuoption.png
+.. image:: img/menuoption.png
 
 Les illustrations ci-dessus montrent un ``OptionMenu`` dans deux états. L'exemple de gauche montre le widget dans sa forme initiale. L'exemple de droite montre à quoi il ressemble lorsqu'avec la souris on a cliqué dessus et qu'on a choisi 'bateau'.
 
