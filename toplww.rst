@@ -1,121 +1,123 @@
 .. _TOPLEVEL:
 
 **********************************
-Toplevel: Top-level window methods
+``Toplevel``: fenêtres principales
 **********************************
 
-A top-level window is a window that has an independent existence under the window manager. It is decorated with the window manager's decorations, and can be moved and resized independently. Your application can use any number of top-level windows.
+Une fenêtre principale - *Toplevel window* - est une fenêtre qui possède une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation. Une telle fenêtre possède tous les boutons ordinaires (fermeture, réduction/agrandissement) et elle peut être déplacée et redimensionnée à la souris. Votre application peut utiliser autant de fenêtres «principales» que souhaité.
 
-For any widget w, you can get to its top-level widget using ``w.winfo_toplevel().``
+Étant donné un widget w, vous pouvez récupérer la fenêtre principale qui le contient en utilisant ``w.winfo_toplevel()``.
 
-To create a new top-level window:
+Pour créer une nouvelle fenêtre principale:
 
 .. py:class:: Toplevel(option, ...)
 
-        Options include:
+        Ses options incluent:
 
-        :arg bg: or background 
-                The background color of the window. See Section 5.3, “Colors”.
-        :arg bd: or borderwidth 
-                Border width in pixels; default is 0. For possible values, see Section 5.1, “Dimensions”. See also the relief option, below.
+        :arg bg: 
+                 (ou *background*) La couleur d'arrière plan de la fenêtre. Voir “Colors”.
+        :arg bd: 
+                 (ou *borderwidth*) La largeur de sa bordure en pixels; 0 par défaut. Pour des valeurs possibles, voir “Dimensions”. Voir aussi l'option **relief** ci-dessous.
         :arg class\_: 
-                You can give a Toplevel window a “class” name. Such names are matched against the option database, so your application can pick up the user's configuration preferences (such as colors) by class name. For example, you might design a series of pop-ups called “screamers,” and set them all up with ``class_='Screamer'``. Then you can put a line in your option database like this:
+                Vous pouvez donner à une fenêtre principale un nom de classe. De tels noms peuvent être alors utilisés dans la base de données des options afin de récupérer les préférences de configuration des utilisateurs (comme les couleur). Par exemple, vous pourriez concevoir une série de fenêtre surgissantes (*pop-ups*) appelées "hurlantes", et toutes les configurer avec l'option ``class_='Screamer'``. Ensuite, vous pourriez mettre la ligne suivante dans votre base de données des options::
 
-                \*Screamer\*background: red
+                      *Screamer*background: red
 
-                and then, if you use the ``.option_readfile()`` method to read your option database, all widgets with that class name will default to a red background. This option is named ``class_`` because class is a reserved word in Python.
+                et enfin, utiliser la méthode ``option_readfile()`` pour lire cette base de données. Cela aurait pour effet de configurer la couleur de fond par défaut de tout les widgets ayant ce nom de classe avec la couleur rouge. Cette option est nommée ``class_`` parce que *class* est un mot clé de Python.
         :arg cursor: 
-                The cursor that appears when the mouse is in this window. See Section 5.8, “Cursors”.
+                Le pointeur de la souris utilisée lorsqu' elle survole cette fenêtre. Voir “Cursors”.
         :arg height: 
-                Window height; see Section 5.1, “Dimensions”.
+                La hauteur de la fenêtre; voir “Dimensions”.
         :arg highlightbackground:
-                The color of the focus highlight when the window does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de ligne de mise en valeur du focus lorsque la fenêtre ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                The color of the focus highlight when the window has the focus.
+                La couleur de ligne de mise en valeur du focus lorsque la fenêtre l'obtient.
         :arg highlightthickness: 
-                The thickness of the focus highlight. Default is 1. Set highlightthickness=0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 par défaut. Pour supprimer la mise en évidence du focus, mettre cette option à 0.
         :arg menu:
-                To provide this window with a top-level menubar, supply a Menu widget as the value of this option. Under MacOS, this menu will appear at the top of the screen when the window is active. Under Windows or Unix, it will appear at the top of the application.
+                Pour incorporer une barre des menus principaux, configurez cette option avec un widget Menu. Sous MacOS, ce menu apparaîtra tout en haut de l'écran lorsque la fenêtre est active. Sous Window ou Unix, il apparaîtra en haut de la fenêtre.
         :arg padx:
-                Use this option to provide extra space on the left and right sides of the window. The value is a number of pixels.
+                Utilisez cette option pour ajouter une marge horizontale à gauche et à droite de la fenêtre. La valeur est un nombre de pixels.
         :arg pady:
-                Use this option to provide extra space on the top and bottom sides of the window. The value is a number of pixels.
+                Utilisez cette option pour ajouter une marge verticale en haut et en base de la fenêtre. La valeur est un nombre de pixels.
         :arg relief: 
-                Normally, a top-level window will have no 3-d borders around it. To get a shaded border, set the bd option larger that its default value of zero, and set the relief option to one of the constants discussed under Section 5.6, “Relief styles”.
+                Normalement, une fenêtre principale n'a pas de bordure 3d. Pour obtenir une telle bordure, réglez l'option **bd** avec une valeur supérieure à 0 et celle-ci avec l'une des valeurs possible pour le relief (voir “Relief styles”).
         :arg takefocus:
-                Normally, a top-level window does not get focus. Use takefocus=True if you want it to be able to take focus; see Section 53, “Focus: routing keyboard input”.
+                Normalement, une fenêtre principale n'obtient pas le focus. Utilisez ``takefocus=True`` si vous souhaitez qu'elle puisse l'obtenir; voir “Focus: routing keyboard input”.
         :arg width: 
-                The desired width of the window; see Section 5.1, “Dimensions”.
+                La largeur de la fenêtre. Voir “Dimensions”.
 
-        These methods are available for top-level windows:
+        Les méthodes des fenêtres principales sont:
 
         .. py:method:: aspect(nmin, dmin, nmax, dmax)
 
-                    Constrain the root window's width:length ratio to the range [ nmin / dmin, nmax / dmax ]. 
+                    Sert à contraindre le rapport largeur sur hauteur de la fenêtre dans l'intervalle [ *nmin* / *dmin*, *nmax* / *dmax* ]. 
 
         .. py:method:: deiconify()
 
-                    If this window is iconified, expand it. 
+                    Si la fenêtre a été réduite en une icone, cette méthode la ramène à l'écran.
 
         .. py:method:: geometry(newGeometry=None)
 
-                    Set the window geometry. For the form of the argument, see Section 5.10, “Geometry strings”. If the argument is omitted, the current geometry string is returned. 
+                    Sert à régler la géométrie de la fenêtre. Pour la forme de son argument, voir “Geometry strings”. Si l'argument est omis, elle retourne la chaîne qui décrit sa géométrie courante.
 
         .. py:method:: iconify()
 
-                    Iconify the window. 
+                    Réduit la fenêtre en une icone.
 
         .. py:method:: lift(aboveThis=None)
 
-                    To raise this window to the top of the stacking order in the window manager, call this method with no arguments. You can also raise it to a position in the stacking order just above another Toplevel window by passing that window as an argument. 
+                    Pour élever cette fenêtre tout en haut de la pile ordonnée des fenêtre que gère le gestionnaire de fenêtres du système, utilisez cette méthode sans argument. Vous pouvez aussi élever cette fenêtre juste au-dessus d'une autre fenêtre en précisant cette dernière comme argument.
 
         .. py:method:: lower(belowThis=None)
 
-                    If the argument is omitted, moves the window to the bottom of the stacking order in the window manager. You can also move the window to a position just under some other top-level window by passing that Toplevel widget as an argument. 
+                    Sans aucun argument, la fenêtre est déplacée tout en bas de la pile ordonnée des fenêtres que gère le gestionnaire de fenêtre du sytème. Vous pouvez aussi la déplacer juste en dessous d'une autre en précisant cette dernière comme argument.
 
-        .. py:method:: maxsize(width=None, height=None)
+        .. py:method:: maxsize(largeur=None, hauteur=None)
 
-                    Set the maximum window size. If the arguments are omitted, returns the current (width, height). 
+                    Sert à régler la taille maximale de la fenêtre. Si les arguments sont omis, elle retourne les valeurs courantes (largeur, hauteur). 
 
         .. py:method:: minsize(width=None, height=None)
 
-                    Set the minimum window size. If the arguments are omitted, returns the current minima as a 2-tuple. 
+                    Sert à régler la taille minimale de la fenêtre. Si les arguments sont omis, elle retourne les valeurs courantes sous la forme d'un tuple à deux éléments.
 
         .. py:method:: overrideredirect(flag=None)
 
-                    If called with a True argument, this method sets the override redirect flag, which removes all window manager decorations from the window, so that it cannot be moved, resized, iconified, or closed. If called with a False argument, window manager decorations are restored and the override redirect flag is cleared. If called with no argument, it returns the current state of the override redirect flag.
+                    Lorsque cette méthode est appelée avec la valeur True, elle positionne le drapeau *override redirect*, lequel supprime toutes les décorations de la fenêtres de telle sorte qu'elle ne puisse plus être déplacée, redimensionnée ou iconifiée ou fermée. Si elle est appelée avec la valeur False, elle retrouve son aspect normal ainsi que tous ses comportements. Si elle est appelée sans argument, elle retourne le drapeau *override redirect* actuellement utilisée.
 
-                    Be sure to call the ``.update_idletasks()`` method (see Section 26, “Universal widget methods”) before setting this flag. If you call it before entering the main loop, your window will be disabled before it ever appears.
+                    Faites attention à appeler la méthode ``update_idletasks()`` (voir “Universal widget methods”) avant de positionner ce drapeau. Si vous l'appeler avant d'être entré dans la boucle principale, votre fenêtre sera désactivée avant même qu'elle ne puisse apparaître.
 
-                    This method may not work on some Unix and MacOS platforms. 
+                    Cette méthode peut ne pas fonctionner sur certain système Unix et MacOS.
 
-        .. py:method:: resizable(width=None, height=None)
+        .. py:method:: resizable(largeur=None, hauteur=None)
 
-                    If is true, allow horizontal resizing. If height is true, allow vertical resizing. If the arguments are omitted, returns the current size as a 2-tuple. 
+                    Si *largeur* est True, la fenêtre peut être agrandi horizontalement. Si hauteur est True, elle peut être agrandie verticalement. Si les arguments sont omis, cette méthode retourne la taille actuelle de la fenêtre sous la forme d'un tuple a 2 éléments.
 
         .. py:method:: state(newstate=None)
 
-                    Returns the window's current state, one of:
+                    Retourne l'état actuel de la fenêtre, lequel peut être:
 
-                    'normal': Displayed normally.
+                    * ``'normal'``: S'affiche normalement.
 
-                    'iconic': Iconified with the .iconify() method.
+                    * ``'iconic'``: A été réduite en icone.
 
-                    'withdrawn': Hidden; see the .withdraw() method below. 
+                    * ``'withdrawn'``: Est cachée.
 
-                    To change the window's state, pass one of the strings above as an argument to the method. For example, to iconify a Toplevel instance T, use “T.state('iconify') ”. 
+                    Pour modifier cet état, utiliser l'une des chaînes ci-dessus comme argument. Par exemple, pour iconifier une fenêtre principale T, utilisez ``T.state('iconify')``. 
 
         .. py:method:: title(text=None)
 
-                    Set the window title. If the argument is omitted, returns the current title. 
+                    Sert à configurer le titre de la fenêtre. Si l'argument est omis, elle retourne le titre courant.
 
         .. py:method:: transient(parent=None)
 
-                    Make this window a transient window for some parent window; the default parent window is this window's parent.
+                    Une fenêtre est dite *transient* si elle apparaît toujours devant son parent. Lorsque le parent est réduit en icône, la fenêtre *transient* est iconifiée en même temps.
+                    
+                    Cette méthode fait de la fenêtre appelante une fenêtre *transient* relativement à une autre fenêtre parent fournie en argument; the default parent window is this window's parent.
 
-                    This method is useful for short-lived pop-up dialog windows. A transient window always appears in front of its parent. If the parent window is iconified, the transient is iconified as well. 
+                    Cette méthode est utile pour les fenêtres surgissantes à courte durée de vie qui servent à obtenir une information de la part de l'utilisateur.
 
         .. py:method:: withdraw()
 
-                    Hides the window. Restore it with .deiconify() or .iconify().
+                    Cache la fenêtre. Pour la faire réapparaître, utiliser les méthodes ``deiconify()`` ou ``iconify()``.
     
