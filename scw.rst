@@ -1,103 +1,103 @@
 .. _SCALE:
 
-****************
-The Scale widget
-****************
+*******************
+Le widget ``Scale``
+*******************
 
-The purpose of a scale widget is to allow the user to set some int or float value within a specified range. Here are two scale widgets, one horizontal and one vertical:
+La finalité du widget de type ``Scale`` - ou intervalle de sélection - est de permettre à l'utilisateur de fournir un entier ou un flottant situé à l'intérieur d'un intervalle précis. Voici deux widgets de ce type, l'un orienté horizontalement et l'autre verticalement.
 
-Each scale displays a slider that the user can drag along a trough to change the value. In the figure, the first slider is currently at -0.38 and the second at 7.
+Chaque widget affiche un curseur que l'utilisateur peut déplacer pour modifier la valeur. Dans la figure, le premier widget ``Scale`` possède actuellement la valeur -0.38 et le second la valeur 7.
 
-    You can drag the slider to a new value with mouse button 1.
+* Vous pouvez déplacer le curseur en utilisant le bouton gauche de la souris.
 
-    If you click button 1 in the trough, the slider will move one increment in that direction per click. Holding down button 1 in the trough will, after a delay, start to auto-repeat its function.
+* Si vous cliquez avec le bouton gauche dans la zone de glissement, le curseur est déplacé d'une unité dans la direction du clic. En maintenant le bouton gauche enfoncé, après un délai, ce comportement est répété automatiquement.
 
-    If the scale has keyboard focus, left arrow and up arrow keystrokes will move the slider up (for vertical scales) or left (for horizontal scales). Right arrow and down arrow keystrokes will move the slider down or to the right. 
+* Si le widget ``Scale`` possède le focus, les flèches du clavier peuvent être utilisées pour faire glisser le curseur.
 
-To create a new scale widget as the child of a root window or frame named parent:
+Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadre nommé ``parent``:
 
 .. py:class:: Scale(parent, option, ...)
 
-        The constructor returns the new Scale widget. Options:
+        Le constructeur retourne le widget ``Scale`` créé. Ses options incluent:
 
         :arg activebackground: 
-                The color of the slider when the mouse is over it. See Section 5.3, “Colors”.
-        :arg bg: or background 
-                The background color of the parts of the widget that are outside the trough.
-        :arg bd: or borderwidth 
-                Width of the 3-d border around the trough and slider. Default is two pixels. For acceptable values, see Section 5.1, “Dimensions”.
+                La couleur du curseur lorsque la souris est au dessus. Voir “Colors”.
+        :arg bg: 
+                 (ou **background**) La couleur d'arrière plan de la partie du widget qui est située en dehors de l'aire de glissement.
+        :arg bd: 
+                 (ou **borderwidth**) La largeur de la bordure 3d qui forme le contour de l'aire de glissement et du curseur. Sa valeur est 2 pixels par défaut. Pour des valeurs acceptables, voir “Dimensions”.
         :arg command: 
-                A procedure to be called every time the slider is moved. This procedure will be passed one argument, the new scale value. If the slider is moved rapidly, you may not get a callback for every possible position, but you'll certainly get a callback when it settles.
+                Une fonction qui sera appelée à chaque fois que le curseur sera déplacé. Cette fonction reçoit un argument qui est la nouvelle valeur sélectionnée dans l'intervalle. Si le curseur est déplacé rapidement, la fonction ne sera pas pour autant appelée pour toutes les positions possible, mais elle le sera sans aucun doute lorsque le curseur sera positionné.
         :arg cursor: 
-                The cursor that appears when the mouse is over the scale. See Section 5.8, “Cursors”.
+                Le pointeur de souris utilisée lorsque la souris est au dessus du widget. Voir “Cursors”.
         :arg digits: 
-                The way your program reads the current value shown in a scale widget is through a control variable; see Section 52, “Control variables: the values behind the widgets”. The control variable for a scale can be an IntVar, a DoubleVar (for type float), or a StringVar. If it is a string variable, the digits option controls how many digits to use when the numeric scale value is converted to a string.
+                Contrôle le nombre de chiffres à utiliser lorsque la valeur sélectionnée est convertie en une chaîne de caractères, ce qui arrive si l'option **variable** décrite plus loin a reçu une variable de contrôle de classe ``StringVar``. Voir “Control variables: the values behind the widgets”. 
         :arg font: 
-                The font used for the label and annotations. See Section 5.4, “Type fonts”.
-        :arg fg: or foreground 
-                The color of the text used for the label and annotations.
+                La fonte de caractères utilisée pour l'étiquette et les graduations. Voir “Type fonts”.
+        :arg fg:
+                (ou **foreground**) La couleur du texte de l'étiquette et des graduations.
         :arg from\_: 
-                A float value that defines one end of the scale's range. For vertical scales, this is the top end; for horizontal scales, the left end. The underbar (_) is not a typo: because from is a reserved word in Python, this option is spelled from\_. The default is 0.0. See the to option, below, for the other end of the range.
+                Un flottant qui définie l'une des extrémités de l'intervalle de sélection. Pour un widget orienté verticalement, c'est celle qui apparaît tout en haut; pour un widget orienté horizontalement, c'est celle qui apparaît tout à gauche. Le caractère de soulignement (_) qui apparaît à la fin de cette option n'est pas une faute de frappe: le mot *from* est un mot clé de Python. Sa valeur par défaut est 0.0. Voir l'option **to** plus loin pour préciser l'autre extrémité de l'intervalle.
         :arg highlightbackground: 
-                The color of the focus highlight when the scale does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                The color of the focus highlight when the scale has the focus.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
-                The thickness of the focus highlight. Default is 1. Set highlightthickness=0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 par défaut. Utilisez ``highlightthickness=0`` pour supprimer la mise en valeur du focus.
         :arg label: 
-                You can display a label within the scale widget by setting this option to the label's text. The label appears in the top left corner if the scale is horizontal, or the top right corner if vertical. The default is no label.
+                Vous pouvez afficher une étiquette à l'intérieur de ce widget en réglant cette option avec le texte souhaité. L'étiquette apparaît dans le coin supérieur gauche si le widget est orienté horizontalement et dans le coin supérieur droit s'il est orienté verticalement. Il n'y a pas d'étiquette par défaut.
         :arg length: 
-                The length of the scale widget. This is the x dimension if the scale is horizontal, or the y dimension if vertical. The default is 100 pixels. For allowable values, see Section 5.1, “Dimensions”.
+                La longueur du widget dans la direction où celui-ci est orienté. La valeur par défaut est 100 pixels. Pour les valeurs permises, voir “Dimensions”.
         :arg orient: 
-                Set orient=tk.HORIZONTAL if you want the scale to run along the x dimension, or orient=tk.VERTICAL to run parallel to the y-axis. Default is vertical.
+                Utilisez ``'horizontal'`` pour l'orienter horizontalement ou ``'vertical'`` pour l'orienter verticalement. L'orientation par défaut est ``'vertical'``.
         :arg relief: 
-                With the default relief=tk.FLAT, the scale does not stand out from its background. You may also use relief=tk.SOLID to get a solid black frame around the scale, or any of the other relief types described in Section 5.6, “Relief styles”.
+                Avec la valeur par défaut ``'flat'``, le widget n'a pas de bordure visible. Vous pouvez utiliser la valeur ``'solid'`` pour l'entourer d'un cadre noir, ou utiliser un des autres reliefs fournit pas Tkinter; voir “Relief styles”.
         :arg repeatdelay: 
-                This option controls how long button 1 has to be held down in the trough before the slider starts moving in that direction repeatedly. Default is repeatdelay=300, and the units are milliseconds.
+                Cette option contrôle la durée (en millisecondes) pendant laquelle le bouton gauche de la souris doit-être enfoncé (sur la zone de glissement) avant que le curseur soit déplacée de manière répétitive dans cette direction. La valeur par défaut est ``repeatdelay=300``.
         :arg repeatinterval: 
-                This option controls how often the slider jumps once button 1 has been held down in the trough for at least repeatdelay milliseconds. For example, repeatinterval=100 would jump the slider every 100 milliseconds.
+                Cette option sert à contrôler l'intervalle de temps entre deux répétitions du déplacement du curseur lorsque l'utilisateur clique en laissant le bouton enfoncé dans l'aire de glissement. Par exemple, ``repeatinterval=100`` signifie que le curseur se déplace toutes les 100 millisecondes (1 dixième de seconde).
         :arg resolution: 
-                Normally, the user will only be able to change the scale in whole units. Set this option to some other value to change the smallest increment of the scale's value. For example, if ``from_=-1.0`` and ``to=1.0``, and you set ``resolution=0.5``, the scale will have 5 possible values: -1.0, -0.5, 0.0, +0.5, and +1.0. All smaller movements will be ignored. Use ``resolution=-1`` to disable any rounding of values.
+                Sert à modifier l'incrément (écart entre deux valeurs consécutive). Sa valeur par défaut est 1.0. Par exemple, si ``from_=-1.0``, ``to=1.0``, et si ``resolution=0.5``, l'utilisateur pourra obtenir 5 valeurs: -1.0, -0.5, 0.0, +0.5, et +1.0. Utilisez une valeur négative, par ex. ``resolution=-1`` , pour empêcher l'arrondi automatique des valeurs.
         :arg showvalue: 
-                Normally, the current value of the scale is displayed in text form by the slider (above it for horizontal scales, to the left for vertical scales). Set this option to 0 to suppress that label.
+                Par défaut, la valeur courante du curseur est affichée (au-dessus du curseur s'il est horizontal, à gauche s'il est vertical). Mettre cette option à 0 pour supprimer cet affichage.
         :arg sliderlength: 
-                Normally the slider is 30 pixels along the length of the scale. You can change that length by setting the sliderlength option to your desired length; see Section 5.1, “Dimensions”.
+                Sert à modifier la longueur du curseur qui vaut 30 pixels par défaut. Voir “Dimensions”.
         :arg sliderrelief: 
-                By default, the slider is displayed with a tk.RAISED relief style. For other relief styles, set this option to any of the values described in Section 5.6, “Relief styles”.
+                Sert à modifier le relief utilisé pour le curseur. Sa valeur par défaut est 'raised'. Voir “Relief styles”.
         :arg state: 
-                Normally, scale widgets respond to mouse events, and when they have the focus, also keyboard events. Set state=tk.DISABLED to make the widget unresponsive.
+                Sert à preciser l'état du widget: ``'normal'``, ``'active'`` ou ``'disabled'``. Pour empêcher l'utilisateur de modifier sa valeur, utilisez ``'disabled'``.
         :arg takefocus: 
-                Normally, the focus will cycle through scale widgets. Set this option to 0 if you don't want this behavior. See Section 53, “Focus: routing keyboard input”.
+                Normalement, ce widget obtient le focus. Mettre cette option à 0 pour désactiver ce comportement. Voir “Focus: routing keyboard input”.
         :arg tickinterval: 
-                Normally, no “ticks” are displayed along the scale. To display periodic scale values, set this option to a number, and ticks will be displayed on multiples of that value. For example, if ``from_=0.0``, ``to=1.0``, and ``tickinterval=0.25``, labels will be displayed along the scale at values 0.0, 0.25, 0.50, 0.75, and 1.00. These labels appear below the scale if horizontal, to its left if vertical. Default is 0, which suppresses display of ticks.
+                Par défaut, sa valeur est 0 ce qui a pour effet de ne pas afficher de graduation le long de l'intervalle. Pour afficher une telle graduation, réglez cette option avec un flottant qui correspond au pas de la graduation, c'est à dire à l'écart entre deux valeurs successives. Par exemple, si ``from_=0.0``, ``to=1.0``, et ``tickinterval=0.25``, une graduation est affichée avec les valeurs 0.0, 0.25, 0.50, 0.75, et 1.00. Elles apparaissent en dessous de l'intervalle de sélection si l'orientation du widget est horizontale, à sa gauche si l'orientation est verticale.
         :arg to: 
-                A float value that defines one end of the scale's range; the other end is defined by the from\_ option, discussed above. The to value can be either greater than or less than the from\_ value. For vertical scales, the to value defines the bottom of the scale; for horizontal scales, the right end. The default value is 100.0.
+                Un flottant qui indique une extrémité de l'intervalle de sélection des valeurs. L'autre extrémité est définie en utilisant l'option **from\_** présentée plus haut. Cette valeur peut être supérieure ou inférieure à celle de l'option **from_**. Dans tous les cas, elle correspond à l'extrémité droite du widget si il est orienté horizontalement; à son extrémité basse autrement. Sa valeur par défaut est 100.0.
         :arg troughcolor: 
-                The color of the trough.
+                La couleur de l'aire de glissement du curseur.
         :arg variable: 
-                The control variable for this scale, if any; see Section 52, “Control variables: the values behind the widgets”. Control variables may be from class IntVar, DoubleVar (for type float), or StringVar. In the latter case, the numerical value will be converted to a string. See the the digits option, above, for more information on this conversion.
+                Sert à préciser la variable de contrôle éventuelle associée à ce widget (Voir “Control variables: the values behind the widgets”). Cette variable peut être de classe ``IntVar``, ``DoubleVar`` (pour les flottants) ou ``StringVar``. Dans le cas d'une ``StringVar``, les valeurs numériques seront converties en chaînes de caractères; voir l'option **digits** ci-dessus pour plus d'information sur cette conversion.
         :arg width: 
-                The width of the trough part of the widget. This is the x dimension for vertical scales and the y dimension if the scale has orient=tk.HORIZONTAL. Default is 15 pixels.
+                Sert à préciser la largeur de l'aire de glissement du curseur. Si le widget est orienté horizontalement, il s'agit de la dimension en y; sinon de sa dimension en x. La valeur par défaut est 15 pixels.
 
-        Scale objects have these methods:
+        Les objets de type ``Scale`` disposent de ces méthodes:
 
-        .. py:method:: coords(value=None)
+        .. py:method:: coords(valeur=None)
 
-                    Returns the coordinates, relative to the upper left corner of the widget, corresponding to a given value of the scale. For value=None, you get the coordinates of the center of the slider at its current position. To find where the slider would be if the scale's value were set to some value x, use value=x. 
+                    Retourne les coordonnées, sous la forme d'un 2-tuple (x, y), qui correspondent à une certaine *valeur* de l'intervalle de sélection relativement au coin supérieur gauche du widget. Si l'argument est omis, on obtient les coordonnées du centre du curseur dans sa position actuelle.
 
         .. py:method:: get()
 
-                    This method returns the current value of the scale. 
+                    Retourne la valeur courante du curseur.
 
         .. py:method:: identify(x, y)
 
-                    Given a pair of coordinates (x, y) relative to the top left corner of the widget, this method returns a string identifying what functional part of the widget is at that location. The return value may be any of these:
-                    ``'slider'`` : The slider.
-                    ``'trough1'`` : For horizontal scales, to the left of the slider; for vertical scales, above the slider.
-                    ``'trough2'`` : For horizontal scales, to the right of the slider; for vertical scales, below the slider.
-                    ``''`` : Position (x, y) is not on any of the above parts. 
+                    Sert à identifier la partie du widget située à la position (x, y) relative à son coin supérieur gauche. Les valeurs de retour possibles sont:
+                    ``'slider'`` : Le curseur.
+                    ``'trough1'`` : Pour une orientation horizontale, à la gauche du curseur et pour une orientation verticale, au-dessus du curseur.
+                    ``'trough2'`` : Pour une orientation horizontale, à la droite du curseur et, pour une orientation verticale, en-dessous du curseur.
+                    ``''`` : Sur aucune des parties indiquées plus tôt.
 
-        .. py:method:: set(value)
+        .. py:method:: set(valeur)
 
-                    Sets the scale's value. 
+                    Sert à positionner la valeur du widget.
 
