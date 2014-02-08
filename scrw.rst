@@ -1,151 +1,151 @@
 .. _SCROLLBAR:
 
-********************
-The Scrollbar widget
-********************
+***********************************************
+Le widget ``Scrollbar`` ou barre de défilement
+***********************************************
 
-A number of widgets, such as listboxes and canvases, can act like sliding windows into a larger virtual area. You can connect scrollbar widgets to them to give the user a way to slide the view around relative to the contents. Here's a screen shot of an entry widget with an associated scrollbar widget:
+Bon nombre de widgets, comme par exemple les listes de sélection (``Listbox``) et les canevas (``Canvas``), peuvent se comporter comme des fenêtre de visualisation d'une aire virtuelle plus large. Vous pouvez associer à de tels widgets des barres de défilement pour donner un moyen à l'utilisateur de faire glisser la vue et d'accéder aux zones actuellement hors de la fenêtre. Voici une capture d'écran qui montre un champ de saisie (``Entry``) muni d'une barre de défilement.
 
-    Scrollbars can be horizontal, like the one shown above, or vertical. A widget that has two scrollable dimensions, such as a canvas or listbox, can have both a horizontal and a vertical scrollbar.
+* Une barre de défilement peut être orientée horizontalement (comme celle montrée ci-dessus), ou verticalement. Un widget qui possède deux dimensions de défilement, comme un Canvas ou une Listbox, peuvent être munie de deux barres de défilements: horizontale et verticale.
 
-    The slider, or scroll thumb, is the raised-looking rectangle that shows the current scroll position.
+* Le curseur, ou poigné de glissement, est le petit rectangle surelevé qui indique la position courante de défilement.
 
-    The two triangular arrowheads at each end are used for moving the position by small steps. The one on the left or top is called arrow1, and the one on the right or bottom is called arrow2.
+* Les deux petits triangles à chaque extrémité de la barre sont utilisés pour modifier la position par petits pas. Celui de gauche est nommé *arrow1* et celui de droite *arrow2*.
 
-    The trough is the sunken-looking area visible behind the arrowheads and slider. The trough is divided into two areas named trough1 (above or to the left of the slider) and trough2 (below or to the right of the slider).
+* Les zones de glissements situées entre les triangles et le curseur sont appelés *trough1* et *trough2* (de la gauche vers la droite ou du haut vers le bas selon l'orientation de la barre).
 
-    The slider's size and position, relative to the length of the entire widget, show the size and position of the view relative to its total size. For example, if a vertical scrollbar is associated with a listbox, and its slider extends from 50% to 75% of the height of the scrollbar, that means that the visible part of the listbox shows that portion of the overall list starting at the halfway mark and ending at the three-quarter mark.
+* La taille et la position du curseur, relativement à la longueur totale de la barre, montre la taille et la position de la portion actuellement visible du widget relativement à sa taille totale. Par exemple, si une barre de défilement verticale est associée à une liste de sélection (``Listbox``) et que son curseur occupe 25% (1/4) de la barre tout en ayant son extrémité haute au milieu de celle-ci, cela signife que la moitié du contenu de la liste est hors de la vue au dessus, un quart est hors de la vue en dessous et un quart de ce contenu est actuellement visible.
 
-    In a horizontal scrollbar, clicking B1 (button 1) on the left arrowhead moves the view by a small amount to the left. Clicking B1 on the right arrowhead moves the view by that amount to the right. For a vertical scrollbar, clicking the upward- and downward-pointing arrowheads moves the view small amounts up or down. Refer to the discussion of the associated widget to find out the exact amount that these actions move the view.
+* Pour une barre de défilement horizontale, cliquer sur le bouton 1 (gauche) de la souris tout en étant au-dessus du triangle gauche déplace la vue vers la gauche d'une unité. Un déplacement vers la droite d'une même quantité se produit si on clique sur le triangle droit. Un comportement similaire a lieu pour une barre verticale. Pour connaître précisément cette quantité de mouvement, reportez-vous ... Refer to the discussion of the associated widget to find out the exact amount that these actions move the view.
 
-    The user can drag the slider with B1 or B2 (the middle button) to move the view.
+* L'utilisateur peut cliquer-glisser le curseur en utilisant le bouton 1 ou 2 (gauche ou milieu) de la souris afin de déplacer la vue.
 
-    For a horizontal scrollbar, clicking B1 in the trough to the left of the slider moves the view left by a page, and clicking B1 in the trough to the right of the slider moves the view a page to the right. For a vertical scrollbar, the corresponding actions move the view a page up or down.
+* Cliquer gauche sur l'aire de glissement de la barre provoque un saut d'une page de la vue (dans la direction de la barre).
 
-    Clicking B2 anywhere along the trough moves the slider so that its left or top end is at the mouse, or as close to it as possible. 
+* Cliquer avec le bouton du milieu de la souris sur l'aire de glissement amène la vue à l'une de ses extrémités: tout en haut, en bas, à gauche, à droite.
 
-The normalized position of the scrollbar refers to a number in the closed interval [0.0, 1.0] that defines the slider's position. For vertical scrollbars, position 0.0 is at the top and 1.0 at the bottom; for horizontal scrollbars, position 0.0 is at the left end and 1.0 at the right.
+La position normalisée de la barre de défilement est un nombre de l'intervalle fermé [0.0, 1.0] qui détermine la position du curseur. 0.0 se réfère à la position la plus à gauche d'une barre horizontale, et à la position la plus haute d'une barre verticale.
 
-To create a new Scrollbar widget as the child of a root window or frame parent:
+Pour créer une nouvelle barre de défilement ``Scrollbar`` comme enfant d'une fenêtre ou d'un cadre nommé parent:
 
 .. py:class:: Scrollbar(parent, option, ...)
 
-        The constructor returns the new Scrollbar widget. Options for scrollbars include:
+        Le constructeur retourne le nouveau widget ``Scrollbar`` créé. Ses options incluent:
 
         :arg activebackground: 
-                The color of the slider and arrowheads when the mouse is over them. See Section 5.3, “Colors”.
+                La couleur du curseur et des flèches lorsque la souris est au dessus de l'un d'eux. Voir “Colors”.
         :arg activerelief: 
-                By default, the slider is shown with the tk.RAISED relief style. To display the slider with a different relief style when the mouse is over the slider.
-        :arg bg: or background 
-                The color of the slider and arrowheads when the mouse is not over them.
-        :arg bd: or borderwidth 
-                The width of the 3-d borders around the entire perimeter of the trough, and also the width of the 3-d effects on the arrowheads and slider. Default is no border around the trough, and a two-pixel border around the arrowheads and slider. For possible values, see Section 5.1, “Dimensions”.
+                Le relief utilisé pour affiché le curseur lorsque la souris est au dessus. Sa valeur par défaut est 'raised'.
+        :arg bg: 
+                (ou **background**) La couleur du curseur et des flèches lorsque la souris n'est pas au dessus.
+        :arg bd: 
+                (ou **borderwidth**) La largeur de la bordure 3d qui entoure la zone de glissement et aussi celle de l'effet 3d du curseur et des flèches. Par défaut, il n'y a pas de bordure autour de la zone de glissement, et celle des flèches et du curseur vaut 2 pixels. Pour des valeurs possibles, voir “Dimensions”.
         :arg command: 
-                A procedure to be called whenever the scrollbar is moved. For a discussion of the calling sequence, see Section 22.1, “The Scrollbar command callback”.
+                Une fonction à appeler à chaque fois que le curseur de la barre de défilement a été déplacé. Pour plus de détails sur la façon dont cette fonction est appelée, voir “The Scrollbar command callback”.
         :arg cursor: 
-                The cursor that appears when the mouse is over the scrollbar. See Section 5.8, “Cursors”.
+                Le curseur utilisée lorsque la souris est au dessus de la barre. Voir “Cursors”.
         :arg elementborderwidth: 
-                The width of the borders around the arrowheads and slider. The default is elementborderwidth=-1, which means to use the value of the borderwidth option.
+                L'épaisseur de la bordure des flèches et du curseur. Sa valeur par défaut est -1 ce qui signifie que c'est la valeur de l'option **borderwidth** qui est utilisée.
         :arg highlightbackground: 
-                The color of the focus highlight when the scrollbar does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque la barre de défilement ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                The color of the focus highlight when the scrollbar has the focus.
+                La couleur de la ligne de mise en valeur du focus lorsque la barre de défilement l'obtient.
         :arg highlightthickness: 
-                The thickness of the focus highlight. Default is 1. Set to 0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 par défaut. Mettre cette option à 0 pour supprimer la mise en valeur du focus.
         :arg jump: 
-                This option controls what happens when a user drags the slider. Normally (jump=0), every small drag of the slider causes the command callback to be called. If you set this option to 1, the callback isn't called until the user releases the mouse button.
+                Sert à contrôler ce qui arrive lorsque l'utilisateur déplace le curseur. Par défaut jump=0 et chaque petit déplacement du curseur produit un appel de la fonction de rappel de l'option **command**. Si vous réglez cette option avec la valeur 1, la fonction de rappel ne sera pas appelée tant que l'utilisateur n'aura pas relâché le bouton de la souris.
         :arg orient: 
-                Set orient=tk.HORIZONTAL for a horizontal scrollbar, orient=tk.VERTICAL for a vertical one (the default orientation).
+                Configurez cette option avec la valeur 'horizontal' pour une barre de défilement horizontale et 'vertical' pour une barre de défilement verticale.
         :arg relief: 
-                Controls the relief style of the widget; the default style is tk.SUNKEN. This option has no effect in Windows.
+                Sert à contrôler le relief du widget; sa valeur par défaut est 'sunken'. Cette option n'a pas d'effet pour le système Windows.
         :arg repeatdelay: 
-                This option controls how long button 1 has to be held down in the trough before the slider starts moving in that direction repeatedly. Default is repeatdelay=300, and the units are milliseconds.
+                Cette option contrôle la durée, en millisecondes, à partir de laquelle le curseur commence à être déplacé de manière répétive dans la direction d'un clic gauche tenu à la souris sur la zone de défilement. Sa valeur par défaut est 300 millisecondes.
         :arg repeatinterval: 
-                This option controls how often slider movement will repeat when button 1 is held down in the trough. Default is repeatinterval=100, and the units are milliseconds.
+                Cette option contrôle la durée, en millisecondes, qui s'écoule entre deux déplacements automatiques du curseur lorsque l'utilisateur fait un clic prolongé sur la zone de défilement. Sa valeur par défaut est 100 millisecondes.
         :arg takefocus: 
-                Normally, you can tab the focus through a scrollbar widget; see Section 53, “Focus: routing keyboard input”. Set takefocus=0 if you don't want this behavior. The default key bindings for scrollbars allow the user to use the ← and → arrow keys to move horizontal scrollbars, and they can use the ↑ and ↓ keys to move vertical scrollbars.
+                Ce widget obtient normalement le focus; voir “Focus: routing keyboard input”. Utilisez ``takefocus=0`` si vous souhaitez empêcher cela. Lorsqu'une barre de défilement obtient le focus, on peut la déplacer à l'aide des flèches du clavier.
         :arg troughcolor: 
-                The color of the trough.
+                La couleur de la zone de glissement de la barre.
         :arg width: 
-                Width of the scrollbar (its y dimension if horizontal, and its x dimension if vertical). Default is 16. For possible values, see Section 5.1, “Dimensions”.
+                La largeur de la barre dans la direction y si elle est horizontale, dans la direction x si elle est verticale. Sa valeur par défaut est 16.
 
-        Methods on scrollbar objects include:
+        Les méthodes d'une barre de défilement ``Scrollbar`` incluent:
 
         .. py:method:: activate(element=None)
 
-                    If no argument is provided, this method returns one of the strings 'arrow1', 'arrow2', 'slider', or '', depending on where the mouse is. For example, the method returns 'slider' if the mouse is on the slider. The empty string is returned if the mouse is not currently on any of these three controls.
+                    Si aucun argument n'est fournie, cette méthode retoure l'une des chaînes 'arrow1', 'arrow2', 'slider', or '', selon la position courante de la souris. La chaîne vide est retourné si le curseur n'est pas actuellement au dessus du curseur ou d'une des deux flèches.
 
-                    To highlight one of the controls (using its activerelief relief style and its activebackground color), call this method and pass a string identifying the control you want to highlight, one of 'arrow1', 'arrow2', or 'slider'. 
+                    Pour mettre en valeur un de ces élément (en utilisant les valeurs des options **activerelief** et **activebackground**), appelé cette méthode avec l'une des chaînes indiquées plus haut.
 
         .. py:method:: delta(dx, dy)
 
-                    Given a mouse movement of (dx, dy) in pixels, this method returns the float value that should be added to the current slider position to achieve that same movement. The value must be in the closed interval [-1.0, 1.0]. 
+                    Étant donné un mouvement de dx pixels selon x et de dy pixels selon y, cette méthode retourne un flottant qui devrait être ajouté à la valeur normalisée correspondante de la position courante du curseur afin qu'il effectue le même mouvement.
 
         .. py:method:: fraction(x, y)
 
-                    Given a pixel location (x, y), this method returns the corresponding normalized slider position in the interval [0.0, 1.0] that is closest to that location. 
+                    Étant donné une position (x, y), cette méthode retourne la valeur normalisée (dans l'intervalle [0.0, 1.0]) de la position du curseur qui serait la plus proche de cette position.
 
         .. py:method:: get()
 
-                    Returns two numbers (a, b) describing the current position of the slider. The a value gives the position of the left or top edge of the slider, for horizontal and vertical scrollbars respectively; the b value gives the position of the right or bottom edge. Each value is in the interval [0.0, 1.0] where 0.0 is the leftmost or top position and 1.0 is the rightmost or bottom position. For example, if the slider extends from halfway to three-quarters of the way along the trough, you might get back the tuple (0.5,0.75). 
+                    Retourne un 2-tuple (a, b) qui décrit la position courante du curseur. a appartient à [0, 1] et correspond au bord gauche ou haut du curseur selon l'orientation de la barre. b se rapporte à son bord droit ou bas. Par exemple, si le curseur s'étend de la moitié au trois quart de la barre de défilement, vous obtiendriez (0.5,0.75).
 
         .. py:method:: identify(x, y)
 
-                    This method returns a string indicating which (if any) of the components of the scrollbar are under the given (x, y) coordinates. The return value is one of 'arrow1', 'trough1', 'slider', 'trough2', 'arrow2', or the empty string '' if that location is not on any of the scrollbar components. 
+                    Retourne une chaîne de caractère qui précise la partie de la barre de défilement situé à la position (x, y). Les valeurs de retour possibles sont 'arrow1', 'trough1', 'slider', 'trough2', 'arrow2', ou la chaîne vide '' si cette position ne correpond à aucun composant de la barre.
 
         .. py:method:: set(first, last)
 
-                    To connect a scrollbar to another widget w, set w's xscrollcommand or yscrollcommand to the scrollbar's .set method. The arguments have the same meaning as the values returned by the .get() method. Please note that moving the scrollbar's slider does not move the corresponding widget.
+                    Pour munir un widget ``w`` d'une barre de défilement, configurer son option **xscrollcommand** ou **yscrollcommand** avec cette méthode. Les arguments ont la même signification que les valeurs retournées par la méthode get() décrite plus tôt. De cette façon, le widget ``w`` est en mesure d'avertir la barre de défilement de la portion de sa zone d'affichage actuellement visible afin que la barre soit ajustée en conséquence. Notez que le déplacement du curseur ne produit pas pour autant le glissement de la zone visible du widget ``w``.
     
-The Scrollbar command callback
-==============================
+Fonction de rappel d'une barre de défilement
+============================================
 
-When the user manipulates a scrollbar, the scrollbar calls its command callback. The arguments to this call depend on what the user does:
+Lorsque l'utilisateur manipule la barre de défilement, celle-ci appelle la fonction de rappel - notée *command* ci après - qui a été associée à son option **command**. Les arguments transmis à la fonction dépendent de ce qu'à fait l'utilisateur:
 
-When the user requests a movement of one “unit” left or up, for example by clicking button B1 on the left or top arrowhead, the arguments to the callback look like::
+Lorsque l'utilisateur déplace le curseur d'une unité vers la gauche ou vers le haut, en cliquant par exemple sur la flèche gauche ou haute, l'appel de *command* est du type::
 
-        command(tk.SCROLL, -1, tk.UNITS)
+        command('scroll', -1, 'units')
 
-When the user requests a movement of one unit right or down, the arguments are::
+ou qu'il déplace le curseur d'une unité vers la droite ou vers le bas, les arguments sont::
 
-        command(tk.SCROLL, 1, tk.UNITS)
+        command('scroll', 1, 'units')
 
-When the user requests a movement of one page left or up::
+Lorsqu'il effectue un mouvement d'une page vers la gauche ou vers le haut::
 
-        command(tk.SCROLL, -1, tk.PAGES)
+        command('scroll', -1, 'pages')
 
-When the user requests a movement of one page right or down::
+vers la droite ou vers le bas::
 
-        command(tk.SCROLL, 1, tk.PAGES)
+        command('scroll', 1, 'pages')
 
-When the user drags the slider to a value f in the range [0,1], where 0 means all the way left or up and 1 means all the way right or down, the call is::
+Lorqu'il déplace le curseur jusqu'à la position normalisée f de l'intervalle [0,1] (0 tout à gauche ou tout en haut, 1 tout à droite ou tout en bas), l'appel est de la forme::
 
-        command(tk.MOVETO, f)
+        command('moveto', f)
 
-These calling sequences match the arguments expected by the .xview() and .yview() methods of canvases, listboxes, and text widgets. The Entry widget does not have an .xview() method. See Section 10.1, “Scrolling an Entry widget”. 
+Ces séquences d'appels sont conformes aux arguments attendus par les méthodes ``xview()`` et ``yview()`` des canvas (Canvas), listes de sélection (Listboxe), et du widget de texte (Text). Les champs de saisis n'ont pas de méthode xview(). Voir “Scrolling an Entry widget”. 
 
-Connecting a Scrollbar to another widget
-========================================
+Associer une barre de défilement à un autre widget
+==================================================
 
-Here is a code fragment showing the creation of a canvas with horizontal and vertical scrollbars. In this fragment, self is assumed to be a Frame widget::
+Voici un fragment de code qui montre la création d'un canevas muni de barres de défilement horizontal et vertical::
 
-    self.canv = tk.Canvas(self, width=600, height=400,
-        scrollregion=(0, 0, 1200, 800))
-    self.canv.grid(row=0, column=0)
+    canv = Canvas(root, width=600, height=400,
+        defilregion=(0, 0, 1200, 800))
+    canv.grid(row=0, column=0)
 
-    self.scrollY = tk.Scrollbar(self, orient=tk.VERTICAL,
-        command=self.canv.yview)
-    self.scrollY.grid(row=0, column=1, sticky=tk.N+tk.S)
+    defilY = Scrollbar(root, orient='vertical',
+        command=canv.yview)
+    defilY.grid(row=0, column=1, sticky='ns')
 
-    self.scrollX = tk.Scrollbar(self, orient=tk.HORIZONTAL,
-        command=self.canv.xview)
-    self.scrollX.grid(row=1, column=0, sticky=tk.E+tk.W)
+    defilX = Scrollbar(self, orient='horizontal',
+        command=canv.xview)
+    defilX.grid(row=1, column=0, sticky='ew')
 
-    self.canv['xscrollcommand'] = self.scrollX.set
-    self.canv['yscrollcommand'] = self.scrollY.set
+    canv['xscrollcommand'] = defilX.set
+    canv['yscrollcommand'] = defilY.set
 
 Notes:
 
-    The connection goes both ways. The canvas's xscrollcommand option has to be connected to the horizontal scrollbar's .set method, and the scrollbar's command option has to be connected to the canvas's .xview method. The vertical scrollbar and canvas must have the same mutual connection.
+    L'association fonctionne dans les deux sens. L'option **xscrollcommand** du canevas doit être associée à la méthode ``set()`` de la barre de défilement horizontale et l'option **command** de cette même barre de défilement doit être associée à la méthode ``xview()`` du canvas. Même chose pour la barre de défilement verticale.
 
-    The sticky options on the .grid() method calls for the scrollbars force them to stretch just enough to fit the corresponding dimension of the canvas. 
+    L'option **sticky** du gestionnaire de positionnement ``grid()`` utilisé pour positionner les barres de défilement les force à s'étendre assez pour s'ajuster aux dimensions du canevas.
