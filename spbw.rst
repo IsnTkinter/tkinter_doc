@@ -1,165 +1,164 @@
 .. _SPINBOX:
 
-******************
-The Spinbox widget
-******************
+**********************
+Le widget ``Spinbox``
+**********************
 
-The Spinbox widget allows the user to select values from a given set. The values may be a range of numbers, or a fixed set of strings.
+Le widget ``Spinbox`` sert à donner un moyen à l'utilisateur de sélectionner une valeur parmi un ensemble de valeurs données ou d'en proposer une autre. Cet ensemble de valeurs peut être un intervalle de nombres ou un ensemble fixe de chaînes de caractères.
 
-On the screen, a Spinbox has an area for displaying the current values, and a pair of arrowheads.
+À l'écran, ce widget possède une zone de visualisation de la valeur courante ainsi qu'une paire de flèches.
 
-    The user can click the upward-pointing arrowhead to advance the value to the next higher value in sequence. If the value is already at maximum, you can set up the widget, if you wish, so that the new value will wrap around to the lowest value.
+* L'utilisateur peut cliquer sur les flèches de manière à passer d'une valeur à une autre. Si la valeur courante est à une extrémité de l'ensemble, vous pouvez configurer le widget de façon à ce que l'appui sur une flèche adéquate positionne la valeur situé à l'autre extrémité.
 
-    The user can click the downward-pointing arrowhead to advance the value to the next lower value in sequence. This arrow may also be configured to wrap around, so that if the current value is the lowest, clicking on the down-arrow will display the highest value.
+* L'utilisateur peut aussi saisir une valeur directement dans la zone de visualisation de la valeur courante si le widget a le focus qu'il peut obtenir par clic sur la zone de visualisation/saisie. Voir “Focus: routing keyboard input”.
 
-    The user can also enter values directly, treating the widget as if it were an Entry. The user can move the focus to the widget (see Section 53, “Focus: routing keyboard input”), either by clicking on it or by using tab or shift-tab, and then edit the displayed value. 
-
-To create a new Spinbox widget as the child of a root window or frame parent:
+Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``parent``:
 
 .. py:class:: Spinbox(parent, option, ...)
 
-        The constructor returns the new Spinbox widget. Options include:
+        Ce constructeur retourne le nouveau widget Spinbox créé. Ses options incluent:
 
         :arg activebackground: 
-                Background color when the cursor is over the widget; see Section 5.3, “Colors”.
-        :arg bg: or background 
-                Background color of the widget.
-        :arg bd: or borderwidth 
-                Width of the border around the widget; see Section 5.1, “Dimensions”. The default value is one pixel.
+                Couleur d'arrière plan utilisée lorsque la souris est au desssu du widget; voir “Colors”.
+        :arg bg:
+                (ou **background**) Couleur d'arrière plan du widget.
+        :arg bd:
+                (ou **borderwidth**) Épaisseur de la bordure qui entoure le widget; voir “Dimensions”. 1 pixel par défaut.
         :arg buttonbackground: 
-                The background color displayed on the arrowheads. The default is gray.
+                La couleur d'arrière plan utilisé pour les flèches. 'gray' par défaut.
         :arg buttoncursor: 
-                The cursor to be displayed when the mouse is over the arrowheads; see Section 5.8, “Cursors”.
+                Le pointeur de souris à utiliser lorsque la souris est au dessus d'une flèche; voir “Cursors”.
         :arg buttondownrelief: 
-                The relief style for the downward-pointing arrowhead; see Section 5.6, “Relief styles”. The default style is tk.RAISED.
+                Le style de relief utilisé pour l'effet d'enfoncement des flèches; voir “Relief styles”. 'raised' par défaut.
         :arg buttonup: 
-                The relief style for the upward-pointing arrowhead; see Section 5.6, “Relief styles”. The default style is tk.RAISED.
+                Le style de relief utilisé pour l'effet de relâchement des flèches. 'raised' par défaut.
         :arg command: 
-                Use this option to specify a function or method to be called whenever the user clicks on one of the arrowheads. Note that the callback is not called when the user edits the value directly as if it were an Entry.
+                Utilisez cette option pour indiquer une fonction de rappel ou une méthode qui sera appelée lorsque l'utilisateur clique sur l'une des flèches. Notez que cette fonction n'est pas appelée lorsque l'utilisateur saisie la valeur directement.
         :arg cursor: 
-                Selects the cursor that is displayed when the mouse is over the entry part of the widget; see Section 5.8, “Cursors”.
+                Le pointeur de souris aui est affiché lorsque la souris est situé au-dessus de la zone de visualisation/saisie de la valeur.
         :arg disabledbackground: 
-                These options select the background and foreground colors displayed when the widget's state is tk.DISABLED.
+                Cette option et la suivante servent à préciser les couleurs d'arrière et d'avant plan utilisée lorsque le widget est dans l'état 'disabled'.
         :arg disabledforeground:
         :arg exportselection: 
-                Normally, the text in the entry portion of a Spinbox can be cut and pasted. To prohibit this behavior, set the exportselection option to True.
+                Normalement, le texte de la zone de saisie d'un Spinbox peut être coupé ou collé. Pour désactiver ce comportement, utilisez exportselection=True.
         :arg font: 
-                Use this option to select a different typeface for the entry text; see Section 5.4, “Type fonts”.
-        :arg fg: or foreground 
-                This option selects the color used to display the text in the entry part of the widget, and the color of the arrowheads.
+                Fonte de caractères à utiliser dans la zone de saisie. Voir “Type fonts”.
+        :arg fg:
+                (ou **foreground**) Couleur du texte qui apparaît dans la zone de saisie du widget, et la couleur des flèches.
         :arg format: 
-                Use this option to control the formatting of numeric values in combination with the from\_ and to options. For example, format='%10.4f' would display the value as a ten-character field, with four digits after the decimal.
+                Utilisez cette option pour contrôler la mise en forme (ou formatage) de la valeur numérique en lien avec les options **from_** et **to**. Par exemple, format='%10.4f' affichera la valeur avec 10 caractères dont 4 pour les chiffres après la virgule.
         :arg from\_: 
-                Use this option in combination with the to option (described below) to constrain the values to a numeric range. For example, ``from_=1`` and ``to=9`` would allow only values between 1 and 9 inclusive. See also the increment option below.
+                Utilisez cette option avec l'option **to** (décrite plus loin) pour contraindre les valeurs dans un intervalle numérique. Par exemple, ``from_=1`` et ``to=9`` n'autorisera que des valeurs de l'intervalle [1,9]. Voir aussi l'option **increment** ci-dessous.
         :arg highlightbackground: 
-                The color of the focus highlight when the Spinbox does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                The color of the focus highlight when the Spinbox has the focus.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
-                The thickness of the focus highlight. Default is 1. Set to 0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 pixels par défaut. Mettre cette valeur à 0 pour supprimer la mise en valeur du focus.
         :arg increment: 
-                When you constrain the values with the from\_ and to options, you can use the increment option to specify how much the value increases or decreases when the user clicks on an arrowhead. For example, with options ``from_=0.0``, ``to=2.0``, and ``increment=0.5``, the up-arrowhead will step through values 0.0, 0.5, 1.0, 1.5, and 2.0.
+                Lorsque vous contraignez les valeurs dans un intervalle au moyen des options **from_** et **to**, vous pouvez utiliser cette option pour préciser de combien la valeur doit augmenter ou diminuer lorsque l'utilisateur clique sur l'une des flèches. Par exemple, si ``from_=0.0``, ``to=2.0``, et ``increment=0.5``, La flèche haute fera défiler les valeurs 0.0, 0.5, 1.0, 1.5, et 2.0.
         :arg insertbackground: 
-                Selects the color of the insertion cursor displayed in the entry part of the widget.
+                Sert à préciser la couleur du curseur d'insertion affiché dans la zone de saisie du widget.
         :arg insertborderwidth: 
-                This option controls the width of the border around the insertion cursor. Normally, the insertion cursor will have no border. If this option is set to a nonzero value, the insertion cursor will be displayed in the tk.RAISED relief style.
+                Sert à contrôler l'épaisseur de la bordure du curseur d'insertion. Par défaut, il n'y a pas de bordure (0). Si vous donnez une valeur non négative à cette option, la bordure produira un effet de relief 'raised'.
         :arg insertofftime: 
-                These two options control the blink cycle of the insertion cursor: the amount of time it spends off and on, respectively, in milliseconds. For example, with options insertofftime=200 and insertontime=400, the cursor would blink off for 0.2 seconds and then on for 0.4 seconds.
+                Cette option et la suivante servent à contrôler le rythme de clignotement du curseur d'insertion. Elles servent à indiquer la durée de dispariation - **insertofftime** - et celle d'apparition - **insertontime** -, en millisecondes, de celui-ci. 
         :arg insertontime:
         :arg insertwidth: 
-                Use this option to specify the width of the insertion cursor; for possible values, see Section 5.1, “Dimensions”. The default width is two pixels.
+                Utilisez cette option pour préciser la largeur (horizontal) du curseur d'insertion. 2 pixels par défaut.
         :arg justify: 
-                This option controls the position of the text in the entry part of the widget. Values may be tk.LEFT to left-justify the text; tk.CENTER to center it; or RIGHT to right-justify the text.
+                Cette option sert préciser l'alignement du texte dans la zone de saisie du widget. Les valeurs possibles sont 'left', 'center' ou 'right'.
         :arg readonlybackground: 
-                This option specifies the background color that will be displayed when the widget's state is 'readonly'; see Section 5.3, “Colors”.
+                Couleur de fond du widget lorsqu'il est dans l'état 'readonly'.
         :arg relief: 
-                Use this option to select a relief style for the widget; see Section 5.6, “Relief styles”. The default style is tk.SUNKEN.
+                Style de relief pour le widget. 'sunken' par défaut; voir “Relief styles”.
         :arg repeatdelay: 
-                These options specify the auto-repeat behavior of mouse clicks on the arrowheads; values are in milliseconds. The repeatdelay value specifies how long the mouse button must be held down before it repeats, and repeatinterval specifies how often the function repeats. Default values are 400 and 100 milliseconds, respectively.
+                Cette option et la suivante servent à configurer la fonction de répétition automatique qui a lieu lorsque l'utilisateur clique sans relâcher sur l'une des flèches. Cette fonction démarre après **repeatdelay** millisecondes et **repeatinterval** est la durée en millisecondes entre deux répétitions. Les valeurs par défaut sont respectivement 400 et 100 millisecondes.
         :arg repeatinterval:
         :arg selectbackground: 
-                The background color to use displaying selected items.
+                Couleur de fond utilisée pour l'item sélectionné.
         :arg selectborderwidth:
-                The width of the border to display around selected items.
+                Épaisseur de la bordure affichée autour de l'item sélectionné.
         :arg selectforeground:
-                The foreground color to use displaying selected items.
+                Couleur du texte pour l'item sélectionné.
         :arg state: 
-                Normally, a Spinbox widget is created in the tk.NORMAL state. Set this option to tk.DISABLED to make the widget unresponsive to mouse or keyboard actions. If you set it to 'readonly', the value in the entry part of the widget cannot be modified with keystrokes, but the value can still be copied to the clipboard, and the widget still responds to clicks on the arrowheads.
+                État du widget. Les valeurs possibles sont 'normal' (défaut), 'disabled' (le widget n'est plus réactif), 'active' (il est sélectionné) et 'readonly'. Dans ce dernier cas, il n'est plus possible d'éditer la valeur directement mais celle-ci peut tout de même être modifiée à l'aide des flèches.
         :arg takefocus: 
-                Normally, the entry part of a Spinbox widget can have focus (see Section 53, “Focus: routing keyboard input”). To remove the widget from the focus traversal sequence, set takefocus=False.
-        :arg textvariable: 
-                If you want to retrieve the current value of the widget, you can use the .get() method below, or you can associate a control variable with the widget by passing that control variable as the value of this option. See Section 52, “Control variables: the values behind the widgets”.
+                Ce widget est susceptible d'obtenir le focus par défaut (voir “Focus: routing keyboard input”). Pour supprimer le widget de la séquence de traversée du focus, utilisez takefocus=False.
+        :arg textvariable:
+                Pour récupérer la valeur actuelle du widget, vous pouvez utiliser sa méthode get() décrite plus loin, ou vous pouvez configurer cette option avec une variable de contrôle. Voir “Control variables: the values behind the widgets”.
         :arg to: 
-                This option specifies the upper limit of a range values. See the from\_ option, above, and also the increment option.
+                Sert à préciser la limite supérieure de l'intervalle de valeurs pour la sélection. Voir l'option **from_**, ci-dessus, et aussi l'option **increment**.
         :arg values: 
-                There are two ways to specify the possible values of the widget. One way is to provide a tuple of strings as the value of the values option. For example, values=('red', 'blue', 'green') would allow only those three strings as values. To configure the widget to accept a range of numeric values, see the from\_ option above.
+                Il y a deux façons de préciser les valeurs possibles pour ce widget. La première est de fournir un tuple de chaîne de caractère pour cette option. Par exemple, values=('rouge', 'vert', 'bleu') délimiter les valeurs possibles du widgets à ces trois chaînes. Pour configurer le widget avec un intervalle numérique, reportez-vous à l'option **from_** plus haut.
         :arg width: 
-                Use this option to specify the number of characters allowed in the entry part of the widget. The default value is 20.
+                Utilisez cette option pour préciser le nombre de caractères qu'il est possible d'insérer dans la zone de saisie du widget.
         :arg wrap: 
-                Normally, when the widget is at its highest value, the up-arrowhead does nothing, and when the widget is at its lowest value, the down-arrowhead does nothing. If you select wrap=True, the up-arrowhead will advance from the highest value back to the lowest, and the down-arrowhead will advance from the lowest value back to the highest.
+                Par défaut, lorsque le widget est à une des valeurs limites parmi celles qui ont été configurées, l'appui sur la flèche qui devrait faire sortir de l'intervalle de ces valeurs n'a aucun effet. Si vous utilisez ``wrap=True``, cet appui permet de passer à l'autre extrémité de l'intervalle ce qui permet le parcourt «circulaire» des valeurs.
         :arg xscrollcommand: 
-                Use this option to connect a scrollbar to the entry part of the widget. For details, see Section 22.2, “Connecting a Scrollbar to another widget”.
+                Utilisez cette option pour associer une barre de défilement à la zone de saisie de ce widget. Pour les détails, voir “Connecting a Scrollbar to another widget”.
 
-        These methods are available on Spinbox widgets:
+        Les méthodes qui suivent sont disponible pour un widget ``Spinbox``
 
         .. py:method:: bbox(index)
 
-                    This method returns the bounding box of the character at position index in the entry part of the widget. The result is a tuple (x, y, w, h), where the values are the x and y coordinates of the upper left corner, and the character's width and height in pixels, in that order. 
+                    Cette méthode retourne la boîte englobante du caractère de position *index* dans la zone de saisie du widget. Le résultat est un 4-tuple (x, y, w, h) où x et y sont les coordonnées du coin supérieur gauche de cette boîte et w et h sont respectivement la largeur (*width*) et la hauteur (*height*) en pixels dudit caractère.
 
-        .. py:method:: delete(first, last=None)
+        .. py:method:: delete(debut, fin=None)
 
-                    This method deletes characters from the entry part of the Spinbox. The values of first and last are interpreted in the standard way for Python slices. 
+                    Cette méthode supprime des caractères de la zone de saisie de la ``Spinbox``. Les valeurs *deb* et *fin* sont interprétés conformément aux convention d'extraction de Python.
 
         .. py:method:: get()
 
-                    This method returns the value of the Spinbox. The value is always returned as a string, even if the widget is set up to contain a number. 
+                    Retourne la valeur actuelle du ``Spinbox`` sous la forme d'une chaîne de caractère même si un intervalle numérique a été précisé pour le widget.
 
         .. py:method:: icursor(index)
 
-                    Use this method to position the insertion cursor at the location specified by index, using the standard Python convention for positions. 
+                    Sert à positionner le curseur d'insertion à la position *index* en suivant les conventions standards de Python pour les positions.
 
         .. py:method:: identify(x, y)
 
-                    Given a position (x, y) within the widget, this method returns a string describing what is at that location. Values may be any of:
+                    Étant donné une position (*x*, *y*) à l'intérieur du widget, cette méthode retourne une chaîne de caractère qui décrit ce qui se trouve à cette position. Les valeurs possibles sont:
 
-                    'entry' for the entry area.
+                    'entry' pour la zone de saisie.
 
-                    'buttonup' for the upward-pointing arrowhead.
+                    'buttonup' pour la flèche qui pointe vers le haut.
 
-                    'buttondown' for the downward-pointing arrowhead.
+                    'buttondown' pour la flèche qui pointe vers le bas.
 
-                    '' (an empty string) if these coordinates are not within the widget. 
+                    '' (une chaîne vide) si la position est en dehors du widget.
 
         .. py:method:: index(i)
 
-                    This method returns the numerical position of an index i. Arguments may be any of:
+                    Cette méthode retourne la position numérique (l'index) du caractère de la zone de saisie sélectionné par *i*. Les valeurs possibles pour *i* sont:
 
-                    tk.END to get the position after the last character of the entry.
+                    'end' pour obtenir la position après le dernier caractère de la zone de saisie.
 
-                    tk.INSERT to get the position of the insertion cursor.
+                    'insert' pour obtenir la position du curseur d'insertion.
 
-                    tk.ANCHOR to get the position of the selection anchor.
+                    'anchor' pour obtenir la position de l'ancre de sélection.
 
-                    tk.SEL_FIRST' to get the position of the start of the selection. If the selection is not within the widget, this method raises a tk.TclError exception.
+                    'sel_first' pour obtenir la position du début de la sélection. Si la sélection n'est pas dans le widget, une erreur de type TclError est lancée.
 
-                    tk.SEL_LAST to get the position just past the end of the selection. If the selection is not within the widget, this method raises a tk.TclError exception.
+                    'sel_last' pour obtenir la position situé juste après la fin de la sélection. De même, une erreur de type TclError est lancé si la sélection n'est pas dans ce widget.
 
-                    A string of the form “@x” denotes an x-coordinate within the widget. The return value is the position of the character containing that coordinate. If the coordinate is outside the widget altogether, the return value will be the position of the character closest to that position. 
+                    Une chaîne de la forme '@x' précise une coordonnée horizontale dans ce widget. La valeur de retour est la position du caractère situé à cette position. Si aucun caractère n'est situé à cette position, la position du caractère le plus proche est renvoyé.
 
         .. py:method:: insert(index, text)
 
-                    This method inserts characters from the string text at the position specified by index. For the possible index values, see the .index() method above. 
+                    Cette méthode insère les caractères de la chaîne *text* à la position *index*. Pour les valeurs de l'argument *index*, reportez-vous à la méthode index() décrite plus tôt.
 
         .. py:method:: invoke(element)
 
-                    Call this method to get the same effect as the user clicking on an arrowhead. The element argument is 'buttonup' for the up-arrowhead, and 'buttondown' for the down-arrowhead. 
+                    L'appel de cette méthode a le même effect que lorsque l'utilisateur clique sur l'une des flèches. Les arguments possibles sont 'buttonup' pour la flèche qui pointe vers le haut et 'buttondown' pour l'autre.
 
         .. py:method:: scan_dragto(x)
 
-                    This method works the same as the .scan_dragto() method described in Section 10, “The Entry widget”. 
+                    Cette méthode fonctionne de la même façon que la méthode scan_dragto() du widget ``Entry``.
+
         .. py:method:: scan_mark(x)
 
-                    This method works the same as the .scan_mark() method described in Section 10, “The Entry widget”. 
+                    Cette méthode fonctionne de la même façon que la méthode scan_mark() du widget ``Entry``.
 
         .. py:method:: selection('from', index)
 
@@ -167,16 +166,16 @@ To create a new Spinbox widget as the child of a root window or frame parent:
 
         .. py:method:: selection('to', index)
 
-                    Selects the text between the selection anchor and the given index. 
+                    Sélectionne le texte situé entre l'ancre de sélection et l'*index* indiqué.
 
-        .. py:method:: selection('range', start, end)
+        .. py:method:: selection('range', debut, fin)
 
-                    Select the text between the start and end indices. For allowable index values, see the .index() method above. 
+                    Sélectionne le texte situé entre les index *debut* et *fin*. Pour les valeurs possibles des index, voir la méthode index() ci-dessus.
 
         .. py:method:: selection_clear()
 
-                    Clears the selection. 
+                    Éfface la sélection. 
 
         .. py:method:: selection_get()
 
-                    Returns the selected text. If there is currently no selection, this method will raise a tk.TclError exception. 
+                    Retourne le texte sélectionné. S'il n'y a pas de sélection, cette méthode lève une exception de type TclError.
