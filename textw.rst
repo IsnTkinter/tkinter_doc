@@ -1,181 +1,165 @@
 .. _TEXT:
 
-***************
-The Text widget
-***************
+******************
+Le widget ``Text``
+******************
 
-Text widgets are a much more generalized method for handling multiple lines of text than the Label widget. Text widgets are pretty much a complete text editor in a window:
+Un widget de type ``Text`` est une manière bien plus générale de traiter un texte multiligne que celle qu'offre un widget étiquette (``Label``). Ce widget ressemble plus à un éditeur de texte complet dans une fenêtre.
 
-    You can mix text with different fonts, colors, and backgrounds.
+* Vous pouvez mélanger différentes fontes, couleurs de texte et couleurs d'arrière plan.
 
-    You can intersperse embedded images with text. An image is treated as a single character. See Section 24.3, “Text widget images”.
+* Vous pouvez intercaler des images dans le texte. Une image est traitée comme un caractère unique. Voir “Text widget images”.
 
-    An index is a way of describing a specific position between two characters of a text widget. See Section 24.1, “Text widget indices”.
+* Un index est un entier qui sert à préciser une position entre deux caractères. Voir “Text widget indices”.
 
-    A text widget may contain invisible mark objects between character positions. See Section 24.2, “Text widget marks”.
+* Un widget ``Text`` peut contenir des marqueurs invisibles situés entre deux caractères. Voir “Text widget marks”.
 
-    Text widgets allow you to define names for regions of the text called tags. You can change the appearance of a tagged region, changing its font, foreground and background colors, and other option. See Section 24.5, “Text widget tags”.
+* Un widget ``Text`` vous permet de définir des noms pour des portions de textes appelés *tags*. Vous pouvez modifier l'apparence de telles portions de textes en utilisant ces *tags*, en modifiant sa fonte, sa couleur d'avant plan ou d'arrière plan et d'autres options de présentation. Voir “Text widget tags”.
 
-    You can bind events to a tagged region. See Section 54, “Events”.
+* Vous pouvez aussi lier des gestionnaire d'événement sur des portions de textes marqués (à l'aide d'un *tag*). Voir “Events”.
 
-    You can even embed a text widget in a “window” containing any Tkinter widget—even a frame widget containing other widgets. A window is also treated as a single character. See Section 24.4, “Text widget windows”. 
+* Vous pouvez même insérer You can even embed a text widget in a “window” containing any Tkinter widget—even a frame widget containing other widgets. A window is also treated as a single character. See Section 24.4, “Text widget windows”. 
 
-To create a text widget as the child of a root window or frame named parent:
+Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``parent``:
 
 .. py:class:: Text(parent, option, ...)
 
-        The constructor returns the new Text widget. Options include:
+        Ce constructeur retourne le nouveau widget ``Text`` créé. Ses options incluent:
 
         :arg autoseparators:
-                If the undo option is set, the autoseparators option controls whether separators are automatically added to the undo stack after each insertion or deletion (if autoseparators=True) or not (if autoseparators=False). For an overview of the undo mechanism, see Section 24.7, “The Text widget undo/redo stack”.
-        :arg bg: or background 
-                The default background color of the text widget. See Section 5.3, “Colors”.
-        :arg bd: or borderwidth
-                The width of the border around the text widget; see Section 5.1, “Dimensions”. The default is two pixels.
+                Si l'option **undo** est positionné, l'option **autoseparators** contrôle si des séparateurs sont automatiquement ajoutés à la pile de l'historique de retour (*undo*) après chaque insertion ou suppression (si autoseparators=True) ou non (si autoseparator=False). Pour une vue d'ensemble du mécanisme d'historique, voir la section “The Text widget undo/redo stack”.
+        :arg bg: 
+                (ou **background**) La couleur d'arrière plan du widget. Voir “Colors”.
+        :arg bd: 
+                (ou **borderwidth**) L'épaisseur de la bordure du widget. 2 pixels par défaut. Voir “Dimensions”.
         :arg cursor: 
-                The cursor that will appear when the mouse is over the text widget. See Section 5.8, “Cursors”.
+                Le pointeur de souris utilisée lorsque celle-ci est au dessus du widget. Voir “Cursors”.
         :arg exportselection: 
-                Normally, text selected within a text widget is exported to be the selection in the window manager. Set exportselection=0 if you don't want that behavior.
+                Par défaut, le texte sélectionné à l'intérieur du widget est exporté vers le presse-papier du sytème. Utilisez exportselection=0 pour supprimer ce comportement.
         :arg font: 
-                The default font for text inserted into the widget. Note that you can have multiple fonts in the widgets by using tags to change the properties of some text. See Section 5.4, “Type fonts”.
-        :arg fg: or foreground 
-                The color used for text (and bitmaps) within the widget. You can change the color for tagged regions; this option is just the default.
+                La fonte de caractères par défaut utilisées pour le texte saisi dans le widget. Notez que vous pouvez utiliser plusieurs polices de caractères dans ce widget en utilisant les *tags* pour modifier les propriétés de portions de texte. Voir “Type fonts”.
+        :arg fg: 
+                (ou **foreground**) The color used for text (and bitmaps) within the widget. You can change the color for tagged regions; this option is just the default.
         :arg height: 
-                The height of the widget in lines (not pixels!), measured according to the current font size.
+                La hauteur du widget en nombre de lignes (non en pixels!). La mesure dépend de la fonte de caractère courante.
         :arg highlightbackground: 
-                The color of the focus highlight when the text widget does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor: 
-                The color of the focus highlight when the text widget has the focus.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
-                The thickness of the focus highlight. Default is 1. Set highlightthickness=0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 pixel pas défaut. Utilisez highlightthickness=0 pour supprimer la mise en valeur du focus.
         :arg insertbackground: 
-                The color of the insertion cursor. Default is black.
+                La couleur du curseur d'insertion. 'black' par défaut.
         :arg insertborderwidth: 
-                Size of the 3-D border around the insertion cursor. Default is 0.
+                L'épaisseur de la bordure 3d autour du curseur d'insertion. 0 par défaut.
         :arg insertofftime: 
-                The number of milliseconds the insertion cursor is off during its blink cycle. Set this option to zero to suppress blinking. Default is 300.
+                Cette option et la suivante contrôle le clignotement du curseur d'insertion. la première est la durée en millisecondes de disparition et la seconde sa durée d'appartion dans le clignotement. Les valeurs par défaut sont respectivement 300 et 600.
         :arg insertontime: 
-                The number of milliseconds the insertion cursor is on during its blink cycle. Default is 600.
         :arg insertwidth: 
-                Width of the insertion cursor (its height is determined by the tallest item in its line). Default is 2 pixels.
+                La largeur du curseur d'insertion (sa hauteur est déterminée par le plus haut élément de la ligne courante). 2 pixels par défaut.
         :arg maxundo:
-                This option sets the maximum number of operations retained on the undo stack. For an overview of the undo mechanism, see Section 24.7, “The Text widget undo/redo stack”. Set this option to -1 to specify an unlimited number of entries in the undo stack.
+                Cette option sert à régler le nombre maximum d'opérations mémorisées dans l'historique. Pour une vue d'ensemble du mécanisme de gestion de l'historique, voir “The Text widget undo/redo stack”. Utilisez la valeur -1 pour préciser un nombre illimité d'opérations mémorisées.
         :arg padx: 
-                The size of the internal padding added to the left and right of the text area. Default is one pixel. For possible values, see Section 5.1, “Dimensions”.
+                La taille des marges internes gauche et droite de la zone de texte. 1 pixels par défaut. Voir “Dimensions”.
         :arg pady: 
-                The size of the internal padding added above and below the text area. Default is one pixel.
+                La taille des marges internes haute et basse de la zone de texte. 1 pixels par défaut.
         :arg relief: 
-                The 3-D appearance of the text widget. Default is relief=tk.SUNKEN; for other values, see Section 5.6, “Relief styles”.
+                Le style de la bordure 3d du widget. 'sunken' par défaut. Pour d'autre valeurs, voir “Relief styles”.
         :arg selectbackground: 
-                The background color to use displaying selected text.
+                La couleur d'arrière plan utilisée pour le texte sélectionné.
         :arg selectborderwidth: 
-                The width of the border to use around selected text.
+                L'épaisseur de la bordure qui entoure le texte sélectionné.
         :arg selectforeground: 
-                The foreground color to use displaying selected text.
+                La couleur du texte sélectionné.
         :arg spacing1: 
-                This option specifies how much extra vertical space is put above each line of text. If a line wraps, this space is added only before the first line it occupies on the display. Default is 0.
+                Cette option précise la quantité d'espace vertical supplémentaire à mettre au dessus de chaque ligne de texte. Si la ligne est enveloppé (*wrap*) c'est à dire qu'un ou des retours de ligne sont automatiquement insérés pour que la ligne n'excède pas la longueur de la fenêtre, cet espace est ajouté avant la première ligne seulement. Sa valeur par défaut est 0.
         :arg spacing2: 
-                This option specifies how much extra vertical space to add between displayed lines of text when a logical line wraps. Default is 0.
+                Cette option précise la quantité d'espace vertical a ajouter entre deux lignes lorsque la ligne dont elles font partie a été enveloppé (*wrap* - voir l'option précédente pour les détails). Sa valeur par défaut est 0.
         :arg spacing3: 
-                This option specifies how much extra vertical space is added below each line of text. If a line wraps, this space is added only after the last line it occupies on the display. Default is 0.
+                Cette option précise la quantité d'espace vertical supplémentaire à mettre en dessous de chaque «vrai» ligne de texte. Sa valeur par défaut est 0.
         :arg state: 
-                Normally, text widgets respond to keyboard and mouse events; set state=tk.NORMAL to get this behavior. If you set state=tk.DISABLED, the text widget will not respond, and you won't be able to modify its contents programmatically either.
+                Par défaut, un widget ``Text`` réagit aux saisies clavier ainsi qu'à la souris, c'est l'état 'normal'. Si vous utilisez state='disabled', le widget ne réagira plus et l'utilisateur ne pourra plus ajouté de contenu (ni vous par programmation).
         :arg tabs: 
-                This option controls how tab characters position text. See Section 24.6, “Setting tabs in a Text widget”.
+                Cette option contrôle la façon dont le caractère Tab positionne le texte. Voir “Setting tabs in a Text widget”.
         :arg takefocus: 
-                Normally, focus will visit a text widget (see Section 53, “Focus: routing keyboard input”). Set takefocus=0 if you do not want focus in the widget.
+                Par défaut, ce widget obtient le focus normalement (voir “Focus: routing keyboard input”). Utilisez takefocus=0 si vous souhaitez désactiver ce comportement.
         :arg undo:
-                Set this option to True to enable the undo mechanism, or False to disable it. See Section 24.7, “The Text widget undo/redo stack”.
+                Mettre cette option à True pour activer le mécanisme d'historique, ou à False pour le désactiver. Voir “The Text widget undo/redo stack”.
         :arg width: 
-                The width of the widget in characters (not pixels!), measured according to the current font size.
+                La largeur du widget exprimée en nombre de caractères (non en pixels!), conformément à la police de caractères courante.
         :arg wrap: 
-                This option controls the display of lines that are too wide.
-
-                With the default behavior, wrap=tk.CHAR, any line that gets too long will be broken at any character.
-
-                Set wrap=tk.WORD and it will break the line after the last word that will fit.
-
-                If you want to be able to create lines that are too long to fit in the window, set wrap=tk.NONE and provide a horizontal scrollbar. 
-
+                Cette option contrôle l'affichage des lignes trop longues. Le comportement par défaut, wrap='char', est d'insérer des sauts de ligne logique au niveau d'un caractère arbitraire. Utilisez wrap='word' et les sauts de lignes seront insérés après le dernier mot qui tient dans la ligne. Enfin, utilisez wrap='none' si vous ne souhaitez pas que des sauts de ligne soit insérés et équipez le widget d'une barre de défilement horizontale.
         :arg xscrollcommand: 
-                To make the text widget horizontally scrollable, set this option to the .set method of the horizontal scrollbar.
+                Pour associer à ce widget une barre de défilement horizontale, configurez cette option avec la méthode set() de la barre de défilement.
         :arg yscrollcommand: 
-                To make the text widget vertically scrollable, set this option to the .set method of the vertical scrollbar. 
+                Similaire à l'option précédente mais pour un défilement vertical.
 
-Text widget indices
-===================
+Les index
+=========
 
-An index is a general method of specifying a position in the content of a text widget. An index is a string with one of these forms:
+Un index est une chaîne de caractère qui sert à préciser une position dans le contenu d'un widget ``Text``. Cette chaîne de caractères est de la forme:
 
-'line.column'
-        The position just before the given column (counting from zero) on the given line (counting from one). Examples: '1.0' is the position of the beginning of the text; '2.3' is the position before the fourth character of the second line. 
+'ligne.colonne'
+        La position situé juste avant la *colonne* indiqué (en comptant à partir de 0) sur la *ligne* donnée (en comptant à partir de 1). Par exemples: '1.0' est la position de démarrage du texte; '2.3' est la position située juste avant le quatrième caractère de la deuxième ligne.
 
-'line.end'
-        The position just before the newline at the end of the given line (counting from one). So, for example, index '10.end' is the position at the end of the tenth line. 
+'ligne.end'
+        La position situé juste avant le caractère de saut de ligne de la *ligne* indiquée (en comptant à partir de 1). Ainsi, par exemple, l'index '10.end' est la position situé à la fin de la dixième ligne de texte.
 
-tk.INSERT
-        The position of the insertion cursor in the text widget. This constant is equal to the string 'insert'. 
+'insert'
+        La position du curseur d'insertion.
 
-tk.CURRENT
-        The position of the character closest to the mouse pointer. This constant is equal to the string 'current'. 
+'current'
+        La position du caractère qui est le proche de la position du pointeur de la souris.
 
-tk.END
-        The position after the last character of the text. This constant is equal to the string 'end'. 
+'end'
+        La position situé juste après le dernier caractère du texte.
 
-tk.SEL_FIRST
-        If some of the text in the widget is currently selection (as by dragging the mouse over it), this is the position before the start of the selection. If you try to use this index and nothing is selected, a tk.TclError exception will be raised. This constant is equal to the string 'sel.first'. 
+'sel.first'
+        Si une portion de texte est actuellement sélectionné (comme en cliquant-glissant la souris sur celui-ci), il s'agit de la position situé juste avant le début de la sélection. Si vous essayez d'utiliser cet index et que rien n'est sélectionné, une exception de type TclError est levée.
 
-tk.SEL_LAST
-        The position after the end of the selection, if any. As with SEL_FIRST, you'll get a tk.TclError exception if you use such an index and there is no selection. This constant is equal to the string 'sel.last'. 
+'sel.last'
+        La position situé juste après la fin de la sélection s'il y en a une. Une exception du même type que pour 'sel.first' est levée s'il n'y en a pas.
 
-'markname'
-        You can use a mark as an index; just pass its name where an index is expected. See Section 24.2, “Text widget marks”. 
+'nom_marque'
+        Vous pouvez utiliser une marque comme index; utilisez simplement son nom là où un index est attendus. Voir “Text widget marks”. 
 
 'tag.first'
-        The position before the first character of the region tagged with name tag; see Section 24.5, “Text widget tags”. 
+        La position avant le premier caractère de la région de texte marqué avec *tag*. Voir “Text widget tags”. 
 
 'tag.last'
-        The position after the last character of a tagged region. 
+        La position après le dernier caractère de la région de texte marqué avec *tag*.
 
 '@x,y'
-        The position before the character closest to the coordinate (x, y). 
+        La position située juste avant le caractère le plus proche de la position (*x*, *y*).
 
-embedded-object
-        If you have an image or window embedded in the text widget, you can use the PhotoImage, BitmapImage, or embedded widget as an index. See Section 24.3, “Text widget images” and Section 24.4, “Text widget windows”. 
+objet-embarque
+        Si vous avez embarqué une image ou une fenêtre dans le widget ``Text``, vous pouvez utilisez sa référence comme un index. Voir “Text widget images” et “Text widget windows”. 
 
-In addition to the basic index options above, you can build arbitrary complex expressions by adding any of these suffixes to a basic index or index expression:
+En supplément de ces différents moyens de base pour préciser un index, vous pouvez construire des expressions arbitrairement complexes en ajoutant l'un de ces suffixes à un index basique ou à une expression d'index:
 
 \+ n chars
-        From the given index, move forward n characters. This operation will cross line boundaries.
-
-        For example, suppose the first line looks like this:
-
-        abcdef
-
-        The index expression “1.0 + 5 chars” refers to the position between e and f. You can omit blanks and abbreviate keywords in these expressions if the result is unambiguous. This example could be abbreviated “1.0+5c”. 
+        Pour l'index donné, se déplacer vers l'avant de *n* caractères. Cette opérations peut faire changer de ligne. Par exemple, supposez que la première ligne soit «abcdef», l'expression d'index '1.0 + 5 chars' désigne la position située entre le e et le f. Vous pouvez abbréger les mots clés et omettre les blancs dans de tels expressions tant que le résultat n'est pas ambigu. Cette expression d'index pourrait s'abbréger '1.0+5c'.
 
 \- n chars
-        Similar to the previous form, but the position moves backwards n characters. 
+        Similaire à la forme précédente mais le mouvement se fait vers l'arrière.
 
 \+ n lines
-        Moves n lines past the given index. Tkinter tries to leave the new position in the same column as it was on the line it left, but if the line at the new position is shorter, the new position will be at the end of the line. 
+        Déplacement de n lignes vers le bas par rapport à l'index donné. Tkinter essais de laisser la nouvelle position dans la même colonne que celle qu'elle avait dans la ligne de départ, mais si la ligne de la nouvelle position est trop courte, la nouvelle position sera en fin de ligne.
 
 \- n lines
-        Moves n lines before the given index. 
+        Similaire à la précédente, mais le déplacement se fait vers le haut.
 
 linestart
-        Moves to the position before the first character of the given index. For example, position “current linestart” refers to the beginning of the line closest to the mouse pointer. 
+        Déplacement à la position situé avant le premier caractère de la ligne d'index donné. Par exemple, la position 'current linestart' se rapporte au début de la ligne qui est la plus proche de la position actuelle de la souris.
 
 lineend
-        Moves to the position after the last character of the given index. For example, position “sel.last lineend” refers to the end of the line containing the end of the current selection. 
+        Déplacement à la position situé après le dernier caractère (qui n'est pas un saut de ligne) de la ligne d'index donné. Par exemple, 'sel.last lineend' se rapporte à la fin de la ligne qui possède le caractère de fin de la sélection courante.
 
 wordstart
-        The position before the beginning of the word containing the given index. For example, index “11.44 wordstart” refers to the position before the word containing position 44 on line 11.
-
-        For the purposes of this operation, a word is either a string of consecutive letter, digit, or underbar (_) characters, or a single character that is none of these types.
+        La position situé avant le début du mot qui contient la position d'index donné. Par exemple, '11.44 wordstart' se rapporte à la position juste avant le 45ème caractère de la ligne 11. Dans ce contexte, un mot est soit une chaîne composée de lettres, de chiffres ou du caractère (_) ou un seule caractères qui n'est d'aucun de ces types. 
     
-Text widget marks
-=================
+Les marques
+===========
 
 A mark represents a floating position somewhere in the contents of a text widget.
 
