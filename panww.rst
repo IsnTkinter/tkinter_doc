@@ -1,120 +1,120 @@
 .. _PANEDWINDOW:
 
-**********************
-The PanedWindow widget
-**********************
+**********************************************
+Le widget ``PanedWindow`` ou fenêtre à paneaux
+**********************************************
 
-The purpose of the PanedWindow widget is to give the application's user some control over how space is divided up within the application.
+Une fenêtre à paneaux ou widget ``PanedWindow`` sert à donner à l'utilisateur un moyen de contrôle sur la manière façon dont l'espace est distribué à l'intérieur de l'application.
 
-A PanedWindow is somewhat like a Frame: it is a container for child widgets. Each PanedWindow widget contains a horizontal or vertical stack of child widgets. Using the mouse, the user can drag the boundaries between the child widgets back and forth.
+Une fenêtre à paneaux ``PanedWindow`` est similaire à un cadre (``Frame``): c'est un conteneur pour des widgets enfants. Chaque fenêtre à paneaux contient un empilement horizontal ou vertical de widgets enfants. En utilisant la souris, l'utilisateur peut déplacer les frontières situés entre deux widgets enfant dans un sens ou un autre relativement à la direction d'empilement.
 
-    You may choose to display handles within the widget. A handle is a small square that the user can drag with the mouse.
+* Vous pouvez choisir d'afficher ou non des poignés à l'intérieur du widget. Une poignée est figurée par un petit carré qui sert d'aide visuelle pour la ligne de séparation.
 
-    You may choose to make sashes visible. A sash is a bar placed between the child widgets.
+* Vous pouvez choisir de rendre les lignes de séparation - *sash* - visibles. Ces barres sont placés entre deux widgets enfants et elles peuvent être déplacées à l'aide de la souris.
 
-    A pane is the area occupied by one child widget. 
+* Un paneau est la zone de la fenêtre occupée par un widget enfant.
 
-To create a new PanedWindow widget as the child of a root window or frame named parent:
+Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre ou d'un cadre nommé parent:
 
 .. py:class:: PanedWindow(parent, option, ...)
 
-        This constructor returns the new PanedWindow widget. Here are the options:
+        Ce constructeur retourne la nouvelle fenêtre à paneaux PanedWindow créée. Voici les options disponibles:
 
-        :arg bg: or background 
-                The background color displayed behind the child widgets; see Section 5.3, “Colors”.
-        :arg bd: or borderwidth 
-                Width of the border around the outside of the widget; see Section 5.1, “Dimensions”. The default is two pixels.
+        :arg bg:
+                (ou **background**) La couleur d'arrière plan utilisée derrière les widgets enfants; voir “Colors”.
+        :arg bd:
+                (ou **borderwidth**) La largeur de la bordure du widget; 2 pixels par défaut. Voir “Dimensions”.
         :arg cursor: 
-                The cursor to be displayed when the mouse is over the widget; see Section 5.8, “Cursors”.
+                Le pointeur de souris utilisé lorsquel la souris est au-dessus de la fenêtre; voir “Cursors”.
         :arg handlepad: 
-                Use this option to specify the distance between the handle and the end of the sash. For orient=tk.VERTICAL, this is the distance between the left end of the sash and the handle; for orient=tk.HORIZONTAL, it is the distance between the top of the sash and the handle. The default value is eight pixels; for other values, see Section 5.1, “Dimensions”.
+                Utilisez cette option pour préciser la distance à laquelle est placée la poignée (*handle*) sur sa ligne de séparation (*sash*) relativement au bord gauche de cette ligne pour un empilement vertical (orient='vertical') ou au bord haut pour un empilement horizontal (orient='horizontal'). La valeur par défaut est 8 pixels.
         :arg handlesize: 
-                Use this option to specify the size of the handle, which is always a square; see Section 5.1, “Dimensions”. The default value is eight pixels.
+                Utilisez cette option pour préciser la taille de la poignée qui a toujours une forme carré. Sa valeur par défaut est 8 pixels.
         :arg height: 
-                Specifies the height of the widget; see Section 5.1, “Dimensions”. If you don't specify this option, the height is determined by the height of the child widgets.
+                La hauteur du widget. Si aucune valeur n'est indiquée, elle est déterminée par les hauteurs des widgets enfants.
         :arg opaqueresize: 
-                This option controls how a resizing operation works. For the default value, opaqueresize=True, the resizing is done continuously as the sash is dragged. If this option is set to False, the sash (and adjacent child widgets) stays put until the user releases the mouse button, and then it jumps to the new position.
+                Cette option sert à contrôler les opération de redistribution de l'espace. Par défaut sa valeur est True et la redistribution de l'espace est réalisée de manière continue au fur et à mesure que l'utilisateur déplace une ligne de séparation. Si cette option est réglée avec la valeur False, le redimensionnement effectif n'est réalisé que lorsque l'utilisateur relâche le bouton de la souris.
         :arg orient: 
-                To stack child widgets side by side, use orient=tk.HORIZONTAL. To stack them top to bottom, use orient=tk.VERTICAL.
+                Pour empiler les widgets enfant de la gauche vers la droite, utiliser la valeur 'horizontal'. Pour les empiler de haut en bas, utiliser 'vertical'.
         :arg relief: 
-                Selects the relief style of the border around the widget; see Section 5.6, “Relief styles”. The default is tk.FLAT.
+                Sert à indiquer le relief de la bordure de la fenêtre; voir “Relief styles”. La valeur par défaut est 'flat'.
         :arg sashpad: 
-                Use this option to allocate extra space on either side of each sash. The default is zero; for other values, see Section 5.1, “Dimensions”.
+                Utilisez cette option pour réserver un espace supplémentaire de chaque côtés des lignes de séparations entre les widgets enfants. Sa valeur par défaut est 0.
         :arg sashrelief: 
-                This option specifies the relief style used to render the sashes; see Section 5.6, “Relief styles”. The default style is tk.FLAT.
+                Sert à préciser le relief des lignes de séparation (*sashes*) entre les widgets enfants; voir “Relief styles”. Sa valeur par défaut est 'flat'.
         :arg sashwidth: 
-                Specifies the width of the sash; see Section 5.1, “Dimensions”. The default width is two pixels.
+                Sert à préciser l'épaisseur des lignes de séparations. 2 pixels par défaut.
         :arg showhandle: 
-                Use showhandle=True to display the handles. For the default value, False, the user can still use the mouse to move the sashes. The handle is simply a visual cue.
+                Utilisez ``showhandle=True`` pour afficher les poignés. La valeur par défaut est False mais l'utilisateur peut toujours déplacer les lignes de séparations entre les widgets enfants. La poignée est simplement une aide visuelle.
         :arg width: 
-                Width of the widget; see Section 5.1, “Dimensions”. If you don't specify a value, the width will be determined by the sizes of the child widgets.
+                La largeur de la fenêtre. Si vous ne précisez pas sa valeur, elle sera déterminée par les largeurs des widgets enfants qu'elle contient.
 
         To add child widgets to a PanedWindow, create the child widgets as children of the parent PanedWindow, but rather than using the .grid() method to register them, use the .add() method on the PanedWindow.
 
-        Here are the methods on PanedWindow widgets.
+        Voici les méthodes disponibles pour le widget ``PanedWindow``:
 
-        .. py:method:: add(child[, option=value] ...)
+        .. py:method:: add(enfant, option=valeur ...)
 
-                    Use this method to add the given child widget as the next child of this PanedWindow. First create the child widget with the PanedWindow as its parent widget, but do not call the .grid() method to register it. Then call .add(child) and the child will appear inside the PanedWindow in the next available position.
+                    Utilisez cette méthode pour ajouter le widget *enfant* donné après ceux qui ont déjà été éventuellement ajoutés à cette fenêtre. Commencez par créer le widget *enfant* en utilisant cette fenêtre comme parent, mais n'utilisez aucun gestionnaire de positionnement comme ``grid`` ou ``pack`` pour le placer. Ensuite, appelez ``add(enfant)`` et celui-ci apparaîtra dans la fenêtre après tous les autres (s'il y en a).
 
-                    Associated with each child is a set of configuration options that control its position and appearance. See Section 19.1, “PanedWindow child configuration options”. You can supply these configuration options as keyword arguments to the .add() method. You can also set or change their values anytime with the .paneconfig() method, or retrieve the current value of any of these options using the .panecget() method; these methods are described below. 
+                    Afin de contrôler l'apparence et la position du widget *enfant*, précisez au moment de l'appel certaines options. Voir “PanedWindow child configuration options”. Vous pouvez modifier ces options de manière dynamique en utilisant la méthode ``paneconfig()`` ou récupérer leurs valeurs en utilisant la méthode ``panecget()``; ces méthodes sont décrites un peu plus loin.
 
-        .. py:method:: forget(child)
+        .. py:method:: forget(enfant)
 
-                    Removes a child widget. 
+                    Supprime le widget *enfant* donné en argument.
 
         .. py:method:: identify(x, y)
 
-                    For a given location (x, y) in window coordinates, this method returns a value that describes the feature at that location.
+                    Pour une position donnée *(x, y)* relative à la fenêtre, cette méthode retourne une valeur qui décrit l'élément graphique situé à cette position.
 
-                    If the feature is a child window, the method returns an empty string.
+                    * si l'élément graphique est un widget enfant ou une sous-fenêtre qui le contient, la méthode retourne une chaîne vide.
 
-                    If the feature is a sash, the method returns a tuple (n, 'sash') where n is 0 for the first sash, 1 for the second, and so on.
+                    * s'il s'agit d'une ligne de séparation entre deux widgets enfants, la valeur de retour est un 2-tuple ``(n,'sash')`` où n est 0 pour la première ligne, 1 pour la deuxième et ainsi de suite.
 
-                    If the feature is a handle, the method returns a tuple (n, 'handle') where n is 0 for the first handle, 1 for the second, and so on. 
+                    * s'il s'agit d'une poignée, la valeur de retour est un 2-tuple ``(n,'handle')`` où n a la même signication que pour les lignes de démarcation.
 
-        .. py:method:: panecget(child, option)
+        .. py:method:: panecget(enfant, option)
 
-                    This method retrieves the value of a child widget configuration option, where child is the child widget and option is the name of the option as a string. For the list of child widget configuration options, see Section 19.1, “PanedWindow child configuration options”. 
+                    Sert à récupérer la valeur actuelle, pour le widget *enfant*, de l'*option* précisé en deuxième argument à l'aide d'une chaîne de carctères. Pour connaître la liste des options possibles, voir “PanedWindow child configuration options”. 
 
-        .. py:method:: paneconfig(child, option=value, ...)
+        .. py:method:: paneconfig(enfant, option=value, ...)
 
-                    Use this method to configure options for child widgets. The options are described in Section 19.1, “PanedWindow child configuration options”. 
+                    Sert à configurer les options du widget *enfant* pour cette fenêtre. Les options disponibles sont décrites plus loin, voir “PanedWindow child configuration options”. 
 
         .. py:method:: panes()
 
-                    This method returns a list of the child widgets, in order from left to right (for orient=tk.HORIZONTAL) or top to bottom (for orient=tk.VERTICAL). 
+                    Retourne la liste des widgets enfants de la fenêtre (de la gauche vers la droite ou du haut vers le bas selon son orientation).
 
-        .. py:method:: remove(child)
+        .. py:method:: remove(enfant)
 
-                    Removes the given child; this is the same action as the .forget() method. 
+                    Supprime l'*enfant* donné; C'est la même action que celle qu'on obtient avec la méthode ``forget()``.
 
         .. py:method:: sash_coord(index)
 
-                    This method returns the location of a sash. The index argument selects the sash: 0 for the sash between the first two children, 1 for the sash between the second and third child, and so forth. The result is a tuple (x, y) containing the coordinates of the upper left corner of the sash. 
+                    Retourne la position du la ligne de séparation de numéro *index*. La ligne de démarcation d'*index* 0 est celle qui sépare les deux premiers widgets enfants, celle d'*index* 1 celle qui sépare le second et le troisième; et ainsi de suite. La valeur de retour est un tupe *(x, y)* qui contient les coordonnées du bord supérieur gauche de la ligne de démarcation (qui est en fait un rectangle très fin).
 
         .. py:method:: sash_place(index, x, y)
 
-                    Use this method to reposition the sash selected by index (0 for the first sash, and so on). The x and y coordinates specify the desired new position of the upper left corner of the sash. Tkinter ignores the coordinate orthogonal to the orientation of the widget: use the x value to reposition the sash for orient=tk.HORIZONTAL, and use the y coordinate to move the sash for option orient=tk.VERTICAL. 
+                    Utilisez cette méthode pour repositionnez la ligne de démarcation *index*. *x* et *y* précise les nouvelles coordonnées du coin supérieur gauche de la ligne de démarcation *index*. Tkinter ignore la valeur de la coordonnées perpendiculaire à l'orientation de la fenêtre: *x* est la valeur utile pour repositionner une ligne de démarcation d'une fenêtre avec ``orient=horizontal`` et *y* celle qui agit effectivement pour ``orient=vertical``.
     
-PanedWindow child configuration options
-=======================================
+Options de configuration des enfants d'un ``PanedWindow``
+=========================================================
 
- Each child of a PanedWindow has a set of configuration options that control its position and appearance. These options can be provided when a child is added with the .add() method, or set with the .paneconfig() method, or queried with the .panecget() methods described above.
+Chaque enfant d'une fenêtre à paneaux ou ``PanedWindow`` dispose d'un jeu d'options de configuration qui permet de contrôler sa position et son apparence dans la fenêtre. Ces options peuvent être précisées au moment de leur ajout à l'aide de la méthode ``add()``, ou de manière dynamique avec la méthode ``paneconfig()``; il est aussi possible de récupérer les valeurs de ces options au moyen de la méthode ``panecget()``. Toutes ces méthodes sont décrites plus haut.
 
-after
-        Normally, when you .add() a new child to a PanedWindow, the new child is added after any existing child widgets. You may instead use the after=w option to insert the new widget at a position just after an existing child widget w.
-before
-        When used as option before=w in a call to the .add() method, places the new widget at a position just before an existing child widget w.
-height
-        This option specifies the desired height of the child widget; see Section 5.1, “Dimensions”.
-minsize
-        Use this option to specify a minimum size for the child widget in the direction of the PanedWindow's orientation. For orient=tk.HORIZONTAL, this is the minimum width; for orient=tk.VERTICAL, it is the minimum height. For permissible values, see Section 5.1, “Dimensions”.
-padx
-        The amount of extra space to be added to the left and right of the child widget; see Section 5.1, “Dimensions”.
-pady
-        The amount of extra space to be added above and below the child widget; see Section 5.1, “Dimensions”.
-sticky
-        This option functions like the sticky argument to the .grid() method; see Section 4.1, “The .grid() method”. It specifies how to position a child widget if the pane is larger than the widget. For example, sticky=tk.NW would position the widget in the upper left (“northwest”) corner of the pane.
-width
-        Desired width of the child widget; see Section 5.1, “Dimensions”. 
+**after**
+        Par défaut, lorsque vous ajouter un enfant dans la fenêtre, il est ajouter à la suite des enfants précédemment ajoutés. En utilisant after=w où w désigne un enfant déjà présent dans la fenêtre, celui-ci sera ajouter à la suite de w (repoussant ainsi ceux qui viennent après).
+**before**
+        Similaire à l'option précédente, mais place le nouvel enfant avant celui qu'on précise pour cette option.
+**height**
+        Sert à préciser la hauteur désirée pour le widget enfant; voir “Dimensions”.
+**minsize**
+        Utilisez cette option pour indiquer une taille minimale pour le widget enfant dans la direction d'orientation de la fenêtre à paneaux. Pour ``orient='horizontal'``, c'est la largeur minimum; pour ``orient='vertical'``, c'est la hauteur minimum.
+**padx**
+        Espace supplémentaire horizontal à ajouter à gauche et à droite du widget enfant.
+**pady**
+        Espace supplémentaire verticale à ajouter au dessus et en dessous du widget enfant.
+**sticky**
+        Cette option a le même rôle que l'argument de même nom de la méthode grid(). Elle sert à préciser comment positionner l'enfant si le paneau qui le contient est plus large que celui-ci. Par exemple, ``sticky="nw"`` positionnera le widget dans le coin supérieur gauche (nord ouest) du paneau.
+**width**
+        La largeur désirée pour le widget enfant.
