@@ -39,7 +39,7 @@ Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``paren
         :arg font: 
                 La fonte de caractères par défaut utilisées pour le texte saisi dans le widget. Notez que vous pouvez utiliser plusieurs polices de caractères dans ce widget en utilisant les *tags* pour modifier les propriétés de portions de texte. Voir “Type fonts”.
         :arg fg: 
-                (ou **foreground**) The color used for text (and bitmaps) within the widget. You can change the color for tagged regions; this option is just the default.
+                (ou **foreground**) La couleur utilisée pour le texte (et les bitmaps) dans le widget. Vous pouvez modifier la couleur pour des portions de textes tagués; cette option fournie juste une couleur par défaut.
         :arg height: 
                 La hauteur du widget en nombre de lignes (non en pixels!). La mesure dépend de la fonte de caractère courante.
         :arg highlightbackground: 
@@ -206,7 +206,7 @@ Afin de contrôler ces caractéristiques relatives à l'apparence ou aux fonctio
 
 * Puisque chaque caractère peut faire partie d'un ou de plusieurs tags, ces tags sont ordonnés dans une liste. Chaque nouveau tag est ajouté à la fin de cette liste de sorte que les derniers entrés ont la priorité sur ceux qui ont été entrés plus tôt.
 
-* Ainsi, par exemple, si un caractère ``c`` fait partie de deux régions taggués ``t1`` et ``t2``, que ``t1`` est situé avant ``t2`` dans la liste ordonné des tags, et que ``t1`` défini une couleur de texte verte tandis que ``t2`` défini une couleur bleu, alors ``c`` sera affiché en bleu car ``t2`` a la priortié sur ``t1``.
+* Ainsi, par exemple, si un caractère ``c`` fait partie de deux régions tagués ``t1`` et ``t2``, que ``t1`` est situé avant ``t2`` dans la liste ordonné des tags, et que ``t1`` défini une couleur de texte verte tandis que ``t2`` défini une couleur bleu, alors ``c`` sera affiché en bleu car ``t2`` a la priortié sur ``t1``.
 
 * Vous pouvez modifiez à tout moment l'ordre des tags dans la liste des tags.
 
@@ -361,6 +361,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             Cette méthode sert à insérer une image dans l'éditeur juste après la position précisé par l'*index*. Une image est traitée de la même façon qu'un caractère dont la taille serait celle de l'image.
 
             Les options pour cette méthode sont données ci-après. Vous pouvez transmettre une séries d'arguments de la forme option=valeur, ou un dictionnaire que qui contient les noms d'options comme clés.
+            
             **align**
                     Cette option précise l'alignement vertical de son image si sa hauteur est inférieure à la hauteur de la ligne qui la contient. Les valeurs possible sont 'top' pour un alignement en haut, 'center' pour un centrage vertical; 'bottom' pour la placer tout en bas; ou 'baseline' pour aligner le bas de l'image avec la ligne de base du texte.
             **image**
@@ -470,43 +471,44 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.tag_add(tagName, index1, index2=None)
 
-            Cette méthode associe le tag nommé *tagName* avec la région du contenu situé entre la position d'*index1* et d'*index2*. Si *index2* est omis, seul le caractère situé juste après la position *index1* est taggué.
+            Cette méthode associe le tag nommé *tagName* avec la région du contenu situé entre la position d'*index1* et d'*index2*. Si *index2* est omis, seul le caractère situé juste après la position *index1* est tagué.
 
 .. py:method:: Text.tag_bind(tagName, sequence, func, add=None)
 
-            Cette méthode lie la séquence d'événement *sequence* à la région de texte taggué avec *tagName*. Voir “Events” pour plus d'informations sur la gestion des événements.
+            Cette méthode lie la séquence d'événement *sequence* à la région de texte tagué avec *tagName*. Voir “Events” pour plus d'informations sur la gestion des événements.
 
-            Pour créer une nouvelle liaison pour un texte taggué, utilisez les trois premiers arguments: *sequence* sert à identifier l'événement, *gest* est la fonction qui sera appelée lorsque l'événement ciblé se produira.
+            Pour créer une nouvelle liaison pour un texte tagué, utilisez les trois premiers arguments: *sequence* sert à identifier l'événement, *gest* est la fonction qui sera appelée lorsque l'événement ciblé se produira.
 
-            Pour ajouter d'autres liaisons à un texte taggué, utiliser '+' pour l'argument *add*.
+            Pour ajouter d'autres liaisons à un texte tagué, utiliser '+' pour l'argument *add*.
 
-            Pour connaître le gestionnaire d'événement associé à un texte taggué pour un événement donné, n'utilisez que les deux premiers arguments et la méthode retournera le gestionnaire correspondant.
+            Pour connaître le gestionnaire d'événement associé à un texte tagué pour un événement donné, n'utilisez que les deux premiers arguments et la méthode retournera le gestionnaire correspondant.
 
-            Pour connaître tous les événements associés à un texte taggué, n'utilisez que le premier argument; la méthode retourne alors une liste qui contient toutes les séquences d'événement positionnées.
+            Pour connaître tous les événements associés à un texte tagué, n'utilisez que le premier argument; la méthode retourne alors une liste qui contient toutes les séquences d'événement positionnées.
 
 .. py:method:: Text.tag_cget(tagName, option)
 
-            Utilisez cette méthode pour récupérer la valeur d'une option (précisé à l'aide d'une chaîne) pour un texte taggué avec *tagName*.
+            Utilisez cette méthode pour récupérer la valeur d'une option (précisé à l'aide d'une chaîne) pour un texte tagué avec *tagName*.
 
 .. py:method:: Text.tag_config(tagName, option=valeur, ...)
 
-            Pour modifier la valeur des option d'un texte taggué avec *tagName*, utilisez une ou plusieurs déclarations option=value séparé par des virgules.
+            Pour modifier la valeur des option d'un texte tagué avec *tagName*, utilisez une ou plusieurs déclarations option=value séparé par des virgules.
 
-            Si vous ne précisez aucune option, la méthode retourne un dictionnaire qui contient toutes les options actuellement configurées pour ce texte taggué.
+            Si vous ne précisez aucune option, la méthode retourne un dictionnaire qui contient toutes les options actuellement configurées pour ce texte tagué.
 
-            Voici les options de configurations pour un texte taggué:
+            Voici les options de configurations pour un texte tagué:
+            
             **background**
-                    La couleur d'arrière plan du texte taggué. Notez que vous ne pouvez pas utiliser l'abbréviation *bg*.
+                    La couleur d'arrière plan du texte tagué. Notez que vous ne pouvez pas utiliser l'abbréviation *bg*.
             **bgstipple**
                     Pour griser la couleur de fond, préciser l'un des bitmap standard (voir “Bitmaps”). Cela n'a aucun effet si la couleur d'arrière plan n'a pas été spécifiée.
             **borderwidth**
-                        Épaisseur de la bordure autour du texte taggué. 0 par défaut. Notez que vous ne pouvez pas utiliser *bd* comme abbréviation.
+                    Épaisseur de la bordure autour du texte tagué. 0 par défaut. Notez que vous ne pouvez pas utiliser *bd* comme abbréviation.
             **fgstipple**
                     Pour griser un texte, utiliser un bitmap.
             **font**
-                    La police de caractère utilisée pour afficher le texte taggué. Voir “Type fonts”.
+                    La police de caractère utilisée pour afficher le texte tagué. Voir “Type fonts”.
             **foreground**
-                    La couleur utilisée pour le texte taggué. Notez que vous ne pouvez pas utiliser l'abbréviation *bd*.
+                    La couleur utilisée pour le texte tagué. Notez que vous ne pouvez pas utiliser l'abbréviation *bd*.
             **justify**
                     Cette option, qui est positionnée pour chaque nouvelle ligne de texte du contenu, sert à préciser son alignement; les valeurs possibles sont 'left', 'right', 'center'.
             **lmargin1**
@@ -516,7 +518,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **offset**
                     De combien élever (valeur positive) ou abaisser (valeur négative) le texte tagué relativement à la ligne de base. Utilisez cela pour créer des «indices» ou des «exposants» par exemple.
             **overstrike**
-                    Metre à 1 pour «barrer» le texte tagué (une ligne horizontale le parcourt en son centre).
+                    Mettre à 1 pour «barrer» le texte tagué (une ligne horizontale le parcourt en son centre).
             **relief**
                     Sert à préciser le style de relief de la bordure du texte tagué. Sa valeur par défaut est 'flat'. Voir “Relief styles” pour d'autres valeurs possibles.
             **rmargin**
@@ -595,6 +597,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             * vous pouvez définir une fonction sans argument (procédure) qui créera le widget et la passer à son option *create*.
 
             Les options pour cette méthode sont:
+            
             **align**
                     Précise comment positionner verticalement le widget embarqué dans sa ligne, s'il n'est pas aussi haut que le texte de cette ligne. Les valeurs incluent: 'center' (par défaut), ce qui a pour effet de centrer le texte verticalement dans sa ligne; 'top', ce qui place son bord haut sur le haut de la ligne; 'bottom', ce qui place son bord bas sur le bas de la ligne; et 'baseline', ce qui aligne son bord bas avec la ligne de base du texte.
             **create** 
