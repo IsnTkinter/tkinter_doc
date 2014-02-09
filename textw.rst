@@ -238,319 +238,411 @@ L'option **tabs** du widget ``Text`` vous donne plusieurs possibilités pour dé
 Gestion de l'historique
 =======================
 
-The Text widget has a built-in mechanism that allows you to implement undo and redo operations that can cancel or reinstate changes to the text within the widget.
+Le widget ``Text`` possède un mécanisme intégré qui vous permet d'implémenter un historique et ses opérations de retour arrière ou de retour avant. Ces opérations servent à annuler ou à remettre en l'état les modifications du contenu du widget.
 
-Here is how the undo/redo stack works:
+Voici comment fonctionne la pile d'historique:
 
-    Every change to the content is recorded by pushing entries onto the stack that describe the change, whether an insertion or a deletion. These entries record the old state of the contents as well as the new state: if a deletion, the deleted text is recorded; if an insertion, the inserted text is recorded, along with a description of the location and whether it was an insertion or a deletion.
+* Chaque modification du contenu est enregistré en insérant une entrée en haut de la pile qui décrit la modification comme une insertion ou une suppression. Ces entrées enregistrent l'état passé du contenu aussi bien que son état présent: Le texte supprimé ou inséré est enregistré avec sa position et la modalité: suppression ou insertion.
 
-    Your program may also push a special record called a separator onto the stack.
+* Votre programme peut aussi mettre en haut de la pile une entrée spéciale appelée séparateur.
 
-    An undo operation changes the contents of the widget to what they were at some previous point. It does this by reversing all the changes pushed onto the undo/redo stack until it reaches a separator or until it runs out of stack.
+* Une opération «retour arrière» modifie le contenu de l'éditeur dans l'état où il se trouvait à un certain point. Pour réaliser cela, l'éditeur reprend une à une les entrées de la pile (du haut vers le bas) tout en les rejouant jusqu'au moment où il atteint un séparateur ou le fond de la pile.
 
-    However, note that Tkinter also remembers how much of the stack was reversed in the undo operation, until some other editing operation changes the contents of the widget.
+* Il faut ajouter que Tkinter mémorise combien d'entrées de la pile ont été rétablies dans l'opération de retour arrière, jusqu'à ce que d'autres opérations d'édition aient modifié le contenu de l'éditeur.
 
-    A redo operation works only if no editing operation has occurred since the last undo operation. It re-applies all the undone operations. 
+* Une opération de «retour avant» ne peut fonctionner que si l'éditeur n'a pas été modifié depuis la dernière opération de «retour arrière». Dans ce cas, il réapplique toutes les opérations précédemment annulées.
 
-For the methods used to implement the undo/redo stack, see the .edit_redo, .edit_reset, .edit_separator, and .edit_undo methods in Section 24.8, “Methods on Text widgets”. The undo mechanism is not enabled by default; you must set the undo option in the widget.
+Les méthodes utilisées pour implémenter la pile d'historique sont principalement edit_redo, edit_separator, et edit_undo décrites dans "Methods on Text widgets”. Le mécanisme d'historique n'est pas activé par défaut; vous devez mettre à True l'option **undo** du widet ``Text`` pour l'activer.
 
-Methods on Text widgets
-=======================
+Méthodes du widget ``Text``
+===========================
 
-These methods are available on all text widgets:
+Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
+
+.. hlist::
+        :columns: 4
+
+        * :py:meth:`~Text.bbox`
+        * :py:meth:`~Text.compare`
+        * :py:meth:`~Text.delete`
+        * :py:meth:`~Text.dlineinfo`
+        * :py:meth:`~Text.edit_modified`
+        * :py:meth:`~Text.edit_redo`
+        * :py:meth:`~Text.edit_reset`
+        * :py:meth:`~Text.edit_separator`
+        * :py:meth:`~Text.edit_undo`
+        * :py:meth:`~Text.image_create`
+        * :py:meth:`~Text.get`
+        * :py:meth:`~Text.image_cget`
+        * :py:meth:`~Text.image_configure`
+        * :py:meth:`~Text.image_names`
+        * :py:meth:`~Text.index`
+        * :py:meth:`~Text.insert`
+        * :py:meth:`~Text.mark_gravity`
+        * :py:meth:`~Text.mark_names`
+        * :py:meth:`~Text.mark_next`
+        * :py:meth:`~Text.mark_previous`
+        * :py:meth:`~Text.mark_set`
+        * :py:meth:`~Text.mark_unset`
+        * :py:meth:`~Text.scan_dragto`
+        * :py:meth:`~Text.scan_mark`
+        * :py:meth:`~Text.search`
+        * :py:meth:`~Text.see`
+        * :py:meth:`~Text.tag_add`
+        * :py:meth:`~Text.tag_bind`
+        * :py:meth:`~Text.tag_cget`
+        * :py:meth:`~Text.tag_config`
+        * :py:meth:`~Text.tag_delete`
+        * :py:meth:`~Text.tag_lower`
+        * :py:meth:`~Text.tag_names`
+        * :py:meth:`~Text.tag_nextrange`
+        * :py:meth:`~Text.tag_prevrange`
+        * :py:meth:`~Text.tag_raise`
+        * :py:meth:`~Text.tag_ranges`
+        * :py:meth:`~Text.tag_remove`
+        * :py:meth:`~Text.tag_unbind`
+        * :py:meth:`~Text.window_cget`
+        * :py:meth:`~Text.window_configure`
+        * :py:meth:`~Text.window_create`
+        * :py:meth:`~Text.window_names`
+        * :py:meth:`~Text.xview`
+        * :py:meth:`~Text.xview`
+        * :py:meth:`~Text.xview_moveto`
+        * :py:meth:`~Text.xview_scroll`
+        * :py:meth:`~Text.yview`
+        * :py:meth:`~Text.yview`
+        * :py:meth:`~Text.yview_moveto`
+        * :py:meth:`~Text.yview_scroll`
 
 .. py:method:: Text.bbox(index)
 
-            Returns the bounding box for the character at the given index, a 4-tuple (x, y, width, height). If the character is not visible, returns None. Note that this method may not return an accurate value unless you call the .update_idletasks() method (see Section 26, “Universal widget methods”). 
+            Retourne la boîte englobante du caractère d'*index* donné, comme un 4-tuple (x, y, largeur, hauteur). Si le caractère n'est pas visible, la valeur de retour est None. Remarquez que cette méthode peut retourner une valeur imprécise tant que vous n'avez pas appeler la méthode update_idletasks() (voir “Universal widget methods”). 
 
 .. py:method:: Text.compare(index1, op, index2)
 
-            Compares the positions of two indices in the text widget, and returns true if the relational op holds between index1 and index2. The op specifies what comparison to use, one of: '<', '<=', '==', '!=', '>=', or '>'.
+            Compare les position de deux index du widget texte, et retourne True si la relation précisé par *op* entre les deux index est vérifiée. L'argument *op* sert à préciser la comparaison à effectuer: '<', '<=', '==', '!=', '>=', ou '>'.
 
-            For example, for a text widget t, t.compare('2.0', '<=', END) returns true if the beginning of the second line is before or at the end of the text in t. 
+            Par exemple, pour un widget de texte ``t``, ``t.compare('2.0', '<=', 'end')`` retourne True si le début de la deuxième ligne est situé avant la fin du texte contenu dans ``t``.
 
 .. py:method:: Text.delete(index1, index2=None)
 
-            Deletes text starting just after index1. If the second argument is omitted, only one character is deleted. If a second index is given, deletion proceeds up to, but not including, the character after index2. Recall that indices sit between characters. 
+            Supprime le texte qui situé juste après *index1*. Si le deuxième argument est omis, seul un caractère est supprimé. Sinon, la suppression porte sur tout les caractères situé strictement entre les positions index1 et index2. Faites attention qu'un index désigne une position entre deux caractères.
 
 .. py:method:: Text.dlineinfo(index)
 
-            Returns a bounding box for the line that contains the given index. For the form of the bounding box, and a caution about updating idle tasks, see the definition of the .bbox method above. 
+            Retourne la boîte englobante pour la ligne qui contient la position d'*index* donné. Voir la méthode index() ci-dessus pour prendre connaissance de la forme de la valeur de retour ainsi que du besoin éventuel de rafraîchir certaines tâches assoupies (*idle tasks*).
 
 .. py:method:: Text.edit_modified(arg=None)
 
-            Queries, sets, or clears the modified flag. This flag is used to track whether the contents of the widget have been changed. For example, if you are implementing a text editor in a Text widget, you might use the modified flag to determine whether the contents have changed since you last saved the contents to a file.
+            Récupére, positionne ou efface le drapeau des modifications. Ce drapeau est utilisé pour surveillé les modifications éventuelles du contenu. Par exemple, si vous programmez un éditeur de texte dans un widget texte, vous pourriez utiliser le drapeau des modification pour déterminer si le contenu a été modifié depuis la dernière fois où il a été sauvegardé dans un fichier.Queries, sets, or clears the modified flag. This flag is used to track whether the contents of the widget have been changed. For example, if you are implementing a text editor in a Text widget, you might use the modified flag to determine whether the contents have changed since you last saved the contents to a file.
 
-            When called with no argument, this method returns True if the modified flag has been set, False if it is clear. You can also explicitly set the modified flag by passing a True value to this method, or clear it by passing a False value.
+            Lorsque cette méthode est appelée sans argument, elle retourne True si le drapeau des modifications a été positionné, False sinon. Vous pouvez explicitement positionner ce drapeau en utilisant True comme argument ou le désactivé en utilisant False.
 
-            Any operation that inserts or deletes text, whether by program actions or user actions, or an undo or redo operation, will set the modified flag. 
+            Toute opération qui modifie le contenu de l'éditeur positionne ce drapeau, que ce soit une insertion ou suppression de texte, de manière programmé ou suite aux actions de l'utilisateur ou encore à un retour arrière dans l'historique.
 
 .. py:method:: Text.edit_redo()
 
-            Performs a redo operation. For details, see Section 24.7, “The Text widget undo/redo stack”. 
+            Annule un retour arrière dans l'historique (*redo*). Pour plus de détails, voir “The Text widget undo/redo stack”. 
 
 .. py:method:: Text.edit_reset()
 
-            Clears the undo stack. 
+            Efface l'historique.
 
 .. py:method:: Text.edit_separator()
 
-            Pushes a separator onto the undo stack. This separator limits the scope of a future undo operation to include only the changes pushed since the separator was pushed. For details, see Section 24.7, “The Text widget undo/redo stack”. 
+            Ajoute un séparateur sur la pile de gestion de l'historique. Ce séparateur limite le champ d'application d'une opération de retour arrière dans l'historique de façon à inclure les seuls changement qui se sont produit après que le séparateur ait été placé dans la pile. Pour plus de détails, voir “The Text widget undo/redo stack”. 
 
 .. py:method:: Text.edit_undo()
 
-            Reverses all changes to the widget's contents made since the last separator was pushed on the undo stack, or all the way to the bottom of the stack if the stack contains no separators. For details, see Section 24.7, “The Text widget undo/redo stack”. It is an error if the undo stack is empty. 
+            Annule toute les modifications du contenu de l'éditeur qui ont eu lieu après l'insertion d'un séparateur dans la pile de gestion de l'historique (ou jusqu'au debut de la pile s'il n'y a pas de séparateur). Pour plus de détails, voir “The Text widget undo/redo stack”. Une erreur est levée si la pile était vide au moment de l'appel.
 
 .. py:method:: Text.image_create(index[, option=value, ...])
 
-            This method inserts an image into the widget. The image is treated as just another character, whose size is the image's natural size.
+            Cette méthode sert à insérer une image dans l'éditeur juste après la position précisé par l'*index*. Une image est traitée de la même façon qu'un caractère dont la taille serait celle de l'image.
 
-            The options for this method are shown in the table below. You may pass either a series of option=value arguments, or a dictionary of option names and values.
-            align	This option specifies how the image is to be aligned vertically if its height is less than the height of its containing line. Values may be top to align it at the top of its space; center to center it; bottom to place it at the bottom; or baseline to line up the bottom of the image with the text baseline.
-            image	The image to be used. See Section 5.9, “Images”.
-            name	You can assign a name to this instance of the image. If you omit this option, Tkinter will generate a unique name. If you create multiple instances of an image in the same Text widget, Tkinter will generate a unique name by appending a “#” followed by a number.
-            padx	If supplied, this option is a number of pixels of extra space to be added on both sides of the image.
-            pady	If supplied, this option is a number of pixels of extra space to be added above and below the image. 
+            Les options pour cette méthode sont données ci-après. Vous pouvez transmettre une séries d'arguments de la forme option=valeur, ou un dictionnaire que qui contient les noms d'options comme clés.
+            **align**
+                    Cette option précise l'alignement vertical de son image si sa hauteur est inférieure à la hauteur de la ligne qui la contient. Les valeurs possible sont 'top' pour un alignement en haut, 'center' pour un centrage vertical; 'bottom' pour la placer tout en bas; ou 'baseline' pour aligner le bas de l'image avec la ligne de base du texte.
+            **image**
+                    L'image à utiliser. Voir “Images”.
+            **name**
+                    Vous pouvez donner un nom à cet instance de l'image. Si vous ne renseignez pas cette option, Tkinter produira un nom unique pour cet instance. Si vous créez de multiples instances d'une même image dans le même widget de texte, Tkinter produira un nom unique en ajoutant la lettre "#" suivi d'un nombre.
+            **padx**
+                    Sert à indiquer un espace supplémentaire (en pixels) à ajouter à gauche et à droite de l'image.
+            **pady**
+                    Sert à indiquer un espace supplémentaire (en pixels) à ajouter au dessus et en dessous de l'image.
 
 .. py:method:: Text.get(index1, index2=None)
 
-            Use this method to retrieve the current text from the widget. Retrieval starts at index index1. If the second argument is omitted, you get the character after index1. If you provide a second index, you get the text between those two indices. Embedded images and windows (widgets) are ignored. If the range includes multiple lines, they are separated by newline ('\n') characters. 
+            Utilisez cette méthode pour récupérer le texte situé actuellement entre les position *index1* et *index2*. Si le deuxième argument est omis, la méthode retourne le caractère situé juste après la position *index1*. Les images ou fenêtre embarqués sont ignorés. Si l'intervalle contient plusieurs lignes, elles sont séparées par des caractères spéciaux '\n'.
 
 .. py:method:: Text.image_cget(index, option)
 
-            To retrieve the current value of an option set on an embedded image, call this method with an index pointing to the image and the name of the option. 
+            Sert à récupérer la valeur d'une option (précisée sous la forme d'une chaîne) d'une image embarquée de position *index* (rappel: le nom d'une image est un index)
 
-.. py:method:: Text.image_configure(index, option, ...)
+.. py:method:: Text.image_configure(index, option=valeur, ...)
 
-            To set one or more options on an embedded image, call this method with an index pointing to the image as the first argument, and one or more option=value pairs.
+            Sert à configurer une ou plusieurs options de l'image embarquée identifiée par *index*.
 
-            If you specify no options, you will get back a dictionary defining all the options on the image, and the corresponding values. 
+            Si aucune option n'est précisée, la méthode retournera un dicitionnaire qui contient toutes les options et les valeurs correspondantes définies pour cette image.
 
 .. py:method:: Text.image_names()
 
-            This method returns a tuple of the names of all the text widget's embedded images. 
+            Retourne un tuple qui contient les noms de toutes les images embarquées dans le widget ``Text`` appelant.
 
 .. py:method:: Text.index(i)
 
-            For an index i, this method returns the equivalent position in the form 'line.char'. 
+            Étant donné index *i*, retourne la position équivalente sous la forme 'ligne.colonne'.
 
 .. py:method:: Text.insert(index, text, tags=None)
 
-            Inserts the given text at the given index.
+            Insère le texte donné à la position d'*index* donnée.
 
-            If you omit the tags argument, the newly inserted text will be tagged with any tags that apply to the characters both before and after the insertion point.
+            Si vous ne précisez pas l'argument *tags*, le texte inséré aura le ou les tags qui s'appliquent éventuellement aux caractères qui entourent le point d'insertion.
 
-            If you want to apply one or more tags to the text you are inserting, provide as a third argument a tuple of tag strings. Any tags that apply to existing characters around the insertion point are ignored. Note: The third argument must be a tuple. If you supply a list argument, Tkinter will silently fail to apply the tags. If you supply a string, each character will be treated as a tag. 
+            Si vous souhaitez utiliser un ou plusieurs tags au texte à insérer, utilisez un tuple de chaîne de tag comme troisième arguments. Chaque tag qui s'applique aux caractères qui entourent le point d'insertion est alors ignoré. Notez que le troisième argument doit être un tuple: si vous fournissez une liste de tags, tkinter n'en appliquera aucun et ça sans vous prévenir; si vous utilisez une chaîne de caractères, chaque caractère de la chaîne est traité comme un tag.
 
 .. py:method:: Text.mark_gravity(mark, gravity=None)
 
-            Changes or queries the gravity of an existing mark; see Section 24.2, “Text widget marks”, above, for an explanation of gravity.
+            Modifie ou récupère la propriété de gravité d'une marque existante; voir “Text widget marks”, pour plus d'informations sur la propriété de gravité.
 
-            To set the gravity, pass in the name of the mark, followed by either tk.LEFT or tk.RIGHT. To find the gravity of an existing mark, omit the second argument and the method returns tk.LEFT or tk.RIGHT. 
+            Pour régler la propriété de gravité d'une marque *mark*, utilisez les valeurs 'left' ou 'right' comme deuxième argument. Pour récupérer la propriété de gravité de la marque *mark*, ne renseignez pas le seconde argument et la méthode retourne 'left' ou 'right'.
 
 .. py:method:: Text.mark_names()
 
-            Returns a sequence of the names of all the marks in the window, including tk.INSERT and tk.CURRENT. 
+            Retourne la liste de toutes les marques de l'éditeur, 'insert' et 'current' inclus.
 
 .. py:method:: Text.mark_next(index)
 
-            Returns the name of the mark following the given index; if there are no following marks, the method returns an empty string.
+            Retourne le nom de la marque situé après la position d'*index* donné; s'il n'y en a pas, une chaîne vide est retournée.
 
-            If the index is in numeric form, the method returns the first mark at that position. If the index is a mark, the method returns the next mark following that mark, which may be at the same numerical position. 
+            Si l'index est sous forme numérique, la méthode retourne la première marque située à cette position. Si *index* est une marque, la méthode retourne la prochaîne marque qui la suit, laquelle peut être à la même position numérique.
 
 .. py:method:: Text.mark_previous(index)
 
-            Returns the name of the mark preceding the given index. If there are no preceding marks, the method returns an empty string.
+            Retourne le nom de la marque qui est situé en amont de la position d'*index* donné. S'il n'y en a pas, une chaîne vide est retournée.
 
-            If the index is in numeric form, the method returns returns the last mark at that position. If the index is a mark, the method returns the preceding mark, which may be at the same numerical position. 
+            Si l'*index* est numérique, la méthode retourne la dernière marque située à cette position. Si l'*index* est une marque, la méthode retourne la marque qui la précèsde, laquelle peut être à la même position numérique.
 
 .. py:method:: Text.mark_set(mark, index)
 
-            If no mark with name mark exists, one is created with tk.RIGHT gravity and placed where index points. If the mark already exists, it is moved to the new location.
+            Si aucune marque de nom *mark* n'existe, une marque est crée avec sa propriété de gravité à 'right' et elle est placée à la position d'*index* donné. Si la marque existe déjà, elle est déplacée à cette position.
 
-            This method may change the position of the tk.INSERT or tk.CURRENT indices. 
+            Cette méthode peut modifier la position des marques 'insert' et 'current'.
 
 .. py:method:: Text.mark_unset(mark)
 
-            Removes the named mark. This method cannot be used to remove the tk.INSERT or tk.CURRENT marks. 
+            Supprime la marque *mark*. Cette méthode ne peut pas être utilisée pour supprimer les marques 'insert' et 'current'.
 
 .. py:method:: Text.scan_dragto(x, y)
 
-            See .scan_mark, below. 
+            Voir la méthode scan_mark() ci-dessous.
 
 .. py:method:: Text.scan_mark(x, y)
 
-            This method is used to implement fast scrolling of a Text widget. Typically, a user presses and holds a mouse button at some position in the widget, and then moves the mouse in the desired direction, and the widget moves in that direction at a rate proportional to the distance the mouse has moved since the button was depressed. The motion may be any combination of vertical or horizontal scrolling.
+            Cette méthode sert à implémenter le défilement rapide de la zone visible du widget ``Text``. Typiquement, un utilisateur enfonce un bouton de la souris puis la déplace sans relâcher le bouton dans la direction désirée, et la zone visible est déplacée dans cette direction à un rythme proportionnel à la distance parcouru par la souris depuis le clic. Le mouvement peut réaliser un défilement oblique.
 
-            To implement this feature, bind a mouse button down event to a handler that calls .scan_mark(x, y), where x and y are the current mouse position. Then bind the <Motion> event to a handler that calls .scan_dragto(x, y), where x and y are the new mouse position. 
+            Pour implémenter cette fonctionnalité, liez l'événement «appui sur le bouton de la souris» à un gestionnaire chargé d'appeler scan_mark(x, y), où *x* et y* représente la position de la souris au moment de l'appui. Ensuite, liez l'événement '<Motion'> (déplacement de la souris) à un gestionnaire qui appelera la méthode scan_dragto(x, y) où *x* et *y* désignent la nouvelle position de la souris.
 
-.. py:method:: Text.search(pattern, index, option, ...)
+.. py:method:: Text.search(pattern, index, option=valeur, ...)
 
-            Searches for pattern (which can be either a string or a regular expression) in the buffer starting at the given index. If it succeeds, it returns an index of the 'line.char' form; if it fails, it returns an empty string.
+            Recherche le motif *pattern* (lequel peut être une chaîne ou une expression régulière) dans la fenêtre en commençant à l'*index* indiqué. Si le motif est trouvé, la méthode retourne un index de la forme 'ligne.colonne'; sinon, elle retourne une chaîne vide.
 
-            The allowable options for this method are:
-            backwards 	Set this option to True to search backwards from the index. Default is forwards.
-            count 	If you set this option to an IntVar control variable, when there is a match you can retrieve the length of the text that matched by using the .get() method on that variable after the method returns.
-            exact	Set this option to True to search for text that exactly matches the pattern. This is the default option. Compare the regexp option below.
-            forwards	Set this option to True to search forwards from the index. This is the default option.
-            regexp 	Set this option to True to interpret the pattern as a Tcl-style regular expression. The default is to look for an exact match to pattern. Tcl regular expressions are a subset of Python regular expressions, supporting these features: . ^ [c1…] (…) * + ? e1|e2
-            nocase 	Set this option to 1 to ignore case. The default is a case-sensitive search.
-            stopindex 	To limit the search, set this option to the index beyond which the search should not go. 
+            Les options disponibles pour cette méthode sont:
+            **backwards**
+                    Mettre cette option à True pour faire une recherche vers l'arrière à partir de la position *index*. Par défaut la recherche se fait en avant.
+            **count**
+                    Si vous régler cette option avec une variable de contrôle de type IntVar, lorsque la recherche réussie vous pouvez récupérer la longueur du texte qui correspondait au motif *pattern* en utilisant la méthode get() sur cette variable après le retour de la méthode search.
+            **exact**
+                    Mettre cette option à True pour que la chaîne trouvé soit la réplique exacte de la chaîne de motif *pattern*. C'est la valeur par défaut. Comparez avec l'option *regex* ci-dessous.
+            **forwards**
+                    Mettre cette option à True pour faire une recherche vers l'avant. C'est la valeur par défaut de l'option.
+            **regexp**
+                    Mettre cette option à True pour interpréter la chaîne *pattern* comme une expression régulière dans le style du langage Tcl. Par défaut la recherche se fait de manière exacte (voir l'option *exact*). Les expressions régulières dans le style Tcl forment un sous ensemble des expressions régulières de Python; elle supportent ces caractères spéciaux: . ^ [c1…] (…) * + ? e1|e2
+            **nocase**
+                            Mettre cette option à 1 pour une recherche insensible à la casse (majuscule/minuscule). Par défaut, la recherche est sensible à la casse.
+            **stopindex**
+                            Pour limiter la recherche, utiliser un index pour préciser une position au delà de laquelle la recherche ne doit pas continuer.
 
 .. py:method:: Text.see(index)
 
-            If the text containing the given index is not visible, scroll the text until that text is visible. 
+            Si le texte situé à la position d'*index* donné n'est pas visible, la méthode fait défiler la zone visible du widget de façon à ce que le texte devienne visible.
 
 .. py:method:: Text.tag_add(tagName, index1, index2=None)
 
-            This method associates the tag named tagName with a region of the contents starting just after index index1 and extending up to index index2. If you omit index2, only the character after index1 is tagged. 
+            Cette méthode associe le tag nommé *tagName* avec la région du contenu situé entre la position d'*index1* et d'*index2*. Si *index2* est omis, seul le caractère situé juste après la position *index1* est taggué.
 
 .. py:method:: Text.tag_bind(tagName, sequence, func, add=None)
 
-            This method binds an event to all the text tagged with tagName. See Section 54, “Events”, below, for more information on event bindings.
+            Cette méthode lie la séquence d'événement *sequence* à la région de texte taggué avec *tagName*. Voir “Events” pour plus d'informations sur la gestion des événements.
 
-            To create a new binding for tagged text, use the first three arguments: sequence identifies the event, and func is the function you want it to call when that event happens.
+            Pour créer une nouvelle liaison pour un texte taggué, utilisez les trois premiers arguments: *sequence* sert à identifier l'événement, *gest* est la fonction qui sera appelée lorsque l'événement ciblé se produira.
 
-            To add another binding to an existing tag, pass the same first three arguments and '+' as the fourth argument.
+            Pour ajouter d'autres liaisons à un texte taggué, utiliser '+' pour l'argument *add*.
 
-            To find out what bindings exist for a given sequence on a tag, pass only the first two arguments; the method returns the associated function.
+            Pour connaître le gestionnaire d'événement associé à un texte taggué pour un événement donné, n'utilisez que les deux premiers arguments et la méthode retournera le gestionnaire correspondant.
 
-            To find all the bindings for a given tag, pass only the first argument; the method returns a list of all the tag's sequence arguments. 
+            Pour connaître tous les événements associés à un texte taggué, n'utilisez que le premier argument; la méthode retourne alors une liste qui contient toutes les séquences d'événement positionnées.
 
 .. py:method:: Text.tag_cget(tagName, option)
 
-            Use this method to retrieve the value of the given option for the given tagName. 
+            Utilisez cette méthode pour récupérer la valeur d'une option (précisé à l'aide d'une chaîne) pour un texte taggué avec *tagName*.
 
-.. py:method:: Text.tag_config(tagName, option, ...)
+.. py:method:: Text.tag_config(tagName, option=valeur, ...)
 
-            To change the value of options for the tag named tagName, pass in one or more option=value pairs.
+            Pour modifier la valeur des option d'un texte taggué avec *tagName*, utilisez une ou plusieurs déclarations option=value séparé par des virgules.
 
-            If you pass only one argument, you will get back a dictionary defining all the options and their values currently in force for the named tag.
+            Si vous ne précisez aucune option, la méthode retourne un dictionnaire qui contient toutes les options actuellement configurées pour ce texte taggué.
 
-            Here are the options for tag configuration:
-            background 	The background color for text with this tag. Note that you can't use bg as an abbreviation.
-            bgstipple 	To make the background appear grayish, set this option to one of the standard bitmap names (see Section 5.7, “Bitmaps”). This has no effect unless you also specify a background.
-            borderwidth 	Width of the border around text with this tag. Default is 0. Note that you can't use bd as an abbreviation.
-            fgstipple 	To make the text appear grayish, set this option a bitmap name.
-            font 	The font used to display text with this tag. See Section 5.4, “Type fonts”.
-            foreground 	The color used for text with this tag. Note that you can't use the fg abbreviation here.
-            justify 	The justify option set on the first character of each line determines how that line is justified: tk.LEFT (the default), tk.CENTER, or tk.RIGHT.
-            lmargin1 	How much to indent the first line of a chunk of text that has this tag. The default is 0. See Section 5.1, “Dimensions”for allowable values.
-            lmargin2 	How much to indent successive lines of a chunk of text that has this tag. The default is 0.
-            offset 	How much to raise (positive values) or lower (negative values) text with this tag relative to the baseline. Use this to get superscripts or subscripts, for example. For allowable values, see Section 5.1, “Dimensions”.
-            overstrike 	Set overstrike=1 to draw a horizontal line through the center of text with this tag.
-            relief 	Which 3-D effect to use for text with this tag. The default is relief=tk.FLAT; for other possible values see Section 5.6, “Relief styles”.
-            rmargin 	Size of the right margin for chunks of text with this tag. Default is 0.
-            spacing1 	This option specifies how much extra vertical space is put above each line of text with this tag. If a line wraps, this space is added only before the first line it occupies on the display. Default is 0.
-            spacing2 	This option specifies how much extra vertical space to add between displayed lines of text with this tag when a logical line wraps. Default is 0.
-            spacing3 	This option specifies how much extra vertical space is added below each line of text with this tag. If a line wraps, this space is added only after the last line it occupies on the display. Default is 0.
-            tabs 	How tabs are expanded on lines with this tag. See Section 24.6, “Setting tabs in a Text widget”.
-            underline 	Set underline=1 to underline text with this tag.
-            wrap 	How long lines are wrapped in text with this tag. See the description of the wrap option for text widgets, above. 
+            Voici les options de configurations pour un texte taggué:
+            **background**
+                    La couleur d'arrière plan du texte taggué. Notez que vous ne pouvez pas utiliser l'abbréviation *bg*.
+            **bgstipple**
+                    Pour griser la couleur de fond, préciser l'un des bitmap standard (voir “Bitmaps”). Cela n'a aucun effet si la couleur d'arrière plan n'a pas été spécifiée.
+            **borderwidth**
+                        Épaisseur de la bordure autour du texte taggué. 0 par défaut. Notez que vous ne pouvez pas utiliser *bd* comme abbréviation.
+            **fgstipple**
+                    Pour griser un texte, utiliser un bitmap.
+            **font**
+                    La police de caractère utilisée pour afficher le texte taggué. Voir “Type fonts”.
+            **foreground**
+                    La couleur utilisée pour le texte taggué. Notez que vous ne pouvez pas utiliser l'abbréviation *bd*.
+            **justify**
+                    Cette option, qui est positionnée pour chaque nouvelle ligne de texte du contenu, sert à préciser son alignement; les valeurs possibles sont 'left', 'right', 'center'.
+            **lmargin1**
+                    Taille du retrait (indentation) à appliquer au début de la première ligne de la portion de texte tagué. 0 par défaut. Voir “Dimensions” pour les valeurs permises.
+            **lmargin2**
+                    Taille du retrait (indentation) à appliquer au début de chaque ligne de la portion de texte tagué. 0 par défaut.
+            **offset**
+                    De combien élever (valeur positive) ou abaisser (valeur négative) le texte tagué relativement à la ligne de base. Utilisez cela pour créer des «indices» ou des «exposants» par exemple.
+            **overstrike**
+                    Metre à 1 pour «barrer» le texte tagué (une ligne horizontale le parcourt en son centre).
+            **relief**
+                    Sert à préciser le style de relief de la bordure du texte tagué. Sa valeur par défaut est 'flat'. Voir “Relief styles” pour d'autres valeurs possibles.
+            **rmargin**
+                    Largeur de la marge droite à appliqué pour le texte tagué. Sa valeur par défaut est 0.
+            **spacing1**
+                    Cette option précise la quantité d'espace vertical supplémentaire à ajouter au dessus de chaque ligne de la portion de texte tagué. Si certaine lignes sont enveloppés (saut de ligne logique pour éviter le débordement à droite), cet espace supplémentaire n'est appliqué qu'à la première ligne. Sa valeur par défaut est 0.
+            **spacing2**
+                    Quantité d'espace vertical supplémentaire à ajouter entre deux lignes qui appartiennent à une seule ligne physique qui a été coupées pour éviter un débordement à droite. Sa valeur par défaut est 0.
+            **spacing3**
+                    Quantité d'espace vertical supplémentaire à ajouter en dessous d'une ligne physique (par opposition à une ligne enveloppée). Sa valeur par défaut est 0.
+            **tabs**
+                    Sert à préciser le traitement des tabulation pour la portion de texte tagué comme l'option de même nom du widget ``Text``. Voir “Setting tabs in a Text widget”.
+            **underline**
+                    Mettre à 1 pour souligner la portion de texte tagué.
+            **wrap**
+                    Longueur maximale d'une ligne de texte au-dessus de quoi elle est coupée (logiquement) afin de ne pas excéder cette longueur. Voir la description de l'option *wrap* du widget ``Text`` plus haut.
 
 .. py:method:: Text.tag_delete(tagName, ...)
 
-            To delete one or more tags, pass their names to this method. Their options and bindings go away, and the tags are removed from all regions of text. 
+            Pour supprimer un ou plusieurs tags, donner leur nom à cette méthode. Leurs options et liaisons sont perdus, et les différentes portion de texte tagué avec ce tag le perdent.
 
-.. py:method:: Text.tag_lower(tagName, belowThis=None)
+.. py:method:: Text.tag_lower(tagName, sousLui=None)
 
-            Use this method to change the order of tags in the tag stack (see Section 24.5, “Text widget tags”, above, for an explanation of the tag stack). If you pass two arguments, the tag with name tagName is moved to a position just below the tag with name belowThis. If you pass only one argument, that tag is moved to the bottom of the tag stack. 
+            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir “Text widget tags”, pour une description de cette «pile»). Si vous précisez deux arguments, le tag de nom *tagName* est déplacer juste en dessous du tag de nom *sousLui*. Si vous n'utilisez que le premier argument, le tag est déplacé tout en bas de la pile.
 
 .. py:method:: Text.tag_names(index=None)
 
-            If you pass an index argument, this method returns a sequence of all the tag names that are associated with the character after that index. If you pass no argument, you get a sequence of all the tag names defined in the text widget. 
+            Si vous précisez *index*, cette méthode retourne la liste de tous les tags qui sont associés au caractère situé immédiatement après la position *index*. Sans argument, vous obtenez la liste de tous les tags définis pour le widget ``Text`` appelant.
 
 .. py:method:: Text.tag_nextrange(tagName, index1, index2=None)
 
-            This method searches a given region for places where a tag named tagName starts. The region searched starts at index index1 and ends at index index2. If the index2 argument is omitted, the search goes all the way to the end of the text.
+            Recherche le texte tagué avec *tagName* et dont le premier caractère n'est pas situé avant le caractère d'index *index1* ni après le caractère situé juste avant celui d'index *index2*. Si *index2*, la recherche se poursuit jusqu'à la fin du texte.
 
-            If there is a place in the given region where that tag starts, the method returns a sequence [i0, i1], where i0 is the index of the first tagged character and i1 is the index of the position just after the last tagged character.
+            Si la recherche aboutie, la méthode retourne une liste *[i0, i1]*, où *i0* est l'index du premier caractère tagué et *i1* la position situé juste après le dernier caractère tagué. Si plusieurs étendus de texte tagué existent, seul le premier trouvé est pris en considération. 
 
-            If no tag starts are found in the region, the method returns an empty string. 
+            Si rien n'est trouvé, la méthode retourne une chaîne vide.
 
 .. py:method:: Text.tag_prevrange(tagName, index1, index2=None)
 
-            This method searches a given region for places where a tag named tagName starts. The region searched starts before index index1 and ends at index index2. If the index2 argument is omitted, the search goes all the way to the end of the text.
+            Cette méthode est similaire à la précédente, mais le premier caractère tagué avec *tagName* ne doit pas être situé après le caractère d'index *index1* ni avant le caractère d'index *index2*. Si plusieurs étendus de texte correspondent, celle qui est la plus proche d'*index1* est choisie. Si *index2* n'est pas précisé, alors par défaut il correspond au début du texte.
 
-            The return values are as in .tag_nextrange(). 
+            La valeur de retour est similaire à celle retournée par tag_nextrange(). 
 
-.. py:method:: Text.tag_raise(tagName, aboveThis=None)
+.. py:method:: Text.tag_raise(tagName, surLui=None)
 
-            Use this method to change the order of tags in the tag stack (see Section 24.5, “Text widget tags”, above, for an explanation of the tag stack). If you pass two arguments, the tag with name tagName is moved to a position just above the tag with name aboveThis. If you pass only one argument, that tag is moved to the top of the tag stack. 
+            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir “Text widget tags” pour plus d'explication sur cette pile). Si vous utilisez deux arguments, le tag *tagName* est déplacé juste au-dessus du tag *surLui*. Si vous n'utilisez qu'un argument, le tag indiqué est placé tout en haut de la pile.
 
 .. py:method:: Text.tag_ranges(tagName)
 
-            This method finds all the ranges of text in the widget that are tagged with name tagName, and returns a sequence [s0, e0, s1, e1, …], where each si is the index just before the first character of the range and ei is the index just after the last character of the range. 
+            Cette méthode trouve tous les intervalles de texte tagués avec *tagName* et retourne une liste [s0, e0, s1, e1, …], où chaque ``si`` est l'index juste avant le premier caractère de l'intervalle tagué et ``ei`` est l'index juste après le dernier caractère de l'intervalle marqué. Si rien n'est trouvé, une chaîne vide est retournée.
 
 .. py:method:: Text.tag_remove(tagName, index1, index2=None)
 
-            Removes the tag named tagName from all characters between index1 and index2. If index2 is omitted, the tag is removed from the single character after index1. 
+            Supprime le tag *tagName* de tous les caractères situés entre *index1* et juste avant *index2*. Si *index2* est omis, seul le tag du caractère situé juste après *index1* est supprimé.
 
 .. py:method:: Text.tag_unbind(tagName, sequence, funcid=None)
 
-            Remove the event binding for the given sequence from the tag named tagName. If there are multiple handlers for this sequence and tag, you can remove only one handler by passing it as the third argument. 
+            Supprime la liaison entre l'événement précisé par *sequence* et la portion de texte tagué avec *tagName*. Si vous avez plusieurs gestionnaires  pour l'événement précisé par *sequence*, vous pouvez en enlever un seul en l'indiquant comme troisième argument.
 
 .. py:method:: Text.window_cget(index, option)
 
-            Returns the value of the given option for the embedded widget at the given index. 
+            Retourne la valeur de l'*option* précisé par une chaîne pour le widget embarqué situé à la position précisé par *index*.
 
-.. py:method:: Text.window_configure(index, option)
+.. py:method:: Text.window_configure(index, option=valeur, ...)
 
-            To change the value of options for embedded widget at the given index, pass in one or more option=value pairs.
+            Sert à modfier une ou plusieurs option d'un widget embarqué à la position précisé par *index* en donnant un ou plusieurs paires option=valeur.
 
-            If you pass only one argument, you will get back a dictionary defining all the options and their values currently in force for the given widget. 
+            Si vous n'indiquez aucune option, la méthode retourne un dictionnaire qui contient les options et leurs valeurs courantes.
 
 .. py:method:: Text.window_create(index, option, ...)
 
-            This method creates a window where a widget can be embedded within a text widget. There are two ways to provide the embedded widget:
+            Cette méthode crée une fenêtre par l'intermédiaire de laquelle un widget peut être inséré dans le contenu du texte. Il y a deux moyen d'embarquer un widget:
 
-            you can use pass the widget to the window option in this method, or
+            * vous pouvez passer le widget à l'option *window* de cette méthode, ou
 
-            you can define a procedure that will create the widget and pass that procedure as a callback to the create option. 
+            * vous pouvez définir une fonction sans argument (procédure) qui créera le widget et la passer à son option *create*.
 
-            Options for .window_create() are:
-            align 	Specifies how to position the embedded widget vertically in its line, if it isn't as tall as the text on the line. Values include: align=tk.CENTER (the default), which centers the widget vertically within the line; align=tk.TOP, which places the top of the image at the top of the line; align=tk.BOTTOM, which places the bottom of the image at the bottom of the line; and align=tk.BASELINE, which aligns the bottom of the image with the text baseline.
-            create 	A procedure that will create the embedded widget on demand. This procedure takes no arguments and must create the widget as a child of the text widget and return the widget as its result.
-            padx 	Extra space added to the left and right of the widget within the text line. Default is 0.
-            pady 	Extra space added above and below the widget within the text line. Default is 0.
-            stretch 	This option controls what happens when the line is higher than the embedded widget. Normally this option is 0, meaning that the embedded widget is left at its natural size. If you set stretch=1, the widget is stretched vertically to fill the height of the line, and the align option is ignored.
-            window 	The widget to be embedded. This widget must be a child of the text widget. 
+            Les options pour cette méthode sont:
+            **align**
+                    Précise comment positionner verticalement le widget embarqué dans sa ligne, s'il n'est pas aussi haut que le texte de cette ligne. Les valeurs incluent: 'center' (par défaut), ce qui a pour effet de centrer le texte verticalement dans sa ligne; 'top', ce qui place son bord haut sur le haut de la ligne; 'bottom', ce qui place son bord bas sur le bas de la ligne; et 'baseline', ce qui aligne son bord bas avec la ligne de base du texte.
+            **create** 
+                    Une fonction sans argument (procédure) qui sera charger de créer le widget embarqué à la demande. Cette fonction doit créer le widget comme enfant du widget ``Text`` appelant et retourner ce widget.
+            **padx** 
+                    Espace supplémentaire à ajouter à gauche et à droite du widget dans la ligne de texte. 0 par défaut.
+            **pady** 
+                    Espace supplémentaire à ajouter au dessus et en dessous du widget à l'intérieur de la ligne de texte. 0 par défaut.
+            **stretch** 
+                    Sert à préciser ce qui arrive dans le cas où la ligne est plus haute que le widget embarqué. Sa valeur par défaut est 0, ce qui signifie que le widget conserve sa taille normale. Si stretch=1, le widget est étiré verticalement de manière à remplir la hauteur de la ligne et l'option *align* est ignorée.
+            **window** 
+                    Le widget à embarquer. Ce widget doit être un enfant du widget ``Text`` appelant.
 
 .. py:method:: Text.window_names()
 
-            Returns a sequence containing the names of all embedded widgets. 
+            Retourne une liste qui contient les noms de tous les widgets actuellement embarqués.
 
-.. py:method:: Text.xview(tk.MOVETO, fraction)
+.. py:method:: Text.xview('moveto', fraction)
 
-            This method scrolls the text widget horizontally, and is intended for binding to the command option of a related horizontal scrollbar.
+            Cette méthode fait défiler l'éditeur horizontalement pour amener le bord gauche de la vue à la position précisée par *fraction* (appartient à [0,1]). Par exemple, si fraction=0.5, le bord gauche de la vue correspond à 50% de la largeur totale de l'éditeur. Cette méthode peut être transmise à l'option *command* d'une barre de défilement horizontale associée à l'éditeur.
 
-            This method can be called in two different ways. The first call positions the text at a value given by fraction, where 0.0 moves the text to its leftmost position and 1.0 to its rightmost position. 
+            Si fraction=0.0, le bord gauche de la vue coincide avec le bord gauche de l'éditeur. Si fraction=1.0, le bord droit de la vue coincide avec le bord droit de l'éditeur.
 
-.. py:method:: Text.xview(tk.SCROLL, n, what)
+.. py:method:: Text.xview('scroll', n, quoi)
 
-            The second call moves the text left or right: the what argument specifies how much to move and can be either tk.UNITS or tk.PAGES, and n tells how many characters or pages to move the text to the right relative to its image (or left, if negative). 
+            Dans cette deuxième forme, la vue défine de *n* fois *quoi* qui peut prendre la valeur 'units' (1 caractère) ou 'pages' (largeur de la vue). Le sens du déplacement dépend du signe de *n* (positif vers la droite, négatif vers la gauche)
 
 .. py:method:: Text.xview_moveto(fraction)
 
-            This method scrolls the text in the same way as .xview(tk.MOVETO, fraction). 
+            Fait défiler la vue de la même façon que xview('moveto', fraction). 
 
 .. py:method:: Text.xview_scroll(n, what)
 
-            Same as .xview(tk.SCROLL, n, what). 
+            Pareil que xview('scroll', n, quoi). 
 
-.. py:method:: Text.yview(tk.MOVETO, fraction)
+.. py:method:: Text.yview('moveto', fraction)
 
-            The vertical scrolling equivalent of .xview(tk.MOVETO,…). 
+            Pareil que xview('moveto',…), mais pour un défilement vertical. 
 
-.. py:method:: Text.yview(tk.SCROLL, n, what)
+.. py:method:: Text.yview('scroll', n, quoi)
 
-            The vertical scrolling equivalent of .xview(tk.SCROLL,…). When scrolling vertically by tk.UNITS, the units are lines. 
+            Pareil que xview('scroll',…). Dans ce cas 'units' désigne une ligne.
 
 .. py:method:: Text.yview_moveto(fraction)
 
-            The vertical scrolling equivalent of .xview_moveto(). 
+            Similaire à xview_moveto() dans la direction verticale.  
 
-.. py:method:: Text.yview_scroll(n, what)
+.. py:method:: Text.yview_scroll(n, quoi)
 
-            The vertical scrolling equivalent of .xview_scroll(). 
+            Similaire à xview_scroll() dans la direction verticale. 
     
