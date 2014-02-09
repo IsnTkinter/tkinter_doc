@@ -99,142 +99,144 @@ Les index
 
 Un index est une chaîne de caractère qui sert à préciser une position dans le contenu d'un widget ``Text``. Cette chaîne de caractères est de la forme:
 
-'ligne.colonne'
+``'ligne.colonne'``
         La position situé juste avant la *colonne* indiqué (en comptant à partir de 0) sur la *ligne* donnée (en comptant à partir de 1). Par exemples: '1.0' est la position de démarrage du texte; '2.3' est la position située juste avant le quatrième caractère de la deuxième ligne.
 
-'ligne.end'
+``'ligne.end'``
         La position situé juste avant le caractère de saut de ligne de la *ligne* indiquée (en comptant à partir de 1). Ainsi, par exemple, l'index '10.end' est la position situé à la fin de la dixième ligne de texte.
 
-'insert'
+``'insert'``
         La position du curseur d'insertion.
 
-'current'
+``'current'``
         La position du caractère qui est le proche de la position du pointeur de la souris.
 
-'end'
+``'end'``
         La position situé juste après le dernier caractère du texte.
 
-'sel.first'
+``'sel.first'``
         Si une portion de texte est actuellement sélectionné (comme en cliquant-glissant la souris sur celui-ci), il s'agit de la position situé juste avant le début de la sélection. Si vous essayez d'utiliser cet index et que rien n'est sélectionné, une exception de type TclError est levée.
 
-'sel.last'
+``'sel.last'``
         La position situé juste après la fin de la sélection s'il y en a une. Une exception du même type que pour 'sel.first' est levée s'il n'y en a pas.
 
-'nom_marque'
+``'nom_marque'``
         Vous pouvez utiliser une marque comme index; utilisez simplement son nom là où un index est attendus. Voir “Text widget marks”. 
 
-'tag.first'
+``'tag.first'``
         La position avant le premier caractère de la région de texte marqué avec *tag*. Voir “Text widget tags”. 
 
-'tag.last'
+``'tag.last'``
         La position après le dernier caractère de la région de texte marqué avec *tag*.
 
-'@x,y'
+``'@x,y'``
         La position située juste avant le caractère le plus proche de la position (*x*, *y*).
 
-objet-embarque
+``objet-embarque``
         Si vous avez embarqué une image ou une fenêtre dans le widget ``Text``, vous pouvez utilisez sa référence comme un index. Voir “Text widget images” et “Text widget windows”. 
 
 En supplément de ces différents moyens de base pour préciser un index, vous pouvez construire des expressions arbitrairement complexes en ajoutant l'un de ces suffixes à un index basique ou à une expression d'index:
 
-\+ n chars
+``\+ n chars``
         Pour l'index donné, se déplacer vers l'avant de *n* caractères. Cette opérations peut faire changer de ligne. Par exemple, supposez que la première ligne soit «abcdef», l'expression d'index '1.0 + 5 chars' désigne la position située entre le e et le f. Vous pouvez abbréger les mots clés et omettre les blancs dans de tels expressions tant que le résultat n'est pas ambigu. Cette expression d'index pourrait s'abbréger '1.0+5c'.
 
-\- n chars
+``\- n chars``
         Similaire à la forme précédente mais le mouvement se fait vers l'arrière.
 
-\+ n lines
+``\+ n lines``
         Déplacement de n lignes vers le bas par rapport à l'index donné. Tkinter essais de laisser la nouvelle position dans la même colonne que celle qu'elle avait dans la ligne de départ, mais si la ligne de la nouvelle position est trop courte, la nouvelle position sera en fin de ligne.
 
-\- n lines
+``\- n lines``
         Similaire à la précédente, mais le déplacement se fait vers le haut.
 
-linestart
+``linestart``
         Déplacement à la position situé avant le premier caractère de la ligne d'index donné. Par exemple, la position 'current linestart' se rapporte au début de la ligne qui est la plus proche de la position actuelle de la souris.
 
-lineend
+``lineend``
         Déplacement à la position situé après le dernier caractère (qui n'est pas un saut de ligne) de la ligne d'index donné. Par exemple, 'sel.last lineend' se rapporte à la fin de la ligne qui possède le caractère de fin de la sélection courante.
 
-wordstart
+``wordstart``
         La position situé avant le début du mot qui contient la position d'index donné. Par exemple, '11.44 wordstart' se rapporte à la position juste avant le 45ème caractère de la ligne 11. Dans ce contexte, un mot est soit une chaîne composée de lettres, de chiffres ou du caractère (_) ou un seule caractères qui n'est d'aucun de ces types. 
     
 Les marques
 ===========
 
-A mark represents a floating position somewhere in the contents of a text widget.
+Une marque représente une position flottante (ou glissante) quelquepart dans le contenu d'un widget ``Text``
 
-    You handle each mark by giving it a name. This name can be any string that doesn't include whitespace or periods.
+* Pour gérer chaque marque, vous lui donner un nom. Ce nom peut être n'importe quelle chaîne de caractère qui ne contient ni espace, ni point.
 
-    There are two special marks. tk.INSERT is the current position of the insertion cursor, and tk.CURRENT is the position closest to the mouse cursor.
+* Il y a deux marques spéciales. 'insert' qui est la position courante du curseur et 'current' qui est la position la plus proche du pointeur de la souris.
 
-    Marks float along with the adjacent content. If you modify text somewhere away from a mark, the mark stays at the same position relative to its immediate neighbors.
+* Les marques glissent en même temps que le contenu adjacent. Si vous ajoutez du texte en amont d'une marque, la marque conserve la même position relativement aux contenus immédiatement voisins.
 
-    Marks have a property called gravity that controls what happens when you insert text at a mark. The default gravity is tk.RIGHT, which means that when new text is inserted at that mark, the mark stays after the end of the new text. If you set the gravity of a mark to tk.LEFT (using the text widget's .mark_gravity() method), the mark will stay at a position just before text newly inserted at that mark.
+* Les marques possèdent une propriété dite de «gravité» qui contrôle ce qui arrive lorsque vous insérer du texte à la position marquée. La gravité par défaut est 'right', ce qui signifie que lorsque vous insérer du texte sur la marque, celle-ci reste à la fin du texte inséré. Si vous réglez la gravité à 'left' (en utilisant la méthode mark_gravity() du widget de texte), la marque restera à la position située juste avant le texte inséré sur celle-ci.
 
-    Deleting the text all around a mark does not remove the mark. If you want to remove a mark, use the .mark_unset() method on the text widget. 
+* Supprimer du texte autour d'une marque ne supprime pas la marque. Pour supprimer une marque, utilisez la méthode mark_unset() du widget texte.
 
-Refer to Section 24.8, “Methods on Text widgets”, below, to see how to use marks.
+Reportez-vous à “Methods on Text widgets”, ci-desssous, pour comprendre comment utiliser les marques.
 
-Text widget images
-==================
+Les images
+==========
 
-You can put an image or bitmap into a text widget. It is treated as a single character whose size is the natural size of the object. See Section 5.9, “Images” andSection 5.7, “Bitmaps”.
+Vous pouvez mettre une image ou un bitmap à l'intérieur du widget ``Text``. Elle sera traitée comme un caractère unique dont la taille est celle de l'objet. Voir “Images” et “Bitmaps”.
 
-Images are placed into the text widget by calling that widget's .image_create() method. See below for the calling sequence and other methods for image manipulation.
+Les images sont placées dans le texte en appelant la méthode image_create() du widget ``Text``. Voir plus loin pour la séquence d'appel et d'autres méthodes pour manipuler les images.
 
-Images are manipulated by passing their name to methods on the text widget. You can give Tkinter a name for an image, or you can just let Tkinter generate a default name for that image.
+On manipule les images en fournissant leur nom à des méthodes du widget ``Text``. Vous pouvez préciser à Tkinter le nom d'une image ou le laisser en produire un par défaut.
 
-An image may appear any number of times within the same Text widget. Each instance will carry a unique name. This names can be used as an index.
+Une image peut apparaître un nombre arbitraire de fois dans le même widget de texte. Chaque instance de l'image aura un nom unique. Ces nom peuvent être utilisés comme index.
 
-Text widget windows
-===================
+Les fenêtres
+============
 
-You can put any Tkinter widget—even a frame containing other widgets—into a text widget. For example, you can put a fully functional button or a set of radiobuttons into a text widget.
+Vous pouvez mettre n'importe quel widget de Tkinter - même un cadre qui contient d'autres widgets - à l'intérieur du widget ``Text``. Par exemple, vous pouvez y mettre un bouton parfaitement opérationnel ou un ensemble de boutons radios.
 
-Use the .window_create() method on the text widget to add the embedded widget. For the calling sequence and related methods, see Section 24.8, “Methods on Text widgets”. 
+Pour cela, utilisez la méthode window_create() du widget texte. Pour la séquence d'appel et d'autres méthodes utiles dans ce contexte, voir “Methods on Text widgets”. 
 
-Text widget tags
-================
+Les tags
+========
 
-There are lots of ways to change both the appearance and functionality of the items in a text widget. For text, you can change the font, size, and color. Also, you can make text, widgets, or embedded images respond to keyboard or mouse actions.
+Il y a un grand nombre de moyens pour changer à la fois l'apparence et les fonctionnalités des éléments qui se trouve dans un widget ``Text``. Pour le texte, vous pouvez modifier sa fonte, taille et couleur. De plus, vous pouvez rendre des portions de texte, les widgets ou les images embarquées réactive au clavier ou aux action de la souris.
 
-To control these appearance and functional features, you associate each feature with a tag. You can then associate a tag with any number of pieces of text in the widget.
+Afin de contrôler ces caractéristiques relatives à l'apparence ou aux fonctionnalités, vous associez à chaque caractéristique un tag. Vous pouvez associer un tag avec autant de portions de texte que souhaités.
 
-    The name of a tag can be any string that does not contain white space or periods.
+* Le nom d'un tag peut être n'importe quelle chaîne de caractères pourvu qu'elle ne contienne ni espace, ni point.
 
-    There is one special predefined tag called SEL. This is the region currently selected, if any.
+* Il y a un tag prédéfini nommé 'sel'. Il se rapporte à la région définie par la sélection courante s'il y en a une.
 
-    Since any character may be part of more than one tag, there is a tag stack that orders all the tags. Entries are added at the end of the tag list, and later entries have priority over earlier entries.
+* Puisque chaque caractère peut faire partie d'un ou de plusieurs tags, ces tags sont ordonnés dans une liste. Chaque nouveau tag est ajouté à la fin de cette liste de sorte que les derniers entrés ont la priorité sur ceux qui ont été entrés plus tôt.
 
-    So, for example, if there is a character c that is part of two tagged regions t1 and t2, and t1 is deeper in the tag stack than t2, and t1 wants the text to be green and t2 wants it to be blue, c will be rendered in blue because t2 has precedence over t1.
+* Ainsi, par exemple, si un caractère ``c`` fait partie de deux régions taggués ``t1`` et ``t2``, que ``t1`` est situé avant ``t2`` dans la liste ordonné des tags, et que ``t1`` défini une couleur de texte verte tandis que ``t2`` défini une couleur bleu, alors ``c`` sera affiché en bleu car ``t2`` a la priortié sur ``t1``.
 
-    You can change the ordering of tags in the tag stack. 
+* Vous pouvez modifiez à tout moment l'ordre des tags dans la liste des tags.
 
-Tags are created by using the .tag_add() method on the text widget. See Section 24.8, “Methods on Text widgets”, below, for information on this and related methods.
+Les tags sont créés en utilisant la méthode tag_add() du widget text. Reportez-vous à “Methods on Text widgets”, ci-dessous, pour des informations sur cela et d'autres méthodes utiles dans ce contexte.
 
-Setting tabs in a Text widget
-=============================
+Régler les tabulations
+======================
 
-The tabs option for Text widgets gives you a number of ways to set tab stops within the widget.
+L'utilisation de la touche tabulation permet de faire avancer le curseur jusqu'à une position déterminée par un taquet de tabulation ou, à défaut, de créer une certaine quantité d'espaces blanches. En appuyant simultanément sur la touche Maj on obtient l'effet inverse, d'où les deux flèches de sens opposés généralement représentées sur la touche.
 
-    The default is to place tabs every eight characters.
+L'option **tabs** du widget ``Text`` vous donne plusieurs possibilités pour déterminer l'emplacement des taquets de tabulation à l'intérieur du widget texte.
 
-    To set specific tab stops, set this option to a sequence of one or more distances. For example, setting tabs=('3c', '5c', '12c') would put tab stops 3, 5, and 12cm from the left side. Past the last tab you set, tabs have the same width as the distance between the last two existing tab stops. So, continuing our example, because 12c-5c is 7 cm, if the user keeps pressing the Tab key, the cursor would be positioned at 19cm, 26cm, 33cm, and so on.
+* Le comportement par défaut est de placer un taquet de tabulation tous les 8 caractères.
 
-    Normally, text after a tab character is aligned with its left edge on the tab stop, but you can include any of the keywords tk.LEFT, tk.RIGHT, tk.CENTER, or tk.NUMERIC in the list after a distance, and that will change the positioning of the text after each tab.
+* Pour préciser un jeu de taquets de tabulation, réglez cette option avec un tuple d'une ou plusieurs distances. Par exemple, le réglage tabs=('3c', '5c', '12c') place des taquets de tabulations à 3, 5 et 12 cm du bord gauche de la page. Après le dernier taquet de tabulation qui vous avez explicitement positionné, l'espace entre deux taquets de tabulation sera le même que celui qui sépare les deux derniers taquets de tabulation du réglage. Ainsi, pour continuer notre exemple, et parcque 12c-5c=7 cm, si l'utilisateur appui de nouveau sur la touche tab, le curseur sera positionné à 19cm, puis à 26cm, 33cm et ainsi de suite.
 
-        A tk.LEFT tab stop has the default behavior.
+* Normalement, le texte situé après un caractère de tabulation est aligné de sorte que son côté gauche soit sur le taquet de tabulation, mais vous pouvez inclure l'un des mots clés qui suivent dans cette liste afin de modifier la position du texte situé après une tabulation:
 
-        A tk.RIGHT tab stop will position the text so its right edge is on the stop.
+  + Un taquet de tabulation avec ``'left'`` a le comportement par défaut.
 
-        A tk.CENTER tab will center the following text on the tab stop.
+  + Avec ``'right'`` , le texte sera positionné de telle sorte que son bord droit soit sur le taquet de tabulation.
 
-        A tk.NUMERIC tab stop will place following text to the left of the stop up until the first period ('.') in the text—after that, the period will be centered on the stop, and the rest of the text will positioned to its right. 
+  + Avec ``'center'``, le texte est centré sur le taquet de tabulation.
 
-    For example, setting tabs=('0.5i', '0.8i', tk.RIGHT, '1.2i', tk.CENTER, '2i', tk.NUMERIC) would set four tab stops: a left-aligned tab stop half an inch from the left side, a right-aligned tab stop 0.8″ from the left side, a center-aligned tab stop 1.2″ from the left, and a numeric-aligned tab stop 2″ from the left.
+  + Avec ``'numeric'``, le texte est positionné en plaçant le premier . qu'il contient sur le taquet de tabulation.
+
+* Par exemple, le réglage tabs=('2c', '4.5c', 'right', '9c', 'center', '13c', 'numeric') positionnera quatre taquets de tabulation: le premier à 2 cm du bord gauche de la page avec un alignement à gauche du texte, le second à 4.5 cm du bord avec un text aligné à droite, le troisième à 9cm du bord avec un alignement au centre et le quatrième à 13cm du bord avec un alignement sur le séparateur décimal. Si l'utilisateur insère de nouvelle tabulation, elles apparaîtrons à 13-9=4cm les unes des autres avec le dernier alignement de la liste c'est à dire 'numeric'.
     
-The Text widget undo/redo stack
-===============================
+Gestion de l'historique
+=======================
 
 The Text widget has a built-in mechanism that allows you to implement undo and redo operations that can cancel or reinstate changes to the text within the widget.
 
