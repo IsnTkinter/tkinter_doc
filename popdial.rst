@@ -1,66 +1,71 @@
 .. _DIALOGS:
 
-**************
-Pop-up dialogs
-**************
+**********************************
+Fenêtres surgissantes de dialogues
+**********************************
 
-Tkinter provides three modules that can create pop-up dialog windows for you:
+Tkinter fourni trois sous modules qui servent à créer des fenêtres surgissantes de dialogue avec l'utilisateur:
 
-* Section 55.1, “The tkMessageBox dialogs module”, provides an assortment of common pop-ups for simple tasks.
+* ``tkinter.messagebox``: fourni un assortiment de fenêtres de dialogues courantes pour des tâches simples. 
 
-* Section 55.2, “The tkFileDialog module”, allows the user to browse for files.
+*  ``tkinter.filedialog``: fenêtre de navigation dans le système de fichier.
 
-* Section 55.3, “The tkColorChooser module”, allows the user to select a color.
+*  “The tkColorChooser module”, allows the user to select a color.
     
-The tkMessageBox dialogs module
-===============================
+Le sous-module ``messagebox``
+=============================
 
-Once you import the tkMessageBox module, you can create any of these seven common types of pop-up menu by calling functions from this table.
-Screen shot of askokcancel. 	.askokcancel(title, message, options)
+Après avoir importer le sous-module (avec ``from tkinter.messagebox import *`` ou plus prudemment avec ``import tkinter.messagebox as mb``), vous pouvez créer simplement huit sortes de fenêtres pop-ups en appelant les fonctions données ci-après.
 
 .. list-table::
    :widths: 50 50
    :header-rows: 0
 
-   * - Screen shot of askquestion. 
-     - ``.askquestion(title, message, options)``
-   * - Screen shot of askretrycancel. 
-     - ``.askretrycancel(title, message, options)``
-   * - Screen shot of askyesno. 
-     - ``.askyesno(title, message, options)``
-   * - Screen shot of showerror. 
-     - ``.showerror(title, message, options)``
-   * - Screen shot of showinfo. 
-     - ``.showinfo(title, message, options)``
-   * - Screen shot of showwarning. 
-     - ``.showwarning(title, message, options)``
+   * - .. image:: img/messagedialog/askokcancel.png 
+     - ``askokcancel(title, message, options)``
+   * - .. image:: img/messagedialog/askquestion.png
+     - ``askquestion(title, message, options)``
+   * - .. image:: img/messagedialog/askretrycancel.png
+     - ``askretrycancel(title, message, options)``
+   * - .. image:: img/messagedialog/askyesno.png
+     - ``askyesno(title, message, options)``
+   * - .. image:: img/messagedialog/askyesnocancel.png
+     - ``askyesnocancel(title, messages, options)``
+   * - .. image:: img/messagedialog/showerror.png
+     - ``showerror(title, message, options)``
+   * - .. image:: img/messagedialog/showinfo.png
+     - ``showinfo(title, message, options)``
+   * - .. image:: img/messagedialog/showwarning.png
+     - ``showwarning(title, message, options)``
 
-In each case, the title is a string to be displayed in the top of the window decoration. The message argument is a string that appears in the body of the pop-up window; within this string, lines are broken at newline ('\n') characters.
+Dans chaque cas,l'argument *title* est une chaîne à afficher sur le bord haut de la fenêtre surgissante et l'argument *message* est une chaîne qui sera affichée dans le corps de la fenêtre; vous pouvez mettre des sauts de lignes en utlilisant le caractère spécial ``'\n'``.
 
-The option arguments may be any of these choices.
+Les options sont:
 
 ``default``
 
-    Which button should be the default choice? If you do not specify this option, the first button (“OK”, “Yes”, or “Retry”) will be the default choice.
+    Sert à indiquer le bouton qui représente le choix par défaut. Si vous ne précisez pas cette option, le premier bouton sera celui du choix par défaut.Which button should be the default choice? If you do not specify this option, the first button (“OK”, “Yes”, or “Retry”) will be the default choice.
 
-    To specify which button is the default choice, use default=C, where C is one of these constants defined in tkMessageBox: CANCEL, IGNORE, OK, NO, RETRY, or YES. 
+    Pour préciser un bouton par défaut, utilisez ``default=C``, où c est l'une des valeurs ``"cancel"``, ``"ignore"``, ``"ok"``, ``"no"``, ``"retry"`` ou ``"yes"``.
 
 ``icon``
 
-    Selects which icon appears in the pop-up. Use an argument of the form icon=I where I is one of these constants defined in tkMessageBox: ERROR, INFO, QUESTION, or WARNING. 
+    Sert à sélectionner l'icone qui sera affichée sur la fenêtre de dialogue. Les valeurs possibles sont ``error``, ``info``, ``question`` ou ``warning``.
 
 ``parent``
 
-    If you don't specify this option, the pop-up appears above your root window. To make the pop-up appear above some child window W, use the argument parent=W. 
+    Si vous ne configurez pas cette option, la fenêtre surgissante apparaîtra au-dessus de votre fenêtre principale. Pour la faire apparaître au-dessus d'une fenêtre arbitraire ``w``, utilisez ``parent=w``.
 
-Each of the “ask...” pop-up functions returns a value that depends on which button the user pushed to remove the pop-up.
+Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur lequel l'utilisateur a cliqué afin de supprimer la fenêtre surgissante.
 
-* askokcancel, askretrycancel, and askyesno all return a bool value: True for “OK” or “Yes” choices, False for “No” or “Cancel” choices.
+* ``askokcancel``, ``askretrycancel``, et ``askyesno`` retournent toutes un booléen: ``True`` si l'utilisateur a cliqué sur le bouton "Ok", "Oui" ou "Ré-essayer", ``False`` s'il a cliqué sur "Non" ou sur "Annuler".
 
-* askquestion returns u'yes' for “Yes”, or u'no' for “No”.
+* ``askyesnocancel`` retourne ``True``, ``False``, ou ``None`` selon que l'utilisateur a cliqué sur le bouton "Oui", "Non" ou "Annuler".
+
+* ``askquestion`` retourne une chaîne ``'yes'`` pour "Oui", ou ``'no'`` pour "Non".
     
-The tkFileDialog module
-=======================
+Le sous-module ``filedialog``
+=============================
 
 The tkFileDialog module provides two different pop-up windows you can use to give the user the ability to find existing files or create new files.
 
