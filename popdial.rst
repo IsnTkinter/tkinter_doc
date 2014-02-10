@@ -4,7 +4,7 @@
 Fenêtres surgissantes de dialogues
 **********************************
 
-Tkinter fourni trois sous modules qui servent à créer des fenêtres surgissantes de dialogue avec l'utilisateur:
+Tkinter fournit trois sous modules qui servent à créer des fenêtres surgissantes de dialogue avec l'utilisateur:
 
 * ``tkinter.messagebox``: fourni un assortiment de fenêtres de dialogues courantes pour des tâches simples. 
 
@@ -67,45 +67,45 @@ Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur l
 Le sous-module ``filedialog``
 =============================
 
-The tkFileDialog module provides two different pop-up windows you can use to give the user the ability to find existing files or create new files.
+Le sous-module ``filedialog`` fournit des fenêtres surgissantes qui peuvent vous servir à donner la capacité à l'utilisateur de trouver un fichier existant ou de créer de nouveaux fichiers.
 
-.. py:method:: skopenfilename(option=value, ...)
+.. py:method:: askopenfilename(option=value, ...)
 
-    Intended for cases where the user wants to select an existing file. If the user selects a nonexistent file, a popup will appear informing them that the selected file does not exist. 
+    Produit une fenêtre surgissante qui permet à l'utilisateur de sélectionner un fichier existant. Si l'utilisateur sélectionne un fichier qui n'existe pas, une popup apparaîtra indiquant que le fichier sélectionné n'existe pas.
 
-.. py:method:: sksaveasfilename(option=value, ...)
+.. py:method:: asksaveasfilename(option=value, ...)
 
-    Intended for cases where the user wants to create a new file or replace an existing file. If the user selects an existing file, a pop-up will appear informing that the file already exists, and asking if they really want to replace it. 
+    Produit une fenêtre surgissante qui permet à l'utilsateur de créer un nouveau fichier ou de remplacer un fichier qui existe déjà par un autre. Si l'utilisateur sélectionne un fichier qui existe déjà, une popup apparaît pour mettre en garde sur le fait que le fichier existe déjà et pour demander si l'utilisateur souhaite vraiment le remplacer.
 
-The arguments to both functions are the same:
+Les options des deux fonctions sont les mêmes:
 
 ``defaultextension=s``
 
-    The default file extension, a string starting with a period ('.'). If the user's reply contains a period, this argument has no effect. It is appended to the user's reply in case there are no periods.
+    L'extension du fichier par défaut, c'est à une chaîne qui commence par un point «.». Si l'utilisateur utilise un point dans le nom de fichier, cette option n'a pas d'effet. Autrement, l'extension donnée est concaténée au nom de fichier fournit par l'utilisateur.
 
-    For example, if you supply a defaultextension='.jpg' argument and the user enters 'gojiro', the returned file name will be 'gojiro.jpg'. 
+    Par exemple, si vous utilisez defaultextension='.jpg' et que l'utilisateur saisi 'gojiro', le nom de fichier utilisé sera au final 'gojiro.jpg'.
 
 ``filetypes=[(label1, pattern1), (label2, pattern2), ...]``
 
-    A list of two-element tuples containing file type names and patterns that will select what appears in the file listing. In the screen picture below, note the pull-down menu labeled “Files of type:”. The filetypes argument you supply will populate this pull-down list. Each pattern is a file type name (“PNG” in the example) and a pattern that selects files of a given type (“(\*.png)” in the example). 
+    Une liste dont les éléments sont des 2-tuples qui contiennent des noms de type de fichier et des motifs de sélection qui serviront à sélectionner les fichiers qui apparaîtront dans le listing de la fenêtre surgissante. A list of two-element tuples containing file type names and patterns that will select what appears in the file listing. In the screen picture below, note the pull-down menu labeled “Files of type:”. The filetypes argument you supply will populate this pull-down list. Each pattern is a file type name (“PNG” in the example) and a pattern that selects files of a given type (“(\*.png)” in the example). 
 
 ``initialdir=D``
 
-    The path name of the directory to be displayed initially. The default directory is the current working directory. 
+    Le chemin du dossier dont il faut afficher le contenu initialement. Le dossier par défaut est le dossier de travail actuel (celui qui contient le fichier du programme).
 
 ``initialfile=F``
 
-    The file name to be displayed initially in the “File name:” field, if any. 
+    Le nom de fichier à afficher initialement dans le champ "Nom de fichier:".
 
 ``parent=W``
 
-    To make the pop-up appear over some window W, supply this argument. The default behavior is that the pop-up will appear over your application's root window. 
+    Pour faire en sorte que la fenêtre surgissante apparaîsse au-dessus d'une fenêtre W, utilisez parent=w. Par défaut, la fenêtre surgissante apparaît au-dessus de la fenêtre principale de votre application.
 
 ``title=T``
 
-    If specified, T is a string to be displayed as the pop-up window's title. 
+    Sert à donner un titre à la fenêtre de dialogue.
 
-If the user selects a file, the returned value is the complete path name of the selected file. If the user uses the Cancel button, the function returns an empty string.
+Si l'utilisateur sélectionne un fichier, la valeur de retour est le chemin absolue du fichier sélectionné. Si l'utilisateur utilise le bouton "Annuler", la fonction retourne une chaîne vide.
 
 Here is an example:
 
