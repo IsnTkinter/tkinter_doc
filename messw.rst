@@ -1,16 +1,16 @@
 .. _MESSAGE:
 
-******************
+*************************
 Les Messages ``Message``
-******************
+*************************
 
 Ce widget est semblable au widget ``Label`` (voir «Les étiquettes"), mais il est destiné à l'affichage des messages sur plusieurs lignes. Tout le texte sera affiché dans la même police, si vous avez besoin d'afficher du texte avec plusieurs polices, voir «Le widget texte".
 
-Pour créer un nouveau message comme l'enfant d'une fenêtre ou d'un cadre nommé ``parent``:
+Pour créer un nouveau message comme enfant d'une fenêtre ou d'un cadre nommé ``parent``:
 
 .. py:class:: Message(parent, option, ...)
 
-        Le constructeur renvoie le nouveau widget Message. Ses options sont:
+        Le constructeur renvoie le nouveau widget ``Message``. Ses options sont:
 
         :arg aspect: 
                 Utilisez cette option pour spécifier le rapport largeur sur hauteur en pourcentage. Par exemple, ``aspect=100`` vous donnerait un message en forme de texte dans un carré; avec ``aspect=200``, la zone de texte serait deux fois plus large que haute. La valeur par défaut est 150, c'est-à-dire que le texte apparaît dans une boîte 50% plus large que haute.

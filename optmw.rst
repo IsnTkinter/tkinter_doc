@@ -1,14 +1,14 @@
 .. _OPTIONMENU:
 
-************************************
-Les options d'un menu ``OptionMenu``
-************************************
+***********************************
+Les menus d'options ``OptionMenu``
+***********************************
 
 Le but de ce widget est d'offrir un ensemble fixe de choix à l'utilisateur dans un menu déroulant.
 
 .. image:: img/menuoption.png
 
-Les illustrations ci-dessus montrent un ``OptionMenu`` dans deux états. L'exemple de gauche montre le widget dans sa forme initiale. L'exemple de droite montre à quoi il ressemble lorsqu'avec la souris on a cliqué dessus et qu'on a choisi 'bateau'.
+L'illustration ci-dessus montre un menu d'options, ``OptionMenu``, dans deux états. L'exemple de gauche montre le widget dans sa forme initiale. L'exemple de droite montre à quoi il ressemble lorsqu'on a cliqué dessus avec la souris et qu'on a choisi 'bateau'.
 
 Pour créer un nouveau widget ``OptionMenu`` en tant qu'enfant d'une fenêtre ou d'un cadre nommé ``parent``:
 
@@ -20,11 +20,9 @@ L'illustration ci-dessus a été créée avec cet extrait de code
         
 .. code-block:: python
 
-
         listeOptions = ('train', 'avion', 'bateau')
         v = StringVar()
         v.set(listeOptions[0])
         om = OptionMenu(root, v, *listeOptions)
-
 
 Pour savoir quel choix est sélectionné dans un widget ``OptionMenu``, la méthode ``get()`` sur la variable de contrôle associée retournera ce choix comme une chaîne.

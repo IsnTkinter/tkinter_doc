@@ -4,7 +4,7 @@
 Le widget ``Scale``
 *******************
 
-La finalité du widget de type ``Scale`` - ou intervalle de sélection - est de permettre à l'utilisateur de fournir un entier ou un flottant situé à l'intérieur d'un intervalle précis. Voici deux widgets de ce type, l'un orienté horizontalement et l'autre verticalement.
+La finalité du widget de type ``Scale`` - ou intervalle de sélection - est de permettre à l'utilisateur de choisir un entier ou un flottant situé à l'intérieur d'un intervalle précis. Voici deux widgets de ce type, l'un orienté horizontalement et l'autre verticalement.
 
 Chaque widget affiche un curseur que l'utilisateur peut déplacer pour modifier la valeur. Dans la figure, le premier widget ``Scale`` possède actuellement la valeur -0.38 et le second la valeur 7.
 
@@ -21,15 +21,15 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         Le constructeur retourne le widget ``Scale`` créé. Ses options incluent:
 
         :arg activebackground: 
-                La couleur du curseur lorsque la souris est au dessus. Voir “Colors”.
+                La couleur du curseur lorsque la souris est au-dessus. Voir “Colors”.
         :arg bg: 
                  (ou **background**) La couleur d'arrière plan de la partie du widget qui est située en dehors de l'aire de glissement.
         :arg bd: 
                  (ou **borderwidth**) La largeur de la bordure 3d qui forme le contour de l'aire de glissement et du curseur. Sa valeur est 2 pixels par défaut. Pour des valeurs acceptables, voir “Dimensions”.
         :arg command: 
-                Une fonction qui sera appelée à chaque fois que le curseur sera déplacé. Cette fonction reçoit un argument qui est la nouvelle valeur sélectionnée dans l'intervalle. Si le curseur est déplacé rapidement, la fonction ne sera pas pour autant appelée pour toutes les positions possible, mais elle le sera sans aucun doute lorsque le curseur sera positionné.
+                Une fonction qui sera appelée à chaque fois que le curseur sera déplacé. Cette fonction reçoit un argument qui est la nouvelle valeur sélectionnée dans l'intervalle. Si le curseur est déplacé rapidement, la fonction ne sera pas pour autant appelée pour toutes les positions possibles, mais elle le sera sans aucun doute lorsque le curseur sera positionné.
         :arg cursor: 
-                Le pointeur de souris utilisée lorsque la souris est au dessus du widget. Voir “Cursors”.
+                Le pointeur de souris utilisé lorsque la souris est au-dessus du widget. Voir “Cursors”.
         :arg digits: 
                 Contrôle le nombre de chiffres à utiliser lorsque la valeur sélectionnée est convertie en une chaîne de caractères, ce qui arrive si l'option **variable** décrite plus loin a reçu une variable de contrôle de classe ``StringVar``. Voir “Control variables: the values behind the widgets”. 
         :arg font: 
@@ -53,17 +53,17 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         :arg relief: 
                 Avec la valeur par défaut ``'flat'``, le widget n'a pas de bordure visible. Vous pouvez utiliser la valeur ``'solid'`` pour l'entourer d'un cadre noir, ou utiliser un des autres reliefs fournit pas Tkinter; voir “Relief styles”.
         :arg repeatdelay: 
-                Cette option contrôle la durée (en millisecondes) pendant laquelle le bouton gauche de la souris doit-être enfoncé (sur la zone de glissement) avant que le curseur soit déplacée de manière répétitive dans cette direction. La valeur par défaut est ``repeatdelay=300``.
+                Cette option contrôle la durée (en millisecondes) pendant laquelle le bouton gauche de la souris doit être enfoncé (sur la zone de glissement) avant que le curseur ne soit déplacé de manière répétitive dans cette direction. La valeur par défaut est ``repeatdelay=300``.
         :arg repeatinterval: 
                 Cette option sert à contrôler l'intervalle de temps entre deux répétitions du déplacement du curseur lorsque l'utilisateur clique en laissant le bouton enfoncé dans l'aire de glissement. Par exemple, ``repeatinterval=100`` signifie que le curseur se déplace toutes les 100 millisecondes (1 dixième de seconde).
         :arg resolution: 
-                Sert à modifier l'incrément (écart entre deux valeurs consécutive). Sa valeur par défaut est 1.0. Par exemple, si ``from_=-1.0``, ``to=1.0``, et si ``resolution=0.5``, l'utilisateur pourra obtenir 5 valeurs: -1.0, -0.5, 0.0, +0.5, et +1.0. Utilisez une valeur négative, par ex. ``resolution=-1`` , pour empêcher l'arrondi automatique des valeurs.
+                Sert à modifier l'incrément (écart entre deux valeurs consécutives). Sa valeur par défaut est 1.0. Par exemple, si ``from_=-1.0``, ``to=1.0``, et si ``resolution=0.5``, l'utilisateur pourra obtenir 5 valeurs: -1.0, -0.5, 0.0, +0.5, et +1.0. Utilisez une valeur négative, par exemple ``resolution=-1`` , pour empêcher l'arrondi automatique des valeurs.
         :arg showvalue: 
                 Par défaut, la valeur courante du curseur est affichée (au-dessus du curseur s'il est horizontal, à gauche s'il est vertical). Mettre cette option à 0 pour supprimer cet affichage.
         :arg sliderlength: 
                 Sert à modifier la longueur du curseur qui vaut 30 pixels par défaut. Voir “Dimensions”.
         :arg sliderrelief: 
-                Sert à modifier le relief utilisé pour le curseur. Sa valeur par défaut est 'raised'. Voir “Relief styles”.
+                Sert à modifier le relief utilisé pour le curseur. Sa valeur par défaut est ``'raised'``, Voir “Relief styles”.
         :arg state: 
                 Sert à preciser l'état du widget: ``'normal'``, ``'active'`` ou ``'disabled'``. Pour empêcher l'utilisateur de modifier sa valeur, utilisez ``'disabled'``.
         :arg takefocus: 
@@ -75,15 +75,15 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         :arg troughcolor: 
                 La couleur de l'aire de glissement du curseur.
         :arg variable: 
-                Sert à préciser la variable de contrôle éventuelle associée à ce widget (Voir “Control variables: the values behind the widgets”). Cette variable peut être de classe ``IntVar``, ``DoubleVar`` (pour les flottants) ou ``StringVar``. Dans le cas d'une ``StringVar``, les valeurs numériques seront converties en chaînes de caractères; voir l'option **digits** ci-dessus pour plus d'information sur cette conversion.
+                Sert à préciser la variable de contrôle éventuellement associée à ce widget (Voir “Control variables: the values behind the widgets”). Cette variable peut être de classe ``IntVar``, ``DoubleVar`` (pour les flottants) ou ``StringVar``. Dans le cas d'une ``StringVar``, les valeurs numériques seront converties en chaînes de caractères; voir l'option **digits** ci-dessus pour plus d'information sur cette conversion.
         :arg width: 
-                Sert à préciser la largeur de l'aire de glissement du curseur. Si le widget est orienté horizontalement, il s'agit de la dimension en y; sinon de sa dimension en x. La valeur par défaut est 15 pixels.
+                Sert à préciser la largeur de l'aire de glissement du curseur. Si le widget est orienté horizontalement, il s'agit de la dimension en *y*; sinon de sa dimension en *x*. La valeur par défaut est 15 pixels.
 
-        Les objets de type ``Scale`` disposent de ces méthodes:
+        Les intervalles de sélection ou widget ``Scale`` disposent de ces méthodes:
 
         .. py:method:: coords(valeur=None)
 
-                    Retourne les coordonnées, sous la forme d'un 2-tuple (x, y), qui correspondent à une certaine *valeur* de l'intervalle de sélection relativement au coin supérieur gauche du widget. Si l'argument est omis, on obtient les coordonnées du centre du curseur dans sa position actuelle.
+                    Retourne les coordonnées, sous la forme d'un 2-tuple *(x, y)*, qui correspondent à une certaine *valeur* de l'intervalle de sélection relativement au coin supérieur gauche du widget. Si l'argument est omis, on obtient les coordonnées du centre du curseur dans sa position actuelle.
 
         .. py:method:: get()
 
@@ -91,13 +91,13 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
 
         .. py:method:: identify(x, y)
 
-                    Sert à identifier la partie du widget située à la position (x, y) relative à son coin supérieur gauche. Les valeurs de retour possibles sont:
-                    ``'slider'`` : Le curseur.
-                    ``'trough1'`` : Pour une orientation horizontale, à la gauche du curseur et pour une orientation verticale, au-dessus du curseur.
-                    ``'trough2'`` : Pour une orientation horizontale, à la droite du curseur et, pour une orientation verticale, en-dessous du curseur.
-                    ``''`` : Sur aucune des parties indiquées plus tôt.
+                    Sert à identifier la partie du widget située à la position *(x, y)* relative à son coin supérieur gauche. Les valeurs de retour possibles sont:
+                    * ``'slider'`` : Le curseur.
+                    * ``'trough1'`` : l'aire de glissement à gauche ou au-dessus du curseur selon l'orientation de la barre.
+                    * ``'trough2'`` : l'aire de glissement à droite ou en dessous du curseur selon l'orientation de la barre.
+                    * ``''`` : Sur aucune des parties indiquées plus tôt.
 
         .. py:method:: set(valeur)
 
-                    Sert à positionner la valeur du widget.
+                    Sert à positionner la *valeur* du widget.
 
