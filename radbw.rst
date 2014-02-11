@@ -1,8 +1,8 @@
 .. _RADIOBUTTON:
 
-**********************
+*********************************
 Les boutons radio ``Radiobutton``
-**********************
+*********************************
 
 Les boutons radio sont des ensembles de widgets connexes qui permettent à l'utilisateur de sélectionner un seul d'un ensemble de choix. Chaque bouton radio se compose de deux parties, l'indicateur et l'étiquette:
 
@@ -43,47 +43,47 @@ Pour créer un nouveau widget bouton radio en tant qu'enfant d'une fenêtre ou d
         :arg cursor:
                 Le pointeur de souris à afficher lorsque la souris est au-dessus du bouton radio. Voir "Cursors”
         :arg disabledforeground:
-                The foreground color used to render the text of a disabled radiobutton. The default is a stippled version of the default foreground color.
+                La couleur du texte lorsque le bouton est dans l'état 'disabled'. La valeur par défaut est une version  en "pointillée" de la couleur par défaut de l'option "foreground".
         :arg font:
-                The font used for the text. See Section 5.4, “Type fonts”.
+                La fonte de caractères utilisée pour le texte. Voir “Type fonts”.
         :arg fg: 
                 (ou **foreground**) La couleur de l'étiquette.
         :arg height:
                 Le nombre de ligne (non des pixels) de texte que peut contenir le widget. 1 par défaut.
         :arg highlightbackground:
-                The color of the focus highlight when the radiobutton does not have focus. See Section 53, “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                The color of the focus highlight when the radiobutton has the focus.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness:
-                The thickness of the focus highlight. Default is 1. Set highlightthickness=0 to suppress display of the focus highlight.
+                L'épaisseur de la ligne de mise en valeur du focus. 1 par défaut. Mettre cette option à 0 pour supprimer la mise en valeur du focus.
         :arg image:
-                To display a graphic image instead of text for this radiobutton, set this option to an image object. See Section 5.9, “Images”. The image appears when the radiobutton is not selected; compare selectimage, below.
+                Pour afficher une image plutôt que du texte à côté du bouton radio, configurez cette option avec l'objet image désirée. Voir “Images”. L'image apparaît lorsque le bouton radio est désactivé; comparez avec l'option **selectimage** ci-dessous.
         :arg indicatoron:
-                Normally a radiobutton displays its indicator. If you set this option to zero, the indicator disappears, and the entire widget becomes a “push-push” button that looks raised when it is cleared and sunken when it is set. You may want to increase the borderwidth value to make it easier to see the state of such a control.
+                Normalement un bouton radio est accompagné d'un indicateur. Si vous configurez cette option avec 0, l'indicateur n'apparaît plus, et le widget se comporte comme un bouton "poussoir": Il semble enfoncé lorsqu'on l'active ou "émergent" sinon. Vous pouvez renforcer cet effet en augmentant la valeur de l'option **borderwidth** ce qui rendra l'état du bouton plus visible.
         :arg justify:
-                If the text contains multiple lines, this option controls how the text is justified: tk.CENTER (the default), tk.LEFT, or tk.RIGHT.
-        :arg offrelief: 
-                If you suppress the indicator by asserting indicatoron=False, the offrelief option specifies the relief style to be displayed when the radiobutton is not selected. The default values is tk.RAISED.
+                Si le texte est formé de plusieurs ligne, cette option permet de contrôler l'alignement. Les valeurs possbiles sont: 'center' (par défaut), 'left', ou 'right'.
+        :arg offrelief:
+                Si vous supprimez l'indicateur en utilisant ``indicatoron=False``, cette option sert à préciser le style de relief à appliquer au bouton lorsqu'il est désactivé. La valeur par défaut est 'raised'.
         :arg overrelief: 
-                Specifies the relief style to be displayed when the mouse is over the radiobutton.
+                Le relief a utiliser lorsque la souris est au-dessus du bouton radio.
         :arg padx:
                 Espace supplémentaire à ajouter à gauche et droite du texte et du bouton.
         :arg pady:
                 Espace supplémentaire à ajouter en haut et en bas du texte et du bouton. 1 pixel par défaut.
         :arg relief:
-                By default, a radiobutton will have tk.FLAT relief, so it doesn't stand out from its background. See Section 5.6, “Relief styles” for more 3-d effect options. You can also use relief=tk.SOLID, which displays a solid black frame around the radiobutton.
+                Par défaut, un bouton radio a un style de relief 'flat' ce qui fait qu'il ne ressort pas de ce qui l'entoure. Pour d'autres style de relief, voir  “Relief styles”. Vous pouvez utiliser l'option relief='solid' afin d'afficher un cadre autour.
         :arg selectcolor:
                 La couleur du bouton radio lorsqu'il est activé. 'red' par défaut.
         :arg selectimage:
-                If you are using the image option to display a graphic instead of text when the radiobutton is cleared, you can set the selectimage option to a different image that will be displayed when the radiobutton is set. See Section 5.9, “Images”.
+                Si vous utilisez l'option **image** pour afficher un graphique plutôt qu'une étiquette lorsque le bouton n'est pas activé, vous pouvez configurer cette option avec une image différente qui sera affichée lorsque le bouton est activée. Voir “Images”.
         :arg state:
-                The default is state=tk.NORMAL, but you can set state=tk.DISABLED to gray out the control and make it unresponsive. If the cursor is currently over the radiobutton, the state is tk.ACTIVE.
+                L'état par défaut est 'normal', mais vous pouvez utiliser la valeur 'disabled' pour griser le bouton et le rendre inactif. Lorsque la souris est au-dessus du bouton, son état devient 'active'.
         :arg takefocus:
                 Par défaut, ce widget reçoit le focus (voir “Focus: routing keyboard input”). will pass through a radiobutton. If you set takefocus=0, focus will not visit this radiobutton.
         :arg text:
                 L'étiquette ou texte qui est affiché à côté du bouton radio. Utiliser le caractère spacial '\n' pour faire un saut de ligne.
         :arg textvariable:
-                If you need to change the label on a radiobutton during execution, create a StringVar (see Section 52, “Control variables: the values behind the widgets”) to manage the current value, and set this option to that control variable. Whenever the control variable's value changes, the radiobutton's annotation will automatically change to that text as well.
+                Si vous avez besoin de modifier dynamiquement (au fil de l'exécution) l'étiquette d'un bouton radio, créez une variable de contrôle de classe StringVar (voir “Control variables: the values behind the widgets”) qui servira à gérer la valeur courante de l'étiquette, et configurez cette option avec celle-ci. Lorsque la valeur de la variable de contrôle est modifiée (en utilisant sa méthode set), l'étiquette du bouton radio sera mise à jour dans le même temps.
         :arg underline:
                 With the default value of -1, none of the characters of the text label are underlined. Set this option to the index of a character in the text (counting from zero) to underline that character.
         :arg value:
