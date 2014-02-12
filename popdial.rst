@@ -28,35 +28,35 @@ Après avoir importé le sous-module ``messagebox``, vous pouvez créer simpleme
    :header-rows: 0
 
    * - .. image:: img/dialog/askokcancel.png 
-     - .. py:function:: askokcancel(title, message, option=valeur, ...)
+     - .. py:function:: askokcancel(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/askquestion.png
-     - .. py:function:: askquestion(title, message, option=valeur, ...)
+     - .. py:function:: askquestion(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/askretrycancel.png
-     - .. py:function:: askretrycancel(title, message, option=valeur, ...)
+     - .. py:function:: askretrycancel(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/askyesno.png
-     - .. py:function:: askyesno(title, message, option=valeur, ...)
+     - .. py:function:: askyesno(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/askyesnocancel.png
-     - .. py:function:: askyesnocancel(title, messages, option=valeur, ...)
+     - .. py:function:: askyesnocancel(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/showerror.png
-     - .. py:function:: showerror(title, message, option=valeur, ...)
+     - .. py:function:: showerror(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/showinfo.png
-     - .. py:function:: showinfo(title, message, option=valeur, ...)
+     - .. py:function:: showinfo(titre, message, option=valeur, ...)
    * - .. image:: img/dialog/showwarning.png
-     - .. py:function:: showwarning(title, message, option=valeur, ...)
+     - .. py:function:: showwarning(titre, message, option=valeur, ...)
 
-Dans chaque cas, l'argument *title* permet de donner un titre à la fenêtre et l'argument *message* est une chaîne qui sera affichée dans le corps de la fenêtre; vous pouvez y insérer des sauts de ligne en utlilisant le caractère spécial ``'\n'``.
+Dans chaque cas, l'argument *titre* permet de donner un titre à la fenêtre et l'argument *message* est une chaîne qui sera affichée dans le corps de la fenêtre; vous pouvez y insérer des sauts de ligne en utilisant le caractère spécial ``'\n'``.
 
 Les options sont:
 
         **default**
 
-                Sert à indiquer le bouton qui représente le choix par défaut. Si vous ne précisez pas cette option, c'est le bouton le plus à gauche qui coorrespond au choix par défaut.
+                Sert à indiquer le bouton qui représente le choix par défaut. Si vous ne précisez pas cette option, c'est le bouton le plus à gauche qui est choisi.
 
                 Pour préciser un bouton par défaut, utilisez l'une des valeurs ``'cancel'``, ``'ignore'``, ``'ok'``, ``'no'``, ``'retry'`` ou ``'yes'``.
 
         **icon**
 
-                Sert à sélectionner l'icone affichée sur la fenêtre de dialogue. Les valeurs possibles sont ``'error'``, ``'info'``, ``'question'`` ou ``'warning'``.
+                Sert à sélectionner l'icône affichée sur la fenêtre de dialogue. Les valeurs possibles sont ``'error'``, ``'info'``, ``'question'`` ou ``'warning'``.
 
         **parent**
 
@@ -73,7 +73,7 @@ Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur l
 Le sous-module ``filedialog``
 =============================
 
-Le sous-module ``filedialog`` fournit des fonctions qui servent à créer des fenêtres popup pour permettre à l'utilisateur de choisir un fichier. Une fois que l'utilisateur a fait son choix, la fonction retourne le chemin complet du fichier. Voici à quoi ressemble une telle fenêtre:
+Le sous-module ``filedialog`` fournit des fonctions qui servent à créer des fenêtres popups pour permettre à l'utilisateur de choisir un fichier. Une fois que l'utilisateur a fait son choix, la fonction retourne le chemin complet du fichier. Voici à quoi ressemble une telle fenêtre:
 
 .. image:: img/dialog/asksaveasfilename.png
 
@@ -83,11 +83,13 @@ Les fonctions disponibles sont:
 
            Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un fichier existant. Cela fait, la fonction retourne le chemin complet du fichier (dans l'arborescence) sous la forme d'une chaîne (vide si l'utilisateur a appuyé sur "annuler").
    
-           Si l'utilisateur sélectionne un fichier qui n'existe pas, une nouvelle popup apparaîtra indiquant que le fichier sélectionné n'existe pas.
+           Si l'utilisateur sélectionne un fichier qui n'existe pas, une nouvelle popup apparaîtra pour lui indiquer ce fait.
 
    .. py:function:: asksaveasfilename(option=valeur, ...)
 
-           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un répertoire et d'indiquer le nom d'un fichier qu'il souhaite remplacer s'il existe déjà, ou créer sinon. Si l'utilisateur sélectionne un fichier qui existe déjà, une popup apparaît pour le mettre en garde sur le fait que le fichier existe déjà et pour lui demander si il souhaite vraiment le remplacer. La fonction retourne le chemin complet du fichier à créer ou à remplacer sous la forme d'une chaîne (éventuellement vide).
+           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un répertoire et d'indiquer le nom d'un fichier qu'il souhaite créer ou qu'il souhaite remplacer s'il existe déjà. Dans ce dernier cas, une popup apparaît pour le mettre en garde sur le fait que le fichier existe déjà et pour lui demander si il souhaite vraiment le remplacer. i
+           
+           La fonction retourne le chemin complet du fichier à créer ou à remplacer sous la forme d'une chaîne (éventuellement vide).
 
 Les options des deux fonctions sont les mêmes:
 
@@ -101,13 +103,13 @@ Les options des deux fonctions sont les mêmes:
 
                 Une liste de la forme ``[(nom1, motif1), (nom2, motif2), ...]`` dont les éléments sont des 2-tuples qui contiennent, d'une part le nom d'un type de fichiers, d'autre part un motif de sélection qui servira à filtrer les fichiers selon que leur nom corresponde ou non au motif. Le nom est affiché sur le bouton de sélection «Type de fichiers» afin d'aider l'utilisateur à comprendre quels sont les fichiers filtrés.
                
-                Par exemple, pour permettre à l'utilisateur d'afficher uniquement les fichiers dont le nom se termine par '.png', vous pourriez utiliser ``filetypes=[("PNG","*.png")]``. Le caractère * est une sorte de joker qui symbolise tous les caractères situés avant le point. 
-                
-                En précisant plus de tuples de ce genre dans la liste, l'utilisateur pourra choisir l'un des filtres correspondant en utilisant le bouton associé à «Type de fichiers».
+                Par exemple, pour permettre à l'utilisateur d'afficher uniquement les fichiers dont le nom se termine par ``'.png'``, vous pourriez utiliser ``filetypes=[("PNG","*.png")]``. Le caractère ``*`` est une sorte de joker qui symbolise tous les caractères situés avant le point. 
+               
+                En précisant plus de tuples de ce genre dans la liste, on donne à l'utilisateur le choix du filtre qu'il peut sélectionner en utilisant le bouton «Type de fichiers» (voir l'illustration).
 
         **initialdir**
 
-                Le chemin du dossier dont il faut afficher le contenu initialement. Le dossier par défaut est le dossier de travail actuel (celui qui contient le fichier de votre programme).
+                Le chemin du dossier dont il faut afficher le contenu initialement. Le dossier par défaut est le dossier de travail actuel (probablement celui qui contient le fichier de votre programme).
 
         **initialfile**
 
@@ -126,7 +128,7 @@ Le sous-module ``colorchooser``
 
 .. image:: img/dialog/colorchooser.png
 
-Pour fournir à l'utilisateur de votre application un moyen simple de sélectionner une couleur, importer le sous-module ``colorchooser`` et appeler cette fonction:
+Pour fournir à l'utilisateur de votre application un moyen simple de sélectionner une couleur, importez le sous-module ``colorchooser`` et appelez cette fonction:
 
 .. code-block:: python
 
@@ -144,6 +146,6 @@ Les options sont:
 
                 Pour faire apparaître la popup au-dessus d'une fenêtre ``w``, utiliser ``parent=w``. Le comportement par défaut est de la faire apparaître au-dessus de la fenêtre principale du programme.
 
-Si l'utilisateur clique sur le bouton "Ok" de la popup, la valeur de retour est un tuple de la forme ``(triple, couleur)``, où *triple* est lui-même un tuple ``(R, V, B)`` qui contient les composantes Rouge, Vert et Bleu représentées chacune par un entier de l'intervalle [0,255] et, où *couleur* est une chaîne qui contient le code hexadécimal ``'#RRVVBB'`` de la couleur choisie.
+Si l'utilisateur clique sur le bouton "Ok" de la popup, la valeur de retour est un tuple de la forme ``(triple, couleur)``. Le nom ``triple`` représente untuple ``(R, V, B)`` qui contient les composantes Rouge, Vert et Bleu de la couleur sélectionnée; chaque composante est un entier de l'intervalle [0,255]. Enfin, le nom ``couleur`` représente une chaîne qui contient le code hexadécimal ``'#RRVVBB'`` de la couleur choisie.
 
 Si l'utilisateur clique sur "Annuler", la fonction retourne ``(None, None)``.
