@@ -146,6 +146,6 @@ Les options sont:
 
                 Pour faire apparaître la popup au-dessus d'une fenêtre ``w``, utiliser ``parent=w``. Le comportement par défaut est de la faire apparaître au-dessus de la fenêtre principale du programme.
 
-Si l'utilisateur clique sur le bouton "Ok" de la popup, la valeur de retour est un tuple de la forme ``(triple, couleur)``. Le nom ``triple`` représente untuple ``(R, V, B)`` qui contient les composantes Rouge, Vert et Bleu de la couleur sélectionnée; chaque composante est un entier de l'intervalle [0,255]. Enfin, le nom ``couleur`` représente une chaîne qui contient le code hexadécimal ``'#RRVVBB'`` de la couleur choisie.
+Si l'utilisateur clique sur le bouton "Ok" de la popup, la valeur de retour est un tuple de la forme ``(triple, couleur)``. Le nom ``triple`` représente un tuple ``(R, V, B)`` qui contient les composantes Rouge, Vert et Bleu de la couleur sélectionnée; chaque composante est un entier de l'intervalle [0,255]. Enfin, le nom ``couleur`` représente une chaîne qui contient le code hexadécimal ``'#RRVVBB'`` de la couleur choisie.
 
 Si l'utilisateur clique sur "Annuler", la fonction retourne ``(None, None)``.
