@@ -4,19 +4,21 @@
 Les cases à cocher ``Checkbutton``
 **********************************
 
-Le but d'un widget de cases à cocher (parfois appelé «checkbox») est de permettre à l'utilisateur de lire et sélectionner un choix entre deux options. Le graphique ci-dessus montre à quoi ressemble une case dans l'état OFF (0) et ON (1) lors de l'utilisation : il s'agit d'une capture d'écran de deux cases à cocher avec une police de 24 points en Times.
+Les cases à cocher (parfois appelé «checkbox») permettent à l'utilisateur d'effectuer des choix. L'illustration ci-dessous montre trois cases à cocher dont deux sont cochées (état "on": 1) et une est décochée (état "off": 0).
+
+.. image:: img/chckb.png
 
 L'indicateur est la partie de la case à cocher qui indique son état, et l'étiquette est le texte qui apparaît à côté.
 
-* Vous aurez besoin de créer une variable, une instance de la classe IntVar, afin que votre programme puisse interroger et définir l'état de la case à cocher. Voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets", ci-dessous.
+* Vous aurez besoin de créer une variable de contrôle de classe ``IntVar`` afin que votre programme puisse interroger et/ou définir l'état de la case à cocher. Voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets".
 
-* Vous pouvez également utiliser des liaisons d'événements pour réagir aux actions de l'utilisateur sur la case à cocher, voir la section 54, «Événements», ci-dessous.
+* Vous pouvez également utiliser des liaisons d'événements pour réagir aux actions de l'utilisateur sur la case à cocher, voir la section 54, «Événements».
 
-* Vous pouvez désactiver une case à cocher. Cela modifie son apparence pour "grisé" et la rend insensible à la souris.
+* Vous pouvez désactiver une case à cocher. Cela modifie son apparence (qui est alors "grisé") et la rend insensible à la souris.
 
-* Vous pouvez vous débarrasser de l'indicateur de case à cocher et donner une allure de widget bouton "push-push" qui paraît enfoncé quand il est activé, et soulevé quand il est désactivé.
+* Vous pouvez supprimer l'indicateur de case à cocher en utilisant l'option **indicatoron**. Le widget ressemble alors à un bouton «poussoir» qui paraît enfoncé quand il est activé, et soulevé quand il est désactivé.
 
-Pour créer une case à cocher dans une fenêtre parent ou un cadre parent existant:
+Pour créer une case à cocher dans une fenêtre ou un cadre nommé ``parent``:
 
 .. py:class:: Checkbutton(parent, option, ...)
 
@@ -50,9 +52,9 @@ Pour créer une case à cocher dans une fenêtre parent ou un cadre parent exist
         :arg height:
                 Le nombre de lignes de texte sur la case à cocher. La valeur par défaut est 1.
         :arg highlightbackground:
-                Couleur de mise en valeur du focus quand le widget l'a perdu. Voir “Focus: routing keyboard input”.
+                Couleur de la ligne de mise en valeur du focus quand le widget l'a perdu. Voir “Focus: routing keyboard input”.
         :arg highlightcolor:
-                Couleur de mise en valeur du focus quand le widget l'a obtenu.
+                Couleur de la ligne de mise en valeur du focus quand le widget l'a obtenu.
         :arg highlightthickness:
                 Épaisseur de la ligne de mise en valeur du focus.
         :arg image:
@@ -100,7 +102,7 @@ Pour créer une case à cocher dans une fenêtre parent ou un cadre parent exist
 
         .. py:method:: deselect()
 
-                Désactive la case à cocher (off). 
+                Décoche la case à cocher (off). 
 
         .. py:method:: flash()
 
@@ -112,8 +114,8 @@ Pour créer une case à cocher dans une fenêtre parent ou un cadre parent exist
 
         .. py:method:: select()
 
-                Active la case à cocher (on).
+                Coche la case à cocher (on).
 
         .. py:method:: toggle()
 
-                Active ou désactive la case à cocher selon son état courant.
+                Coche ou décoche la case à cocher selon son état courant.

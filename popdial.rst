@@ -4,17 +4,17 @@
 Fenêtres de dialogues
 *********************
 
-Tkinter fournit trois sous modules qui servent à créer des fenêtres préconfigurées, dites fenêtres de dialogue. Ces fenêtres sont utiles pour transmettre une information à l'utilisateur ou pour lui demander quelquechose. Ces sont des fenêtres popups ou «surgissantes» car leur durée de vie est limitée: elles sont détruites dès que l'utilisateur déclare avoir pris en compte l'information transmise ou lorsqu'il répond à la question posée (généralement en cliquant sur un bouton).
+Tkinter fournit trois sous-modules qui servent à créer des fenêtres de «dialogue» préfonconfigurées. Ces fenêtres sont utiles pour transmettre une information à l'utilisateur ou pour lui demander quelque chose. Ces sont des fenêtres popups ou «surgissantes» car leur durée de vie est limitée: elles sont détruites dès que l'utilisateur clique sur un bouton de validation.
 
-* ``tkinter.messagebox``: fournit un assortiment de fenêtres de dialogue pour des tâches simples (avertir, demander quelquechose).
+* ``tkinter.messagebox``: fournit un assortiment de fenêtres de dialogue pour des tâches simples.
 
-* ``tkinter.filedialog``: fenêtre de dialogue pour récupérer le nom d'un fichier.
+* ``tkinter.filedialog``: fournit un navigateur de fichiers.
 
-* ``tkinter.colorchooser``: fenêtre de dialogue pour récupérer une couleur.
+* ``tkinter.colorchooser``: fournit une fenêtre qui sert à sélectionner une couleur.
 
-Pour utiliser un sous-module, il faut l'importer. Par exemple, si notre application propose d'ouvrir un fichier, on utilisera sans doute une fenêtre de dialogue du sous-module *tkinter.filedialog*. L'entête de notre programme ressemblera alors à::
+Pour utiliser un sous-module, il faut l'importer. Par exemple, si votre application propose d'ouvrir un fichier, vous utiliserez sans doute une fenêtre de navigation du sous-module *tkinter.filedialog*. L'entête de votre programme ressemblera alors à::
 
-        from tkinter import *
+        from tkinter import * 
         from tkinter.filedialog import *
         ...
     
@@ -27,42 +27,42 @@ Après avoir importé le sous-module ``messagebox``, vous pouvez créer simpleme
    :widths: 50 50
    :header-rows: 0
 
-   * - .. image:: img/messagedialog/askokcancel.png 
+   * - .. image:: img/dialog/askokcancel.png 
      - .. py:function:: askokcancel(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/askquestion.png
+   * - .. image:: img/dialog/askquestion.png
      - .. py:function:: askquestion(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/askretrycancel.png
+   * - .. image:: img/dialog/askretrycancel.png
      - .. py:function:: askretrycancel(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/askyesno.png
+   * - .. image:: img/dialog/askyesno.png
      - .. py:function:: askyesno(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/askyesnocancel.png
+   * - .. image:: img/dialog/askyesnocancel.png
      - .. py:function:: askyesnocancel(title, messages, option=valeur, ...)
-   * - .. image:: img/messagedialog/showerror.png
+   * - .. image:: img/dialog/showerror.png
      - .. py:function:: showerror(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/showinfo.png
+   * - .. image:: img/dialog/showinfo.png
      - .. py:function:: showinfo(title, message, option=valeur, ...)
-   * - .. image:: img/messagedialog/showwarning.png
+   * - .. image:: img/dialog/showwarning.png
      - .. py:function:: showwarning(title, message, option=valeur, ...)
 
-Dans chaque cas, l'argument *title* permet de donner un titre à la fenêtre de dialogue et l'argument *message* est une chaîne qui sera affichée dans le corps de la fenêtre; vous pouvez mettre des sauts de lignes en utlilisant le caractère spécial ``'\n'``.
+Dans chaque cas, l'argument *title* permet de donner un titre à la fenêtre et l'argument *message* est une chaîne qui sera affichée dans le corps de la fenêtre; vous pouvez y insérer des sauts de ligne en utlilisant le caractère spécial ``'\n'``.
 
 Les options sont:
 
-**default**
+        **default**
 
-    Sert à indiquer le bouton qui représente le choix par défaut. Si vous ne précisez pas cette option, le premier bouton sera celui du choix par défaut.Which button should be the default choice? If you do not specify this option, the first button (“OK”, “Yes”, or “Retry”) will be the default choice.
+                Sert à indiquer le bouton qui représente le choix par défaut. Si vous ne précisez pas cette option, c'est le bouton le plus à gauche qui coorrespond au choix par défaut.
 
-    Pour préciser un bouton par défaut, utilisez ``default=C``, où c est l'une des valeurs ``"cancel"``, ``"ignore"``, ``"ok"``, ``"no"``, ``"retry"`` ou ``"yes"``.
+                Pour préciser un bouton par défaut, utilisez l'une des valeurs ``'cancel'``, ``'ignore'``, ``'ok'``, ``'no'``, ``'retry'`` ou ``'yes'``.
 
-**icon**
+        **icon**
 
-    Sert à sélectionner l'icone qui sera affichée sur la fenêtre de dialogue. Les valeurs possibles sont ``error``, ``info``, ``question`` ou ``warning``.
+                Sert à sélectionner l'icone affichée sur la fenêtre de dialogue. Les valeurs possibles sont ``'error'``, ``'info'``, ``'question'`` ou ``'warning'``.
 
-**parent**
+        **parent**
 
-    Si vous ne configurez pas cette option, la fenêtre surgissante apparaîtra au-dessus de votre fenêtre principale. Pour la faire apparaître au-dessus d'une fenêtre arbitraire ``w``, utilisez ``parent=w``.
+                Si vous ne configurez pas cette option, la fenêtre surgissante apparaîtra au-dessus de votre fenêtre principale. Pour la faire apparaître au-dessus d'une fenêtre arbitraire ``w``, utilisez ``parent=w``.
 
-Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur lequel l'utilisateur a cliqué afin de supprimer la fenêtre surgissante.
+Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur lequel l'utilisateur a cliqué afin de mettre fin au «dialogue». 
 
 * ``askokcancel``, ``askretrycancel``, et ``askyesno`` retournent toutes un booléen: ``True`` si l'utilisateur a cliqué sur le bouton "Ok", "Oui" ou "Ré-essayer", ``False`` s'il a cliqué sur "Non" ou sur "Annuler".
 
@@ -73,74 +73,77 @@ Chacune des fonctions ``ask...`` retourne une valeur qui dépend du bouton sur l
 Le sous-module ``filedialog``
 =============================
 
-Le sous-module ``filedialog`` fournit des fenêtres surgissantes qui peuvent vous servir à donner la capacité à l'utilisateur de trouver un fichier existant ou de créer de nouveaux fichiers.
+Le sous-module ``filedialog`` fournit des fonctions qui servent à créer des fenêtres popup pour permettre à l'utilisateur de choisir un fichier. Une fois que l'utilisateur a fait son choix, la fonction retourne le chemin complet du fichier. Voici à quoi ressemble une telle fenêtre:
 
-.. py:method:: askopenfilename(option=value, ...)
+.. image:: img/dialog/asksaveasfilename.png
 
-    Produit une fenêtre surgissante qui permet à l'utilisateur de sélectionner un fichier existant. Si l'utilisateur sélectionne un fichier qui n'existe pas, une popup apparaîtra indiquant que le fichier sélectionné n'existe pas.
+Les fonctions disponibles sont:
 
-.. py:method:: asksaveasfilename(option=value, ...)
+   .. py:function:: askopenfilename(option=valeur, ...)
 
-    Produit une fenêtre surgissante qui permet à l'utilsateur de créer un nouveau fichier ou de remplacer un fichier qui existe déjà par un autre. Si l'utilisateur sélectionne un fichier qui existe déjà, une popup apparaît pour mettre en garde sur le fait que le fichier existe déjà et pour demander si l'utilisateur souhaite vraiment le remplacer.
+           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un fichier existant. Cela fait, la fonction retourne le chemin complet du fichier (dans l'arborescence) sous la forme d'une chaîne (vide si l'utilisateur a appuyé sur "annuler").
+   
+           Si l'utilisateur sélectionne un fichier qui n'existe pas, une nouvelle popup apparaîtra indiquant que le fichier sélectionné n'existe pas.
+
+   .. py:function:: asksaveasfilename(option=valeur, ...)
+
+           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un répertoire et d'indiquer le nom d'un fichier qu'il souhaite remplacer s'il existe déjà, ou créer sinon. Si l'utilisateur sélectionne un fichier qui existe déjà, une popup apparaît pour le mettre en garde sur le fait que le fichier existe déjà et pour lui demander si il souhaite vraiment le remplacer. La fonction retourne le chemin complet du fichier à créer ou à remplacer sous la forme d'une chaîne (éventuellement vide).
 
 Les options des deux fonctions sont les mêmes:
 
-**defaultextension**
+        **defaultextension**
 
-    L'extension du fichier par défaut, c'est à une chaîne qui commence par un point «.». Si l'utilisateur utilise un point dans le nom de fichier, cette option n'a pas d'effet. Autrement, l'extension donnée est concaténée au nom de fichier fournit par l'utilisateur.
+                L'extension du fichier par défaut, c'est à une chaîne qui commence par un point «.». Si l'utilisateur utilise un point dans le nom de fichier, cette option n'a pas d'effet. Autrement, l'extension donnée est concaténée au nom de fichier fourni par l'utilisateur.
 
-    Par exemple, si vous utilisez defaultextension='.jpg' et que l'utilisateur saisi 'gojiro', le nom de fichier utilisé sera au final 'gojiro.jpg'.
+                Par exemple, si vous utilisez ``defaultextension='.jpg'`` et que l'utilisateur saisi ``'gojiro'``, le nom de fichier utilisé sera au final ``'gojiro.jpg'``.
 
-**filetypes**
+        **filetypes**
 
-    Une liste de la forme ``[(etiquette1, motif1), (etiquette2, motif2), ...]`` dont les éléments sont des 2-tuples qui contiennent des noms de type de fichier et des motifs de sélection qui serviront à sélectionner les fichiers qui apparaîtront dans le listing de la fenêtre surgissante. A list of two-element tuples containing file type names and patterns that will select what appears in the file listing. In the screen picture below, note the pull-down menu labeled “Files of type:”. The filetypes argument you supply will populate this pull-down list. Each pattern is a file type name (“PNG” in the example) and a pattern that selects files of a given type (“(\*.png)” in the example). 
+                Une liste de la forme ``[(nom1, motif1), (nom2, motif2), ...]`` dont les éléments sont des 2-tuples qui contiennent, d'une part le nom d'un type de fichiers, d'autre part un motif de sélection qui servira à filtrer les fichiers selon que leur nom corresponde ou non au motif. Le nom est affiché sur le bouton de sélection «Type de fichiers» afin d'aider l'utilisateur à comprendre quels sont les fichiers filtrés.
+               
+                Par exemple, pour permettre à l'utilisateur d'afficher uniquement les fichiers dont le nom se termine par '.png', vous pourriez utiliser ``filetypes=[("PNG","*.png")]``. Le caractère * est une sorte de joker qui symbolise tous les caractères situés avant le point. 
+                
+                En précisant plus de tuples de ce genre dans la liste, l'utilisateur pourra choisir l'un des filtres correspondant en utilisant le bouton associé à «Type de fichiers».
 
-**initialdir**
+        **initialdir**
 
-    Le chemin du dossier dont il faut afficher le contenu initialement. Le dossier par défaut est le dossier de travail actuel (celui qui contient le fichier du programme).
+                Le chemin du dossier dont il faut afficher le contenu initialement. Le dossier par défaut est le dossier de travail actuel (celui qui contient le fichier de votre programme).
 
-**initialfile**
+        **initialfile**
 
-    Le nom de fichier à afficher initialement dans le champ "Nom de fichier:".
+                Le nom de fichier à afficher initialement dans le champ "Nom de fichier:".
 
-**parent**
+        **parent**
 
-    Pour faire en sorte que la fenêtre surgissante apparaîsse au-dessus d'une fenêtre ``W`` , utilisez ``parent=w``. Par défaut, la fenêtre surgissante apparaît au-dessus de la fenêtre principale de votre application.
+                Pour faire en sorte que la fenêtre popup apparaîsse au-dessus d'une fenêtre ``w`` , utilisez ``parent=w``. Par défaut, la fenêtre popup apparaît au-dessus de la fenêtre principale de votre application.
 
-**title**
+        **title**
 
-    Sert à donner un titre à la fenêtre de dialogue.
-
-Si l'utilisateur sélectionne un fichier, la valeur de retour est le chemin absolue du fichier sélectionné. Si l'utilisateur utilise le bouton "Annuler", la fonction retourne une chaîne vide.
-
-Here is an example:
+                Sert à donner un titre explicite à la fenêtre popup.
 
 Le sous-module ``colorchooser``
 ===============================
 
-Pour fournir à l'utilisateur de votre application un moyen simple de sélectionner une couleur, importer le sous-module colorchooser et appeler cette fonction:
+.. image:: img/dialog/colorchooser.png
+
+Pour fournir à l'utilisateur de votre application un moyen simple de sélectionner une couleur, importer le sous-module ``colorchooser`` et appeler cette fonction:
 
 .. code-block:: python
 
         couleur = askcolor(couleur, option=valeur, ...)
 
-Les arguments ou options sont:
+L'argument *couleur* sert à préciser la couleur sélectionnée par défaut au moment où la fenêtre popup s'ouvre. C'est un gris léger par défaut.
 
-**color**
+Les options sont:
 
-    La couleur initale à afficher. Gris léger par défaut.
+        **title**
 
-**title**
+                Le titre de la fenêtre. "Couleur" par défaut.
 
-    Le titre de la fenêtre. "Couleur" par défaut.
+        **parent**
 
-**parent**
+                Pour faire apparaître la popup au-dessus d'une fenêtre ``w``, utiliser ``parent=w``. Le comportement par défaut est de la faire apparaître au-dessus de la fenêtre principale du programme.
 
-    Pour faire apparaître la popup au-dessus d'une fenêtre ``W``. Le comportement par défaut est de la faire apparaître au-dessus de la fenêtre principale du programme.
+Si l'utilisateur clique sur le bouton "Ok" de la popup, la valeur de retour est un tuple de la forme ``(triple, couleur)``, où *triple* est lui-même un tuple ``(R, V, B)`` qui contient les composantes Rouge, Vert et Bleu représentées chacune par un entier de l'intervalle [0,255] et, où *couleur* est une chaîne qui contient le code hexadécimal ``'#RRVVBB'`` de la couleur choisie.
 
-If the user clicks the OK button on the pop-up, the returned value will be a tuple `(triple, color)`, where triple is a tuple (R, G, B) containing red, green, and blue values in the range [0,255] respectively, and color is the selected color as a regular Tkinter color object.
-
-If the users clicks Cancel, this function will return (None, None).
-
-Here's what the popup looks like on the author's system:
-
+Si l'utilisateur clique sur "Annuler", la fonction retourne ``(None, None)``.
