@@ -1,8 +1,8 @@
 .. _EVENTS:
 
-******************************************************
-Les événements: répondre aux actions de l'utilisateur.
-******************************************************
+**********************************************************
+Les **événements**: répondre aux actions de l'utilisateur.
+**********************************************************
 
 Un événement est la survenue de quelquechose dans votre application - par exemple, l'utilisateur appuie sur une touche, clique avec sa souris ou la déplace. Votre application à certainement besoin de réagir à ces actions de l'utilisateur.
 

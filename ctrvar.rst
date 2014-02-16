@@ -1,7 +1,7 @@
 .. _CTRLVARIABLES:
 
 *******************************************************
-Les variables de contrôle: Les valeurs sous les widgets
+Les **variables de contrôle**: Les valeurs sous les widgets
 *******************************************************
 
 Une variable de contrôle de tkinter est un objet spécial qui se comporte comme une variable ordinaire de Python en ce sens que c'est un conteneur pour une valeur comme un nombre ou une chaîne de caractères.
