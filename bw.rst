@@ -1,7 +1,7 @@
 .. _BOUTONS:
 
 ************************
-``Button`` - Les Boutons 
+``Button`` - Boutons 
 ************************
 
 Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:

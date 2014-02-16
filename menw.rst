@@ -1,7 +1,7 @@
 .. _MENU:
 
 ********************
-``Menu`` - Les menus 
+``Menu`` - Menus 
 ********************
 
 Les menus surgissant sont une façon populaire de présenter à l'utilisateur des choix possibles sans pour autant encombrer l'interface lorsque l'utilisateur n'est pas en train de faire un choix.

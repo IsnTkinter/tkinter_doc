@@ -1,7 +1,7 @@
 .. _SCALE:
 
 ************************
-``Scale`` - Les échelles
+``Scale`` - Échelles
 ************************
 
 La finalité du widget de type ``Scale`` - ou intervalle de sélection - est de permettre à l'utilisateur de choisir un entier ou un flottant situé à l'intérieur d'un intervalle précis. Voici deux widgets de ce type, l'un orienté horizontalement et l'autre verticalement.

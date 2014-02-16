@@ -1,7 +1,7 @@
 .. _OPTIONMENU:
 
 ************************************
-``OptionMenu`` - Les menus d'options 
+``OptionMenu`` - Menus d'options 
 ************************************
 
 Le but de ce widget est d'offrir un ensemble fixe de choix à l'utilisateur dans un menu déroulant.

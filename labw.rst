@@ -1,7 +1,7 @@
 .. _LABEL:
 
 **************************
-``Label`` - Les étiquettes 
+``Label`` - Étiquettes 
 **************************
 
 Les widget ``Label`` (étiquette) servent à afficher une ou plusieurs lignes de texte avec le même style, un bitmap ou une image.

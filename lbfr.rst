@@ -1,7 +1,7 @@
 .. _LABELFRAME:
 
 *************************************
-``LabelFrame`` - Les cadres étiquetés 
+``LabelFrame`` - Cadres étiquetés 
 *************************************
 
 Le widget «cadre étiqueté», ``LabelFrame``, comme le widget ``Frame``, est avant tout un conteneur. Il se présente comme une zone rectangulaire dans laquelle il est possible de mettre d'autres widgets. Cependant, contrairemet au cadre ``Frame``, il vous permet d'afficher une étiquette sur sa bordure.

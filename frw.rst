@@ -1,7 +1,7 @@
 .. _CADRES:
 
 **********************
-``Frame`` - Les cadres 
+``Frame`` - Cadres 
 **********************
 
 Un cadre est simplement un conteneur pour d'autre widgets.

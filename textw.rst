@@ -1,7 +1,7 @@
 .. _TEXT:
 
 ********************************
-``Text`` - Les éditeurs de texte
+``Text`` - Éditeurs de texte
 ********************************
 
 Un widget de type ``Text`` est une manière bien plus générale de traiter un texte multiligne que celle qu'offre un widget étiquette (``Label``). Ce widget ressemble plus à un éditeur de texte complet dans une fenêtre.

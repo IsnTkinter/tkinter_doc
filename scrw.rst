@@ -1,7 +1,7 @@
 .. _SCROLLBAR:
 
 ***********************************************
-``Scrollbar`` - Les barres de défilement
+``Scrollbar`` - Barres de défilement
 ***********************************************
 
 Bon nombre de widgets, comme par exemple les listes de sélection (``Listbox``) et les canevas (``Canvas``), peuvent se comporter comme des fenêtres de visualisation d'une aire virtuelle plus large. Vous pouvez associer à de tels widgets des barres de défilement pour donner un moyen à l'utilisateur de faire glisser la vue et d'accéder aux zones actuellement hors de celle-ci. Voici une capture d'écran qui montre un champ de saisie (``Entry``) muni d'une barre de défilement.
