@@ -12,8 +12,7 @@ précisés.
 
 * Vous pouvez préciser les options lors de l'appel du constructeur du widget en utilisant des mots clés comme ``text='PANIQUE'`` ou ``height=20``.
 
-* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode ``.config()``. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode ``.cget()``. Voir :ref:`UNIVERSAL` pour en apprendre plus sur ces méthodes.
-
+* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode :py:meth:`config`. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode :py:meth:`cget`. Voir :ref:`UNIVERSAL` pour en apprendre plus sur ces méthodes.
 
 .. _dimensions:
 
@@ -108,38 +107,33 @@ La valeur de retour est une liste de chaînes. Note : il est nécessaire de cré
 
 Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Font.
 
-.. py:method:: actual(option=None)
+.. py:method:: Font.actual(option=None)
     
     Si vous ne fournissez aucun argument, vous obtenez un dictionnaire des options courantes de la fonte qui peuvent être différentes de celles que vous avez demandées. Pour obtenir la valeur actuelle d'une option, fournissez son nom comme argument.
     
-.. py:method:: cget(option)
-   :noindex:
+.. py:method:: Font.cget(option)
 
     Retourne la valeur de l'option indiquée sous la forme d'une chaîne de caractères.
     
-.. py:method:: configure(option, ...)
-   :noindex:
+.. py:method:: Font.configure(option, ...)
 
     Utilisez cette méthode pour modifier une ou plusieurs options d'une fonte. Par exemple, si vous disposez d'un objet Font nommé ``titres`` et que vous appelez titres.configure(family='times', size=18), cette fonte sera modifiée conformément ainsi que tout widget qui l'utilise.
     
-.. py:method:: copy()
+.. py:method:: Font.copy()
 
     Retourne une copie de l'objet Font appelant.
 
-.. py:method:: measure(text)
+.. py:method:: Font.measure(text)
 
     Passez à cette méthode une chaîne de caractères et elle vous retournera le nombre de pixels en largeur que cette chaine occuperait avec la fonte appelante. Attention: certains caractères penchés peuvent déborder cette zone.
     
-.. py:method:: metrics(option)
+.. py:method:: Font.metrics(option)
 
-    Si vous appelez cette méthode sans arguments, elle retourne un dictionnaire contenant toutes les métriques de la fonte. Vous pouvez récupérer la valeur d'une métrique particulière en la fournissant en argument.
+    Si vous appelez cette méthode sans argument, elle retourne un dictionnaire qui contient toutes les métriques de la fonte. Vous pouvez récupérer la valeur d'une métrique particulière en la fournissant en argument.
     
     :arg ascent: Nombre de pixels en hauteur entre la ligne de base et le point haut du plus haut caractère.
-    
     :arg descent: Nombre de pixels en hauteur entre la ligne de base et le point bas du plus bas caractère.
-    
     :arg fixed: Cette valeur est nulle pour une fonte à largeur variable et vaut 1 pour une police à chasse fixe.
-    
     :arg linespace: Nombre de pixels de la hauteur totale. This is the leading of type set solid in the given font.
 
 .. _ancrage:
@@ -147,7 +141,7 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
 Le système d'ancrage
 =====================
 
-Le module tkinter définit un certain nombre de constantes d'ancrage que vous pouvez utiliser pour contrôler l'endroit où un widget est positionné relativement à son contexte.
+Le module Tkinter définit un certain nombre de constantes d'ancrage que vous pouvez utiliser pour contrôler l'endroit où un widget est positionné relativement à son contexte.
 Par exemple, les ancrages peuvent préciser l'endroit où un widget est situé à l'intérieur d'un cadre (`Frame`) lorsque celui-ci est plus grand que le widget.
 
 Ces constantes sont données comme sur une boussole où le nord est en haut et l'ouest à gauche. Nous prions les lecteurs de l'hémisphère sud de nous pardonner ce chauvinisme du nord.
@@ -156,10 +150,10 @@ Les constantes d'ancrages sont montrées ci-dessous:
 
 .. image:: img/anchors.png
 
-Par exemple, si vous créez un petit widget dans un large cadre et utilisez l'option ``anchor=SE``, le widget sera placé au niveau du bord inférieur droit du cadre. Si vous utilisez
-``anchor=N``, il sera centré sur le bord haut du cadre.
+Par exemple, si vous créez un petit widget dans un large cadre et utilisez l'option ``anchor='se'``, le widget sera placé au niveau du bord inférieur droit du cadre. Si vous utilisez
+``anchor='n'``, il sera centré sur le bord haut du cadre.
 
-Les ancres sont aussi utilisées pour préciser où positionner un texte relativement à un point de référence. Par exemple, si on utilise ``CENTER`` comme une ancre pour un texte, il est centré horizontalement et verticalement autour du point de référence. L'ancre ``NW`` le positionnerait de telle sorte que le point de référence coïncide avec le coin nord ouest de la boîte qui contient le texte. L'ancre ``W`` le centrerait verticalement avec le bord gauche de la boîte du texte sur le point et ainsi de suite.
+Les ancres sont aussi utilisées pour préciser où positionner un texte relativement à un point de référence. Par exemple, si on utilise ``'center'`` comme une ancre pour un texte, il est centré horizontalement et verticalement autour du point de référence. L'ancre ``'nw'`` le positionnerait de telle sorte que le point de référence coïncide avec le coin nord ouest de la boîte qui contient le texte. L'ancre ``'w'`` le centrerait verticalement avec le bord gauche de la boîte du texte sur le point et ainsi de suite.
 
 .. _reliefs:
 
@@ -170,7 +164,9 @@ Le style de relief d'un widget se réfère à la simulation de certains effets 3
 
 .. image:: img/relief.png
 
-La largeur des bords dépend de l'option ``borderwidth`` du widget. Ici, cette largeur a été fixée à 5 pixels alors que par défaut elle vaut 2 pixels.
+Les valeurs peuvent être précisées par des chaînes de caractères comme ``'raised'``, ``'sunken'``, ``'flat'`` ...
+
+La largeur des bords dépend de l'option **borderwidth** du widget. Ici, cette largeur a été fixée à 5 pixels alors que par défaut elle vaut 2 pixels.
 
 .. _bitmaps:
 
@@ -185,7 +181,7 @@ L'image montre des widget boutons qui portent les bitmaps standards.
 
 De la gauche vers la droite, il y a ``'error'``, ``'gray75'``, ``'gray50'``, ``'gray25'``, ``'gray12'``, ``'hourglass'``, ``'info'``, ``'questhead'``, ``'question'``, et ``'warning'``. 
 
-Vous pouvez utiliser vos propres bitmaps. N'importe quel fichier d'extension `.xbm` de format X bit map fonctionnera. À la place du nom standard des bitmaps, utilisez une chaîne ``'@'`` suivi du chemin du fichier `.xbm`.
+Vous pouvez utiliser vos propres bitmaps. N'importe quel fichier d'extension `.xbm` de format «X bit map» fonctionnera. À la place du nom standard des bitmaps, utilisez une chaîne ``'@'`` suivi du chemin du fichier `.xbm`.
 
 .. _pointeurs:
 
@@ -315,9 +311,9 @@ La classe ``BitmapImage``
 
 Pour afficher un bitmap dans le format `.xbm` vous aurez besoin de ce constructeur::
 
-    BitmapImage(file=f[, background=b][, foreground=c])
+    BitmapImage(file=f, background=b, foreground=c)
 
-où ``f`` est le nom du fichier image `.xbm`.
+où *f* est le nom du fichier image `.xbm`.
 
 Normalement, le bit d'avant plan ``foreground`` (1) est affiché en noir et le le bit d'arrière-plan ``background`` (0) sera transparent. Pour modifier ce comportement, utilisez l'option ``background=b`` pour régler la couleur à ``b``, et l'option ``foreground=c`` pour régler la couleur à ``c``. Pour les spécifications de couleurs, :ref:`couleurs`. 
 
@@ -335,7 +331,7 @@ Pour afficher une image du type `.gif`, `.pgm` ou `.ppm`, vous aurez besoin du c
 
     PhotoImage(file=f)
 
-où ``f`` est le nom d'un fichier image. Le constructeur retourne une valeur qui peut être utilisée partout où tkinter attend une image.
+où *f* est le nom d'un fichier image. Le constructeur retourne une valeur qui peut être utilisée partout où tkinter attend une image.
 
 .. _geometrie:
 
@@ -350,7 +346,7 @@ Une chaîne de géométrie a la forme générale::
     
 où :
 
-* ``w`` et ``h`` désignent respectivement la largeur (`width`) et la hauteur (`height`) de la fenêtre en pixels. Ils sont séparés par le caractère ``'x'``.
+* ``w`` et ``h`` désignent respectivement la largeur (*width*) et la hauteur (*height*) de la fenêtre en pixels. Ils sont séparés par le caractère ``'x'``.
 
 * Si la prochaine partie a la forme ``+x``, elle indique que le bord gauche de la fenêtre doit être situé à ``x`` pixels du côté gauche du bureau. Si elle a la forme ``-x``, elle indique que le bord droit de la fenêtre doit être situé à ``x`` pixels du côté droit du bureau.
 
@@ -365,9 +361,9 @@ Le nommage des Fenêtres (`Window`)
 
 Le terme fenêtre (`window`) se rapporte à une zone rectangulaire du bureau.
 
-* Une fenêtre racine (`top-level` ou `root widow`) est une fenêtre qui a une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation utilisé. Elle est décorée avec les motifs et boutons habituels du système et peut être déplacée et redimensionnée. Votre application peut utiliser n'importe quel nombre de fenêtre racine.
+* Une fenêtre primaire (`top-level` ou `root widow`) est une fenêtre qui a une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation utilisé. Elle est décorée avec les motifs et boutons habituels du système et peut être déplacée et redimensionnée. Votre application peut utiliser n'importe quel nombre de fenêtre racine.
     
-* Le terme fenêtre s'applique aussi à n'importe quel widget qui fait partie d'une fenêtre mère.
+* Le terme fenêtre s'applique aussi à n'importe quel widget qui fait partie d'une fenêtre primaire. 
     
 tkinter nomme toutes ces fenêtres en utilisant un nommage «hiérarchique» :
 
@@ -375,7 +371,7 @@ tkinter nomme toutes ces fenêtres en utilisant un nommage «hiérarchique» :
     
 * Une fenêtre enfant aura un nom de la forme ``'.n'``, où ``n`` est un entier sous la forme d'une chaîne. Par exemple, une fenêtre nommée ``'.135932060'`` est un enfant de la fenêtre racine (``'.'``).
     
-* Les fenêtres enfants des fenêtres enfants auront des noms de la forme ``'.p.n'`` où ``p`` est le nom de la fenêtre parente et ``n`` est un certain entier. Par exemple, une fenêtre nommée ``'.135932060.137304468'`` a une fenêtre parent ``'.135932060'``, c'est donc un petit enfant de la fenêtre racine.
+* Les fenêtres enfants des fenêtres enfants auront des noms de la forme ``'.p.n'`` où ``p`` est le nom de la fenêtre parente et ``n`` est un certain entier. Par exemple, une fenêtre nommée ``'.135932060.137304468'`` a une fenêtre parent ``'.135932060'``, c'est donc un petit enfant de la fenêtre principale. 
     
 * Le nom relatif d'une fenêtre est la partie qui suit le dernier ``'.'`` dans le nom complet. En poursuivant l'exemple précédent, la fenêtre petit enfant a pour nom relatif ``'137304468'``.
     
@@ -392,19 +388,19 @@ Pour obtenir des dessins plaisants, il est parfois bon de s'intéresser au style
 
     * le style des extrémités (`cap style`) d'une ligne permet de contrôler la forme de ses terminaisons. Les styles possibles sont :
         
-        * BUTT : la fin d'une ligne est coupée perpendiculairement par une ligne qui passe par le point final.
+        * ``'butt'`` : la fin d'une ligne est coupée perpendiculairement par une ligne qui passe par le point final.
                 
-        * PROJECTING : La fin d'une ligne est coupée perpendiculairement par une ligne qui dépasse le point final de la moitié de la largeur de la ligne.
+        * ``'projecting'`` : La fin d'une ligne est coupée perpendiculairement par une ligne qui dépasse le point final de la moitié de la largeur de la ligne.
         
-        * ROUND : la fin est réalisée avec un demi-cercle centré sur le point final.
+        * ``'round'`` : la fin est réalisée avec un demi-cercle centré sur le point final.
         
     * Le style de jointure (`join style`) décrit la forme que prend le lieu où deux lignes se rejoignent:
     
-        * ROND : la jointure est réalisée avec un cercle centré au point de jointure.
+        * ``'rond'`` : la jointure est réalisée avec un cercle centré au point de jointure.
         
-        * BEVEL : Une ligne droite est dessinée avec un angle intermédiaire entre les angles des lignes adjacentes.
+        * ``'bevel'`` : Une ligne droite est dessinée avec un angle intermédiaire entre les angles des lignes adjacentes.
         
-        * MITTER : Les côtés des lignes adjacentes sont poursuivies jusqu'à ce qu'elles se rencontrent en un point.
+        * ``'mitter'`` : Les côtés des lignes adjacentes sont poursuivies jusqu'à ce qu'elles se rencontrent en un point.
         
 La figure suivante illustre ces styles. Les points rouges montrent la localisation des points qui définissent les lignes.
 
@@ -415,16 +411,15 @@ La figure suivante illustre ces styles. Les points rouges montrent la localisati
 Motifs brisés (`dash patterns`)
 ===============================
 
-Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner leur ligne de contour (`outline`). Les options ``dash`` et ``dashoffset`` vous donnent un contrôle fin sur le motif exact qui sera dessiné.
+Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner leur ligne de contour (`outline`). Les options **dash** et **dashoff** vous donnent un contrôle fin sur le motif exact qui sera dessiné.
 
-``dash``
+**dash**
 
     Cette option est renseignée avec un tuple d'entiers. Le premier entier précise combien de pixels doivent être tracés. Le second précise combien de pixels doivent être «sautés» avant de recommencer le tracé et ainsi de suite. Lorsque tous les entiers du tuple ont été utilisés, ils sont réutilisés dans le même ordre jusqu'à ce que la bordure soit complète.
     
     Par exemple, l'option ``dash=(3, 5)`` produit une ligne où le parties tracées font 3 pixels et où les parties vides en font 5. ``dash=(7, 1, 1, 1)`` produirait un motif de base où les partie tracées mesureraient 7 puis 1 pixels séparés par des parties vides de 1 pixel. ``dash=(5,)`` produirait une alternance 5 pixels tracés, 5 pixels vides.
-
   
-``dashoff``
+**dashoff**
 
     Pour démarrer le motif brisé en un point différent du cycle c'est à dire qui ne soit pas le point de départ, utiliser une option ``dashoff=n`` où `n` est un nombre de pixels à sauter avant le démarrage du motif.
     
