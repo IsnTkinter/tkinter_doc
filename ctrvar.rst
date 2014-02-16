@@ -32,7 +32,7 @@ Toutes les variables de contrôle disposent de ces méthodes:
 
 .. py:method:: set(valeur)
 
-        Modifie la valeur courante de la variable de contrôle. Si les options d'un ou plusieurs widgets sont reliées à cette variable, ces widgets seront automatiquement mis à jour quand la boucle principale sera à nouveau en attente; voir ``.update_idletasks()`` in Section 26, “Universal widget methods” pour plus d'information sur le contrôle de ce cycle de mise à jour.
+        Modifie la valeur courante de la variable de contrôle. Si les options d'un ou plusieurs widgets sont reliées à cette variable, ces widgets seront automatiquement mis à jour quand la boucle principale sera à nouveau en attente; voir :py:meth:`update_idletasks` dans :ref:`UNIVERSAL` pour plus d'information sur le contrôle de ce cycle de mise à jour.
 
 Voici quelques indications sur la façon dont les variables de contrôles sont utilisées avec certains widgets.
 
@@ -54,19 +54,19 @@ Voici quelques indications sur la façon dont les variables de contrôles sont u
 
     Si cette case est cochée, ``spamVar.get()`` retournera ``'oui'``; Si elle ne l'est pas, la même instruction renverra ``'non'``. De plus, votre programme peut cocher la case en appelant ``spamVar.set('oui')``.
 
-    Vous pouvez encore indiquer une ``StringVar`` pour son option **textvariable**. Il vous suffit alors d'utiliser sa méthode ``.set()`` pour actualiser l'étiquette de cette case à cocher.
+    Vous pouvez encore indiquer une ``StringVar`` pour son option **textvariable**. Il vous suffit alors d'utiliser sa méthode ``set()`` pour actualiser l'étiquette de cette case à cocher.
 
 ``Entry``
 
-    Positionnez son option **textvariable** avec une ``StringVar``. Utilisez alors sa méthode ``.get()`` pour récupérer le texte actuellement affiché dans la boîte de saisie. Vous pouvez aussi modifier ce texte en utilisant sa méthode ``.set()``.
+    Positionnez son option **textvariable** avec une ``StringVar``. Utilisez alors sa méthode ``get()`` pour récupérer le texte actuellement affiché dans la boîte de saisie. Vous pouvez aussi modifier ce texte en utilisant sa méthode ``.set()``.
     
 ``Label``
 
-    Positionnez son option **textvariable** avec une ``StringVar``. En appelant sa méthode ``.set()``, vous pourrez modifier le texte affiché sur cette étiquette. Il n'est pas nécessaire d'utiliser cela; si vous ne prévoyez pas de changer son texte, utilisez plutôt son option **text** pour renseigner son contenu.
+    Positionnez son option **textvariable** avec une ``StringVar``. En appelant sa méthode ``set()``, vous pourrez modifier le texte affiché sur cette étiquette. Il n'est pas nécessaire d'utiliser cela; si vous ne prévoyez pas de changer son texte, utilisez plutôt son option **text** pour renseigner son contenu.
 
 ``Menubutton``
 
-    Si vous souhaitez être capable de modifier le texte affiché sur un bouton de menu, positionnez son option **textvariable** avec une ``StringVar`` et utilisez sa méthode ``.set()`` pour modifier le texte affiché.
+    Si vous souhaitez être capable de modifier le texte affiché sur un bouton de menu, positionnez son option **textvariable** avec une ``StringVar`` et utilisez sa méthode ``set()`` pour modifier le texte affiché.
 
 ``Radiobutton``
 
@@ -76,7 +76,7 @@ Voici quelques indications sur la façon dont les variables de contrôles sont u
 
     Vous pourriez vous demander dans quel état se trouve un groupe de boutons radio lorsque leur variable de contrôle n'a pas encore reçu de valeur et que l'utilisateur n'a pas encore coché l'un des boutons ? Chaque variable de contrôle possède une valeur par défaut: ``0`` pour une ``IntVar``, ``0.0`` pour une ``DoubleVar``, et ``''`` pour une ``StringVar``. Si l'un des boutons radio a cette valeur, il est coché initialement. Si aucun d'eux n'a cette valeur, aucun n'est coché.
 
-    Si vous souhaitez modifier l'étiquette d'un bouton radio pendant l'exécution du programme, régler son option ``textvariable`` avec une ``StringVar``. Vous serez alors en mesure de la modifier en utilisant la méthode ``.set()`` de cette variable de contrôle.
+    Si vous souhaitez modifier l'étiquette d'un bouton radio pendant l'exécution du programme, régler son option ``textvariable`` avec une ``StringVar``. Vous serez alors en mesure de la modifier en utilisant la méthode ``set()`` de cette variable de contrôle.
     
 ``Scale``
 
@@ -84,7 +84,7 @@ Voici quelques indications sur la façon dont les variables de contrôles sont u
 
     Par exemple, vous pourriez utiliser une ``IntVar`` en combinaison avec ``from_=0`` et ``to=100``. Alors, à chaque fois que l'utilisateur modifie la position du curseur, la variable de contrôle est mise à jour avec la valeur sélectionnée de l'intervalle *[0; 100]*.
 
-    Votre programme peut aussi déplacer le curseur du widget en utilisant la méthode ``.set()`` de la variable de contrôle. Dans l'exemple précédent, l'instruction ``.set(75)`` déplacer le curseur au 3/4 de sa barre.
+    Votre programme peut aussi déplacer le curseur du widget en utilisant la méthode ``set()`` de la variable de contrôle. Dans l'exemple précédent, l'instruction ``v.set(75)`` déplacer le curseur au 3/4 de sa barre.
 
     Pour utiliser un widget ``Scale`` avec des valeur flottantes, utilisez une ``DoubleVar``.
 

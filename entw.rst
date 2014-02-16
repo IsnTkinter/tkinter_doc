@@ -264,7 +264,7 @@ La valeur de l'option **validatecommand** dépend des arguments que vous souhait
 
   Dans ce cas, il suffit d'indiquer ``validatecommand=f``, où ``f`` est le nom de votre fonction de validation.
 
-* Tkinter peut aussi fournir un certain nombre d'informations à votre fonction de validation. Si vous souhaitez utiliser cela, lors de l'appel du constructeur du champ de saisie, utilisez l'option ``validatecommand=(f, s1, s2, ...)``, où ``f`` est le nom «enregistré» de votre fonction de rappel, et chaque élément ``si`` additionnel un **code de substitution**. Pour chaque code de substitution fourni, la fonction de rappel reçoit un argument positionnel qui contient la valeur appropriée.
+* Tkinter peut aussi fournir un certain nombre d'informations à votre fonction de validation. Si vous souhaitez utiliser cela, lors de l'appel du constructeur du champ de saisie, utilisez l'option ``validatecommand=(f, s1, s2, ...)``, où ``f`` est le nom «enregistré» de votre fonction de rappel (avec la méthode :py:meth:`register`, voir plus loin pour un exemple), et chaque élément ``si`` additionnel un **code de substitution**. Pour chaque code de substitution fourni, la fonction de rappel reçoit un argument positionnel qui contient la valeur appropriée.
 
 Voici les **codes de substitution** possibles.
 
@@ -293,7 +293,7 @@ Voici un petit exemple. Supposez que vous souhaitiez que votre fonction de valid
     def estOK(pourquoi, ou, quoi):
         ...
 
-Ensuite, vous utilisez la méthode universelle ``register()`` pour «emballer» cette fonction. Nous supposons que ``w`` est un widget arbitraire::
+Ensuite, vous utilisez la méthode universelle :py:meth:`register` pour «emballer» cette fonction. Nous supposons que ``w`` est un widget arbitraire::
 
     okCommand = w.register(estOK)
 

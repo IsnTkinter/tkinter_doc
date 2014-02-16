@@ -6,6 +6,102 @@ Méthodes communes à tous les widgets
 
 Les méthodes données ci-après sont communes à tous les widgets. Dans les description, ``w`` désigne un widget de type arbitraire.
 
+.. hlist::
+        :columns: 3
+
+        * :py:meth:`after`
+        * :py:meth:`after_cancel`
+        * :py:meth:`after_idle`
+        * :py:meth:`bell`
+        * :py:meth:`bind`
+        * :py:meth:`bind_all`
+        * :py:meth:`bind_class`
+        * :py:meth:`bindtags`
+        * :py:meth:`cget`
+        * :py:meth:`clipboard_append`
+        * :py:meth:`clipboard_clear`
+        * :py:meth:`column_configure`
+        * :py:meth:`config`
+        * :py:meth:`configure`
+        * :py:meth:`destroy`
+        * :py:meth:`event_add`
+        * :py:meth:`event_delete`
+        * :py:meth:`event_generate`
+        * :py:meth:`event_info`
+        * :py:meth:`focus_displayof`
+        * :py:meth:`focus_force`
+        * :py:meth:`focus_get`
+        * :py:meth:`focus_lastfor`
+        * :py:meth:`focus_set`
+        * :py:meth:`grab_current`
+        * :py:meth:`grab_release`
+        * :py:meth:`grab_set`
+        * :py:meth:`grab_set_global`
+        * :py:meth:`grab_status`
+        * :py:meth:`grid_forget`
+        * :py:meth:`grid_propagate`
+        * :py:meth:`grid_remove`
+        * :py:meth:`image_names`
+        * :py:meth:`keys`
+        * :py:meth:`lift`
+        * :py:meth:`lower`
+        * :py:meth:`mainloop`
+        * :py:meth:`nametowidget`
+        * :py:meth:`option_add`
+        * :py:meth:`option_clear`
+        * :py:meth:`option_get`
+        * :py:meth:`option_readfile`
+        * :py:meth:`register`
+        * :py:meth:`quit`
+        * :py:meth:`rowconfigure`
+        * :py:meth:`selection_clear`
+        * :py:meth:`selection_get`
+        * :py:meth:`selection_own`
+        * :py:meth:`selection_own_get`
+        * :py:meth:`tk_focusFollowsMouse`
+        * :py:meth:`tk_focusNext`
+        * :py:meth:`tk_focusPrev`
+        * :py:meth:`unbind`
+        * :py:meth:`unbind_all`
+        * :py:meth:`unbind_class`
+        * :py:meth:`update`
+        * :py:meth:`update_idletasks`
+        * :py:meth:`wait_variable`
+        * :py:meth:`wait_visibility`
+        * :py:meth:`wait_window`
+        * :py:meth:`winfo_children`
+        * :py:meth:`winfo_class`
+        * :py:meth:`winfo_containing`
+        * :py:meth:`winfo_depth`
+        * :py:meth:`winfo_fpixels`
+        * :py:meth:`winfo_geometry`
+        * :py:meth:`winfo_height`
+        * :py:meth:`winfo_id`
+        * :py:meth:`winfo_ismapped`
+        * :py:meth:`winfo_manager`
+        * :py:meth:`winfo_name`
+        * :py:meth:`winfo_parent`
+        * :py:meth:`winfo_pathname`
+        * :py:meth:`winfo_pixels`
+        * :py:meth:`winfo_pointerx`
+        * :py:meth:`winfo_pointerxy`
+        * :py:meth:`winfo_pointery`
+        * :py:meth:`winfo_reqheight`
+        * :py:meth:`winfo_reqwidth`
+        * :py:meth:`winfo_rgb`
+        * :py:meth:`winfo_rootx`
+        * :py:meth:`winfo_rooty`
+        * :py:meth:`winfo_screenheight`
+        * :py:meth:`winfo_screenmmheight`
+        * :py:meth:`winfo_screenmmwidth`
+        * :py:meth:`winfo_screenvisual`
+        * :py:meth:`winfo_screenwidth`
+        * :py:meth:`winfo_toplevel`
+        * :py:meth:`winfo_viewable`
+        * :py:meth:`winfo_width`
+        * :py:meth:`winfo_x`
+        * :py:meth:`winfo_y`
+
 .. py:method:: after(delai_ms, fonc=None, \*args)
 
         Demande à Tkinter d'appeller la fonction de rappel *fonc* avec les arguments *args* après l'écoulement du délai *delai_ms* donné en millisecondes. Votre fonction de rappel ne peut pas être appelée avant ce délai (même si son appel effectif peut le dépasser) et elle ne sera appelée qu'une fois.
@@ -131,6 +227,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 .. py:method:: grab_current()
 
         If there is a grab in force for w's display, return its identifier, otherwise return None. Refer to Section 54, “Events” for a discussion of grabs. 
+
 .. py:method:: grab_release()
 
         If w has a grab in force, release it. 
