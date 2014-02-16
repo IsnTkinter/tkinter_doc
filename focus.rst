@@ -1,7 +1,7 @@
 .. _FOCUS:
 
 ********************************************
-Le **focus**: réception des saisies clavier
+**Focus**: réception des saisies clavier
 ********************************************
 
 Dire qu'un widget a le focus signifie que les saisies au clavier sont actuellement dirigées vers ce widget.
