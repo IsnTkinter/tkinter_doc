@@ -1,8 +1,8 @@
 .. _COCHER:
 
-**********************************
-Les cases à cocher ``Checkbutton``
-**********************************
+************************************
+``Checkbutton`` - Les cases à cocher 
+************************************
 
 Les cases à cocher (parfois appelé «checkbox») permettent à l'utilisateur d'effectuer des choix. L'illustration ci-dessous montre trois cases à cocher dont deux sont cochées (état "on": 1) et une est décochée (état "off": 0).
 

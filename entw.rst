@@ -1,8 +1,8 @@
 .. _SAISIE:
 
-******************************
-Les champs de saisie ``Entry``
-******************************
+********************************
+``Entry`` - Les champs de saisie 
+********************************
 
 Un champs de saisie ``Entry`` est utile pour permettre à l'utilisateur de modifier une ligne de texte.
 

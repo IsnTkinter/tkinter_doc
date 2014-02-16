@@ -1,8 +1,8 @@
 .. _LISTBOX:
 
-*********************
-Le widget ``Listbox``
-*********************
+********************************
+``Listbox`` - Liste de sélection
+********************************
 
 Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de lignes de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à “The Text widget”.
 

@@ -1,8 +1,8 @@
 .. _SPINBOX:
 
-**********************
-Le widget ``Spinbox``
-**********************
+***************************************
+``Spinbox`` - Saisie/sélection rotative 
+***************************************
 
 Le widget ``Spinbox`` sert à donner un moyen à l'utilisateur de sélectionner une valeur parmi un ensemble de valeurs données ou d'en proposer une autre. Cet ensemble de valeurs peut être un intervalle de nombres ou un ensemble fixe de chaînes de caractères.
 

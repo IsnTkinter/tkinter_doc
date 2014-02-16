@@ -1,8 +1,8 @@
 .. _MENUBUTTON:
 
-**********************************
-Les boutons de menu ``Menubutton``
-**********************************
+************************************
+``Menubutton`` - Les boutons de menu 
+************************************
 
 Un bouton de menu, ``Menubutton``, est la partie visible d'un menu déroulant. Un tel bouton est donc associé à un widget ``Menu`` (voir plus loin) qui sert à contenir (et à afficher) les choix qui apparaîssent lorsque l'utilisateur clique sur le bouton.
 

@@ -1,7 +1,7 @@
 .. _PANEDWINDOW:
 
 **********************************************
-Le widget ``PanedWindow`` ou fenêtre à paneaux
+``PanedWindow`` - Les fenêtres à paneaux
 **********************************************
 
 Une fenêtre à paneaux ou widget ``PanedWindow`` sert à donner à l'utilisateur un moyen de contrôle sur la façon dont l'espace est distribué à l'intérieur de l'application.

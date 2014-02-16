@@ -1,7 +1,7 @@
 .. _TOPLEVEL:
 
 **********************************
-``Toplevel``: fenêtres primaires
+``Toplevel`` - Fenêtres primaires
 **********************************
 
 Une fenêtre primaire - *Toplevel window* - est une fenêtre qui possède une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation. Une telle fenêtre possède tous les boutons ordinaires (fermeture, réduction/agrandissement) et elle peut être déplacée et redimensionnée à la souris. Votre application peut utiliser autant de fenêtres «primaires» que souhaité.

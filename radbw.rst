@@ -1,8 +1,8 @@
 .. _RADIOBUTTON:
 
-*********************************
-Les boutons radio ``Radiobutton``
-*********************************
+***********************************
+``Radiobutton`` - Les boutons radio 
+***********************************
 
 Les boutons radio servent à réaliser des ensembles de widgets connexes qui permettent à l'utilisateur de sélectionner un choix (et un seul) parmi d'autres; chaque bouton radio représente un choix possible et se compose de deux parties, l'indicateur et l'étiquette:
 
