@@ -33,21 +33,21 @@ Pour créer une nouvelle barre de défilement ``Scrollbar`` comme enfant d'une f
         Le constructeur retourne le nouveau widget ``Scrollbar`` créé. Ses options incluent:
 
         :arg activebackground: 
-                La couleur du curseur et des flèches lorsque la souris est au dessus de l'un d'eux. Voir “Colors”.
+                La couleur du curseur et des flèches lorsque la souris est au dessus de l'un d'eux. Voir :ref:`couleurs`.
         :arg activerelief: 
                 Le relief utilisé pour afficher le curseur lorsque la souris est au dessus. Sa valeur par défaut est ``'raised'``.
         :arg bg: 
                 (ou **background**) La couleur du curseur et des flèches lorsque la souris n'est pas au dessus.
         :arg bd: 
-                (ou **borderwidth**) La largeur de la bordure 3d qui entoure la zone de glissement et aussi celle de l'effet 3d du curseur et des flèches. Par défaut, il n'y a pas de bordure autour de la zone de glissement, et celle des flèches et du curseur vaut 2 pixels. Pour des valeurs possibles, voir “Dimensions”.
+                (ou **borderwidth**) La largeur de la bordure 3d qui entoure la zone de glissement et aussi celle de l'effet 3d du curseur et des flèches. Par défaut, il n'y a pas de bordure autour de la zone de glissement, et celle des flèches et du curseur vaut 2 pixels. Pour des valeurs possibles, voir :ref:`dimensions`.
         :arg command: 
-                Une fonction à appeler à chaque fois que le curseur de la barre de défilement a été déplacé. Pour plus de détails sur la façon dont cette fonction est appelée, voir “The Scrollbar command callback”.
+                Une fonction à appeler à chaque fois que le curseur de la barre de défilement a été déplacé. Pour plus de détails sur la façon dont cette fonction est appelée, voir :ref:`foncrappdef`.
         :arg cursor: 
-                Le curseur utilisée lorsque la souris est au dessus de la barre. Voir “Cursors”.
+                Le curseur utilisée lorsque la souris est au dessus de la barre. Voir :ref:`pointeurs`.
         :arg elementborderwidth: 
                 L'épaisseur de la bordure des flèches et du curseur. Sa valeur par défaut est -1 ce qui signifie que c'est la valeur de l'option **borderwidth** qui est utilisée.
         :arg highlightbackground: 
-                La couleur de la ligne de mise en valeur du focus lorsque la barre de défilement ne l'a pas. Voir “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque la barre de défilement ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 La couleur de la ligne de mise en valeur du focus lorsque la barre de défilement l'obtient.
         :arg highlightthickness: 
@@ -63,7 +63,7 @@ Pour créer une nouvelle barre de défilement ``Scrollbar`` comme enfant d'une f
         :arg repeatinterval: 
                 Cette option contrôle la durée, en millisecondes, qui s'écoule entre deux déplacements automatiques du curseur lorsque l'utilisateur fait un clic prolongé sur la zone de défilement. Sa valeur par défaut est 100 millisecondes.
         :arg takefocus: 
-                Ce widget obtient normalement le focus; voir “Focus: routing keyboard input”. Utilisez ``takefocus=0`` si vous souhaitez empêcher cela. Lorsqu'une barre de défilement obtient le focus, on peut la déplacer à l'aide des flèches du clavier.
+                Ce widget obtient normalement le focus; voir :ref:`FOCUS`. Utilisez ``takefocus=0`` si vous souhaitez empêcher cela. Lorsqu'une barre de défilement obtient le focus, on peut la déplacer à l'aide des flèches du clavier.
         :arg troughcolor: 
                 La couleur de la zone de glissement de la barre.
         :arg width: 
@@ -96,7 +96,9 @@ Pour créer une nouvelle barre de défilement ``Scrollbar`` comme enfant d'une f
         .. py:method:: set(deb, fin)
 
                     Pour munir un widget ``w`` d'une barre de défilement, configurer son option **xscrollcommand** ou **yscrollcommand** avec cette méthode. Les arguments ont la même signification que les valeurs retournées par la méthode ``get()`` décrite plus tôt. De cette façon, le widget ``w`` est en mesure d'avertir la barre de défilement de la portion de sa zone d'affichage actuellement visible afin que la barre soit ajustée en conséquence. Notez que le déplacement du curseur ne produit pas pour autant le glissement de la zone visible du widget ``w``.
-    
+ 
+.. _foncrappdef:
+        
 Fonction de rappel d'une barre de défilement
 ============================================
 
@@ -122,7 +124,9 @@ Lorqu'il déplace le curseur jusqu'à la position normalisée *f* de l'intervall
 
         command('moveto', f)
 
-Ces séquences d'appels sont conformes aux arguments attendus par les méthodes ``xview()`` et ``yview()`` des canevas (``Canvas``), listes de sélection (``Listbox``), et du widget de texte (``Text``). Les champs de saisis n'ont pas de méthode xview(). Voir “Scrolling an Entry widget”. 
+Ces séquences d'appels sont conformes aux arguments attendus par les méthodes ``xview()`` et ``yview()`` des canevas (``Canvas``), listes de sélection (``Listbox``), et du widget de texte (``Text``). Les champs de saisis n'ont pas de méthode ``xview()``. Voir :ref:`Defilement`.
+
+.. _assodefil:
 
 Associer une barre de défilement à un autre widget
 ==================================================

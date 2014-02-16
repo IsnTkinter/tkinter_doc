@@ -12,7 +12,7 @@ précisés.
 
 * Vous pouvez préciser les options lors de l'appel du constructeur du widget en utilisant des mots clés comme ``text='PANIQUE'`` ou ``height=20``.
 
-* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode ``.config()``. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode ``.cget()``. Voir .... pour en apprendre plus sur ces méthodes.
+* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode ``.config()``. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode ``.cget()``. Voir :ref:`UNIVERSAL` pour en apprendre plus sur ces méthodes.
 
 
 .. _dimensions:
@@ -31,7 +31,7 @@ Les différentes dimensions comme la largeur, la hauteur, etc. peuvent être pr�
     * ``p`` : Points d'impression
 
   
-.. _système:
+.. _systeme:
 
 Le système de coordonnées
 =========================
@@ -44,7 +44,7 @@ les valeurs de `y` augmentant vers le bas.
 
 L'unité de base est le pixel avec le coin supérieur gauche de coordonnées `(0,0)`.
 Les coordonnées indiquées par un entier sont toujours exprimées en pixels, mais chaque coordonnée
-peut être indiquée via une chaîne de caractères dans une unité particulière.
+peut être indiquée via une chaîne de caractères dans une unité particulière; voir :ref:`dimensions`.
 
 .. _couleurs:
 
@@ -302,11 +302,13 @@ Les images
 
 Il y a trois méthodes générales pour afficher des images dans votre application tkinter.
 
-* Pour afficher une image bitmap dans le format `.xbm`, référez-vous à ...
+* Pour afficher une image bitmap dans le format `.xbm`, voir :ref:`bimage`.
 
-* Pour afficher des images dans le format `.gif`, `.pgm` ou `.ppm`, reportez-vous à ...
+* Pour afficher des images dans le format `.gif`, `.pgm` ou `.ppm`, voir :ref:`photoimage`.
 
 * La libraire d'images de Python (PIL) offre un support pour une plus grande variété de format. Sa classe ``ImageTk`` a été spécialement conçue pour afficher des images dans les applications tkinter.
+
+.. _bimage:
 
 La classe ``BitmapImage``
 -------------------------
@@ -317,13 +319,15 @@ Pour afficher un bitmap dans le format `.xbm` vous aurez besoin de ce constructe
 
 où ``f`` est le nom du fichier image `.xbm`.
 
-Normalement, le bit d'avant plan ``foreground`` (1) est affiché en noir et le le bit d'arrière-plan ``background`` (0) sera transparent. Pour modifier ce comportement, utilisez l'option ``background=b`` pour régler la couleur à ``b``, et l'option ``foreground=c`` pour régler la couleur à ``c``. Pour les spécifications de couleurs, reportez-vous à ...
+Normalement, le bit d'avant plan ``foreground`` (1) est affiché en noir et le le bit d'arrière-plan ``background`` (0) sera transparent. Pour modifier ce comportement, utilisez l'option ``background=b`` pour régler la couleur à ``b``, et l'option ``foreground=c`` pour régler la couleur à ``c``. Pour les spécifications de couleurs, :ref:`couleurs`. 
 
-Ce constructeur retourne une valeur qui peut être utilisée à n'importe quel endroit où tkinter attend une image. Par exemple, pour afficher une image comme une étiquette, utiliser un widget ``Label`` et fournissez l'objet ``BitmapImage`` comme valeur à son option ``image``::
+Ce constructeur retourne une valeur qui peut être utilisée à n'importe quel endroit où tkinter attend une image. Par exemple, pour afficher une image comme une étiquette, utiliser un widget ``Label`` (voir :ref:`LABEL`) et fournissez l'objet ``BitmapImage`` comme valeur à son option ``image``::
 
     logo = BitmapImage('logo.xbm', foreground='red')
     Label(image=logo).grid()
     
+.. _photoimage:
+
 La classe ``PhotoImage``
 ------------------------
 
@@ -332,6 +336,8 @@ Pour afficher une image du type `.gif`, `.pgm` ou `.ppm`, vous aurez besoin du c
     PhotoImage(file=f)
 
 où ``f`` est le nom d'un fichier image. Le constructeur retourne une valeur qui peut être utilisée partout où tkinter attend une image.
+
+.. _geometrie:
 
 Les chaînes de géométrie
 ========================
@@ -351,6 +357,8 @@ où :
 * Si la prochaine partie est de la forme ``+y``, elle indique que le bord haut de la fenêtre est situé à ``y`` pixels du bord haut du bureau. Si elle a la forme ``-y``, elle indique que le bord bas de la fenêtre est situé à ``y`` pixels du bord bas du bureau.
 
 Par exemple, une fenêtre crée avec ``geometry='120x50-0+20'`` aura une largeur de 120 pixels, une hauteur de 50 pixels, son bord droit sera collé à celui du bureau à 20 pixels du haut de celui-ci.
+
+.. _nomfen:
 
 Le nommage des Fenêtres (`Window`)
 ==================================
@@ -373,7 +381,7 @@ tkinter nomme toutes ces fenêtres en utilisant un nommage «hiérarchique» :
     
 Pour obtenir le nom d'un widget ``w``, utilisez ``str(w)``.
 
-Voir aussi ref pour les méthodes que vous pouvez utiliser afin d'agir sur les noms de fenêtre, plus spécialement les méthodes  .winfo_name, .winfo_parent, and .winfo_pathname.
+Voir aussi :ref:`UNIVERSAL` pour les méthodes que vous pouvez utiliser afin d'agir sur les noms de fenêtre, plus spécialement les méthodes  :py:meth:`winfo_name`, :py:meth:`winfo_parent`, et :py:meth:`winfo_pathname`.
 
 .. _style-extr:
 
@@ -423,7 +431,9 @@ Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner l
     Par exemple, ``dash=(5, 1, 2, 1)`` en combinaison avec ``dashoff=3`` produirait: tracé 2, vide 1, tracé 2, vide 1 puis ensuite, tracé 5, vide 1, tracé 2, vide 1 et ainsi de suite :
     
     .. image:: img/dashpat.png
-    
+
+.. _nuagepts:
+
 Ajuster des motifs en nuage de points
 =====================================
 

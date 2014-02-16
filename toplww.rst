@@ -1,35 +1,35 @@
 .. _TOPLEVEL:
 
 **********************************
-``Toplevel``: fenêtres principales
+``Toplevel``: fenêtres primaires
 **********************************
 
-Une fenêtre principale - *Toplevel window* - est une fenêtre qui possède une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation. Une telle fenêtre possède tous les boutons ordinaires (fermeture, réduction/agrandissement) et elle peut être déplacée et redimensionnée à la souris. Votre application peut utiliser autant de fenêtres «principales» que souhaité.
+Une fenêtre primaire - *Toplevel window* - est une fenêtre qui possède une existence indépendante pour le gestionnaire de fenêtre du système d'exploitation. Une telle fenêtre possède tous les boutons ordinaires (fermeture, réduction/agrandissement) et elle peut être déplacée et redimensionnée à la souris. Votre application peut utiliser autant de fenêtres «primaires» que souhaité.
 
-Étant donné un widget w, vous pouvez récupérer la fenêtre principale qui le contient en utilisant ``w.winfo_toplevel()``.
+Étant donné un widget w, vous pouvez récupérer la fenêtre primaire qui le contient en utilisant ``w.winfo_toplevel()``.
 
-Pour créer une nouvelle fenêtre principale:
+Pour créer une nouvelle fenêtre primaire:
 
 .. py:class:: Toplevel(option, ...)
 
         Ses options incluent:
 
         :arg bg: 
-                 (ou *background*) La couleur d'arrière plan de la fenêtre. Voir “Colors”.
+                 (ou *background*) La couleur d'arrière plan de la fenêtre. Voir :ref:`couleurs`.
         :arg bd: 
-                 (ou *borderwidth*) La largeur de sa bordure en pixels; 0 par défaut. Pour des valeurs possibles, voir “Dimensions”. Voir aussi l'option **relief** ci-dessous.
+                 (ou *borderwidth*) La largeur de sa bordure en pixels; 0 par défaut. Pour des valeurs possibles, voir :ref:`dimensions`. Voir aussi l'option **relief** ci-dessous.
         :arg class\_: 
-                Vous pouvez donner à une fenêtre principale un nom de classe. De tels noms peuvent être alors utilisés dans la base de données des options afin de récupérer les préférences de configuration des utilisateurs (comme les couleur). Par exemple, vous pourriez concevoir une série de fenêtre surgissantes (*pop-ups*) appelées "hurlantes", et toutes les configurer avec l'option ``class_='Screamer'``. Ensuite, vous pourriez mettre la ligne suivante dans votre base de données des options::
+                Vous pouvez donner à une fenêtre primaire un nom de classe. De tels noms peuvent être alors utilisés dans la base de données des options afin de récupérer les préférences de configuration des utilisateurs (comme les couleur). Par exemple, vous pourriez concevoir une série de fenêtre surgissantes (*pop-ups*) appelées "hurlantes", et toutes les configurer avec l'option ``class_='Screamer'``. Ensuite, vous pourriez mettre la ligne suivante dans votre base de données des options::
 
                       *Screamer*background: red
 
                 et enfin, utiliser la méthode ``option_readfile()`` pour lire cette base de données. Cela aurait pour effet de configurer la couleur de fond par défaut de tout les widgets ayant ce nom de classe avec la couleur rouge. Cette option est nommée ``class_`` parce que *class* est un mot clé de Python.
         :arg cursor: 
-                Le pointeur de la souris utilisée lorsqu' elle survole cette fenêtre. Voir “Cursors”.
+                Le pointeur de la souris utilisée lorsqu' elle survole cette fenêtre. Voir :ref:`pointeurs`.
         :arg height: 
-                La hauteur de la fenêtre; voir “Dimensions”.
+                La hauteur de la fenêtre; voir :ref:`dimensions`.
         :arg highlightbackground:
-                La couleur de ligne de mise en valeur du focus lorsque la fenêtre ne l'a pas. Voir “Focus: routing keyboard input”.
+                La couleur de ligne de mise en valeur du focus lorsque la fenêtre ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 La couleur de ligne de mise en valeur du focus lorsque la fenêtre l'obtient.
         :arg highlightthickness: 
@@ -41,13 +41,13 @@ Pour créer une nouvelle fenêtre principale:
         :arg pady:
                 Utilisez cette option pour ajouter une marge verticale en haut et en base de la fenêtre. La valeur est un nombre de pixels.
         :arg relief: 
-                Normalement, une fenêtre principale n'a pas de bordure 3d. Pour obtenir une telle bordure, réglez l'option **bd** avec une valeur supérieure à 0 et celle-ci avec l'une des valeurs possible pour le relief (voir “Relief styles”).
+                Normalement, une fenêtre primaire n'a pas de bordure 3d. Pour obtenir une telle bordure, réglez l'option **bd** avec une valeur supérieure à 0 et celle-ci avec l'une des valeurs possible pour le relief (voir :ref:`reliefs`).
         :arg takefocus:
-                Normalement, une fenêtre principale n'obtient pas le focus. Utilisez ``takefocus=True`` si vous souhaitez qu'elle puisse l'obtenir; voir “Focus: routing keyboard input”.
+                Normalement, une fenêtre primaire n'obtient pas le focus. Utilisez ``takefocus=True`` si vous souhaitez qu'elle puisse l'obtenir; voir :ref:`FOCUS`.
         :arg width: 
-                La largeur de la fenêtre. Voir “Dimensions”.
+                La largeur de la fenêtre. Voir :ref:`dimensions`.
 
-        Les méthodes des fenêtres principales sont:
+        Les méthodes des fenêtres primaires sont:
 
         .. py:method:: aspect(nmin, dmin, nmax, dmax)
 
@@ -59,7 +59,7 @@ Pour créer une nouvelle fenêtre principale:
 
         .. py:method:: geometry(newGeometry=None)
 
-                    Sert à régler la géométrie de la fenêtre. Pour la forme de son argument, voir “Geometry strings”. Si l'argument est omis, elle retourne la chaîne qui décrit sa géométrie courante.
+                    Sert à régler la géométrie de la fenêtre. Pour la forme de son argument, voir :ref:`geometrie`. Si l'argument est omis, elle retourne la chaîne qui décrit sa géométrie courante.
 
         .. py:method:: iconify()
 
@@ -85,7 +85,7 @@ Pour créer une nouvelle fenêtre principale:
 
                     Lorsque cette méthode est appelée avec la valeur True, elle positionne le drapeau *override redirect*, lequel supprime toutes les décorations de la fenêtres de telle sorte qu'elle ne puisse plus être déplacée, redimensionnée ou iconifiée ou fermée. Si elle est appelée avec la valeur False, elle retrouve son aspect normal ainsi que tous ses comportements. Si elle est appelée sans argument, elle retourne le drapeau *override redirect* actuellement utilisée.
 
-                    Faites attention à appeler la méthode ``update_idletasks()`` (voir “Universal widget methods”) avant de positionner ce drapeau. Si vous l'appeler avant d'être entré dans la boucle principale, votre fenêtre sera désactivée avant même qu'elle ne puisse apparaître.
+                    Faites attention à appeler la méthode :py:meth:`~update_idletasks` (voir :ref:`UNIVERSAL`) avant de positionner ce drapeau. Si vous l'appeler avant d'être entré dans la boucle primaire, votre fenêtre sera désactivée avant même qu'elle ne puisse apparaître.
 
                     Cette méthode peut ne pas fonctionner sur certain système Unix et MacOS.
 
@@ -103,7 +103,7 @@ Pour créer une nouvelle fenêtre principale:
 
                     * ``'withdrawn'``: Est cachée.
 
-                    Pour modifier cet état, utiliser l'une des chaînes ci-dessus comme argument. Par exemple, pour iconifier une fenêtre principale T, utilisez ``T.state('iconify')``. 
+                    Pour modifier cet état, utiliser l'une des chaînes ci-dessus comme argument. Par exemple, pour iconifier une fenêtre primaire T, utilisez ``T.state('iconify')``. 
 
         .. py:method:: title(text=None)
 

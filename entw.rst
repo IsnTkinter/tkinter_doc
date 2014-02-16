@@ -1,24 +1,24 @@
 .. _SAISIE:
 
 ******************************
-Les boîtes de saisie ``Entry``
+Les champs de saisie ``Entry``
 ******************************
 
-Une boîte de saisie ``Entry`` est utile pour permettre à l'utilisateur de modifier une ligne de texte.
+Un champs de saisie ``Entry`` est utile pour permettre à l'utilisateur de modifier une ligne de texte.
 
-* Si vous souhaitez afficher plusieurs lignes de textes modifiables, voir “The Text widget”.
+* Si vous souhaitez afficher plusieurs lignes de textes modifiables, voir :ref:`TEXT`.
 
 * Si vous souhaitez afficher une ou plusieurs lignes de textes qui ne peuvent pas être directement modifiées par l'utilisateur, voir :ref:`Label`.
 
 Quelques définitions:
 
-* La **sélection** est la région du texte mise en valeur (surlignement) dans une boîte de saisie, s'il y en a une.
+* La **sélection** est la région du texte mise en valeur (surlignement) dans un champs de saisie, s'il y en a une.
 
   Typiquement, la selection est réalisée par l'utilisateur avec la souris, et le texte sélectionné est copié dans le  presse-papiers du système. Cependant, Tkinter vous permet de choisir si oui ou non, la sélection doit être copiée dans le presse-papiers. Vous pouvez aussi réaliser des sélections contrôlées par le programme.
 
-* Le **curseur d'insertion** indique où le texte sera inséré. Il est affiché lorsque l'utilisateur clique sur la boîte saisie. Il apparaît normalement comme une ligne verticale qui clignote dans le composant. Vous pouvez régler finement son apparence de plusieurs façons.
+* Le **curseur d'insertion** indique où le texte sera inséré. Il est affiché lorsque l'utilisateur clique sur le champ saisie. Il apparaît normalement comme une ligne verticale qui clignote dans le composant. Vous pouvez régler finement son apparence de plusieurs façons.
 
-* Les positions à l'intérieur du texte affiché dans la boîte sont précisées à l'aide d'un **index**. Il y a plusieurs façons d'exprimer un index:
+* Les positions à l'intérieur du texte affiché dans le champs sont précisées à l'aide d'un **index**. Il y a plusieurs façons d'exprimer un index:
 
   - En utilisant un entier qui débute à 0 comme pour les chaînes de caractère de Python.
 
@@ -28,13 +28,13 @@ Quelques définitions:
 
   - La constante ``'anchor'`` qui se réfère au premier caractère de la sélection courante, s'il y en a une.
 
-  - Vous pouvez avoir besoin de récupérer le caractère qui se trouve à une position déterminée par la souris. Pour simplifier cela, vous pouvez utiliser un index à l'aide d'une chaîne de caractères de la forme ``'@n'`` où n est la distance horizontale en pixels entre le côté gauche de la boîte de saisie et la souris. Un tel index déterminera le caractère situé à cette distance horizontale du côté gauche de la boîte.
+  - Vous pouvez avoir besoin de récupérer le caractère qui se trouve à une position déterminée par la souris. Pour simplifier cela, vous pouvez utiliser un index à l'aide d'une chaîne de caractères de la forme ``'@n'`` où n est la distance horizontale en pixels entre le côté gauche du champ de saisie et la souris. Un tel index déterminera le caractère situé à cette distance horizontale du côté gauche du champ de saisie.
 
-Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principale ou dans un cadre ``parent``:
+Pour créer une nouveau champ de saisie dans une fenêtre principale ou dans un cadre ``parent``:
 
 .. py:class:: Entry(parent, option, ...)
 
-        Ce constructeur retourne la nouvelle boîte de saisie. Ses options incluent:
+        Ce constructeur retourne le nouveau champ de saisie. Ses options incluent:
 
         :arg bg:
                 (ou **background**) La couleur de fond de la zone de saisie. C'est un gris léger par défaut.
@@ -43,17 +43,17 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
         :arg cursor:
                 Pour indiquer le pointeur de souris à afficher lorsqu'on survole le bouton. Voir :ref:`pointeurs`.
         :arg disabledbackground: 
-                La couleur d'arrière plan qui est utilisée lorsque le widget est dans l'état 'disabled'.
+                La couleur d'arrière plan qui est utilisée lorsque le widget est dans l'état ``'disabled'``.
         :arg disabledforeground: 
-                Couleur du texte lorsque la boîte de saisie est dans l'état 'disabled'.
+                Couleur du texte lorsque le champ de saisie est dans l'état ``'disabled'``.
         :arg exportselection: 
                 Par défaut, si vous sélectionnez du texte, il est automatiquement exporté vers le presse-papiers. Pour empêcher cela, utiliser ``exportselection=0``.
         :arg fg: 
                 (ou **foreground**) La couleur utilisée pour afficher le texte. Noir par défaut.
         :arg font:
-                Police de caractère utilisée pour le texte saisi dans la boîte. Voir :ref:`polices`.
+                Police de caractère utilisée pour le texte saisi dans le champ de saisi. Voir :ref:`polices`.
         :arg highlightbackground:
-                Couleur de la ligne qui indique que le bouton n'a pas le focus. Voir “Focus: routing keyboard input”.
+                Couleur de la ligne qui indique que le bouton n'a pas le focus. Voir :ref:`FOCUS`.
         :arg highlightcolor:
                 Couleur de ligne qui indique que le bouton a le focus.
         :arg highlightthickness:
@@ -69,11 +69,11 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
         :arg insertwidth:
                 Normalement, le curseur d'insertion fait 2 pixels de large. Vous pouvez ajuster cela en indiquant une dimension arbitraire.
         :arg justify:
-                Cette option contrôle l'alignement du texte lorsque celui-ci ne remplit pas complètement la boîte. Les valeurs possibles sont ``'left'``, ``'center'`` et ``'right'``.
+                Cette option contrôle l'alignement du texte lorsque celui-ci ne remplit pas complètement le champ de saisie. Les valeurs possibles sont ``'left'``, ``'center'`` et ``'right'``.
         :arg readonlybackground: 
                 La couleur de fond utilisée lorsque le widget est dans l'état ``'readonly'``.
         :arg relief:
-                Sert à indiquer le relief utilisé pour dessiner le contour de la boîte. Voir :ref:`reliefs`. La valeur par défaut est ``'sunken'``.
+                Sert à indiquer le relief utilisé pour dessiner le contour du champ de saisie. Voir :ref:`reliefs`. La valeur par défaut est ``'sunken'``.
         :arg selectbackground:
                 La couleur de fond utilisée pour mettre en valeur le texte sélectionné. Voir :ref:`couleurs`.
         :arg selectborderwidth:
@@ -83,21 +83,21 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
         :arg show:
                 Normalement, le texte que l'utilisateur saisi apparaît dans la zone de saisie. Pour une saisie de type mot de passe, indiquer le caractère de remplacement à afficher, souvent ``show='*'``.
         :arg state:
-                Utilisez cette option pour désactiver la boîte de saisie de telle sorte que l'utilisateur ne puisse plus y insérer de texte.``state='disabled'`` pour le désactiver, ``state='normal'`` pour le réactiver. Votre programme peut savoir si la souris survole la boîte de saisie en interrogeant cette option qui devrait alors avoir la valeur ``'active'``.
+                Utilisez cette option pour désactiver le champ de saisie de telle sorte que l'utilisateur ne puisse plus y insérer de texte.``state='disabled'`` pour le désactiver, ``state='normal'`` pour le réactiver. Votre programme peut savoir si la souris survole le champ de saisie en interrogeant cette option qui devrait alors avoir la valeur ``'active'``.
         :arg takefocus:
-                Par défaut, le widget sera visité par le focus lorsque l'utilisateur utilisera la touche Tab. Configurez cette option avec la valeur 0 pour retirer le widget de la «traversée du focus». Pour plus d'informations sur le focus, voir “Focus: routing keyboard input”.
+                Par défaut, le widget sera visité par le focus lorsque l'utilisateur utilisera la touche Tab. Configurez cette option avec la valeur 0 pour retirer le widget de la «traversée du focus». Pour plus d'informations sur le focus, voir :ref:`FOCUS`.
         :arg textvariable:
-                Pour pouvoir récupérer le texte courant de la boîte de saisie, vous devez configurer cette option avec une instance de ``StringVar``; voir “Control variables: the values behind the widgets”. Vous pouvez alors récupérer ou modifier le texte en utilisant les méthodes ``get()`` ou ``set()`` de cette variable de contrôle ``StringVar``.
+                Pour pouvoir récupérer le texte courant du champ de saisie, vous devez configurer cette option avec une instance de ``StringVar``; voir :ref:`CTRLVARIABLES`. Vous pouvez alors récupérer ou modifier le texte en utilisant les méthodes ``get()`` ou ``set()`` de cette variable de contrôle ``StringVar``.
         :arg validate: 
-                Vous pouvez utiliser cette option pour indiquer que la boîte utilise une fonction de validation qui sera appelée automatiquement à certains instants. Voir :ref:`validation`.
+                Vous pouvez utiliser cette option pour indiquer que le champ de saisie utilise une fonction de validation qui sera appelée automatiquement à certains instants. Voir :ref:`validation`.
         :arg validatecommand: 
-                Une fonction de validation pour la boîte de saisie. Voir :ref:`validation`.
+                Une fonction de validation pour le champ de saisie. Voir :ref:`validation`.
         :arg width:
-                La taille de la boîte de saisie mesurée en nombre de caractères. La valeur par défaut est 20. Pour les polices de caractères à chasse variable (fontes proportionnelles), la taille de la boîte de saisie s'obtient en multipliant la moyenne de la largeur des caractères de la fonte multipliée par la valeur de cette option.
+                La taille du champ de saisie mesurée en nombre de caractères. La valeur par défaut est 20. Pour les polices de caractères à chasse variable (fontes proportionnelles), la taille du champ de saisie s'obtient en multipliant la moyenne de la largeur des caractères de la fonte multipliée par la valeur de cette option.
         :arg xscrollcommand:
-                Si vous vous attendez à ce que les utilisateurs saisissent plus de texte que la partie visible de la boîte ne peut en contenir, vous pouvez lier votre boîte de saisie à une barre de défilement ``Scrollbar``. Configurez alors cette option avec la méthode ``set()`` de la barre de défilement. Pour plus d'information, voir “Scrolling an Entry widget”.
+                Si vous vous attendez à ce que les utilisateurs saisissent plus de texte que la partie visible du champ de saisie ne peut en contenir, vous pouvez lier votre champ de saisie à une barre de défilement ``Scrollbar``. Configurez alors cette option avec la méthode ``set()`` de la barre de défilement. Pour plus d'information, voir :ref:`Defilement`.
 
-        Les méthodes disponibles pour les boîtes de saisie ``Entry`` incluent:
+        Les méthodes disponibles pour les champs de saisie ``Entry`` incluent:
 
         .. hlist::
                 :columns: 4
@@ -125,7 +125,7 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
 
         .. py:method:: get()
 
-                Retourne le texte que contient la boîte de saisie lors de son appel.
+                Retourne le texte que contient le champ de saisie lors de son appel.
 
         .. py:method:: icursor(index)
 
@@ -133,7 +133,7 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
 
         .. py:method:: index(index)
 
-                Fait défiler le contenu de la boîte de saisie de telle sorte que le caractère de position ``index`` soit à la première position visible à gauche. N'a pas d'effet si le texte tient tout entier dans la boîte de saisie.
+                Fait défiler le contenu du champ de saisie de telle sorte que le caractère de position ``index`` soit à la première position visible à gauche. N'a pas d'effet si le texte tient tout entier dans le champ de saisie.
 
         .. py:method:: insert(index, s)
 
@@ -145,9 +145,9 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
 
         .. py:method:: scan_mark(x)
 
-                Utilisez cette méthode pour initialiser le défilement rapide du contenu d'une boîte de saisie munie d'une barre de défilement horizontale.
+                Utilisez cette méthode pour initialiser le défilement rapide du contenu d'un champ de saisie munie d'une barre de défilement horizontale.
 
-                Pour réaliser cela, lier l'événement «bouton de la souris enfoncé» à un gestionnaire d'événement qui appelera ``scan_mark(x)``, où x représente la position horizontale courante de la souris. Ensuite, lier l'événement ``'<Motion>'`` (déplacement de la souris) à un gestionnaire qui appelera ``scan_dragto(x)``, où x représente la position horizontale courante de la souris. La méthode ``scan_dragto`` fait défiler le contenu de la boîte de saisie de manière continue et à un rythme proportionnel à la distance (horizontale) entre la position lors de l'appel de ``scan_mark`` et la position courante.
+                Pour réaliser cela, lier l'événement «bouton de la souris enfoncé» à un gestionnaire d'événement qui appelera ``scan_mark(x)``, où x représente la position horizontale courante de la souris. Ensuite, lier l'événement ``'<Motion>'`` (déplacement de la souris) à un gestionnaire qui appelera ``scan_dragto(x)``, où x représente la position horizontale courante de la souris. La méthode ``scan_dragto`` fait défiler le contenu du champ de saisie de manière continue et à un rythme proportionnel à la distance (horizontale) entre la position lors de l'appel de ``scan_mark`` et la position courante.
 
         .. py:method:: select_adjust(index)
 
@@ -169,7 +169,7 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
 
                 Pour régler la sélection depuis l'application. Sélectionne le texte de la position ``start`` jusqu'à, mais sans inclure, la position ``end``. la position ``start`` doit être avant la position ``end``.
 
-                Pour sélectionner tout le texte de la boîte de saisie ``e``, utiliser ``e.select_range(0,'end')``.
+                Pour sélectionner tout le texte du champ de saisie ``e``, utiliser ``e.select_range(0,'end')``.
 
         .. py:method:: select_to(index)
 
@@ -177,22 +177,22 @@ Pour créer une nouvelle boîte (ou champ) de saisie dans une fenêtre principal
 
         .. py:method:: xview(index)
 
-                Fait défiler le texte de telle sorte que le caractère de position ``index`` soit situé au début de la boîte. Cette méthode est très utile dans la liaison entre une boîte de saisie et une barre de défilement. Voir :ref:`Défilement`.
+                Fait défiler le texte de telle sorte que le caractère de position ``index`` soit situé au début du champ de saisie. Cette méthode est très utile dans la liaison entre un champ de saisie et une barre de défilement. Voir :ref:`Defilement`.
 
         .. py:method:: xview_moveto(f)
 
-                Positionne le texte dans la boîte de saisie de telle sorte que le caractère situé à la position relative ``f`` (par rapport à l'intégralité du texte) soit positionné sur le bord gauche de la boîte. L'argument ``f`` doit appartenir à l'intervalle [0;1], où 0 signifie tout à gauche et 1 tout à droite.
+                Positionne le texte dans le champ de saisie de telle sorte que le caractère situé à la position relative ``f`` (par rapport à l'intégralité du texte) soit positionné sur le bord gauche du champ. L'argument ``f`` doit appartenir à l'intervalle [0;1], où 0 signifie tout à gauche et 1 tout à droite.
 
         .. py:method:: xview_scroll(nb, quoi)
 
-                Sert à faire défiler le contenu de la boîte de saisie horizontalement. L'argument ``quoi`` est soit ``'units'``, pour indiquer un défilement caractères par caractères, ``'page'`` pour un défilement par largeur de la boîte de saisie. Si l'argument ``nb`` est positif, le défilement se fait de la gauche vers la droite, s'il est négatif, le défilement se fait de la droite vers la gauche. Par exemple, pour une boîte de saisie ``e``, ``e.xview_scroll(-1,'pages')`` fera bouger le texte d'une «page» vers la droite et ``e.xview_scroll(4, 'units')`` le fait défiler de 4 caractères vers la gauche.
+                Sert à faire défiler le contenu du champ de saisie horizontalement. L'argument ``quoi`` est soit ``'units'``, pour indiquer un défilement caractères par caractères, ``'page'`` pour un défilement par largeur du champ de saisie. Si l'argument ``nb`` est positif, le défilement se fait de la gauche vers la droite, s'il est négatif, le défilement se fait de la droite vers la gauche. Par exemple, pour un champ de saisie ``e``, ``e.xview_scroll(-1,'pages')`` fera bouger le texte d'une «page» vers la droite et ``e.xview_scroll(4, 'units')`` le fait défiler de 4 caractères vers la gauche.
 
-.. _Défilement:
+.. _Defilement:
 
-Défilement du contenu
-=====================
+Défilement du contenu d'un champ de saisie
+==========================================
 
-Pour pouvoir faire défiler le contenu d'une boîte de saisie, il faudra ajouter un peu de code en plus afin d'adapter la fonction de rappel d'une barre de défilement ``Scrollbar`` aux méthodes fournies par la boîte de saisie. Voici quelques fragments de code qui illustrent un tel réglage. Premièrement, la création et la liaison de la barre de défilement et de la boîte de saisie::
+Pour pouvoir faire défiler le contenu d'un champ de saisie, il faudra ajouter un peu de code en plus afin d'adapter la fonction de rappel d'une barre de défilement ``Scrollbar`` aux méthodes fournies par le champ de saisie. Voici quelques fragments de code qui illustrent un tel réglage. Premièrement, la création et la liaison de la barre de défilement et du champ de saisie::
 
     saisi = Entry(root, width=10)
     saisi.grid(row=0, sticky='ew')
@@ -220,31 +220,31 @@ Ensuite, la définition de la fonction de rappel du code précédent::
 Gérer la validation
 ===================
 
-Dans certaines applications, vous souhaiterez vérifier le contenu d'une boîte de saisie pour vous assurez qu'il est valide selon certains critères nécessaires au bon fonctionnement de votre application. Pour préciser ce qui est valide ou non, vous définirez une fonction de rappel qui vérifiera ce contenu et signalera s'il est oui ou non valide.
+Dans certaines applications, vous souhaiterez vérifier le contenu d'un champ de saisie pour vous assurez qu'il est valide selon certains critères nécessaires au bon fonctionnement de votre application. Pour préciser ce qui est valide ou non, vous définirez une fonction de rappel qui vérifiera ce contenu et signalera s'il est oui ou non valide.
 
 Voici la procédure à suivre pour mettre en oeuvre une telle validation.
 
-* Écrire une fonction de rappel qui vérifie le contenu de la boîte de saisie et retourne ``True`` s'il est considéré comme valide, ou ``False`` sinon. Si la fonction de rappel retourne ``False``, les tentatives de l'utilisateur pour modifier le contenu de la boîte de saisie seront refusées et le texte restera inchangé.
+* Écrire une fonction de rappel qui vérifie le contenu du champ de saisie et retourne ``True`` s'il est considéré comme valide, ou ``False`` sinon. Si la fonction de rappel retourne ``False``, les tentatives de l'utilisateur pour modifier le contenu du champ de saisie seront refusées et le texte restera inchangé.
 
 * Enregistrez cette fonction de rappel: cela consiste à produire un «emballage Tcl» autour de votre fonction Python.
 
-  Supposez que votre fonction de rappel soit ``estOk``. Pour pouvoir associer cette fonction à la boîte de saisie, vous devez utilisez la méthode universelle (valable pour tout widget) ``register(estOk)``. Cette méthode crée «l'emballage Tcl» voulu et retourne une chaîne de caractères que tkinter peut utiliser pour appeler votre fonction.
+  Supposez que votre fonction de rappel soit ``estOk``. Pour pouvoir associer cette fonction au champ de saisie, vous devez utilisez la méthode universelle (valable pour tout widget) ``register(estOk)``. Cette méthode crée «l'emballage Tcl» voulu et retourne une chaîne de caractères que tkinter peut utiliser pour appeler votre fonction.
 
-* Lorsque vous appelez le constructeur de la boîte de saisie ``Entry``, utilisez son option **validatecommand** pour préciser votre fonction de validation (par l'intermédiaire de la chaîne retournée par ``register()``), et utilisez son option **validate** pour préciser les circonstances de l'appel de la fonction de validation. Les valeurs de ces options sont discutées avec plus de détails ci-dessous.
+* Lorsque vous appelez le constructeur du champ de saisie ``Entry``, utilisez son option **validatecommand** pour préciser votre fonction de validation (par l'intermédiaire de la chaîne retournée par ``register()``), et utilisez son option **validate** pour préciser les circonstances de l'appel de la fonction de validation. Les valeurs de ces options sont discutées avec plus de détails ci-dessous.
 
 Voici les valeurs admissibles pour l'option **validate** et leur signification.
 
 ``'focus'``
 
-        La validation est déclenchée à chaque fois que la boîte de saisie obtient ou perd le focus (voir “Focus: routing keyboard input”). 
+        La validation est déclenchée à chaque fois que le champ de saisie obtient ou perd le focus (voir :ref:`FOCUS`).
 
 ``'focusin'``
 
-        Elle est déclenchée lorsque la boîte de saisie obtient le focus.
+        Elle est déclenchée lorsque le champ de saisie obtient le focus.
 
 ``'focusout'``
 
-        Elle est déclenchée lorsque la boîte perd le focus.
+        Elle est déclenchée lorsque le champ de saisie perd le focus.
 
 ``'key'``
 
@@ -260,11 +260,11 @@ Voici les valeurs admissibles pour l'option **validate** et leur signification.
 
 La valeur de l'option **validatecommand** dépend des arguments que vous souhaitez voir transmis à la fonction de validation.
 
-* Peut-être que la seule chose dont à besoin votre fonction de validation est le texte qui apparaît actuellement dans la boîte de saisie. Si c'est le cas, elle peut utiliser la méthode ``get()`` de la variable de contrôle qui a servi à configuer l'option **textvariable** de la boîte de saisie. 
+* Peut-être que la seule chose dont à besoin votre fonction de validation est le texte qui apparaît actuellement dans le champ de saisie. Si c'est le cas, elle peut utiliser la méthode ``get()`` de la variable de contrôle qui a servi à configuer l'option **textvariable** du champ de saisie. 
 
   Dans ce cas, il suffit d'indiquer ``validatecommand=f``, où ``f`` est le nom de votre fonction de validation.
 
-* Tkinter peut aussi fournir un certain nombre d'informations à votre fonction de validation. Si vous souhaitez utiliser cela, lors de l'appel du constructeur de la boîte de saisie, utilisez l'option ``validatecommand=(f, s1, s2, ...)``, où ``f`` est le nom «enregistré» de votre fonction de rappel, et chaque élément ``si`` additionnel un **code de substitution**. Pour chaque code de substitution fourni, la fonction de rappel reçoit un argument positionnel qui contient la valeur appropriée.
+* Tkinter peut aussi fournir un certain nombre d'informations à votre fonction de validation. Si vous souhaitez utiliser cela, lors de l'appel du constructeur du champ de saisie, utilisez l'option ``validatecommand=(f, s1, s2, ...)``, où ``f`` est le nom «enregistré» de votre fonction de rappel, et chaque élément ``si`` additionnel un **code de substitution**. Pour chaque code de substitution fourni, la fonction de rappel reçoit un argument positionnel qui contient la valeur appropriée.
 
 Voici les **codes de substitution** possibles.
 
@@ -278,7 +278,7 @@ Voici les **codes de substitution** possibles.
         * - ``'%P'`` 
           - La valeur que le texte aurait si la modification avait lieu.
         * - ``'%s'`` 
-          - Le texte dans la boîte de saisie avant le changement.
+          - Le texte du champ de saisie avant le changement.
         * - ``'%S'`` 
           - Si l'appel est du à une insertion ou une suppression, l'argument sera le texte à insérer ou à supprimer.
         * - ``'%v'`` 
@@ -286,7 +286,7 @@ Voici les **codes de substitution** possibles.
         * - ``'%V'`` 
           - La raison de l'appel, parmi: ``'focusin'``, ``'focusout'``, ``'key'``, ou ``'forced'`` si la variable de contrôle **textvariable** a été modifiée.
         * - ``'%W'`` 
-          - Le nom de la boîte de saisie.
+          - Le nom du champ de saisie.
 
 Voici un petit exemple. Supposez que vous souhaitiez que votre fonction de validation reçoive le ``'%d'`` pour déterminer les circonstances de son appel; ``'%i'`` pour déterminer où l'ajout ou la suppression doit avoir lieu; et ``'%S'`` pour déterminer ce qui doit être inséré ou supprimé. Votre fonction pourrait ressembler à cela::
 
@@ -302,6 +302,6 @@ Pour activer cette fonction de rappel, vous aurez besoin d'utiliser ces deux opt
     saisi = Entry(root, validate='all',
          validatecommand=(okCommand, '%d', '%i', '%S'), ...)
 
-Supposez que la boîte de saisie contienne actuellement la chaîne ``'abcdefg'``, et que l'utilisateur sélectionne ``'cde'`` puis appuie sur la touche Retour Arrière. Il s'ensuivrait l'appel ``estOK(0,2,'cde')``: 0 pour indiquer la suppression, 2 pour la position avant le ``'c'`` et ``'cde'`` pour la chaîne à détruire. Si ``estOK()`` retourne ``True``, le nouveau texte est ``'abfg'``; sinon, le texte est inchangé.
+Supposez que le champ de saisie contienne actuellement la chaîne ``'abcdefg'``, et que l'utilisateur sélectionne ``'cde'`` puis appuie sur la touche Retour Arrière. Il s'ensuivrait l'appel ``estOK(0,2,'cde')``: 0 pour indiquer la suppression, 2 pour la position avant le ``'c'`` et ``'cde'`` pour la chaîne à détruire. Si ``estOK()`` retourne ``True``, le nouveau texte est ``'abfg'``; sinon, le texte est inchangé.
 
-Le widget ``Entry`` possède aussi une option **invalidcommand** qui sert à préciser une fonction de rappel qui est appelée à chaque fois que la fonction de validation retourne False. Cette commande peut modifier le texte de la boîte de saisie en utilisant la méthode ``set()`` de la variable de contrôle qui a servi à configurer l'option ``textvariable``. Le réglage de cette option fonctionne de la même façon que celle de l'option **validatecommand**. Vous devez utiliser la méthode universelle ``register()`` pour envelopper votre fonction; cette méthode retourne le nom de la fonction enveloppée sous la forme d'une chaîne de caractères. Ensuite, passez cette valeur à l'option **invalidcommand** soit directement, soit comme le premier élément d'un tuple qui contient les codes de substitution qui vous intéressent.
+Le widget ``Entry`` possède aussi une option **invalidcommand** qui sert à préciser une fonction de rappel qui est appelée à chaque fois que la fonction de validation retourne False. Cette commande peut modifier le texte du champ de saisie en utilisant la méthode ``set()`` de la variable de contrôle qui a servi à configurer l'option ``textvariable``. Le réglage de cette option fonctionne de la même façon que celle de l'option **validatecommand**. Vous devez utiliser la méthode universelle ``register()`` pour envelopper votre fonction; cette méthode retourne le nom de la fonction enveloppée sous la forme d'une chaîne de caractères. Ensuite, passez cette valeur à l'option **invalidcommand** soit directement, soit comme le premier élément d'un tuple qui contient les codes de substitution qui vous intéressent.

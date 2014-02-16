@@ -12,9 +12,9 @@ Il est facile d'appliquer des couleurs, des polices de caractères et tout un ta
 
 En conséquence, Tkinter utilise l'idée de base de données des options pour régler les valeurs d'options qui seront utilisées par défaut.
 
-* Votre application peut utiliser un fichier (comme le fichier standard .Xdefaults utilisé par le système X Window) qui contient les préférences de l'utilisateur. Vous pouvez configurer votre application pour qu'elle lise ce fichier et qu'elle indique à Tkinter d'utiliser ces valeurs par défaut. Voir la section ci-dessous pour le format d'un tel fichier et aussi la méthode option_readfile() dans  “Universal widget methods”.
+* Votre application peut utiliser un fichier (comme le fichier standard .Xdefaults utilisé par le système X Window) qui contient les préférences de l'utilisateur. Vous pouvez configurer votre application pour qu'elle lise ce fichier et qu'elle indique à Tkinter d'utiliser ces valeurs par défaut. Voir la section ci-dessous pour le format d'un tel fichier et aussi la méthode :py:meth:`option_readfile` dans  :ref:`UNIVERSAL`.
 
-* Votre application peut aussi préciser de nombreuses valeurs d'options pour un ou plusieurs types de widgets en utilisant la méthode option_add(); voir “Universal widget methods”. 
+* Votre application peut aussi préciser de nombreuses valeurs d'options pour un ou plusieurs types de widgets en utilisant la méthode :py:meth:`option_add`; voir :ref:`UNIVERSAL`.
 
 Avant d'expliquer la manière de configurer ces options, réfléchissons au problème de la personnalisation des interfaces graphiques en général. Nous pourrions donner à chaque widget de l'application un nom et demander à l'utilisateur de préciser les options pour chaque widget nommé. Mais cela serait très fastidieux et rendrait difficile la tâche de reconfiguration de l'application dans le cas où le concepteur ajouterait de nouveaux widgets: l'utilisateur devrait alors configurer complètement chaque nouveau composant.
 
@@ -22,15 +22,17 @@ Pour ces raisons, la base de données des options permet au programmeur et à l'
 
 Ces schémas opèrent sur les noms des widgets, mais les widgets sont nommés en utilisant deux schémas de nommage parallèles:
 
-a) Chaque widget possède un nom de classe. Par défaut, ce nom de classe est le même que celui du constructeur: ``'Button'`` pour les boutons, ``'Frame'`` pour les cadres et ainsi de suite. Cependant, vous pouvez créer de nouvelles classes de widgets, ordinairement en héritant de la classe générale ``'Frame'`` et en donnant un nom à votre classe dérivée. Voir “How to name a widget class” pour des détails supplémentaires.
+a) Chaque widget possède un nom de classe. Par défaut, ce nom de classe est le même que celui du constructeur: ``'Button'`` pour les boutons, ``'Frame'`` pour les cadres et ainsi de suite. Cependant, vous pouvez créer de nouvelles classes de widgets, ordinairement en héritant de la classe générale ``'Frame'`` et en donnant un nom à votre classe dérivée. Voir :ref:`nomclass` pour des détails supplémentaires.
 
-b) Vous pouvez aussi donner à chaque widget un nom d'instance. Par défaut, le nom d'un widget est un nombre sans signification particulière (voir “Window names”). Cependant, comme pour les classes de widget, vous pouvez donner un nom à n'importe quel widget. Voir “How to name a widget instance” pour plus de détails.
+b) Vous pouvez aussi donner à chaque widget un nom d'instance. Par défaut, le nom d'un widget est un nombre sans signification particulière (voir :ref:`nomfen`). Cependant, comme pour les classes de widget, vous pouvez donner un nom à n'importe quel widget. Voir :ref:`nominstance` pour plus de détails.
 
-Ainsi, chaque widget de chaque application possède deux hiérarchies de noms: la hiérarchie des noms de classes et la hiérarchie des nom d'instances. Par exemple, un bouton qui fait partie d'un widget ``Text`` lui-même inclus dans un widget ``Frame`` (un cadre) aura comme nom hiérachique de classe ``Frame.Text.Button``. Il peut aussi avoir un nom hiérachique d'instance, quelquechose comme ``.mainFrame.messageText.panicButton`` si vous avez choisis ces noms pour chaque instance. Le point initial d'un tel nom se rapporte à la fenêtre principale (racine); voir “Window names” pour plus d'informations sur les chemins de nommage des fenêtres. 
+Ainsi, chaque widget de chaque application possède deux hiérarchies de noms: la hiérarchie des noms de classes et la hiérarchie des nom d'instances. Par exemple, un bouton qui fait partie d'un widget ``Text`` lui-même inclus dans un widget ``Frame`` (un cadre) aura comme nom hiérachique de classe ``Frame.Text.Button``. Il peut aussi avoir un nom hiérachique d'instance, quelquechose comme ``.mainFrame.messageText.panicButton`` si vous avez choisis ces noms pour chaque instance. Le point initial d'un tel nom se rapporte à la fenêtre principale (racine); voir :ref:`nomfen` pour plus d'informations sur les chemins de nommage des fenêtres. 
 
 Le mécanisme de la base de données des options peut se servir de ces deux systèmes de nommage (celui des classes ou celui des instances) pour définir les options. Vous pouvez ainsi appliquer un jeu d'options à une classe entière de widgets (par exemple, tous les boutons auront une couleur d'arrière plan bleu) ou à des instances spécifiques (par exemple, le bouton «panique» aura un texte en rouge). 
 
 Nous commencerons par décrire les moyens de donner un nom aux classes puis aux instances. Ensuite, nous décrirons le fonctionnement de la base de données des options dans “Resource specification lines”.
+
+.. _nomclass:
 
 Donner un nom à une classe de widget
 ====================================
@@ -48,6 +50,8 @@ Vous configurez le nom de cette nouvelle classe de widget en l'indiquant à l'op
             # qui composent le Jukebox
             self._creerWidgets()
             ...
+
+.. _nominstance:
 
 Donner un nom d'instance à un widget particulier
 ================================================
@@ -102,6 +106,8 @@ L'astérisk * situé entre ``Jukebox`` et l'option **background** indique que la
 Cette règle ne s'appliquera qu'au cadre (``Frame``) dont dérive directement le widget ``Jukebox``. Le point qui sépare ``Jukebox`` et **background** précise que la règle ne s'applique pas aux enfants du jukebox.
 
 Dans la section suivante, nous parlerons de la manière précise avec laquelle Tkinter détermine quelle valeur d'option utiliser lorsqu'il rencontre plusieurs lignes de spécifications qui pourraient être appliquées.
+
+.. _priobdd:
 
 Priorités des règles de spécifications
 ======================================

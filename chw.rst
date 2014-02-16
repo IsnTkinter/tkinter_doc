@@ -10,9 +10,9 @@ Les cases à cocher (parfois appelé «checkbox») permettent à l'utilisateur d
 
 L'indicateur est la partie de la case à cocher qui indique son état, et l'étiquette est le texte qui apparaît à côté.
 
-* Vous aurez besoin de créer une variable de contrôle de classe ``IntVar`` afin que votre programme puisse interroger et/ou définir l'état de la case à cocher. Voir la section 52, «Les variables de contrôle: les valeurs derrière les widgets".
+* Vous aurez besoin de créer une variable de contrôle de classe ``IntVar`` afin que votre programme puisse interroger et/ou définir l'état de la case à cocher. Voir :ref:`CTRLVARIABLES`.
 
-* Vous pouvez également utiliser des liaisons d'événements pour réagir aux actions de l'utilisateur sur la case à cocher, voir la section 54, «Événements».
+* Vous pouvez également utiliser des liaisons d'événements pour réagir aux actions de l'utilisateur sur la case à cocher, voir :ref:`EVENTS`. 
 
 * Vous pouvez désactiver une case à cocher. Cela modifie son apparence (qui est alors "grisé") et la rend insensible à la souris.
 
@@ -25,13 +25,13 @@ Pour créer une case à cocher dans une fenêtre ou un cadre nommé ``parent``:
         Le constructeur renvoie un nouveau widget Checkbutton. Les options incluent:
 
         :arg activebackground: 
-                La couleur de fond lorsque la case à cocher est sous le curseur. Voir la section 5.3, "Les couleurs".
+                La couleur de fond lorsque la case à cocher est sous le curseur. Voir :ref:`couleurs`.
         :arg activeforeground: 
                 La couleur du premier plan lorsque la case à cocher est sous le curseur.
         :arg anchor:
-                Si le widget se situe dans un espace plus grand que nécessaire, cette option spécifie où la case à cocher va se placer dans cet espace. La valeur par défaut est ``anchor='center'``. Voir la section 5.5, "Le système d'ancrage" pour les valeurs permises. Par exemple, si vous utilisez anchor=NW, le widget sera placé dans le coin supérieur gauche de l'espace.
-        :arg bg: or background
-                La couleur de fond normale s'affiche derrière l'étiquette et indicateur. Voir la section 5.3, "Les couleurs". Pour l'option bitmap, ceci spécifie la couleur affichée pour le bit 0 dans le bitmap.
+                Si le widget se situe dans un espace plus grand que nécessaire, cette option spécifie où la case à cocher va se placer dans cet espace. La valeur par défaut est ``anchor='center'``. Voir :ref:`ancrage` pour les valeurs permises. Par exemple, si vous utilisez ``anchor='nw'``, le widget sera placé dans le coin supérieur gauche de l'espace.
+        :arg bg: 
+                (ou ** background**) La couleur de fond normale s'affiche derrière l'étiquette et indicateur. Voir :ref:`couleurs`. Pour l'option **bitmap**, ceci spécifie la couleur affichée pour le bit 0 dans le bitmap.
         :arg bitmap:
                 Pour afficher une image monochrome sur un bouton, affectez un bitmap à cette option; voir :ref:`bitmaps`.
         :arg bd: or borderwidth
@@ -46,25 +46,25 @@ Pour créer une case à cocher dans une fenêtre ou un cadre nommé ``parent``:
         :arg disabledforeground:
                 La couleur de premier plan utilisée pour afficher le texte d'une case à cocher désactivée. La valeur par défaut est une version pointillée de la couleur de premier plan par défaut.
         :arg font:
-                La police utilisée pour le texte. Voir la section 5.4, "Les polices de caractères".
+                La police utilisée pour le texte. Voir :ref:`polices`. 
         :arg fg: or foreground
                 La couleur utilisée pour afficher le texte. Pour l'option bitmap, ceci spécifie la couleur affichée pour le bit 1 dans le bitmap.
         :arg height:
                 Le nombre de lignes de texte sur la case à cocher. La valeur par défaut est 1.
         :arg highlightbackground:
-                Couleur de la ligne de mise en valeur du focus quand le widget l'a perdu. Voir “Focus: routing keyboard input”.
+                Couleur de la ligne de mise en valeur du focus quand le widget l'a perdu. Voir :ref:`FOCUS`.
         :arg highlightcolor:
                 Couleur de la ligne de mise en valeur du focus quand le widget l'a obtenu.
         :arg highlightthickness:
                 Épaisseur de la ligne de mise en valeur du focus.
         :arg image:
-                Pour afficher une image graphique sur le bouton, affectez une image à cette option. Voir la section 5.9, "Les images".
+                Pour afficher une image graphique sur le bouton, affectez une image à cette option. Voir :ref:`images`.
         :arg indicatoron:
                 Normalement, l'indicateur de la case à cocher indique si la case à cocher est activée ou pas. Vous pouvez obtenir ce comportement en définissant ``indicatoron=1``. Toutefois, si vous définissez ``indicatoron=0``, l'indicateur disparaît et le widget entier devient un bouton push-push qui paraît enfoncé quand il est activé, et soulevé quand il est désactivé. Vous pouvez augmenter la valeur **borderwidth** pour rendre plus facile la lecture de l'état d'un tel contrôle.
         :arg justify:
                 Si le texte contient plusieurs lignes, cette option contrôle la manière dont le texte est justifié: ``'center'``, ``'left'``, ou ``'right'``.
         :arg offrelief: 
-                Par défaut, les cases à cocher utilisent le style de relief ``'raised'`` lorsque le bouton est désactivé (autorisé); utiliser cette option pour spécifier un style différent de relief à afficher lorsque le bouton est éteint. Voir "Les styles de relief" pour les valeurs.
+                Par défaut, les cases à cocher utilisent le style de relief ``'raised'`` lorsque le bouton est désactivé (autorisé); utiliser cette option pour spécifier un style différent de relief à afficher lorsque le bouton est éteint. Voir :ref:`reliefs` pour les valeurs.
         :arg offvalue:
                 Normalement, la variable de contrôle associée à une case à cocher sera mise à 0 quand cette case est désactivée (OFF). Vous pouvez fournir une autre valeur pour cette état OFF en affectant cette valeur à offvalue.
         :arg onvalue:
@@ -80,19 +80,19 @@ Pour créer une case à cocher dans une fenêtre ou un cadre nommé ``parent``:
         :arg selectcolor:
                 La couleur utilisée pour indiquer que la case à cocher est activée. Sa valeur par défaut est ``selectcolor='red'``.
         :arg selectimage:
-                Si vous indiquez une image, elle apparaîtra lorsque la case est cochée. Voir “Images”.
+                Si vous indiquez une image, elle apparaîtra lorsque la case est cochée. Voir :ref:`images`.
         :arg state:
                 La valeur par défaut est ``state='normal'``, mais vous pouvez utiliser ``state='disabled'`` pour griser le composant et le rendre inactif. Si la souris se trouve sur la case à cocher, son état est ``'active'``.
         :arg takefocus:
-                Par défaut, une case à cocher est visitée par le focus (voir “Focus: routing keyboard input”). Si vous mettez cette option à 0, la case n'est plus visitée par le focus.
+                Par défaut, une case à cocher est visitée par le focus (voir :ref:`FOCUS`). Si vous mettez cette option à 0, la case n'est plus visitée par le focus.
         :arg text:
                 L'étiquette affichée après la case à cocher. Utiliser le caractère retour chariot ``'\n'`` pour afficher plusieurs lignes de texte.
         :arg textvariable:
-                Si vous avez besoin de modifier l'étiquette de la case à cocher pendant l'exécution du programme, créez une variable de contrôle ``StringVar`` (voir “Control variables: the values behind the widgets”) pour gérer sa valeur courante, et affectez cette variable de contrôle à l'option. À chaque fois que le texte de cette variable est modifié, l'étiquette du bouton est mise à jour.
+                Si vous avez besoin de modifier l'étiquette de la case à cocher pendant l'exécution du programme, créez une variable de contrôle ``StringVar`` (voir :ref:`CTRLVARIABLES`) pour gérer sa valeur courante, et affectez cette variable de contrôle à l'option. À chaque fois que le texte de cette variable est modifié, l'étiquette du bouton est mise à jour.
         :arg underline:
                 Aver la valeur par défaut, -1, aucun caractère de l'étiquette n'est souligné. Indiquez la position d'un caractère de l'étiquette pour le souligner.
         :arg variable:
-                La variable de contrôle qui suit l'état de la case à cocher. Voir “Control variables: the values behind the widgets”. Normalement cette variable est un ``IntVar``, et 0 indique que la case est désactivée, 1 qu'elle est activée, mais voir les options **offvalue** et **onvalue** ci-dessus.
+                La variable de contrôle qui suit l'état de la case à cocher. Voir :ref:`CTRLVARIABLES`. Normalement cette variable est un ``IntVar``, et 0 indique que la case est désactivée, 1 qu'elle est activée, mais voir les options **offvalue** et **onvalue** ci-dessus.
         :arg width:
                 La largeur par défaut d'une case à cocher est déterminée par la taille du texte ou de l'image affichée. Vous pouvez régler cette option avec un nombre de caractères afin de réserver la place nécessaire à leur affichage.
         :arg wraplength:

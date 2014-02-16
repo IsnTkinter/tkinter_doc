@@ -10,7 +10,7 @@ Le widget ``Spinbox`` sert à donner un moyen à l'utilisateur de sélectionner 
 
 * L'utilisateur peut cliquer sur les flèches de manière à passer d'une valeur à une autre. Si la valeur courante est à une extrémité de l'ensemble, vous pouvez configurer le widget de façon à ce que l'appui sur une flèche adéquate positionne la valeur située à l'autre extrémité.
 
-* L'utilisateur peut aussi saisir une valeur directement dans la zone de visualisation de la valeur courante si le widget a le focus qu'il peut obtenir par clic sur la zone de visualisation/saisie. Voir “Focus: routing keyboard input”.
+* L'utilisateur peut aussi saisir une valeur directement dans la zone de visualisation de la valeur courante si le widget a le focus qu'il peut obtenir par clic sur la zone de visualisation/saisie. Voir :ref:`FOCUS`.
 
 Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``parent``:
 
@@ -19,19 +19,19 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         Ce constructeur retourne le nouveau widget Spinbox créé. Ses options incluent:
 
         :arg activebackground: 
-                Couleur d'arrière plan utilisée lorsque la souris est au dessus du widget; voir “Colors”.
+                Couleur d'arrière plan utilisée lorsque la souris est au dessus du widget; voir :ref:`couleurs`.
         :arg bg:
                 (ou **background**) Couleur d'arrière plan du widget.
         :arg bd:
-                (ou **borderwidth**) Épaisseur de la bordure qui entoure le widget; voir “Dimensions”. 1 pixel par défaut.
+                (ou **borderwidth**) Épaisseur de la bordure qui entoure le widget; voir :ref:`dimensions`. 1 pixel par défaut.
         :arg buttonbackground: 
                 La couleur d'arrière plan utilisée pour les flèches. ``'gray'`` par défaut.
         :arg buttoncursor: 
-                Le pointeur de souris à utiliser lorsque la souris est au dessus d'une flèche; voir “Cursors”.
+                Le pointeur de souris à utiliser lorsque la souris est au dessus d'une flèche; voir :ref:`pointeurs`.
         :arg buttondownrelief: 
-                Le style de relief utilisé pour l'effet d'enfoncement des flèches; voir “Relief styles”. ``'raised'`` par défaut.
+                Le style de relief utilisé pour l'effet d'enfoncement des flèches; voir :ref:`reliefs`. ``'raised'`` par défaut.
         :arg buttonup: 
-                Le style de relief utilisé pour l'effet de relâchement des flèches. 'raised' par défaut.
+                Le style de relief utilisé pour l'effet de relâchement des flèches. ``'raised'`` par défaut.
         :arg command: 
                 Utilisez cette option pour préciser une fonction de rappel ou une méthode qui sera appelée lorsque l'utilisateur clique sur l'une des flèches. Notez que cette fonction n'est pas appelée lorsque l'utilisateur saisie la valeur directement.
         :arg cursor: 
@@ -42,7 +42,7 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         :arg exportselection: 
                 Normalement, le texte de la zone de saisie d'un ``Spinbox`` peut être coupé ou collé. Pour désactiver ce comportement, utilisez ``exportselection=True``.
         :arg font: 
-                Fonte de caractères à utiliser dans la zone de saisie. Voir “Type fonts”.
+                Fonte de caractères à utiliser dans la zone de saisie. Voir :ref:`polices`.
         :arg fg:
                 (ou **foreground**) Couleur du texte qui apparaît dans la zone de saisie du widget, et la couleur des flèches.
         :arg format: 
@@ -50,7 +50,7 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         :arg from\_: 
                 Utilisez cette option avec l'option **to** (décrite plus loin) pour contraindre les valeurs dans un intervalle numérique. Par exemple, ``from_=1`` et ``to=9`` n'autorisera que des valeurs de l'intervalle [1,9]. Voir aussi l'option **increment** ci-dessous.
         :arg highlightbackground: 
-                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
@@ -71,7 +71,7 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         :arg readonlybackground: 
                 Couleur de fond du widget lorsqu'il est dans l'état ``'readonly'``.
         :arg relief: 
-                Style de relief pour le widget. ``'sunken'`` par défaut; voir “Relief styles”.
+                Style de relief pour le widget. ``'sunken'`` par défaut; voir :ref:`reliefs`.
         :arg repeatdelay: 
                 Cette option et la suivante servent à configurer la fonction de répétition automatique qui est déclenchée lorsque l'utilisateur clique sans relâcher sur l'une des flèches. Cette fonction démarre après **repeatdelay** millisecondes et **repeatinterval** est la durée en millisecondes entre deux répétitions. Les valeurs par défaut sont respectivement 400 et 100 millisecondes.
         :arg repeatinterval:
@@ -84,9 +84,9 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         :arg state: 
                 État du widget. Les valeurs possibles sont ``'normal'`` (défaut), ``'disabled'`` (le widget n'est plus réactif), ``'active'`` (il est sélectionné) et ``'readonly'``. Dans ce dernier cas, il n'est plus possible d'éditer la valeur directement mais celle-ci peut tout de même être modifiée à l'aide des flèches.
         :arg takefocus: 
-                Ce widget est susceptible d'obtenir le focus par défaut (voir “Focus: routing keyboard input”). Pour supprimer le widget de la séquence de traversée du focus, utilisez ``takefocus=False``.
+                Ce widget est susceptible d'obtenir le focus par défaut (voir :ref:`FOCUS`). Pour supprimer le widget de la séquence de traversée du focus, utilisez ``takefocus=False``.
         :arg textvariable:
-                Pour récupérer la valeur actuelle du widget, vous pouvez utiliser sa méthode ``get()`` décrite plus loin, ou vous pouvez configurer cette option avec une variable de contrôle. Voir “Control variables: the values behind the widgets”.
+                Pour récupérer la valeur actuelle du widget, vous pouvez utiliser sa méthode ``get()`` décrite plus loin, ou vous pouvez configurer cette option avec une variable de contrôle. Voir :ref:`CTRLVARIABLES`.
         :arg to: 
                 Sert à préciser la limite supérieure de l'intervalle de valeurs pour la sélection. Voir l'option **from_**, ci-dessus, et aussi l'option **increment**.
         :arg values: 
@@ -96,7 +96,7 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
         :arg wrap: 
                 Par défaut, lorsque le widget est à une des valeurs limites parmi celles qui ont été configurées, l'appui sur la flèche qui devrait faire sortir de l'intervalle de ces valeurs n'a aucun effet. Si vous utilisez ``wrap=True``, cet appui permet de passer à l'autre extrémité de l'intervalle ce qui permet le parcourt «circulaire» des valeurs.
         :arg xscrollcommand: 
-                Utilisez cette option pour associer une barre de défilement à la zone de saisie de ce widget. Pour les détails, voir “Connecting a Scrollbar to another widget”.
+                Utilisez cette option pour associer une barre de défilement à la zone de saisie de ce widget. Pour les détails, voir :ref:`assodefil`.
 
         Les méthodes qui suivent sont disponibles pour un widget ``Spinbox``:
 
@@ -154,15 +154,15 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
 
         .. py:method:: scan_dragto(x)
 
-                    Cette méthode fonctionne de la même façon que la méthode scan_dragto() du widget ``Entry``.
+                    Cette méthode fonctionne de la même façon que la méthode :py:meth:`~Entry.scan_dragto` du widget ``Entry``.
 
         .. py:method:: scan_mark(x)
 
-                    Cette méthode fonctionne de la même façon que la méthode scan_mark() du widget ``Entry``.
+                    Cette méthode fonctionne de la même façon que la méthode :py:meth:`~Entry.scan_mark` du widget ``Entry``.
 
         .. py:method:: selection('from', index)
 
-                    Positionne l'ancre de sélection de ce widget à la position *index*. Pour des valeurs possible de *index*, voir la méthode index() décrite plus haut. La valeur initiale de l'ancre de sélection est 0.
+                    Positionne l'ancre de sélection de ce widget à la position *index*. Pour des valeurs possible de *index*, voir la méthode ``index()`` décrite plus haut. La valeur initiale de l'ancre de sélection est 0.
 
         .. py:method:: selection('to', index)
 
@@ -170,7 +170,7 @@ Pour créer un tel widget comme enfant d'une fenêtre ou d'un cadre nommé ``par
 
         .. py:method:: selection('range', debut, fin)
 
-                    Sélectionne le texte situé entre les index *debut* et *fin*. Pour les valeurs possibles d'*index*, voir la méthode index() ci-dessus.
+                    Sélectionne le texte situé entre les index *debut* et *fin*. Pour les valeurs possibles d'*index*, voir la méthode ``index()`` ci-dessus.
 
         .. py:method:: selection_clear()
 

@@ -228,7 +228,7 @@ Voici une version où le bouton remplit toujours tout l'espace disponible:
     qb = Button(root, text='Quitter', command=root.quit)
     
     # Placement du bouton dans «root»
-    qb.grid(row=0, column=0, sticky=N+S+E+W)
+    qb.grid(row=0, column=0, sticky="nsew")
     
     # Lancement de la «boucle principale»
     root.mainloop()

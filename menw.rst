@@ -14,7 +14,7 @@ Pour faire une sélection, l'utilisateur peut faire un cliquer-glisser du bouton
 
 La version de Tkinter pour Unix (au moins) supporte les menus «amovibles». Si cette fonctionnalité est activée, une ligne en pointillé apparaît au-dessus des choix du menu. L'utilisateur peut cliquer sur cette ligne pour détacher le menu afin qu'il puisse être déplacé librement: une nouvelle fenêtre indépendante qui contient tous les choix du menu apparaît.
 
-Reportez vous à “Les boutons de menu”, ci-dessous, pour voir comment créer un bouton de menu et connecter celui-ci à un menu. Mais attardons-nous avant sur le widget ``Menu`` qui sert à afficher la liste des choix possibles.
+Reportez vous à :ref:`MENUBUTTON`, pour voir comment créer un bouton de menu et connecter celui-ci à un menu. Mais attardons-nous avant sur le widget ``Menu`` qui sert à afficher la liste des choix possibles.
 
 Les choix affichés sur un menu peuvent être:
 
@@ -22,38 +22,38 @@ Les choix affichés sur un menu peuvent être:
 
 * Une « **cascade** »: une chaîne de caractères ou une image que l'utilisateur peut sélectionner pour faire apparaître un sous menu.
 
-* Un **choix à cocher** «checkbutton» (voir “Les cases à cocher”).
+* Un **choix à cocher** «checkbutton» (voir :ref:`COCHER`).
 
-* Un groupe de **boutons radio** «radiobutton» (voir “Les boutons radio”). 
+* Un groupe de **boutons radio** «radiobutton» (voir :ref:`RADIOBUTTON`).
 
-Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de menu ``Menubutton`` que nous écrirons ``mb`` (à moins que vous ne souhaitiez créer une barre de menu, voir ...):
+Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de menu ``Menubutton`` que nous écrirons ``mb`` (à moins que vous ne souhaitiez créer une barre de menu, voir :ref:`menubar`):
 
 .. py:class:: Menu(mb, option, ...)
 
         Ce constructeur retourne le nouveau widget Menu. Ses options incluent:
 
         :arg activebackground:
-                Couleur de fond utilisée pour le choix qui est survolé par la souris. Voir “Les couleurs”.
+                Couleur de fond utilisée pour le choix qui est survolé par la souris. Voir :ref:`couleurs`.
         :arg activeborderwidth:
-                Précise l'épaisseur de la bordure qui entoure le choix actuellement survolé par la souris. 1 pixel pas défaut. Voir “Dimensions”.
+                Précise l'épaisseur de la bordure qui entoure le choix actuellement survolé par la souris. 1 pixel pas défaut. Voir :ref:`dimensions`.
         :arg activeforeground:
                 Couleur d'avant plan qui est utilisée pour le choix qui est survolé par la souris.
         :arg bg: 
                  (ou **background**) La couleur de fond utilisée pour les choix qui ne sont pas survolés par la souris.
         :arg bd:
-               (ou **borderwidth**) L'épaisseur de la bordure qui entoure chaque item de choix. Voir “Dimensions”. 1 pixels par défaut.
+               (ou **borderwidth**) L'épaisseur de la bordure qui entoure chaque item de choix. Voir :ref:`dimensions`. 1 pixels par défaut.
         :arg cursor:
-                Le pointeur de souris utilisé lorsque la souris survole les choix du menu, mais seulement lorsque le menu a été «détaché». Voir “Le pointeur de la souris”.
+                Le pointeur de souris utilisé lorsque la souris survole les choix du menu, mais seulement lorsque le menu a été «détaché». Voir :ref:`pointeurs`.
         :arg disabledforeground: 
                 La couleur du texte pour les items de choix ayant l'état 'disabled'.
         :arg font:
-                La police de caractères utilisée pour afficher les textes des choix. Voir “Type fonts”.
+                La police de caractères utilisée pour afficher les textes des choix. Voir :ref:`polices`.
         :arg fg: 
                  (ou **foreground**) La couleur d'avant plan utilisée pour colorer les choix qui ne sont survolés par la souris.
         :arg postcommand:
                 Vous pouvez configurer cette option avec une fonction, et cette fonction sera appelée (sans argument) à chaque fois que qu'un utilisateur fera apparaître ce menu.
         :arg relief:
-                La valeur par défaut de l'effet de relief pour les menus est ``relief='raised'``. Pour d'autres valeurs, voir “Relief styles”.
+                La valeur par défaut de l'effet de relief pour les menus est ``relief='raised'``. Pour d'autres valeurs, voir :ref:`reliefs`.
         :arg selectcolor:
                 Sert à préciser la couleur affichée pour les choix à cocher ou les boutons radio lorsqu'il sont activés.
         :arg tearoff:
@@ -63,7 +63,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
         :arg title:
                 Normalement, le titre de la fenêtre qui contient le menu détaché est le texte du bouton de menu ou le titre de la cascade qui mène à ce menu. Si vous souhaitez changer le titre de cette fenêtre, régler cette option avec la chaîne de caractères correspondante.
 
-        Les méthodes qui suivent sont communes à tous les widget ``Menu``. Celles qui servent à créer des items de choix ont leur propre jeu d'options; voir “Menu item creation (coption) options”.
+        Les méthodes qui suivent sont communes à tous les widget ``Menu``. Celles qui servent à créer des items de choix ont leur propre jeu d'options; voir :ref:`optmen`.
 
          .. hlist::
                 :columns: 4
@@ -98,7 +98,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
 
         .. py:method:: add_checkbutton(coption, ...)
 
-                 Ajoute un choix à cocher à la liste des élements de choix déjà présents dans ce menu. Les options vous permettront de régler cet item à peu près de la même façon qu'on configure une case à cocher ``Checkbutton``. Voir “Menu item creation (coption) options”. 
+                 Ajoute un choix à cocher à la liste des élements de choix déjà présents dans ce menu. Les options vous permettront de régler cet item à peu près de la même façon qu'on configure une case à cocher ``Checkbutton``. Voir “:ref:`optmen`.
 
         .. py:method:: add_command(coption, ...)
 
@@ -106,7 +106,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
 
         .. py:method:: add_radiobutton(coption, ...)
 
-                 Ajoute un bouton radio aux choix existants. Les options vous permettent de configurer un tel bouton à peu près de la même façon qu'un widget ``Radiobutton``; voir “The Radiobutton widget”. 
+                 Ajoute un bouton radio aux choix existants. Les options vous permettent de configurer un tel bouton à peu près de la même façon qu'un widget ``Radiobutton``; voir :ref:`RADIOBUTTON`.
 
         .. py:method:: add_separator()
 
@@ -126,7 +126,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
 
         .. py:method:: index(i)
 
-                 Retourne la position du choix indiqué via l'index ``i``. Par exemple, vous pouvez utilisez  ``index(tk.END)`` pour savoir quel est le numéro d'index du dernier choix. Retourne ``None`` si aucun choix n'est trouvé.
+                 Retourne la position du choix indiqué via l'index ``i``. Par exemple, vous pouvez utilisez  ``index('end')`` pour savoir quel est le numéro d'index du dernier choix. Retourne ``None`` si aucun choix n'est trouvé.
 
         .. py:method:: insert_cascade(index, coption, ...)
 
@@ -164,6 +164,8 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
 
                  Retourne le décalage vertical en pixel (relatif au haut du menu) de l'élément de choix numéro ``n``. La raison d'être de cette méthode est de vous permettre de calculer précisément la position où placer un menu surgissant (popup) par rapport à la position courante de la souris.
 
+.. _optmen:
+                
 Options des items de choix d'un menu (coption)
 ==============================================
 
@@ -180,7 +182,7 @@ Les options des élements de choix (coption) sont:
 **background**
         La couleur d'arrière plan utilisée lorsque la souris ne survole pas le choix. Notez qu'on ne peut pas utiliser l'abbréviation bg.
 **bitmap**
-        Affiche un bitmap pour figurer le choix; voir “Bitmaps”.
+        Affiche un bitmap pour figurer le choix; voir :ref:`bitmaps`.
 **columnbreak**
         Normalement tous les choix sont disposés les uns en dessous des autres (dans une longue colonne). Si ``columnbreak=1``, ce choix sera disposé à la droite de celui qui le précède (démarrant ainsi une nouvelle colonne).
 **command**
@@ -188,23 +190,23 @@ Les options des élements de choix (coption) sont:
 **compound** 
         Si vous souhaitez afficher à la fois du texte et un graphique (soit un bitmap soi une image) sur un choix de menu, utilisez cette option pour préciser la position du graphique relativement au texte. Les valeurs possibles sont ``'left'``, ``'right'``, ``'top'``, ``'bottom'``, ``'center'`` ou ``'none'``. Par exemple, si ``compound='top'``, le graphique est placé au-dessus du texte.
 **font**
-        La police de caractères utilisée pour l'étiquette. Voir “Type fonts”
+        La police de caractères utilisée pour l'étiquette. Voir :ref:`polices`.
 **foreground**
         La couleur d'avant plan du choix lorsque la souris ne le survole pas. Notez qu'il n'est pas possible d'utiliser l'abbréviation fg.
 **hidemargin** 
         Par défaut, une petite marge sépare deux choix adjacents dans le menu. Utilisez ``hidemargin=True`` pour supprimer cette marge. Par exemple, si vos choix sont les couleurs d'une palette, cette option permet de réaliser une transition continue entre les couleurs.
 **image**
-        Affiche une image pour ce choix; voir “Images”.
+        Affiche une image pour ce choix; voir :ref:`images`.
 **label**
         La chaîne de caractères qui contient le texte à afficher pour ce choix.
 **menu**
         Cette option est disponible uniquement pour les choix de type cascade. Configurez là avec un widget ``Menu`` qui sera chargé de contenir le sous menu.
 **offvalue**
-        Normalement, la variable de contrôle pour un choix à cocher est 0 si ce choix est désactivé. Vous pouvez modifier la valeur associée à l'état désactivé en en utilisant cette option. Voir “Control variables: the values behind the widgets”.
+        Normalement, la variable de contrôle pour un choix à cocher est 0 si ce choix est désactivé. Vous pouvez modifier la valeur associée à l'état désactivé en en utilisant cette option. Voir :ref:`CTRLVARIABLES`.
 **onvalue**
         Normalement, la variable de contrôle pour un choix à cocher est 1 si ce choix est activé. Vous pouvez modifer la valeur associée à l'état activé en utilisant cette option.
 **selectcolor**
-        Normalement, la couleur utilisée pour un ensemble de choix à cocher ou de boutons radio est rouge. Modifiez cette couleur en configurant cette option avec la couleur voulue; voir “Colors”.
+        Normalement, la couleur utilisée pour un ensemble de choix à cocher ou de boutons radio est rouge. Modifiez cette couleur en configurant cette option avec la couleur voulue; voir :ref:`couleurs`.
 **selectimage** 
         Si vous utilisez l'option image pour afficher un graphique à la place du texte d'un choix à cocher ou d'un bouton radio, en utilisant ``selectimage=I``, l'image ``I`` sera affichée lorsque l'élément est sélectionné.
 **state**
@@ -212,9 +214,11 @@ Les options des élements de choix (coption) sont:
 **underline**
         Par défaut, aucun caractère de l'étiquette n'est souligné. Configurez cette option avec l'index du caractère que vous souhaitez souligner.
 **value**
-        Sert à préciser la valeur de la variable de contrôle associée à ce choix (voir “Control variables: the values behind the widgets”) pour un bouton radio. Vous pouvez utiliser un entier si la variable de contrôle est une ``IntVar``, ou une chaîne de caractères si c'est une ``StringVar``.
+        Sert à préciser la valeur de la variable de contrôle associée à ce choix (voir :ref:`CTRLVARIABLES`) pour un bouton radio. Vous pouvez utiliser un entier si la variable de contrôle est une ``IntVar``, ou une chaîne de caractères si c'est une ``StringVar``.
 **variable**
-        Pour les choix à cocher ou les choix de type bouton radio, cette option devrait être configurée en utilisant une variable de contrôle (partagée par un ensemble de boutons radio). Voir “Control variables: the values behind the widgets”. 
+        Pour les choix à cocher ou les choix de type bouton radio, cette option devrait être configurée en utilisant une variable de contrôle (partagée par un ensemble de boutons radio). Voir :ref:`CTRLVARIABLES`.
+
+.. _menubar:
 
 Barre de menus
 ==============

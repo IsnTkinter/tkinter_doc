@@ -31,13 +31,13 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         :arg height: 
                 Nombre de lignes (pas en pixels!) montrées dans la liste de sélection. 10 par défaut.
         :arg highlightbackground: 
-                Couleur de la ligne de focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
+                Couleur de la ligne de focus lorsque le widget ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 Couleur de la ligne de focus lorsque le widget l'obtient.
         :arg highlightthickness: 
                 Épaisseur de la ligne de focus.
         :arg listvariable:
-                Une ``StringVar`` qui est associée à la liste de sélection dans son ensemble (Voir “Control variables: the values behind the widgets”). L'appel de la méthode ``get()`` de cette variable de contrôle retourne une chaîne de la forme ``"('t0', 't1', ...)"`` où chaque ti est le contenu d'une ligne de la boîte de sélection. Pour modifier toutes les lignes de la boîte, appelez la méthode ``set(s)`` sur la variable de contrôle, où s est une chaîne qui contient les valeurs de chaque ligne séparées avec des espaces. Par exemple, si ``listCon`` est une ``StringVar`` associé à l'option **listvariable** d'une boîte de sélection, l'appel ``listCon.set('un deux trois')`` remplira la boîte avec trois lignes et l'appel ``listCon.get()`` retournera ``"('un', 'deux', 'trois')"``.
+                Une ``StringVar`` qui est associée à la liste de sélection dans son ensemble (Voir :ref:`CTRLVARIABLES`). L'appel de la méthode ``get()`` de cette variable de contrôle retourne une chaîne de la forme ``"('t0', 't1', ...)"`` où chaque ti est le contenu d'une ligne de la boîte de sélection. Pour modifier toutes les lignes de la boîte, appelez la méthode ``set(s)`` sur la variable de contrôle, où s est une chaîne qui contient les valeurs de chaque ligne séparées avec des espaces. Par exemple, si ``listCon`` est une ``StringVar`` associé à l'option **listvariable** d'une boîte de sélection, l'appel ``listCon.set('un deux trois')`` remplira la boîte avec trois lignes et l'appel ``listCon.get()`` retournera ``"('un', 'deux', 'trois')"``.
         :arg relief: 
                 Sert à régler le relief de la bordure. ``'sunken'`` par défaut. Pour d'autres valeurs, voir :ref:`reliefs`.
         :arg selectbackground: 
@@ -51,11 +51,11 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         :arg state:
                 Par défaut, une liste de sélection est dans l'état ``'normal'``. Pour désactiver la liste relativement à la souris, mettre la valeur ``'disabled'``.
         :arg takefocus: 
-                Ce widget obtient le focus normalement. Mettre 0 pour sortir ce widget de la liste de «traversée du focus». Voir “Focus: routing keyboard input”.
+                Ce widget obtient le focus normalement. Mettre 0 pour sortir ce widget de la liste de «traversée du focus». Voir :ref:`FOCUS`.
         :arg width: 
                 La largeur du widget mesurée en caractères (non en pixels). La largeur effective est basée sur la largeur moyenne des caractères de la fonte utilisée. 20 par défaut.
         :arg xscrollcommand: 
-                Si vous souhaitez que l'utilisateur puisse faire défiler la liste horizontalement, vous pouvez lier votre liste de sélection à une barre de défilement horizontale. Configurer cette option avec la méthode ``set()`` de la barre de défilement. Voir “Scrolling a Listbox widget” pour plus d'informations.
+                Si vous souhaitez que l'utilisateur puisse faire défiler la liste horizontalement, vous pouvez lier votre liste de sélection à une barre de défilement horizontale. Configurer cette option avec la méthode ``set()`` de la barre de défilement. Voir :ref:`defilsellist` pour plus d'informations.
         :arg yscrollcommand: 
                 Similaire à l'option précédente mais pour un défilement vertical.
 
@@ -192,7 +192,7 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
 
         .. py:method:: xview()
 
-                Pour faire défiler la liste horizontalement, configurez l'option *command* du widget barre de défilement horizontale avec cette méthode. Voir “Scrolling a Listbox widget”. 
+                Pour faire défiler la liste horizontalement, configurez l'option *command* du widget barre de défilement horizontale avec cette méthode. Voir :ref:`defilsellist`.
 
         .. py:method:: xview_moveto(fraction)
 
@@ -213,7 +213,9 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         .. py:method:: yview_scroll(nombre, quoi)
 
                 Similaire à la méthode ``xview_scroll()`` mais pour un défilement vertical. ``'units'`` se réfère à l'unité «ligne» et ``'pages'`` à l'unité «hauteur visible de la liste».
-                
+
+.. _defilsellist:
+
 Défilement d'une liste de sélection
 ===================================
 

@@ -21,25 +21,25 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         Le constructeur retourne le widget ``Scale`` créé. Ses options incluent:
 
         :arg activebackground: 
-                La couleur du curseur lorsque la souris est au-dessus. Voir “Colors”.
+                La couleur du curseur lorsque la souris est au-dessus. Voir :ref:`couleurs`.
         :arg bg: 
                  (ou **background**) La couleur d'arrière plan de la partie du widget qui est située en dehors de l'aire de glissement.
         :arg bd: 
-                 (ou **borderwidth**) La largeur de la bordure 3d qui forme le contour de l'aire de glissement et du curseur. Sa valeur est 2 pixels par défaut. Pour des valeurs acceptables, voir “Dimensions”.
+                 (ou **borderwidth**) La largeur de la bordure 3d qui forme le contour de l'aire de glissement et du curseur. Sa valeur est 2 pixels par défaut. Pour des valeurs acceptables, voir :ref:`dimensions`.
         :arg command: 
                 Une fonction qui sera appelée à chaque fois que le curseur sera déplacé. Cette fonction reçoit un argument qui est la nouvelle valeur sélectionnée dans l'intervalle. Si le curseur est déplacé rapidement, la fonction ne sera pas pour autant appelée pour toutes les positions possibles, mais elle le sera sans aucun doute lorsque le curseur sera positionné.
         :arg cursor: 
-                Le pointeur de souris utilisé lorsque la souris est au-dessus du widget. Voir “Cursors”.
+                Le pointeur de souris utilisé lorsque la souris est au-dessus du widget. Voir :ref:`pointeurs`.
         :arg digits: 
-                Contrôle le nombre de chiffres à utiliser lorsque la valeur sélectionnée est convertie en une chaîne de caractères, ce qui arrive si l'option **variable** décrite plus loin a reçu une variable de contrôle de classe ``StringVar``. Voir “Control variables: the values behind the widgets”. 
+                Contrôle le nombre de chiffres à utiliser lorsque la valeur sélectionnée est convertie en une chaîne de caractères, ce qui arrive si l'option **variable** décrite plus loin a reçu une variable de contrôle de classe ``StringVar``. Voir :ref:`CTRLVARIABLES`.
         :arg font: 
-                La fonte de caractères utilisée pour l'étiquette et les graduations. Voir “Type fonts”.
+                La fonte de caractères utilisée pour l'étiquette et les graduations. Voir :ref:`polices`.
         :arg fg:
                 (ou **foreground**) La couleur du texte de l'étiquette et des graduations.
         :arg from\_: 
                 Un flottant qui définie l'une des extrémités de l'intervalle de sélection. Pour un widget orienté verticalement, c'est celle qui apparaît tout en haut; pour un widget orienté horizontalement, c'est celle qui apparaît tout à gauche. Le caractère de soulignement (_) qui apparaît à la fin de cette option n'est pas une faute de frappe: le mot *from* est un mot clé de Python. Sa valeur par défaut est 0.0. Voir l'option **to** plus loin pour préciser l'autre extrémité de l'intervalle.
         :arg highlightbackground: 
-                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
@@ -47,11 +47,11 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         :arg label: 
                 Vous pouvez afficher une étiquette à l'intérieur de ce widget en réglant cette option avec le texte souhaité. L'étiquette apparaît dans le coin supérieur gauche si le widget est orienté horizontalement et dans le coin supérieur droit s'il est orienté verticalement. Il n'y a pas d'étiquette par défaut.
         :arg length: 
-                La longueur du widget dans la direction où celui-ci est orienté. La valeur par défaut est 100 pixels. Pour les valeurs permises, voir “Dimensions”.
+                La longueur du widget dans la direction où celui-ci est orienté. La valeur par défaut est 100 pixels. Pour les valeurs permises, voir :ref:`dimensions`.
         :arg orient: 
                 Utilisez ``'horizontal'`` pour l'orienter horizontalement ou ``'vertical'`` pour l'orienter verticalement. L'orientation par défaut est ``'vertical'``.
         :arg relief: 
-                Avec la valeur par défaut ``'flat'``, le widget n'a pas de bordure visible. Vous pouvez utiliser la valeur ``'solid'`` pour l'entourer d'un cadre noir, ou utiliser un des autres reliefs fournit pas Tkinter; voir “Relief styles”.
+                Avec la valeur par défaut ``'flat'``, le widget n'a pas de bordure visible. Vous pouvez utiliser la valeur ``'solid'`` pour l'entourer d'un cadre noir, ou utiliser un des autres reliefs fournit pas Tkinter; voir :ref:`reliefs`.
         :arg repeatdelay: 
                 Cette option contrôle la durée (en millisecondes) pendant laquelle le bouton gauche de la souris doit être enfoncé (sur la zone de glissement) avant que le curseur ne soit déplacé de manière répétitive dans cette direction. La valeur par défaut est ``repeatdelay=300``.
         :arg repeatinterval: 
@@ -61,13 +61,13 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         :arg showvalue: 
                 Par défaut, la valeur courante du curseur est affichée (au-dessus du curseur s'il est horizontal, à gauche s'il est vertical). Mettre cette option à 0 pour supprimer cet affichage.
         :arg sliderlength: 
-                Sert à modifier la longueur du curseur qui vaut 30 pixels par défaut. Voir “Dimensions”.
+                Sert à modifier la longueur du curseur qui vaut 30 pixels par défaut. Voir :ref:`dimensions`.
         :arg sliderrelief: 
-                Sert à modifier le relief utilisé pour le curseur. Sa valeur par défaut est ``'raised'``, Voir “Relief styles”.
+                Sert à modifier le relief utilisé pour le curseur. Sa valeur par défaut est ``'raised'``, Voir :ref:`reliefs`.
         :arg state: 
                 Sert à preciser l'état du widget: ``'normal'``, ``'active'`` ou ``'disabled'``. Pour empêcher l'utilisateur de modifier sa valeur, utilisez ``'disabled'``.
         :arg takefocus: 
-                Normalement, ce widget obtient le focus. Mettre cette option à 0 pour désactiver ce comportement. Voir “Focus: routing keyboard input”.
+                Normalement, ce widget obtient le focus. Mettre cette option à 0 pour désactiver ce comportement. Voir :ref:`FOCUS`.
         :arg tickinterval: 
                 Par défaut, sa valeur est 0 ce qui a pour effet de ne pas afficher de graduation le long de l'intervalle. Pour afficher une telle graduation, réglez cette option avec un flottant qui correspond au pas de la graduation, c'est à dire à l'écart entre deux valeurs successives. Par exemple, si ``from_=0.0``, ``to=1.0``, et ``tickinterval=0.25``, une graduation est affichée avec les valeurs 0.0, 0.25, 0.50, 0.75, et 1.00. Elles apparaissent en dessous de l'intervalle de sélection si l'orientation du widget est horizontale, à sa gauche si l'orientation est verticale.
         :arg to: 
@@ -75,7 +75,7 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         :arg troughcolor: 
                 La couleur de l'aire de glissement du curseur.
         :arg variable: 
-                Sert à préciser la variable de contrôle éventuellement associée à ce widget (Voir “Control variables: the values behind the widgets”). Cette variable peut être de classe ``IntVar``, ``DoubleVar`` (pour les flottants) ou ``StringVar``. Dans le cas d'une ``StringVar``, les valeurs numériques seront converties en chaînes de caractères; voir l'option **digits** ci-dessus pour plus d'information sur cette conversion.
+                Sert à préciser la variable de contrôle éventuellement associée à ce widget (Voir :ref:`CTRLVARIABLES`). Cette variable peut être de classe ``IntVar``, ``DoubleVar`` (pour les flottants) ou ``StringVar``. Dans le cas d'une ``StringVar``, les valeurs numériques seront converties en chaînes de caractères; voir l'option **digits** ci-dessus pour plus d'information sur cette conversion.
         :arg width: 
                 Sert à préciser la largeur de l'aire de glissement du curseur. Si le widget est orienté horizontalement, il s'agit de la dimension en *y*; sinon de sa dimension en *x*. La valeur par défaut est 15 pixels.
 
@@ -92,6 +92,7 @@ Pour créer un nouveau widget ``Scale`` comme enfant d'une fenêtre ou d'un cadr
         .. py:method:: identify(x, y)
 
                     Sert à identifier la partie du widget située à la position *(x, y)* relative à son coin supérieur gauche. Les valeurs de retour possibles sont:
+
                     * ``'slider'`` : Le curseur.
                     * ``'trough1'`` : l'aire de glissement à gauche ou au-dessus du curseur selon l'orientation de la barre.
                     * ``'trough2'`` : l'aire de glissement à droite ou en dessous du curseur selon l'orientation de la barre.

@@ -21,11 +21,11 @@ Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre o
         Ce constructeur retourne la nouvelle fenêtre à paneaux ``PanedWindow`` créée. Voici les options disponibles:
 
         :arg bg:
-                (ou **background**) La couleur d'arrière plan utilisée derrière les widgets enfants; voir “Colors”.
+                (ou **background**) La couleur d'arrière plan utilisée derrière les widgets enfants; voir :ref:`couleurs`.
         :arg bd:
-                (ou **borderwidth**) La largeur de la bordure du widget; 2 pixels par défaut. Voir “Dimensions”.
+                (ou **borderwidth**) La largeur de la bordure du widget; 2 pixels par défaut. Voir :ref:`dimensions`.
         :arg cursor: 
-                Le pointeur de souris utilisé lorsque la souris est au-dessus de la fenêtre; voir “Cursors”.
+                Le pointeur de souris utilisé lorsque la souris est au-dessus de la fenêtre; voir :ref:`pointeurs`.
         :arg handlepad: 
                 Utilisez cette option pour préciser la distance à laquelle est placée la poignée (*handle*) sur sa ligne de séparation (*sash*) relativement au bord gauche de cette ligne pour un empilement vertical (``orient='vertical'``) ou au bord haut pour un empilement horizontal (``orient='horizontal'``). La valeur par défaut est 8 pixels.
         :arg handlesize: 
@@ -37,11 +37,11 @@ Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre o
         :arg orient: 
                 Pour empiler les widgets enfants de la gauche vers la droite, utiliser la valeur ``'horizontal'``. Pour les empiler de haut en bas, utiliser ``'vertical'``.
         :arg relief: 
-                Sert à indiquer le relief de la bordure de la fenêtre; voir “Relief styles”. La valeur par défaut est ``'flat'``.
+                Sert à indiquer le relief de la bordure de la fenêtre; voir :ref:`reliefs`. La valeur par défaut est ``'flat'``.
         :arg sashpad: 
                 Utilisez cette option pour réserver un espace supplémentaire de chaque côtés des lignes de séparation entre les widgets enfants. Sa valeur par défaut est 0.
         :arg sashrelief: 
-                Sert à préciser le relief des lignes de séparation (*sashes*) entre les widgets enfants; voir “Relief styles”. Sa valeur par défaut est ``'flat'``.
+                Sert à préciser le relief des lignes de séparation (*sashes*) entre les widgets enfants; voir :ref:`reliefs`. Sa valeur par défaut est ``'flat'``.
         :arg sashwidth: 
                 Sert à préciser l'épaisseur des lignes de séparations. 2 pixels par défaut.
         :arg showhandle: 
@@ -57,7 +57,7 @@ Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre o
 
                     Utilisez cette méthode pour ajouter le widget *enfant* donné après ceux qui ont déjà été éventuellement ajoutés à cette fenêtre. Commencez par créer le widget *enfant* en utilisant cette fenêtre comme parent, mais n'utilisez aucun gestionnaire de positionnement comme ``grid()`` ou ``pack()`` pour le placer. Ensuite, appelez ``add(enfant)`` et celui-ci apparaîtra dans la fenêtre après tous les autres (s'il y en a).
 
-                    Afin de contrôler l'apparence et la position du widget *enfant*, précisez au moment de l'appel certaines options. Voir “PanedWindow child configuration options”. Vous pouvez modifier ces options de manière dynamique en utilisant la méthode ``paneconfig()`` ou récupérer leur valeur en utilisant la méthode ``panecget()``; ces méthodes sont décrites un peu plus loin.
+                    Afin de contrôler l'apparence et la position du widget *enfant*, précisez au moment de l'appel certaines options. Voir :ref:`panedwconf`. Vous pouvez modifier ces options de manière dynamique en utilisant la méthode ``paneconfig()`` ou récupérer leur valeur en utilisant la méthode ``panecget()``; ces méthodes sont décrites un peu plus loin.
 
         .. py:method:: forget(enfant)
 
@@ -75,11 +75,11 @@ Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre o
 
         .. py:method:: panecget(enfant, option)
 
-                    Sert à récupérer la valeur actuelle, pour le widget *enfant*, de l'*option* précisée en deuxième argument à l'aide d'une chaîne de carctères. Pour connaître la liste des options possibles, voir “PanedWindow child configuration options”. 
+                    Sert à récupérer la valeur actuelle, pour le widget *enfant*, de l'*option* précisée en deuxième argument à l'aide d'une chaîne de carctères. Pour connaître la liste des options possibles, voir :ref:`panedwconf`. 
 
         .. py:method:: paneconfig(enfant, option=value, ...)
 
-                    Sert à configurer les options du widget *enfant* pour cette fenêtre. Les options disponibles sont décrites plus loin, voir “PanedWindow child configuration options”. 
+                    Sert à configurer les options du widget *enfant* pour cette fenêtre. Les options disponibles sont décrites plus loin, voir :ref:`panedwconf`. 
 
         .. py:method:: panes()
 
@@ -97,6 +97,8 @@ Pour créer une nouvelle fenêtre à paneaux comme enfant d'une autre fenêtre o
 
                     Utilisez cette méthode pour repositionner la ligne de démarcation *index*. *x* et *y* précisent les nouvelles coordonnées du coin supérieur gauche de la ligne de démarcation *index*. Tkinter ignore la valeur de la coordonnée perpendiculaire à l'orientation de la fenêtre: *x* est la valeur utile pour repositionner une ligne de démarcation d'une fenêtre avec ``orient=horizontal`` et *y* celle qui agit effectivement pour ``orient=vertical``.
     
+.. _panedwconf:
+                    
 Options de configuration des enfants d'un ``PanedWindow``
 =========================================================
 
@@ -107,7 +109,7 @@ Chaque enfant d'une fenêtre à paneaux ou ``PanedWindow`` dispose d'un jeu d'op
 **before**
         Similaire à l'option précédente, mais place le nouvel enfant avant celui qu'on précise pour cette option.
 **height**
-        Sert à préciser la hauteur désirée pour le widget enfant; voir “Dimensions”.
+        Sert à préciser la hauteur désirée pour le widget enfant; voir :ref:`dimensions`.
 **minsize**
         Utilisez cette option pour indiquer une taille minimale pour le widget enfant dans la direction d'orientation de la fenêtre à paneaux. Pour ``orient='horizontal'``, c'est la largeur minimum; pour ``orient='vertical'``, c'est la hauteur minimum.
 **padx**

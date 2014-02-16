@@ -28,7 +28,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: bind(sequence=None, evtGest=None, add=None)
 
-        Cette méthode est utilisée pour attacher un gestionnaire d'événement (une fonction) à la survenue d'un événement, précisé par *sequence*, sur le widget appelant (sur lequel cette méthode a été appliquée). Voir “Events” pour une vue d'ensemble sur le moyen de rendre votre application réactive aux actions de l'utilisateur.
+        Cette méthode est utilisée pour attacher un gestionnaire d'événement (une fonction) à la survenue d'un événement, précisé par *sequence*, sur le widget appelant (sur lequel cette méthode a été appliquée). Voir :ref:`EVENTS` pour une vue d'ensemble sur le moyen de rendre votre application réactive aux actions de l'utilisateur.
 
         L'argument *sequence* sert à décrire le type d'événement (action de l'utilisateur) auquel il faut réagir par le moyen du gestionnaire *evtGest*, c'est à dire en appelant cette fonction lorsque survient l'événement surveillé sur le widget. Si une liaison avait déjà été définie sur ce widget, l'ancien gestionnaire d'événement est remplacé par le nouveau sauf si vous utilisez ``add='+'``; dans ce cas les gestionnaires définie précédement sont préservés.
 
@@ -46,7 +46,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Vous pouvez modifier l'ordre dans lequel les niveaux de liaison sont appelés en passant à la méthode la liste des marques de liaison que vous souhaitez que le widget utilise.
 
-        Voir, “Events” pour une discussion sur les niveaux de liaison et leur relation avec les marques.
+        Voir :ref:`EVENTS` pour une discussion sur les niveaux de liaison et leur relation avec les marques.
 
 .. py:method:: cget(option)
 
@@ -62,7 +62,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: column_configure()
 
-        Voir “Other grid management methods”. 
+        Voir :ref:`autres-meth-grille`.
 
 .. py:method:: config(option=value, ...)
 
@@ -88,7 +88,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Cette méthode crée un événement virtuel dont le nom est la chaîne de caractères donnée comme premier argument *virtevt*. Chaque argument supplémentaire décrit une «séquence», c'est à dire, la description d'un événement physique (appui sur une touche, mouvement de la souris ...). Lorsque cet événement se produit, le nouvel événement virtuel est déclenché.
 
-        Voir “Events” pour une description générale des événements virtuels.
+        Voir :ref:`EVENTS` pour une description générale des événements virtuels.
 
 .. py:method:: event_delete(virtevt, \*sequences)
 
@@ -98,7 +98,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Cette méthode déclenche l'événement (sans que le stimulus externe n'ait eu lieu). La gestion de l'événement n'est pas différete de celle qui est engagée avec un stimuli externe. L'argument *sequence* décrit l'événement à déclencher. Vous pouvez configurer les valeurs des attributs de l'objet événement qui sera passé au gestionnaire en fournissant des arguments de la forme ``attr=valeur``, où ``attr`` est le nom d'un attribut de l'objet ``Event``.
 
-        Voir “Events” pour une discussion complète des événements.
+        Voir :ref:`EVENTS` pour une discussion complète des événements.
 
 .. py:method:: event_info(virtual=None)
 
@@ -110,11 +110,11 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Retourne le nom de la fenêtre qui possède actuellement le focus sur le même écran que le widget appelant. Retourne ``None`` Si aucune telle fenêtre n'a le focus.
 
-        Voir “Focus: routing keyboard input” pour une description générale du focus.
+        Voir :ref:`FOCUS` pour une description générale du focus.
 
 .. py:method:: focus_force()
 
-        Force le focus sur le widget appelant. Ce n'est pas très poli. Il vaut mieux attendre que le gestionnaire de fenêtre donne lui-même le focus. Voir aussi la méthode ``grab_set_global()`` ci-dessous. 
+        Force le focus sur le widget appelant. Ce n'est pas très poli. Il vaut mieux attendre que le gestionnaire de fenêtre donne lui-même le focus. Voir aussi la méthode :py:meth:`grab_set_global` ci-dessous. 
 
 .. py:method:: focus_get()
 
@@ -149,15 +149,15 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: grid_forget()
 
-        Voir “Other grid management methods”. 
+        Voir :ref:`autres-meth-grille`. 
 
 .. py:method:: grid_propagate()
 
-        Voir “Other grid management methods”. 
+        Voir :ref:`autres-meth-grille`.  
 
 .. py:method:: grid_remove()
 
-        Voir “Other grid management methods”. 
+        Voir :ref:`autres-meth-grille`.
 
 .. py:method:: image_names()
 
@@ -177,11 +177,11 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: mainloop()
 
-        Cette méthode doit être appelée (généralement après avoir créé tous les widgets statiques) afin de démarrer le traitement des événements. Vous pouvez arrêter ce traitement en boucle en utilisant la méthode ``quit()`` (voir ci-dessous). Vous pouvez aussi appeler cette méthode à l'intérieur d'un gestionnaire d'événement pour redémarrer le traitement des événements (main loop).
+        Cette méthode doit être appelée (généralement après avoir créé tous les widgets statiques) afin de démarrer le traitement des événements. Vous pouvez arrêter ce traitement en boucle en utilisant la méthode :py:meth:`quit` ci-dessous. Vous pouvez aussi appeler cette méthode à l'intérieur d'un gestionnaire d'événement pour redémarrer le traitement des événements (main loop).
 
 .. py:method:: nametowidget(nom)
 
-        Retourne le widget dont le chemin de nommage est nom. Voir “Window names”. Si le nom est inconnu, cette méthode lancera une exception du type ``KeyError``. 
+        Retourne le widget dont le chemin de nommage est nom. Voir :ref:`nomfen`. Si le nom est inconnu, cette méthode lancera une exception du type ``KeyError``. 
 
 .. py:method:: option_add(motif, value, priorite=None)
 
@@ -191,7 +191,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
         60 	Pour les options précisées dans des fichiers d'utilisateur.
         80 	Pour les options qui sont configurées au démarrage de l'application. C'est ce niveau qui a la priorité par défaut.
 
-        Plus la valeur est grande, plus le réglage correspondant est prioritaire. Voir “Standardizing appearance” pour une vue d'ensemble de la base de données des options. La syntaxe de l'argument *motif* est la même que celle du début d'une ligne de spécification d'option dans la base de donnée.
+        Plus la valeur est grande, plus le réglage correspondant est prioritaire. Voir :ref:`APPEARANCE` pour une vue d'ensemble de la base de données des options. La syntaxe de l'argument *motif* est la même que celle du début d'une ligne de spécification d'option dans la base de donnée.
 
         Par exemple, pour obtenir les effets de cette ligne de spécification:
 
@@ -215,25 +215,25 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Utilisez cette méthode pour récupérer la valeur courante d'une option de la base de données des options de Tkinter. Le premier argument est la clé de l'instance et le second la clé de la classe. S'il y a correspondance, elle retourne la valeur de l'option qui correspond le mieux. Sinon, elle retourne une chaîne vide.
 
-        Reportez-vous à “Standardizing appearance” pour en savoir plus sur la façon dont les clés sont mises en correspondance avec les options.
+        Reportez-vous à :ref:`APPEARANCE` pour en savoir plus sur la façon dont les clés sont mises en correspondance avec les options.
 
 .. py:method:: option_readfile(fileName, priority=None)
 
         Afin de permettre à l'utilisateur de configurer l'interface, vous pouvez désigner le nom d'un fichier dans lequel l'utilisateur pourra mémoriser ses options préférées en utilisant le même format que celui du fichier .Xdefaults. Ainsi, lors de l'initialisation de l'application, vous pouvez indiquer ce fichier à cette méthode et les options qu'il contient seront ajoutées à la base de données des options. Si le fichier n'existe pas ou si son format est invalide, cette méthode lèvera une erreur du type ``TclError``.
 
-        Reportez-vous à “Standardizing appearance” pour une introduction à la base de données des options ainsi qu'au format des fichiers d'options.
+        Reportez-vous à :ref:`APPEARANCE` pour une introduction à la base de données des options ainsi qu'au format des fichiers d'options.
 
 .. py:method:: register(function)
 
-        Cette méthode crée un «emballage Tcl» autour d'une fonction Python, et retourne le nom de cet «emballage» sous la forme d'une chaîne de caractères. Pour un exemple d'utilisation de cette méthode, voir “Adding validation to an Entry widget”. 
+        Cette méthode crée un «emballage Tcl» autour d'une fonction Python, et retourne le nom de cet «emballage» sous la forme d'une chaîne de caractères. Pour un exemple d'utilisation de cette méthode, voir :ref:`validation`.
 
 .. py:method:: quit()
 
-        Cette méthode fait sortir de la boucle des événéments (mainloop). Voir la méthode ``mainloop()`` ci-dessous pour plus d'informations sur la boucle des événements.
+        Cette méthode fait sortir de la boucle des événéments (mainloop). Voir la méthode :py:meth:`mainloop` ci-dessous pour plus d'informations sur la boucle des événements.
 
 .. py:method:: rowconfigure()
 
-        Voir “Other grid management methods”. 
+        Voir :ref:`autres-meth-grille`.
 
 .. py:method:: selection_clear()
 
@@ -253,11 +253,11 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: tk_focusFollowsMouse()
 
-        Normalement le focus circule en boucle sur une liste de widgets déterminés par leur hiérachie et l'ordre de leur création; voir “Focus: routing keyboard input”. Pour dire à Tkinter de forcer le focus en fonction de la position de la souris, utilisez cette méthode. Notez qu'il est difficile de supprimer ce comportement une fois qu'il a été activé.
+        Normalement le focus circule en boucle sur une liste de widgets déterminés par leur hiérachie et l'ordre de leur création; voir :ref:`FOCUS`. Pour dire à Tkinter de forcer le focus en fonction de la position de la souris, utilisez cette méthode. Notez qu'il est difficile de supprimer ce comportement une fois qu'il a été activé.
 
 .. py:method:: tk_focusNext()
 
-        Retourne le widget qui suit le widget appelant dans la liste de traversée du focus. Voir “Focus: routing keyboard input” pour plus d'information sur la traversée du focus.
+        Retourne le widget qui suit le widget appelant dans la liste de traversée du focus. Voir :ref:`FOCUS` pour plus d'information sur la traversée du focus.
 
 .. py:method:: tk_focusPrev()
 
@@ -267,7 +267,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Cette méthode supprime la liaison d'événement du widget appelant, pour un événement décrit par *sequence*. Si le second argument est un gestionnaire associé à cet événement, ce gestionnaire est détruit mais pas les autres s'il y en a. Si le second argument est omis, toutes les liaisons pour l'événement considéré sont supprimées.
 
-        Voir “Events” pour une discussion générale à propos des liaisons d'événements.
+        Voir :ref:`EVENTS` pour une discussion générale à propos des liaisons d'événements.
 
 .. py:method:: unbind_all(sequence)
 
@@ -317,17 +317,17 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: winfo_fpixels(dim)
 
-        Convertit et retourne la dimension *dim* (voir “Dimensions”) en pixels de l'affichage du widget appelant sous la forme d'un float.
+        Convertit et retourne la dimension *dim* (voir :ref:`dimensions`) en pixels de l'affichage du widget appelant sous la forme d'un float.
 
 .. py:method:: winfo_geometry()
 
-        Retourne la chaîne de géométrie ``"Largeurxhauteur+x+y"`` qui décrit la taille et la position sur l'écran du widget appelant. Voir “Geometry strings”.
+        Retourne la chaîne de géométrie ``"Largeurxhauteur+x+y"`` qui décrit la taille et la position sur l'écran du widget appelant. Voir :ref:`geometrie`.
 
-        Attention, cette chaîne n'est précise qu'une fois que l'application a traitées ses tâches en sommeil. En particulier, toutes les chaînes géométriques sont initialisées à '1x1+0+0' jusqu'au moment où le widget et le gestionnaire de positionnement ont négociés tailles et positions. Voir la méthode update_idletasks() ci-dessus pour s'assurer que la géométrie du widget a été mise à jour.
+        Attention, cette chaîne n'est précise qu'une fois que l'application a traitées ses tâches en sommeil. En particulier, toutes les chaînes géométriques sont initialisées à '1x1+0+0' jusqu'au moment où le widget et le gestionnaire de positionnement ont négociés tailles et positions. Voir la méthode :py:meth:`update_idletasks` ci-dessus pour s'assurer que la géométrie du widget a été mise à jour.
 
 .. py:method:: winfo_height()
 
-        Retourne la hauteur courante du widget appelant en pixels. Voir les remarques sur les mises à jour de sa géométrie faites pour la méthode winfo_geometry() ci-dessus. Vous préfererez probablement la méthode winfo_reqheight(), décrite ci-après, qui assure que la géométrie est à jour.
+        Retourne la hauteur courante du widget appelant en pixels. Voir les remarques sur les mises à jour de sa géométrie faites pour la méthode ``winfo_geometry()`` ci-dessus. Vous préfererez probablement la méthode :py:meth:`winfo_reqheight`, décrite ci-après, qui assure que la géométrie est à jour.
 
 .. py:method:: winfo_id()
 
@@ -343,19 +343,19 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: winfo_name()
 
-        Cette méthode retourne le nom relatif (à son parent) du widget appelant. Voir “Window names”. Voir aussi la méthode winfo_pathname() ci-dessous pour obtenir le nom (chemin) complet.
+        Cette méthode retourne le nom relatif (à son parent) du widget appelant. Voir :ref:`nomfen`. Voir aussi la méthode :py:meth:`winfo_pathname` ci-dessous pour obtenir le nom (chemin) complet.
 
 .. py:method:: winfo_parent()
 
-        Retourne le nom-chemin du parent du widget appelant ou une chaîne vide si c'est une fenêtre mère. Voir “Window names” pour plus de détails sur les nom-chemin des widgets.
+        Retourne le nom-chemin du parent du widget appelant ou une chaîne vide si c'est une fenêtre mère. Voir :ref:`nomfen` pour plus de détails sur les nom-chemin des widgets.
 
 .. py:method:: winfo_pathname(id, displayof=0)
 
-        Si l'argument *displayof* est False (ou 0), cette méthode retourne le nom du chemin hierarchique du widget d'identifiant *id* dans la fenêtre principale de l'application. Si *displayof* vaut True, l'identifiant est relatif à la fenêtre mère (top-level) qui contient le widget appelant. Voir “Window names” pour une discussion à propos des nom de chemin hiérarchique des widgets.
+        Si l'argument *displayof* est False (ou 0), cette méthode retourne le nom du chemin hierarchique du widget d'identifiant *id* dans la fenêtre principale de l'application. Si *displayof* vaut True, l'identifiant est relatif à la fenêtre mère (top-level) qui contient le widget appelant. Voir :ref:`nomfen` pour une discussion à propos des nom de chemin hiérarchique des widgets.
 
 .. py:method:: winfo_pixels(dim)
 
-        Pour toute dimension (voir Dimensions), cette méthode retourne l'équivalent en pixel pour l'affichage du widget appelant. La valeur retourné est un entier.
+        Pour toute dimension (voir :ref:`dimensions`), cette méthode retourne l'équivalent en pixel pour l'affichage du widget appelant. La valeur retourné est un entier.
 
 .. py:method:: winfo_pointerx()
 
@@ -381,7 +381,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Retourne le tuple (rouge, vert, bleu) qui est équivalent à la couleur passé en argument. Chaque composante du tuple est un entier de l'intervalle [0; 65536[. Par exemple, pour la couleur 'green', elle retourne (0, 65535, 0).
 
-        Pour en savoir plus sur les moyens de préciser les couleurs, voir “Colors”. 
+        Pour en savoir plus sur les moyens de préciser les couleurs, voir :ref:`couleurs`. 
 
 .. py:method:: winfo_rootx()
 
@@ -413,7 +413,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: winfo_toplevel()
 
-        Retourne la fenêtre de plus haut niveau (top-level) qui contient le widget appelant. Cette fenêtre peut utiliser toutes les méthodes des widgets ``Toplevel``, voir “Toplevel: Top-level window methods”. 
+        Retourne la fenêtre de plus haut niveau (top-level) qui contient le widget appelant. Cette fenêtre peut utiliser toutes les méthodes des widgets ``Toplevel``, voir :ref:`TOPLEVEL`.
 
 .. py:method:: winfo_viewable()
 
@@ -421,7 +421,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: winfo_width()
 
-        Retourne la largeur courante du widget appelant en pixels. Voir les remarques sur les mises à jour de l'affichage faites lors de la description de la méthode winfo_geometry(). Vous pouvez préférer utiliser la méthode winfo_reqwidth() décrite plus tôt; la valeur obtenue est toujours à jour.
+        Retourne la largeur courante du widget appelant en pixels. Voir les remarques sur les mises à jour de l'affichage faites lors de la description de la méthode :py:meth:`winfo_geometry`. Vous pouvez préférer utiliser la méthode :py:meth:`winfo_reqwidth` décrite plus tôt; la valeur obtenue est toujours à jour.
 
 .. py:method:: winfo_x()
 

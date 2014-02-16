@@ -65,7 +65,7 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg state:
             Positionner cette option à ``'disabled'`` pour griser le bouton et le rendre inactif. Sa valeur est 'active' lorsque la souris est sur le bouton et ``'normal'`` autrement.
     :arg takefocus:
-            Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (see Section 53, “Focus: routing keyboard input”), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre **takefocus** a zéro pour empêcher cela.
+            Normalement, en utilisant la touche Tab, on peut donner le focus aux bouton (voir :ref:`FOCUS`), et l'appui sur la barre espace a le même effet qu'un clic sur le bouton. Vous pouvez mettre **takefocus** a zéro pour empêcher cela.
     :arg text:
             Le texte a afficher sur le bouton.
     :arg textvariable:

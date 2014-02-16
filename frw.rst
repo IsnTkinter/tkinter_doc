@@ -39,6 +39,6 @@ Pour créer un nouveau cadre dans une fenêtre mère ou dans un cadre parent:
         :arg relief:
                 Le relief par défaut d'un cadre est ``'flat'``, ce qui veut dire qu'il ne se détache pas de ce qui l'entoure. Pour avoir une bordure autour du cadre, donner l'un des styles de reliefs à cette option. Voir :ref:`reliefs`.
         :arg takefocus:
-                Normalement, un cadre n'obtient pas le focus (voir “Focus: routing keyboard input” pour une vue d'ensemble de ce sujet). Cependant, donner la valeur 1 à cette option si vous voulez que le cadre soit sensible aux saisies clavier. Pour réagir aux saisies clavier, vous aurez besoin de créer une liaison pour les événements du clavier; voir “Events” pour plus d'informations sur les événements et les liaisons.
+                Normalement, un cadre n'obtient pas le focus (voir :ref:`FOCUS` pour une vue d'ensemble de ce sujet). Cependant, donner la valeur 1 à cette option si vous voulez que le cadre soit sensible aux saisies clavier. Pour réagir aux saisies clavier, vous aurez besoin de créer une liaison pour les événements du clavier; voir “:ref:`EVENTS` pour plus d'informations sur les événements et les liaisons.
         :arg width:
                 La largeur du cadre. Voir :ref:`dimensions`. Cette valeur est ignorée sauf si vous appelez la méthode ``grid_propagate(0)`` sur le cadre; Voir :ref:`autres-meth-grille`. 

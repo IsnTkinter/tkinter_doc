@@ -40,17 +40,17 @@ Pour créer un objet de type Canvas:
         :arg confine:
                 Si ``True`` (la valeur par défaut), il n'est pas possible de faire défiler le canvas en dehors de sa zone de visualisation (`scrollregion`), voir ci-dessous.
         :arg cursor:
-                Pointeur de la souris utilisé sur le canevas. Voir “Cursors”.
+                Pointeur de la souris utilisé sur le canevas. Voir :ref:`pointeurs`.
         :arg height:
-            Hauteur du canvas. Voir “Dimensions”.
+            Hauteur du canvas. Voir :ref:`dimensions`.
         :arg highlightbackground:
-                Couleur de la ligne de focus lorsque le canevas n'a pas le focus. Voir “Focus: routing keyboard input”.
+                Couleur de la ligne de focus lorsque le canevas n'a pas le focus. Voir :ref:`FOCUS`. 
         :arg highlightcolor:
                 Couleur de la ligne de focus lorsque le canevas a le focus.
         :arg highlightthickness:
                 Épaisseur de la ligne de focus. La valeur par défaut est 1.
         :arg relief:
-                Le style de relief du canvas. La valeur par défaut est ``'flat'``. Voir “Relief styles”.
+                Le style de relief du canvas. La valeur par défaut est ``'flat'``. Voir :ref:`reliefs`.
         :arg scrollregion:
                 Un tuple ``(w, n, e, s)`` qui définit la zone du canevas accessible par défilement. ``w`` désigne le côté gauche, ``n`` le bord haut, ``e`` le côté droit et ``s`` le bord bas.
         :arg selectbackground:
@@ -62,9 +62,9 @@ Pour créer un objet de type Canvas:
         :arg takefocus:
                 Normalement, le focus (see Section 53, “Focus: routing keyboard input”) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (see Section 54, “Events” for an overview of keyboard bindings). Si vous positionnez la valeur de cette option à 1, le canevas obtiendra le focus de manière ordinaire. Positionnez la à ``''`` pour obtenir le comportement «normal».
         :arg width:
-                Largeur du canevas. Voir “Dimensions”.
+                Largeur du canevas. Voir :ref:`dimensions`.
         :arg xscrollincrement:
-                Normalement, on peut faire défiler un canevas horizontalement à n'importe quelle position. Vous pouvez obtenir ce comportement en positionnant cette option à ``0`` . Si vous donnez une valeur positive à cette option, le canevas défile en utilisant des multiples de cette valeur. Elle sera en outre utilisée comme unité de défilement horizontal comme quand l'utilisateur clique sur les flèches situées aux extrémités d'une barre de défilement. Voir “The Scrollbar widget”.
+                Normalement, on peut faire défiler un canevas horizontalement à n'importe quelle position. Vous pouvez obtenir ce comportement en positionnant cette option à ``0`` . Si vous donnez une valeur positive à cette option, le canevas défile en utilisant des multiples de cette valeur. Elle sera en outre utilisée comme unité de défilement horizontal comme quand l'utilisateur clique sur les flèches situées aux extrémités d'une barre de défilement. Voir :ref:`SCROLLBAR`. 
         :arg xscrollcommand:
                 Si le canevas est muni d'une barre défilement, positionnez cette option en utilisant la méthode ``set()`` de la barre.
         :arg yscrollincrement:
@@ -88,10 +88,14 @@ La liste d'affichage se réfère à la séquence de tous les items qui se trouve
 
 Si deux items se recouvrent, l'item au-dessus de l'autre dans la liste d'affichage désigne celui qui est le plus proche de l'avant plan, c'est à dire qui est vu comme au-dessus de l'autre sur l'affichage. Par défaut, lorsqu'un item est créé, il est placé tout en haut de la liste d'affichage (et donc il apparaît au dessus des items déjà affichés), mais il est possible de ré-ordonner la liste d'affichage.
 
+.. _CANVASidnum:
+
 Les identifiants numériques
 ===========================
 
 Chaque item affiché sur le canevas possède un identifiant numérique (simple entier) unique, il s'agit de la valeur retournée par le «constructeur» - ``create_*()`` - lors de sa création.
+
+.. _CANVAStags:
 
 Les marques (`tags`)
 ====================
@@ -109,9 +113,11 @@ Identification des items graphiques
 
 Un argument ``tagOrId`` se réfère à un ou plusieurs items du canevas.
 
-* Si l'argument ``tagOrId`` est un entier, il est considéré comme un identifiant numérique et il s'applique à l'unique item qui le possède. Voir “Canvas object IDs”.
+* Si l'argument ``tagOrId`` est un entier, il est considéré comme un identifiant numérique et il s'applique à l'unique item qui le possède. Voir :ref:`CANVASidnum`.
 
-* Si cet argument est une chaîne de caractères, il est interprété comme une marque et sélectionne tous les items qui ont cette marque (s'il y en a). Voir “Canvas tags”. 
+* Si cet argument est une chaîne de caractères, il est interprété comme une marque et sélectionne tous les items qui ont cette marque (s'il y en a). Voir :ref:`CANVAStags`. 
+
+.. _CANVASmeth:  
 
 Méthodes des Canevas
 ====================
@@ -166,7 +172,8 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
   * :py:meth:`~Canvas.type`
   * :py:meth:`~Canvas.xview_moveto`
   * :py:meth:`~Canvas.xview_scroll`
-  * :py:meth:`~Canvas.yview_moveto`
+  * :py:meth::w
+    `~Canvas.yview_moveto`
   * :py:meth:`~Canvas.yview_scroll`
 
 .. py:method:: Canvas.addtag_above(newTag, tagOrId)
@@ -354,7 +361,7 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
 
 .. py:method:: Canvas.tag_bind(tagOrId, chevt=None, gestionnaire=None, add=None)
 
-        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutée à celles qui ont déjà pu être définies pour cet événement. Autrement, les liaisons précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir “Events”. Notez que la liaison aux items n'est pas supprimée par le retrait d'une marque (ni ajoutée en cas de nouveau marquage).
+        Lie le gestionnaire d'événement *gestionnaire*, pour l'évenement précisé par *chevt*, à ou aux items *tagOrId*. Si l'argument *add* est une chaîne qui commence par ``'+'``, cette liaison est ajoutée à celles qui ont déjà pu être définies pour cet événement. Autrement, les liaisons précédement définies sont remplacées par celle-ci.  Pour plus d'informations, voir :ref:`EVENTS`. Notez que la liaison aux items n'est pas supprimée par le retrait d'une marque (ni ajoutée en cas de nouveau marquage).
 
 .. py:method:: Canvas.tag_lower(tagOrId, belowThis)
 
@@ -366,7 +373,7 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
 
 .. py:method:: Canvas.tag_unbind(tagOrId, chEvt, gestId=None)
 
-        Supprime la liaison entre le ou les items *tagOrId* et le gestionnaire *gestId* pour la chaîne d'événement *chEvt*. Voir  “Events”. 
+        Supprime la liaison entre le ou les items *tagOrId* et le gestionnaire *gestId* pour la chaîne d'événement *chEvt*. Voir  :ref:`EVENTS`. 
 
 .. py:method:: Canvas.type(tagOrId)
 
@@ -378,7 +385,7 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
 
 .. py:method:: Canvas.xview_scroll(n, what)
 
-        Cette méthode fait défiler le canevas à gauche ou à droite. L'argument *what* précise le défilement qui peut être soit ``'units'`` soit ``'pages'``, *n* précise le nombre d'unité du déplacement (vers la droite si positif, vers la gauche autrement). ``'units'`` se réfère à l'option *xscrollincrement* (voir “The Scrollbar widget”). Pour ``'pages'``, *n* est multiplié par 90% de la largeur de la page.
+        Cette méthode fait défiler le canevas à gauche ou à droite. L'argument *what* précise le défilement qui peut être soit ``'units'`` soit ``'pages'``, *n* précise le nombre d'unité du déplacement (vers la droite si positif, vers la gauche autrement). ``'units'`` se réfère à l'option *xscrollincrement* (voir :ref:`SCROLLBAR`). Pour ``'pages'``, *n* est multiplié par 90% de la largeur de la page.
 
 .. py:method:: Canvas.yview_moveto(fraction)
 
@@ -413,7 +420,7 @@ Pour créer un arc sur un canvas, utiliser :
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hachurée autour de l'arc. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour de l'arc. Utiliser cette option pour préciser un motif de hachure. Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
@@ -428,11 +435,11 @@ Pour créer un arc sur un canvas, utiliser :
         :arg fill:
                 Par défaut, l'intérieur de l'arc est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'arc. Voir “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'arc. Voir :ref:`nuagepts`.
         :arg outline:
                 Couleur de la bordure. Par défaut, ``outline='black'``.
         :arg outlineoffset: 
-                Utiliser cette option pour ajuster le motif en «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif en «pointillé» de la ligne de bordure. Voir :ref:`nuagepts`.
         :arg outlinestipple:
                 Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg start:
@@ -440,13 +447,13 @@ Pour créer un arc sur un canvas, utiliser :
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple: 
-                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'arc. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option **fill** . Voir “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'arc. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option **fill** . Voir :ref:`bitmaps`.
         :arg style: 
                 Par défaut, l'arc est dessiné avec ses rayons; utiliser ``style='pieslice'`` pour obtenir cela. Pour dessiner l'arc sans ses rayons, utiliser ``style='arc'``. Pour tracer l'arc et sa corde, c'est à dire le segment qui joint ses extrémtités, utiliser ``style='chord'``.
         :arg tags: 
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'arc. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'arc. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
-                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir :ref:`dimensions`. 
 
 
 .. _can_bitmaps:
@@ -471,7 +478,7 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
         :arg activebitmap:
         :arg activeforeground:
         :arg anchor:
-                Le bitmap est positionné relativement au point *(x, y)*. La valeur par défaut est ``anchor='center'``, ce qui centre le bitmap sur la position *(x, y)*. Voir “Anchors” pour les valeurs d'ancrage. Par exemple, si vous indiquez ``anchor='ne'``, le bitmap est positionné de telle sorte que le point *(x, y)* est situé dans le coin supérieur droit (nord est) du bitmap.
+                Le bitmap est positionné relativement au point *(x, y)*. La valeur par défaut est ``anchor='center'``, ce qui centre le bitmap sur la position *(x, y)*. Voir :ref:`ancrage` pour les valeurs d'ancrage. Par exemple, si vous indiquez ``anchor='ne'``, le bitmap est positionné de telle sorte que le point *(x, y)* est situé dans le coin supérieur droit (nord est) du bitmap.
         :arg background: 
                 La couleur de fond du bitmap (son 0). Sa valeur par défaut est ``background=''`` ce qui veut dire transparent.
         :arg bitmap: 
@@ -485,7 +492,7 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg tags: 
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) le bitmap. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) le bitmap. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
 
 .. _can_images:
 
@@ -503,15 +510,15 @@ Pour afficher une image sur un canevas, utiliser:
         :arg activeimage: 
                 Image à afficher lorsque la souris survole l'item. Pour les valeurs possibles, voir l'option **image** ci-dessous.
         :arg anchor:
-                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x, y)*. Voir  “Anchors” pour les valeurs possibles. Par exemple, si ``anchor='s'``, l'image sera positionnée de sorte que le point *(x, y)* soit situé au milieu de son bord supérieur (sud).
+                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x, y)*. Voir  :ref:`ancrage` pour les valeurs possibles. Par exemple, si ``anchor='s'``, l'image sera positionnée de sorte que le point *(x, y)* soit situé au milieu de son bord supérieur (sud).
         :arg disabledimage: 
                 Image à afficher lorsque l'item est inactif (à l'état ``'disabled'``). Pour les valeurs possibles, voir **image** ci-dessous.
         :arg image:
-                L'image à afficher, voir “Images”, pour avoir des informations à propos de la création d'image qui peuvent être chargées dans les canevas.
+                L'image à afficher, voir :ref:`images`, pour avoir des informations à propos de la création d'image qui peuvent être chargées dans les canevas.
         :arg state: 
                 ``'normal'`` par défaut. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'image. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'image. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
 
 .. _lignes:
 
@@ -532,7 +539,7 @@ En général, une ligne est une succession de segments connectés les uns aux au
         :arg arrow:
                 Par défaut, la ligne n'est pas terminée par une flèche. Utiliser ``arrow='first'`` pour obtenir une flèche au point *(x0, y0)* de la ligne. Utilisez ``arrow='last'`` pour obtenir une flèche à l'autre extrémité. Utilisez ``arrow='both'`` pour en avoir à chaque extrémité.
         :arg arrowshape:
-                Un tupe *(d1, d2, d3)* qui décrit la forme des flèches ajoutées par l'option **arrow**. La valeur par défaut est ``(8,10,3)``. Voir les flèches.
+                Un tupe *(d1, d2, d3)* qui décrit la forme des flèches ajoutées par l'option **arrow**. La valeur par défaut est ``(8,10,3)``. Voir :ref:`style-extr`.
         :arg capstyle:
                 Utiliser cette option pour préciser la forme des extrémités de la ligne. Voir :ref:`style-extr`. La valeur par défaut est ``'butt'``.
         :arg dash: 
@@ -547,9 +554,9 @@ En général, une ligne est une succession de segments connectés les uns aux au
         :arg fill:
                 La couleur utilisée pour dessiner la ligne. La valeur par défaut est ``fill='black'``.
         :arg joinstyle: 
-                Cette option contrôle l'apparence des jointures des côtés adjacents (lorsqu'il y en a plusieurs) de la ligne. Voir “Cap and join styles”. La valeur par défaut est ``'round'``.
+                Cette option contrôle l'apparence des jointures des côtés adjacents (lorsqu'il y en a plusieurs) de la ligne. Voir :ref:`style-extr`. La valeur par défaut est ``'round'``.
         :arg offset: 
-                Pour les lignes en pointillés, cette option sert à régler finement le motif en cohérence avec ceux des objets adjacents. Voir “Matching stipple patterns”..
+                Pour les lignes en pointillés, cette option sert à régler finement le motif en cohérence avec ceux des objets adjacents. Voir :ref:`nuagepts`.
         :arg smooth:
                 La bordure par défaut est formée de segments pour connecter les points qui définissent la ligne; Utilisez ``smooth=0`` pour obtenir ce comportement. Si vous utilisez ``smooth=1``, vous obtenez une courbe qui passe par ces points. Pour obtenir un segment avec ``smooth=1``, dupliquer les coordonnées de ses extrémités.
         :arg splinesteps:
@@ -557,11 +564,11 @@ En général, une ligne est une succession de segments connectés les uns aux au
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris survole la ligne. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
         :arg stipple:
-                Pour dessiner une ligne en pointillé, indiquez un bitmap qui précise le motif à utiliser, par exemple ``stipple='gray25'``. Voir “Bitmaps” pour les valeurs possibles.
+                Pour dessiner une ligne en pointillé, indiquez un bitmap qui précise le motif à utiliser, par exemple ``stipple='gray25'``. Voir :ref:`bitmaps` pour les valeurs possibles.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) la ligne. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) la ligne. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
-                L'épaisseur de la ligne. Vaut 1 pixel par défaut. Voir “Dimensions” pour les valeurs possibles.
+                L'épaisseur de la ligne. Vaut 1 pixel par défaut. Voir :ref:`dimensions` pour les valeurs possibles.
 
 .. _ellipses-et-cercles:
 
@@ -582,7 +589,7 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hachurée autour de l'ellipse. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour de l'ellipse. Utiliser cette option pour préciser un motif de hachure. Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
@@ -595,21 +602,21 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
         :arg fill:
                 Par défaut, l'intérieur de l'ellipse  est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'ellipse. Voir “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur de l'ellipse. Voir :ref:`nuagepts`.
         :arg outline:
                 Couleur de la bordure. Par défaut, ``outline='black'``.
         :arg outlineoffset: 
-                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir :ref:`nuagepts`.
         :arg stipple:
-                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'ellipse.  Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option **fill**. Voir “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur de l'ellipse.  Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option **fill**. Voir :ref:`bitmaps`.
         :arg outlinestipple: 
                 Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap (voir **stipple** ci-dessus); Voir :ref:`bitmaps`.
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'ellipse. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) l'ellipse. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
-                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir :ref:`dimensions`. 
 
 .. _polygones:
 
@@ -630,7 +637,7 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hachurée autour du polygone. Utiliser cette option pour préciser un motif de hâchure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour du polygone. Utiliser cette option pour préciser un motif de hâchure. Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
@@ -643,13 +650,13 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
         :arg fill:
                 Par défaut, l'intérieur du polygone est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg joinstyle: 
-                Cette option contrôle l'apparence des jointures des côtés adjacents du polygone. Voir “Cap and join styles”.
+                Cette option contrôle l'apparence des jointures des côtés adjacents du polygone. Voir :ref:`style-extr`.
         :arg offset: 
-                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur du polygone. Voir “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif de «pointillé» de l'intérieur du polygone. Voir :ref:`nuagepts`.
         :arg outline:
                 Couleur de la bordure; par défaut, ``outline=''``, ce qui rend la bordure transparente.
         :arg outlineoffset: 
-                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif de «pointillé» de la ligne de bordure. Voir :ref:`nuagepts`.
         :arg outlinestipple: 
                 Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg smooth:
@@ -659,11 +666,11 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
-                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur du polygone. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
+                Un bitmap pour indiquer le motif de pointillé à utiliser pour remplir l'intérieur du polygone. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir :ref:`bitmaps`.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) le polygone. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) le polygone. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
-                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir :ref:`dimensions`. 
 
 .. _rectangles:
 
@@ -696,7 +703,7 @@ Pour créer un rectangle sur le canevas:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hachurée autour du rectangle. Utiliser cette option pour préciser un motif de hachure. Voir “Dash patterns”.
+                Sert à réaliser une bordure hachurée autour du rectangle. Utiliser cette option pour préciser un motif de hachure. Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
@@ -709,21 +716,21 @@ Pour créer un rectangle sur le canevas:
         :arg fill:
                 Par défaut, l'intérieur du rectangle est transparent et vous pouvez obtenir ce comportement avec ``fill=''``. Vous pouvez aussi utiliser une couleur de remplissage. Voir :ref:`couleurs`.
         :arg offset: 
-                Utiliser cette option pour modifier le décalage du motif en «pointillé» de l'intérieur du rectangle. Voir “Matching stipple patterns”.
+                Utiliser cette option pour modifier le décalage du motif en «pointillé» de l'intérieur du rectangle. Voir :ref:`nuagepts`.
         :arg outline:
                 Couleur de la bordure. Par défaut, ``outline='black'``.
         :arg outlineoffset: 
-                Utiliser cette option pour ajuster le motif en «pointillé» de la ligne de bordure. Voir “Matching stipple patterns”.
+                Utiliser cette option pour ajuster le motif en «pointillé» de la ligne de bordure. Voir :ref:`nuagepts`.
         :arg outlinestipple: 
                 Utiliser cette option pour une ligne de bordure en pointillé. Le motif est précisé à l'aide d'un bitmap; Voir :ref:`bitmaps`.
         :arg state: 
                 ``'normal'`` par défaut. Il vaut ``'active'`` lorsque la souris le survole. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
-                Un bitmap pour indiquer le motif en pointillé à utiliser pour remplir l'intérieur du rectangle. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir “Bitmaps”.
+                Un bitmap pour indiquer le motif en pointillé à utiliser pour remplir l'intérieur du rectangle. Par défaut, ``stipple=''``, ce qui indique l'utilisation potentielle d'une couleur de remplissage. Une valeur typique serait ``stipple='gray25'``. N'a pas d'effet sauf si une couleur a été indiquée pour l'option ``fill`` . Voir :ref:`bitmaps`.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) le rectangle. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) le rectangle. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
-                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir “Dimensions”. 
+                Largeur de la bordure. Vaut 1 pixel par défaut. Utiliser ``width=0`` Pour rendre la bordure invisible. Voir :ref:`dimensions`. 
 
 .. _textes:
 
@@ -741,29 +748,29 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg activestipple: 
                 Le motif en pointillé à utiliser lorsque le texte est ``'active'`` (au survol de la souris). Pour des valeurs possible, voir l'option **stipple** ci-dessous.
         :arg anchor:
-                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Voir  “Anchors” pour les valeurs possibles.
+                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Voir :ref:`ancrage` pour les valeurs possibles.
         :arg disabledfill: 
                 Couleur de remplissage lorsque l'item est dans l'état (state) ``'disabled'``.
         :arg disabledstipple: 
-                Le motif en pointillé à utiliser lorsque le texte est ``'disabled'``. Pour des valeurs possibles, voir l'option stipple ci-dessous.
+                Le motif en pointillé à utiliser lorsque le texte est ``'disabled'``. Pour des valeurs possibles, voir l'option **stipple** ci-dessous.
         :arg fill:
-                Couleur du texte, noir par défaut. Voir “Colors”.
+                Couleur du texte, noir par défaut. Voir :ref:`couleurs`.
         :arg font:
-                Utiliser cette option pour changer la police de caractères. Voir “Type fonts”.
+                Utiliser cette option pour changer la police de caractères. Voir :ref:`polices`.
         :arg justify:
                 Gère l'alignement en cas d'affichage multiligne : ``'left'`` pour gauche, ``'center'`` pour centré et ``'right'`` pour droit.
         :arg offset: 
-                Le décalage du motif en pointillé à utiliser pour le texte. Pour plus d'informations, voir “Matching stipple patterns”.
+                Le décalage du motif en pointillé à utiliser pour le texte. Pour plus d'informations, voir :ref:`nuagepts`.
         :arg state: 
                 ``'normal'`` par défaut. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
-                Un bitmap qui indique le motif pointillé qui sera utilisé pour le rendu du texte. La valeur par défaut est `` stipple=''``, ce qui indique un rendu «solide». Une valeur typique serait ``stipple='gray25'``. Voir “Bitmaps”.
+                Un bitmap qui indique le motif pointillé qui sera utilisé pour le rendu du texte. La valeur par défaut est `` stipple=''``, ce qui indique un rendu «solide». Une valeur typique serait ``stipple='gray25'``. Voir :ref:`bitmaps`.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) le texte. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) le texte. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg text:
                 Le texte à afficher sous la forme d'une chaîne de caractères. Utiliser '\n' pour forcer les sauts de ligne.
         :arg width:
-                Si aucune valeur n'est indiquée, le texte est affiché dans un rectangle aussi long que la plus longue ligne. Si vous indiquez explicitement une largeur, chaque ligne du texte sera coupée afin de ne pas dépasser cette largeur. Voir “Dimensions”.
+                Si aucune valeur n'est indiquée, le texte est affiché dans un rectangle aussi long que la plus longue ligne. Si vous indiquez explicitement une largeur, chaque ligne du texte sera coupée afin de ne pas dépasser cette largeur. Voir :ref:`dimensions`.
 
 Vous pouvez modifier ou récupérer le texte affiché:
 
@@ -771,7 +778,7 @@ Vous pouvez modifier ou récupérer le texte affiché:
 
 * Pour remplacer le texte d'un tel item par une chaîne ``ch``, utiliser ``can.itemconfigure(id, text=ch)``.
 
-Plusieurs méthodes des canevas vous permettent d'autres manipulations du texte. Voir “Methods on Canvas widgets”, et plus particulièrement :py:meth:`~Canvas.dchars`, :py:meth:`~Canvas.focus`, :py:meth:`~Canvas.icursor`, :py:meth:`~Canvas.index`, et :py:meth:`~Canvas.insert`. 
+Plusieurs méthodes des canevas vous permettent d'autres manipulations du texte. Voir :ref:`CANVASmeth`, et plus particulièrement :py:meth:`~Canvas.dchars`, :py:meth:`~Canvas.focus`, :py:meth:`~Canvas.icursor`, :py:meth:`~Canvas.index`, et :py:meth:`~Canvas.insert`. 
 
 .. _fenêtres:
 
@@ -789,13 +796,13 @@ Pour créer une fenêtre dans un canevas, utiliser:
         Retourne l'identifiant numérique de la fenêtre créée. Ses options sont:
 
         :arg anchor:
-                Par défaut, vaut ``'center'`` ce qui signifie que la fenêtre est centrée par rapport à la position *(x,y)*. Voir  “Anchors” pour les valeurs possibles.
+                Par défaut, vaut ``'center'`` ce qui signifie que la fenêtre est centrée par rapport à la position *(x,y)*. Voir :ref:`ancrage` pour les valeurs possibles.
         :arg height:
-                La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenu. Voir “Dimensions” pour les valeurs possibles.
+                La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenu. Voir :ref:`dimensions` pour les valeurs possibles.
         :arg state: 
                 ``'normal'`` par défaut. Mettre cette option à ``'disabled'`` pour empêcher la fenêtre de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
         :arg tags:
-                Si c'est une chaîne seule, elle sert à marquer (*tag*) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir “Canvas tags”.
+                Si c'est une chaîne seule, elle sert à marquer (*tag*) la fenêtre. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg width:
                 La largeur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la largeur de son contenu.
         :arg window:

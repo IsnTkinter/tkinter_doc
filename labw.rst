@@ -54,11 +54,11 @@ Pour créer une étiquette dans une fenêtre principale ou dans un cadre ``paren
    :arg state:
            Par défaut, une étiquette est dans l'état 'normal'. Les autres états possibles sont 'disabled' et 'active' (les couleurs d'arrière plan et d'avant plan pour ces états sont alors utilisées).
    :arg takefocus:
-           Normalement, une étiquette n'obtient pas le focus; voir “Focus: routing keyboard input”. Si vous souhaitez que l'étiquette le reçoive, mettre 1 pour cette option.
+           Normalement, une étiquette n'obtient pas le focus; voir :ref:`FOCUS`. Si vous souhaitez que l'étiquette le reçoive, mettre 1 pour cette option.
    :arg text:
            Pour afficher une ou plusieurs ligne de texte dans une étiquette, indiquer une chaîne de caractères qui contient le texte. Le caractère spécial ``'\n'`` forcera la retour à la ligne.
    :arg textvariable:
-           Pour pouvoir faire varier le texte affiché en même temps que la valeur d'une variable de contrôle de type ``StringVar``, régler cette option avec cette variable. Voir “Control variables: the values behind the widgets”.
+           Pour pouvoir faire varier le texte affiché en même temps que la valeur d'une variable de contrôle de type ``StringVar``, régler cette option avec cette variable. Voir :ref:`CTRLVARIABLES`.
    :arg underline:
            Vous pouvez souligner l'un des caractères du texte en indiquant sa position (à partir de 0). Par défaut, ``underline=-1``, ce qui signifie aucun soulignement.
    :arg width:
@@ -66,4 +66,4 @@ Pour créer une étiquette dans une fenêtre principale ou dans un cadre ``paren
    :arg wraplength:
            Vous pouvez limiter le nombre de caractère sur chaque ligne en le précisant pour cette option. La valeur par défaut est 0, ce qui signifie que les lignes ne seront coupées que si il y a un saut de ligne.
 
-Il n'y a pas de méthodes spécifiques aux étiquettes. Voir “Universal widget methods”. 
+Il n'y a pas de méthodes spécifiques aux étiquettes. Voir :ref:`UNIVERSAL`.

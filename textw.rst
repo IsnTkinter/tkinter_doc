@@ -8,17 +8,17 @@ Un widget de type ``Text`` est une manière bien plus générale de traiter un t
 
 * Vous pouvez mélanger différentes fontes, couleurs de texte et couleurs d'arrière plan.
 
-* Vous pouvez intercaler des images dans le texte. Une image est traitée comme un caractère unique. Voir “Text widget images”.
+* Vous pouvez intercaler des images dans le texte. Une image est traitée comme un caractère unique. Voir :ref:`textimages`.
 
-* Un index est un entier qui sert à préciser une position entre deux caractères. Voir “Text widget indices”.
+* Un index est un entier qui sert à préciser une position entre deux caractères. Voir :ref:`textindex`.
 
-* Un widget ``Text`` peut contenir des marqueurs invisibles situés entre deux caractères. Voir “Text widget marks”.
+* Un widget ``Text`` peut contenir des marqueurs invisibles situés entre deux caractères. Voir :ref:`textmarques`.
 
-* Un widget ``Text`` vous permet de définir des noms pour des portions de textes appelés *tags*. Vous pouvez modifier l'apparence de telles portions de textes en utilisant ces *tags*, en modifiant sa fonte, sa couleur d'avant plan ou d'arrière plan et d'autres options de présentation. Voir “Text widget tags”.
+* Un widget ``Text`` vous permet de définir des noms pour des portions de textes appelés *tags*. Vous pouvez modifier l'apparence de telles portions de textes en utilisant ces *tags*, en modifiant sa fonte, sa couleur d'avant plan ou d'arrière plan et d'autres options de présentation. Voir :ref:`texttags`.
 
-* Vous pouvez aussi lier des gestionnaire d'événement sur des portions de textes marqués (à l'aide d'un *tag*). Voir “Events”.
+* Vous pouvez aussi lier des gestionnaire d'événement sur des portions de textes marqués (à l'aide d'un *tag*). Voir :ref:`EVENTS`.
 
-* Vous pouvez même insérer une «fenêtre» dans le contenu qui peut contenir n'importe quel widget de Tkinter - même un cadre qui en englobent plusieurs. Une fenêtre est aussi traitée comme un simple caractère. Voir “Text widget windows”. 
+* Vous pouvez même insérer une «fenêtre» dans le contenu qui peut contenir n'importe quel widget de Tkinter - même un cadre qui en englobent plusieurs. Une fenêtre est aussi traitée comme un simple caractère. Voir :ref:`textfen`.
 
 Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``parent``:
 
@@ -27,23 +27,23 @@ Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``paren
         Ce constructeur retourne le nouveau widget ``Text`` créé. Ses options incluent:
 
         :arg autoseparators:
-                Si l'option **undo** est positionné, l'option **autoseparators** contrôle si des séparateurs sont automatiquement ajoutés à la pile de l'historique de retour (*undo*) après chaque insertion ou suppression (si ``autoseparators=True``) ou non (si ``autoseparator=False``). Pour une vue d'ensemble du mécanisme d'historique, voir la section “The Text widget undo/redo stack”.
+                Si l'option **undo** est positionné, l'option **autoseparators** contrôle si des séparateurs sont automatiquement ajoutés à la pile de l'historique de retour (*undo*) après chaque insertion ou suppression (si ``autoseparators=True``) ou non (si ``autoseparator=False``). Pour une vue d'ensemble du mécanisme d'historique, voir :ref:`texthisto`.
         :arg bg: 
-                (ou **background**) La couleur d'arrière plan du widget. Voir “Colors”.
+                (ou **background**) La couleur d'arrière plan du widget. Voir :ref:`couleurs`.
         :arg bd: 
-                (ou **borderwidth**) L'épaisseur de la bordure du widget. 2 pixels par défaut. Voir “Dimensions”.
+                (ou **borderwidth**) L'épaisseur de la bordure du widget. 2 pixels par défaut. Voir :ref:`dimensions`.
         :arg cursor: 
-                Le pointeur de souris utilisée lorsque celle-ci est au dessus du widget. Voir “Cursors”.
+                Le pointeur de souris utilisée lorsque celle-ci est au dessus du widget. Voir :ref:`pointeurs`.
         :arg exportselection: 
                 Par défaut, le texte sélectionné à l'intérieur du widget est exporté vers le presse-papier du sytème. Utilisez ``exportselection=0`` pour supprimer ce comportement.
         :arg font: 
-                La fonte de caractères par défaut utilisées pour le texte saisi dans le widget. Notez que vous pouvez utiliser plusieurs polices de caractères dans ce widget en utilisant les *tags* pour modifier les propriétés de portions de texte. Voir “Type fonts”.
+                La fonte de caractères par défaut utilisées pour le texte saisi dans le widget. Notez que vous pouvez utiliser plusieurs polices de caractères dans ce widget en utilisant les *tags* pour modifier les propriétés de portions de texte. Voir :ref:`polices`.
         :arg fg: 
                 (ou **foreground**) La couleur utilisée pour le texte (et les bitmaps) dans le widget. Vous pouvez modifier la couleur pour des portions de textes tagués; cette option fournie juste une couleur par défaut.
         :arg height: 
                 La hauteur du widget en nombre de lignes (non en pixels!). La mesure dépend de la fonte de caractère courante.
         :arg highlightbackground: 
-                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir “Focus: routing keyboard input”.
+                La couleur de la ligne de mise en valeur du focus lorsque le widget ne l'a pas. Voir :ref:`FOCUS`.
         :arg highlightcolor: 
                 La couleur de la ligne de mise en valeur du focus lorsque le widget l'obtient.
         :arg highlightthickness: 
@@ -58,13 +58,13 @@ Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``paren
         :arg insertwidth: 
                 La largeur du curseur d'insertion (sa hauteur est déterminée par le plus haut élément de la ligne courante). 2 pixels par défaut.
         :arg maxundo:
-                Cette option sert à régler le nombre maximum d'opérations mémorisées dans l'historique. Pour une vue d'ensemble du mécanisme de gestion de l'historique, voir “The Text widget undo/redo stack”. Utilisez la valeur -1 pour préciser un nombre illimité d'opérations mémorisées.
+                Cette option sert à régler le nombre maximum d'opérations mémorisées dans l'historique. Pour une vue d'ensemble du mécanisme de gestion de l'historique, voir :ref:`texthisto`. Utilisez la valeur -1 pour préciser un nombre illimité d'opérations mémorisées.
         :arg padx: 
-                La taille des marges internes gauche et droite de la zone de texte. 1 pixels par défaut. Voir “Dimensions”.
+                La taille des marges internes gauche et droite de la zone de texte. 1 pixels par défaut. Voir :ref:`dimensions`.
         :arg pady: 
                 La taille des marges internes haute et basse de la zone de texte. 1 pixels par défaut.
         :arg relief: 
-                Le style de la bordure 3d du widget. ``'sunken'`` par défaut. Pour d'autre valeurs, voir “Relief styles”.
+                Le style de la bordure 3d du widget. ``'sunken'`` par défaut. Pour d'autre valeurs, voir :ref:`reliefs`.
         :arg selectbackground: 
                 La couleur d'arrière plan utilisée pour le texte sélectionné.
         :arg selectborderwidth: 
@@ -80,11 +80,11 @@ Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``paren
         :arg state: 
                 Par défaut, un widget ``Text`` réagit aux saisies clavier ainsi qu'à la souris, c'est l'état ``'normal'``. Si vous utilisez ``state='disabled'``, le widget ne réagira plus et l'utilisateur ne pourra plus ajouter de contenu (ni vous par programmation).
         :arg tabs: 
-                Cette option contrôle la façon dont le caractère Tab positionne le texte. Voir “Setting tabs in a Text widget”.
+                Cette option contrôle la façon dont le caractère Tab positionne le texte. Voir :ref:`texttabuls`.
         :arg takefocus: 
-                Par défaut, ce widget obtient le focus normalement (voir “Focus: routing keyboard input”). Utilisez ``takefocus=0`` si vous souhaitez désactiver ce comportement.
+                Par défaut, ce widget obtient le focus normalement (voir :ref:`FOCUS`). Utilisez ``takefocus=0`` si vous souhaitez désactiver ce comportement.
         :arg undo:
-                Mettre cette option à ``True`` pour activer le mécanisme d'historique, ou à ``False`` pour le désactiver. Voir “The Text widget undo/redo stack”.
+                Mettre cette option à ``True`` pour activer le mécanisme d'historique, ou à ``False`` pour le désactiver. Voir :ref:`texthisto`.
         :arg width: 
                 La largeur du widget exprimée en nombre de caractères (non en pixels!), conformément à la police de caractères courante.
         :arg wrap: 
@@ -93,6 +93,8 @@ Pour créer un widget ``Text`` comme enfant d'une fenêtre ou d'un cadre ``paren
                 Pour associer à ce widget une barre de défilement horizontale, configurez cette option avec la méthode ``set()`` de la barre de défilement.
         :arg yscrollcommand: 
                 Similaire à l'option précédente mais pour un défilement vertical.
+
+.. _textindex:
 
 Les index
 =========
@@ -121,10 +123,10 @@ Un **index** est une chaîne de caractère qui sert à préciser une position da
         La position située juste après la fin de la sélection s'il y en a une. Une exception du même type que pour ``'sel.first'`` est levée s'il n'y en a pas.
 
 ``'nom_marque'``
-        Vous pouvez utiliser une marque comme index; utilisez simplement son nom là où un index est attendu. Voir “Text widget marks”. 
+        Vous pouvez utiliser une marque comme index; utilisez simplement son nom là où un index est attendu. Voir :ref:`textmarques`.
 
 ``'tag.first'``
-        La position avant le premier caractère de la région de texte taguée avec *tag*. Voir “Text widget tags”. 
+        La position avant le premier caractère de la région de texte taguée avec *tag*. Voir :ref:`texttags`.
 
 ``'tag.last'``
         La position après le dernier caractère de la région de texte taguée avec *tag*.
@@ -133,7 +135,7 @@ Un **index** est une chaîne de caractère qui sert à préciser une position da
         La position située juste avant le caractère le plus proche de la position (*x*, *y*).
 
 ``objet-embarque``
-        Si vous avez embarqué une image ou une fenêtre dans le widget ``Text``, vous pouvez utilisez son nom comme un index. Voir “Text widget images” et “Text widget windows”. 
+        Si vous avez embarqué une image ou une fenêtre dans le widget ``Text``, vous pouvez utilisez son nom comme un index. Voir :ref:`textimages` et :ref:`textfen`.
 
 En supplément de ces différents moyens de base pour préciser un **index**, vous pouvez construire des expressions arbitrairement complexes en ajoutant l'un de ces suffixes à un index basique ou à une «expression d'index»:
 
@@ -158,41 +160,48 @@ En supplément de ces différents moyens de base pour préciser un **index**, vo
 ``wordstart``
         La position située avant le début du mot qui contient la position d'index donné. Par exemple, ``'11.44 wordstart'`` se rapporte à la position située juste avant le premier caractère du mot qui contient le 45ème caractères de la ligne 11. Dans ce contexte, un mot est soit une chaîne composée de lettres, de chiffres ou du caractère (_) ou un seule caractère qui n'est d'aucun de ces types. 
     
+.. _textmarques:
+        
 Les marques
-
 ===========
 
 Une marque représente une position flottante (ou glissante) quelquepart dans le contenu d'un widget ``Text``.
 
-* Pour gérer chaque marque, vous lui donnez un nom. Ce nom peut être n'importe quelle chaîne de caractère qui ne contient ni espace, ni point.
+* Pour gérer chaque marque, vous lui donnez un nom. Ce nom peut être n'importe quelle chaîne de caractères qui ne contient ni espace, ni point.
 
 * Il y a deux marques spéciales. ``'insert'`` qui est la position courante du curseur et ``'current'`` qui est la position la plus proche du pointeur de la souris.
 
 * Les marques glissent en même temps que le contenu adjacent: Si vous ajoutez du texte en amont d'une marque, la marque conserve la même position relativement aux contenus immédiatement voisins.
 
-* Les marques possèdent une propriété appelée «**gravité**» qui contrôle ce qui arrive lorsque vous insérez du texte à la position marquée. La gravité par défaut est ``'right'``, ce qui signifie que lorsque vous insérez du texte sur la marque, celle-ci reste à la fin du texte inséré. Si vous réglez la gravité à ``'left'`` (en utilisant la méthode mark_gravity() du widget de texte), la marque restera à la position située juste avant le texte inséré sur celle-ci.
+* Les marques possèdent une propriété appelée «**gravité**» qui contrôle ce qui arrive lorsque vous insérez du texte à la position marquée. La gravité par défaut est ``'right'``, ce qui signifie que lorsque vous insérez du texte sur la marque, celle-ci reste à la fin du texte inséré. Si vous réglez la gravité à ``'left'`` (en utilisant la méthode :py:meth:`Text.mark_gravity` du widget de texte), la marque restera à la position située juste avant le texte inséré sur celle-ci.
 
-* Supprimer du texte autour d'une marque ne supprime pas la marque. Pour supprimer une marque, utilisez la méthode mark_unset() du widget texte.
+* Supprimer du texte autour d'une marque ne supprime pas la marque. Pour supprimer une marque, utilisez la méthode :py:meth:`Text.mark_unset` du widget texte.
 
-Reportez-vous à “Methods on Text widgets”, ci-desssous, pour comprendre comment manipuler les marques.
+Reportez-vous à :ref:`textmeths`, ci-desssous, pour comprendre comment manipuler les marques.
+
+.. _textimages:
 
 Les images
 ==========
 
-Vous pouvez mettre une image ou un bitmap à l'intérieur du widget ``Text``. Elle sera traitée comme un caractère unique dont la taille est celle de l'objet. Voir “Images” et “Bitmaps”.
+Vous pouvez mettre une image ou un bitmap à l'intérieur du widget ``Text``. Elle sera traitée comme un caractère unique dont la taille est celle de l'objet. Voir :ref:`images` et :ref:`bitmaps`.
 
-Les images sont placées dans le texte en appelant la méthode image_create() du widget ``Text``. Voir plus loin pour la séquence d'appel et d'autres méthodes pour manipuler les images.
+Les images sont placées dans le texte en appelant la méthode :py:meth:`~Text.image_create` du widget ``Text``. Voir plus loin pour la séquence d'appel et d'autres méthodes pour manipuler les images.
 
 On manipule les images en fournissant leur nom à des méthodes du widget ``Text``. Vous pouvez préciser à Tkinter le nom d'une image ou le laisser en produire un par défaut.
 
 Une image peut apparaître un nombre arbitraire de fois dans le même widget de texte. Chaque instance de l'image aura un nom unique. Ces nom peuvent être utilisés comme index.
+
+.. _textfen:
 
 Les fenêtres
 ============
 
 Vous pouvez mettre (ou embarquer) n'importe quel widget de Tkinter - même un cadre qui contient d'autres widgets - à l'intérieur du widget ``Text``. Par exemple, vous pouvez y mettre un bouton parfaitement opérationnel ou un ensemble de boutons radios.
 
-Pour cela, utilisez la méthode window_create() du widget texte. Pour la séquence d'appel et d'autres méthodes utiles dans ce contexte, voir “Methods on Text widgets”. 
+Pour cela, utilisez la méthode :py:meth:`~Text.window_create` du widget texte. Pour la séquence d'appel et d'autres méthodes utiles dans ce contexte, voir :ref:`textmeths`.
+
+.. _texttags:
 
 Les tags
 ========
@@ -211,7 +220,9 @@ Afin de contrôler ces caractéristiques relatives à l'apparence ou aux fonctio
 
 * Vous pouvez modifier à tout moment l'ordre des tags dans la liste des tags.
 
-Les tags sont créés en utilisant la méthode tag_add() du widget texte. Reportez-vous à “Methods on Text widgets”, ci-dessous, pour des informations sur cela et d'autres méthodes utiles dans ce contexte.
+Les tags sont créés en utilisant la méthode :py:meth:`~Text.tag_add` du widget texte. Reportez-vous à :ref:`textmeths`, ci-dessous, pour des informations sur cela et d'autres méthodes utiles dans ce contexte.
+
+.. _texttabuls:
 
 Régler les tabulations
 ======================
@@ -234,8 +245,10 @@ L'option **tabs** du widget ``Text`` vous donne plusieurs possibilités pour dé
 
   + Avec ``'numeric'``, le texte est positionné en plaçant le premier "." qu'il contient sur le taquet de tabulation.
 
-* Par exemple, le réglage ``tabs=('2c', '4.5c', 'right', '9c', 'center', '13c', 'numeric')`` positionnera quatre taquets de tabulation: le premier à 2 cm du bord gauche de la page avec un alignement à gauche du texte, le second à 4.5 cm du bord avec un texte aligné à droite, le troisième à 9cm du bord avec un alignement au centre et le quatrième à 13cm du bord avec un alignement sur le séparateur décimal. Si l'utilisateur insère de nouvelles tabulations, leurs taquets apparaîtront à 13-9=4cm les unes des autres avec le dernier alignement de la liste c'est à dire 'numeric'.
+* Par exemple, le réglage ``tabs=('2c', '4.5c', 'right', '9c', 'center', '13c', 'numeric')`` positionnera quatre taquets de tabulation: le premier à 2 cm du bord gauche de la page avec un alignement à gauche du texte, le second à 4.5 cm du bord avec un texte aligné à droite, le troisième à 9cm du bord avec un alignement au centre et le quatrième à 13cm du bord avec un alignement sur le séparateur décimal. Si l'utilisateur insère de nouvelles tabulations, leurs taquets apparaîtront à 13-9=4cm les unes des autres avec le dernier alignement de la liste c'est à dire ``'numeric'``.
     
+.. _texthisto:
+
 Gestion de l'historique
 =======================
 
@@ -253,7 +266,9 @@ Voici comment fonctionne la pile d'historique:
 
 * Une opération de «retour avant» ne peut fonctionner que si l'éditeur n'a pas été modifié depuis la dernière opération de «retour arrière». Dans ce cas, il réapplique toutes les opérations précédemment annulées.
 
-Les méthodes utilisées pour implémenter la pile d'historique sont principalement edit_redo, edit_separator, et edit_undo; elles sont détaillées dans "Methods on Text widgets”. Le mécanisme d'historique n'est pas activé par défaut; vous devez mettre à ``True`` l'option **undo** du widet ``Text`` pour l'activer.
+Les méthodes utilisées pour implémenter la pile d'historique sont principalement :py:meth:`~Text.edit_redo`, :py:meth:`~Text.edit_separator`, et :py:meth:`~Text.edit_undo`; elles sont détaillées dans :ref:`textmeths`. Le mécanisme d'historique n'est pas activé par défaut; vous devez mettre à ``True`` l'option **undo** du widet ``Text`` pour l'activer.
+
+.. _textmeths:
 
 Méthodes du widget ``Text``
 ===========================
@@ -315,7 +330,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.bbox(index)
 
-            Retourne la boîte englobante du caractère d'*index* donné, comme un 4-tuple *(x, y, largeur, hauteur)*. Si le caractère n'est pas visible, la valeur de retour est ``None``. Remarquez que cette méthode peut retourner une valeur imprécise tant que vous n'avez pas appeler la méthode update_idletasks() (voir “Universal widget methods”). 
+            Retourne la boîte englobante du caractère d'*index* donné, comme un 4-tuple *(x, y, largeur, hauteur)*. Si le caractère n'est pas visible, la valeur de retour est ``None``. Remarquez que cette méthode peut retourner une valeur imprécise tant que vous n'avez pas appelé la méthode :py:meth:`update_idletasks` (voir :ref:`UNIVERSAL`). 
 
 .. py:method:: Text.compare(index1, op, index2)
 
@@ -329,7 +344,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.dlineinfo(index)
 
-            Retourne la boîte englobante pour la ligne qui contient la position d'*index* donné. Voir la méthode index() ci-dessus pour prendre connaissance de la forme de la valeur de retour ainsi que du besoin éventuel de rafraîchir certaines tâches assoupies (*idle tasks*).
+            Retourne la boîte englobante pour la ligne qui contient la position d'*index* donné. Voir la méthode :py:meth:`~Text.index` ci-dessus pour prendre connaissance de la forme de la valeur de retour ainsi que du besoin éventuel de rafraîchir certaines tâches assoupies (*idle tasks*).
 
 .. py:method:: Text.edit_modified(arg=None)
 
@@ -341,7 +356,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.edit_redo()
 
-            Annule un retour arrière dans l'historique (*redo*). Pour plus de détails, voir “The Text widget undo/redo stack”. 
+            Annule un retour arrière dans l'historique (*redo*). Pour plus de détails, voir :ref:`texthisto`.
 
 .. py:method:: Text.edit_reset()
 
@@ -349,13 +364,13 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.edit_separator()
 
-            Ajoute un séparateur sur la pile de gestion de l'historique. Ce séparateur limite le champ d'application d'une opération de retour arrière dans l'historique de façon à inclure les seuls changements qui se sont produits après que le séparateur a été placé dans la pile. Pour plus de détails, voir “The Text widget undo/redo stack”. 
+            Ajoute un séparateur sur la pile de gestion de l'historique. Ce séparateur limite le champ d'application d'une opération de retour arrière dans l'historique de façon à inclure les seuls changements qui se sont produits après que le séparateur a été placé dans la pile. Pour plus de détails, voir :ref:`texthisto`.
 
 .. py:method:: Text.edit_undo()
 
-            Annule toute les modifications du contenu de l'éditeur qui ont eu lieu après l'insertion d'un séparateur dans la pile de gestion de l'historique (ou jusqu'au debut de la pile s'il n'y a pas de séparateur). Pour plus de détails, voir “The Text widget undo/redo stack”. Une erreur est levée si la pile était vide au moment de l'appel.
+            Annule toute les modifications du contenu de l'éditeur qui ont eu lieu après l'insertion d'un séparateur dans la pile de gestion de l'historique (ou jusqu'au debut de la pile s'il n'y a pas de séparateur). Pour plus de détails, voir :ref:`texthisto`. Une erreur est levée si la pile était vide au moment de l'appel.
 
-.. py:method:: Text.image_create(index[, option=value, ...])
+.. py:method:: Text.image_create(index, option=valeur, ...)
 
             Cette méthode sert à insérer une image dans l'éditeur juste après la position précisée par l'*index*. Une image est traitée de la même façon qu'un caractère dont la taille serait celle de l'image.
 
@@ -364,7 +379,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **align**
                     Cette option précise l'alignement vertical de son image si sa hauteur est inférieure à la hauteur de la ligne qui la contient. Les valeurs possibles sont ``'top'`` pour un alignement en haut, ``'center'`` pour un centrage vertical; ``'bottom'`` pour la placer tout en bas; ou ``'baseline'`` pour aligner le bas de l'image avec la ligne de base du texte.
             **image**
-                    L'image à utiliser. Voir “Images”.
+                    L'image à utiliser. Voir :ref:`images`.
             **name**
                     Vous pouvez donner un nom à cette instance de l'image. Si vous ne renseignez pas cette option, Tkinter produira un nom unique pour cette instance. Si vous créez de multiples instances d'une même image dans le même widget de texte, Tkinter produira un nom unique en ajoutant la lettre "#" suivi d'un nombre.
             **padx**
@@ -404,7 +419,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.mark_gravity(mark, gravity=None)
 
-            Modifie ou récupère la propriété de gravité d'une marque existante; voir “Text widget marks”, pour plus d'informations sur la propriété de gravité.
+            Modifie ou récupère la propriété de gravité d'une marque existante; voir :ref:`textmarques`, pour plus d'informations sur la propriété de gravité.
 
             Pour régler la propriété de gravité d'une marque *mark*, utilisez les valeurs ``'left'`` ou ``'right'`` comme deuxième argument. Pour récupérer la propriété de gravité de la marque *mark*, ne renseignez pas le second argument et la méthode retournera ``'left'`` ou ``'right'``.
 
@@ -436,13 +451,13 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.scan_dragto(x, y)
 
-            Voir la méthode scan_mark() ci-dessous.
+            Voir la méthode ``scan_mark()`` ci-dessous.
 
 .. py:method:: Text.scan_mark(x, y)
 
             Cette méthode sert à implémenter le défilement rapide de la zone visible du widget ``Text``. Typiquement, un utilisateur enfonce un bouton de la souris puis la déplace sans relâcher le bouton dans la direction désirée, et la zone visible est déplacée dans cette direction à un rythme proportionnel à la distance parcourue par la souris depuis le clic. Le mouvement peut réaliser un défilement oblique.
 
-            Pour implémenter cette fonctionnalité, liez l'événement «appui sur le bouton de la souris» à un gestionnaire chargé d'appeler scan_mark(x, y), où *x* et y* représentent la position de la souris au moment de l'appui. Ensuite, liez l'événement ``'<Motion>'`` (déplacement de la souris) à un gestionnaire qui appelera la méthode scan_dragto(x, y) où *x* et *y* désignent la nouvelle position de la souris.
+            Pour implémenter cette fonctionnalité, liez l'événement «appui sur le bouton de la souris» à un gestionnaire chargé d'appeler ``scan_mark(x, y)``, où *x* et *y* représentent la position de la souris au moment de l'appui. Ensuite, liez l'événement ``'<Motion>'`` (déplacement de la souris) à un gestionnaire qui appelera la méthode ``scan_dragto(x, y)`` où *x* et *y* désignent la nouvelle position de la souris.
 
 .. py:method:: Text.search(pattern, index, option=valeur, ...)
 
@@ -459,7 +474,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **forwards**
                     Mettre cette option à ``True`` pour faire une recherche vers l'avant. C'est la valeur par défaut de l'option.
             **regexp**
-                    Mettre cette option à ``True`` pour interpréter la chaîne *pattern* comme une expression régulière dans le style du langage *Tcl*. Par défaut la recherche se fait de manière exacte (voir l'option *exact*). Les expressions régulières dans le style *Tcl* forment un sous-ensemble des expressions régulières de Python; elles supportent ces caractères spéciaux: . ^ [c1…] (…) * + ? e1|e2
+                    Mettre cette option à ``True`` pour interpréter la chaîne *pattern* comme une expression régulière dans le style du langage *Tcl*. Par défaut la recherche se fait de manière exacte (voir l'option **exact**). Les expressions régulières dans le style *Tcl* forment un sous-ensemble des expressions régulières de Python; elles supportent ces caractères spéciaux: . ^ [c1…] (…) * + ? e1|e2
             **nocase**
                             Mettre cette option à 1 pour une recherche insensible à la casse (majuscule/minuscule). Par défaut, la recherche y est sensible .
             **stopindex**
@@ -475,7 +490,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.tag_bind(tagName, sequence, func, add=None)
 
-            Cette méthode lie la séquence d'événements *sequence* à la région de texte taguée avec *tagName*. Voir “Events” pour plus d'informations sur la gestion des événements.
+            Cette méthode lie la séquence d'événements *sequence* à la région de texte taguée avec *tagName*. Voir :ref:`EVENTS` pour plus d'informations sur la gestion des événements.
 
             Pour créer une nouvelle liaison pour un texte tagué, utilisez les trois premiers arguments: *sequence* sert à identifier l'événement, *gest* est la fonction qui sera appelée lorsque l'événement ciblé se produira.
 
@@ -500,19 +515,19 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **background**
                     La couleur d'arrière plan du texte tagué. Notez que vous ne pouvez pas utiliser l'abbréviation *bg*.
             **bgstipple**
-                    Pour griser la couleur de fond, précisez l'un des bitmaps standards (voir “Bitmaps”). Cela n'a aucun effet si la couleur d'arrière plan n'a pas été spécifiée.
+                    Pour griser la couleur de fond, précisez l'un des bitmaps standards (voir :ref:`bitmaps`). Cela n'a aucun effet si la couleur d'arrière plan n'a pas été spécifiée.
             **borderwidth**
                     Épaisseur de la bordure autour du texte tagué. 0 par défaut. Notez que vous ne pouvez pas utiliser *bd* comme abbréviation.
             **fgstipple**
                     Pour griser un texte, utiliser un bitmap.
             **font**
-                    La police de caractères utilisée pour afficher le texte tagué. Voir “Type fonts”.
+                    La police de caractères utilisée pour afficher le texte tagué. Voir :ref:`polices`.
             **foreground**
                     La couleur utilisée pour le texte tagué. Notez que vous ne pouvez pas utiliser l'abbréviation *bd*.
             **justify**
                     Cette option, qui est positionnée pour chaque nouvelle ligne de texte du contenu, sert à préciser son alignement; les valeurs possibles sont ``'left'``, ``'right'``, ``'center'``.
             **lmargin1**
-                    Taille du retrait (indentation) à appliquer au début de la première ligne de la portion de texte tagué. 0 par défaut. Voir “Dimensions” pour les valeurs permises.
+                    Taille du retrait (indentation) à appliquer au début de la première ligne de la portion de texte tagué. 0 par défaut. Voir :ref:`dimensions` pour les valeurs permises.
             **lmargin2**
                     Taille du retrait (indentation) à appliquer au début de chaque ligne de la portion de texte tagué. 0 par défaut.
             **offset**
@@ -520,7 +535,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **overstrike**
                     Mettre à 1 pour «barrer» le texte tagué (une ligne horizontale le parcourt en son centre).
             **relief**
-                    Sert à préciser le style de relief de la bordure du texte tagué. Sa valeur par défaut est ``'flat'``. Voir “Relief styles” pour d'autres valeurs possibles.
+                    Sert à préciser le style de relief de la bordure du texte tagué. Sa valeur par défaut est ``'flat'``. Voir :ref:`reliefs` pour d'autres valeurs possibles.
             **rmargin**
                     Largeur de la marge droite à appliquer pour le texte tagué. Sa valeur par défaut est 0.
             **spacing1**
@@ -530,11 +545,11 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
             **spacing3**
                     Quantité d'espace vertical supplémentaire à ajouter en dessous d'une ligne physique (par opposition à une ligne enveloppée). Sa valeur par défaut est 0.
             **tabs**
-                    Sert à préciser le traitement des tabulations pour la portion de texte taguée comme l'option de même nom du widget ``Text``. Voir “Setting tabs in a Text widget”.
+                    Sert à préciser le traitement des tabulations pour la portion de texte taguée comme l'option de même nom du widget ``Text``. Voir :ref:`texttabuls`.
             **underline**
                     Mettre à 1 pour souligner la portion de texte taguée.
             **wrap**
-                    Longueur maximale d'une ligne de texte au-dessus de quoi elle est coupée (logiquement) afin de ne pas excéder cette longueur. Voir la description de l'option *wrap* du widget ``Text`` plus haut.
+                    Longueur maximale d'une ligne de texte au-dessus de quoi elle est coupée (logiquement) afin de ne pas excéder cette longueur. Voir la description de l'option **wrap** du widget ``Text`` plus haut.
 
 .. py:method:: Text.tag_delete(tagName, ...)
 
@@ -542,7 +557,7 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.tag_lower(tagName, sousLui=None)
 
-            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir “Text widget tags”, pour une description de cette «pile»). Si vous précisez deux arguments, le tag de nom *tagName* est déplacé juste en dessous du tag de nom *sousLui*. Si vous n'utilisez que le premier argument, le tag est déplacé tout en bas de la pile.
+            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir :ref:`texttags`, pour une description de cette «pile»). Si vous précisez deux arguments, le tag de nom *tagName* est déplacé juste en dessous du tag de nom *sousLui*. Si vous n'utilisez que le premier argument, le tag est déplacé tout en bas de la pile.
 
 .. py:method:: Text.tag_names(index=None)
 
@@ -560,11 +575,11 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
             Cette méthode est similaire à la précédente, mais le premier caractère tagué avec *tagName* ne doit pas être situé après le caractère d'index *index1* ni avant le caractère d'index *index2*. Si plusieurs étendus de texte correspondent, celle qui est la plus proche d'*index1* est choisie. Si *index2* n'est pas précisé, alors par défaut il correspond au début du texte.
 
-            La valeur de retour est similaire à celle retournée par tag_nextrange(). 
+            La valeur de retour est similaire à celle retournée par :py:meth:`~Text.tag_nextrange`. 
 
 .. py:method:: Text.tag_raise(tagName, surLui=None)
 
-            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir “Text widget tags” pour plus d'explication sur cette pile). Si vous utilisez deux arguments, le tag *tagName* est déplacé juste au-dessus du tag *surLui*. Si vous n'utilisez qu'un argument, le tag indiqué est placé tout en haut de la pile.
+            Utilisez cette méthode pour modifier l'ordre des tags dans la pile des tags (voir :ref:`texttags` pour plus d'explications sur cette pile). Si vous utilisez deux arguments, le tag *tagName* est déplacé juste au-dessus du tag *surLui*. Si vous n'utilisez qu'un argument, le tag indiqué est placé tout en haut de la pile.
 
 .. py:method:: Text.tag_ranges(tagName)
 
@@ -627,25 +642,25 @@ Les méthodes qui suivent sont disponibles sur tout widget de type ``Text``:
 
 .. py:method:: Text.xview_moveto(fraction)
 
-            Fait défiler la vue de la même façon que xview('moveto', fraction). 
+            Fait défiler la vue de la même façon que ``xview('moveto', fraction)``. 
 
-.. py:method:: Text.xview_scroll(n, what)
+.. py:method:: Text.xview_scroll(n, quoi)
 
-            Pareil que xview('scroll', n, quoi). 
+            Pareil que ``xview('scroll', n, quoi)``. 
 
 .. py:method:: Text.yview('moveto', fraction)
 
-            Pareil que xview('moveto',…), mais pour un défilement vertical. 
+            Pareil que ``xview('moveto',…)``, mais pour un défilement vertical. 
 
 .. py:method:: Text.yview('scroll', n, quoi)
 
-            Pareil que xview('scroll',…). Dans ce cas ``'units'`` désigne une ligne.
+            Pareil que ``xview('scroll',…)``. Dans ce cas ``'units'`` désigne une ligne.
 
 .. py:method:: Text.yview_moveto(fraction)
 
-            Similaire à xview_moveto() dans la direction verticale.  
+            Similaire à ``xview_moveto()`` dans la direction verticale.  
 
 .. py:method:: Text.yview_scroll(n, quoi)
 
-            Similaire à xview_scroll() dans la direction verticale. 
-    
+            Similaire à ``xview_scroll()`` dans la direction verticale. 
+
