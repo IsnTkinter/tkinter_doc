@@ -40,7 +40,7 @@ située à son coin supérieur gauche, les valeurs de `x` augmentant vers la dro
 les valeurs de `y` augmentant vers le bas.
 
 .. image:: img/coords.png 
-
+        :align: center
 L'unité de base est le pixel avec le coin supérieur gauche de coordonnées `(0,0)`.
 Les coordonnées indiquées par un entier sont toujours exprimées en pixels, mais chaque coordonnée
 peut être indiquée via une chaîne de caractères dans une unité particulière; voir :ref:`dimensions`.
@@ -149,6 +149,7 @@ Ces constantes sont données comme sur une boussole où le nord est en haut et l
 Les constantes d'ancrages sont montrées ci-dessous:
 
 .. image:: img/anchors.png
+        :align: center
 
 Par exemple, si vous créez un petit widget dans un large cadre et utilisez l'option ``anchor='se'``, le widget sera placé au niveau du bord inférieur droit du cadre. Si vous utilisez
 ``anchor='n'``, il sera centré sur le bord haut du cadre.
@@ -163,6 +164,7 @@ Les styles de relief
 Le style de relief d'un widget se réfère à la simulation de certains effets 3D autour de l'extérieur du widget. Voici les différentes possibilités :
 
 .. image:: img/relief.png
+        :align: center
 
 Les valeurs peuvent être précisées par des chaînes de caractères comme ``'raised'``, ``'sunken'``, ``'flat'`` ...
 
@@ -176,6 +178,7 @@ Les bitmaps
 Pour les options ``bitmap`` des widgets, les bitmaps représentés ci-dessous sont toujours disponibles :
 
 .. image:: img/stdbitmaps.png
+        :align: center
 
 L'image montre des widget boutons qui portent les bitmaps standards.
 
@@ -405,13 +408,14 @@ Pour obtenir des dessins plaisants, il est parfois bon de s'intéresser au style
 La figure suivante illustre ces styles. Les points rouges montrent la localisation des points qui définissent les lignes.
 
 .. image:: img/cap-join.png
+        :align: center
 
 .. _Motifs-brise:
 
 Motifs brisés (`dash patterns`)
 ===============================
 
-Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner leur ligne de contour (`outline`). Les options **dash** et **dashoff** vous donnent un contrôle fin sur le motif exact qui sera dessiné.
+Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner leur ligne de contour (`outline`). Les options **dash** et **dashoffset** vous donnent un contrôle fin sur le motif exact qui sera dessiné.
 
 **dash**
 
@@ -419,13 +423,14 @@ Bon nombre de widgets vous permettent d'indiquer un motif brisé pour dessiner l
     
     Par exemple, l'option ``dash=(3, 5)`` produit une ligne où le parties tracées font 3 pixels et où les parties vides en font 5. ``dash=(7, 1, 1, 1)`` produirait un motif de base où les partie tracées mesureraient 7 puis 1 pixels séparés par des parties vides de 1 pixel. ``dash=(5,)`` produirait une alternance 5 pixels tracés, 5 pixels vides.
   
-**dashoff**
+**dashoffset**
 
-    Pour démarrer le motif brisé en un point différent du cycle c'est à dire qui ne soit pas le point de départ, utiliser une option ``dashoff=n`` où `n` est un nombre de pixels à sauter avant le démarrage du motif.
+    Pour démarrer le motif brisé en un point différent du cycle c'est à dire qui ne soit pas le point de départ, utiliser une option ``dashoffset=n`` où `n` est un nombre de pixels à sauter avant le démarrage du motif.
     
-    Par exemple, ``dash=(5, 1, 2, 1)`` en combinaison avec ``dashoff=3`` produirait: tracé 2, vide 1, tracé 2, vide 1 puis ensuite, tracé 5, vide 1, tracé 2, vide 1 et ainsi de suite :
+    Par exemple, ``dash=(5, 1, 2, 1)`` en combinaison avec ``dashoffset=3`` produirait: tracé 2, vide 1, tracé 2, vide 1 puis ensuite, tracé 5, vide 1, tracé 2, vide 1 et ainsi de suite :
     
-    .. image:: img/dashpat.png
+.. image:: img/dashpat.png
+        :align: center
 
 .. _nuagepts:
 

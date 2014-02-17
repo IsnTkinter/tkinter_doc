@@ -7,7 +7,7 @@ Une interface graphique multiplateforme (GUI) pour Python
 Tkinter sert à réaliser des interfaces graphiques pour l'utilisateur (GUI) 
 à l'aide d'un ensemble de composants graphiques (widgets).
 
-Ce document s'inspire (et traduit) la référence suivante : lien à faire.
+Ce document s'inspire (et traduit) de  `cette documentation <http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html>`_.
 
 Nous commencerons par la part visible de tkinter en créant des composants 
 graphiques (widgets) puis en les disposant sur l'écran. Ensuite, nous expliquerons
@@ -17,7 +17,12 @@ derrière.
 Un exemple simple
 =================
 
-Voici un programme «tkinter» minimal qui contient un seul bouton «Quitter»::
+Voici un programme «tkinter» minimal qui contient un seul bouton «Quitter».
+
+.. image:: img/intro.png
+        :align: center
+
+.. code-block:: python
 
     # Chargement du module tkinter
     from tkinter import * # pour Python2 ce serait Tkinter

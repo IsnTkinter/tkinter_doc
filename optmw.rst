@@ -7,6 +7,7 @@
 Le but de ce widget est d'offrir un ensemble fixe de choix à l'utilisateur dans un menu déroulant.
 
 .. image:: img/menuoption.png
+        :align: center
 
 L'illustration ci-dessus montre un menu d'options, ``OptionMenu``, dans deux états. L'exemple de gauche montre le widget dans sa forme initiale. L'exemple de droite montre à quoi il ressemble lorsqu'on a cliqué dessus avec la souris et qu'on a choisi 'bateau'.
 

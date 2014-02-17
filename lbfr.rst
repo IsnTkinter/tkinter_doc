@@ -9,6 +9,7 @@ Le widget «cadre étiqueté», ``LabelFrame``, comme le widget ``Frame``, est a
 Voici un exemple de cadre étiqueté qui contient deux boutons. Remarquez que l'étiquette “Important controls” interrompt la bordure. Cette figure illustre les valeurs par défaut du widget: un relief 'groove' (Voir :ref:`reliefs`) et une étiquette ancrée au nord ouest, ``'nw'``, c'est à dire en haut à gauche du cadre. 
 
 .. image:: img/labelframe.png
+        :align: center
 
 Pour créer un cadre étiqueté dans une fenêtre mère ou un cadre ``parent``:
 
@@ -36,6 +37,7 @@ Pour créer un cadre étiqueté dans une fenêtre mère ou un cadre ``parent``:
                 Utilisez cette option pour positionner l'étiquette sur le bord du cadre. Sa position par défaut est ``'nw'`` ce qui place l'étiquette en haut à gauche. Pour les douze positions possibles:
                 
                 .. image:: img/labelanchor.png
+                        :align: center
 
         :arg labelwidget: 
                 À la place d'un label texte, vous pouvez utiliser n'importe quel widget comme label en le passant à cette option. Si vous précisez à la fois un tel widget et un étiquette texte, cette dernière est ignorée.

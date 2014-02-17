@@ -6,9 +6,15 @@
 
 Les boutons radio servent à réaliser des ensembles de widgets connexes qui permettent à l'utilisateur de sélectionner un choix (et un seul) parmi d'autres; chaque bouton radio représente un choix possible et se compose de deux parties, l'indicateur et l'étiquette:
 
-.. image:: img/radb1.png
+.. figure:: img/radb1.png
+        :align: center
 
-.. image:: img/radb2.png
+        Apparence «normale»
+
+.. figure:: img/radb2.png
+        :align: center
+
+        Boutons «poussoirs» (``indicatoron=0``)
 
 Voici un extrait du code qui a servit à produire l'illustration::
 

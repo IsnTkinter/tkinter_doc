@@ -7,6 +7,7 @@
 Les cases à cocher (parfois appelé «checkbox») permettent à l'utilisateur d'effectuer des choix. L'illustration ci-dessous montre trois cases à cocher dont deux sont cochées (état "on": 1) et une est décochée (état "off": 0).
 
 .. image:: img/chckb.png
+        :align: center
 
 L'indicateur est la partie de la case à cocher qui indique son état, et l'étiquette est le texte qui apparaît à côté.
 

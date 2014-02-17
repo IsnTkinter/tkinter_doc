@@ -76,6 +76,7 @@ Le sous-module ``filedialog``
 Le sous-module ``filedialog`` fournit des fonctions qui servent à créer des fenêtres popups pour permettre à l'utilisateur de choisir un fichier. Une fois que l'utilisateur a fait son choix, la fonction retourne le chemin complet du fichier. Voici à quoi ressemble une telle fenêtre:
 
 .. image:: img/dialog/asksaveasfilename.png
+        :align: center
 
 Les fonctions disponibles sont:
 
@@ -127,6 +128,7 @@ Le sous-module ``colorchooser``
 ===============================
 
 .. image:: img/dialog/colorchooser.png
+        :align: center
 
 Pour fournir à l'utilisateur de votre application un moyen simple de sélectionner une couleur, importez le sous-module ``colorchooser`` et appelez cette fonction:
 

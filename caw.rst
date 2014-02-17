@@ -4,6 +4,11 @@
 ``Canvas`` - Canevas 
 ************************
 
+.. figure:: img/pacman.png
+   :align: center
+
+   Pacman dans un Canevas de fond noir
+
 Un canevas est une zone rectangulaire destinée à contenir des dessins ou d'autres figures complexes. Vous pouvez y placer des graphiques, du texte, des composants graphiques (*widgets*) ou des cadres (*frames*). Veuillez consulter les sections suivantes pour les méthodes qui servent à créer de tels objet sur un canevas:
 
 * :py:meth:`~Canvas.create_arc` : Une portion d'ellipse. Voir :ref:`arcs`.
@@ -60,7 +65,7 @@ Pour créer un objet de type Canvas:
         :arg selectforeground:
                 La couleur d'avant plan utilisée pour mettre en valeur l'item sélectionné.
         :arg takefocus:
-                Normalement, le focus (see Section 53, “Focus: routing keyboard input”) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (see Section 54, “Events” for an overview of keyboard bindings). Si vous positionnez la valeur de cette option à 1, le canevas obtiendra le focus de manière ordinaire. Positionnez la à ``''`` pour obtenir le comportement «normal».
+                Normalement, le focus (voir :ref:`FOCUS`) est obtenu en utilisant la touche Tab seulement si un gestionnaire d'événement a été prévu pour cela (voir :ref:`EVENTS` pour une vue d'ensemble de la gestion du clavier). Si vous positionnez la valeur de cette option à 1, le canevas obtiendra le focus de manière ordinaire. Positionnez la à ``''`` pour obtenir le comportement «normal».
         :arg width:
                 Largeur du canevas. Voir :ref:`dimensions`.
         :arg xscrollincrement:
@@ -400,7 +405,10 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
 Les arcs
 ========
 
-Un arc, dans sa forme générale, est une portion d'ellipse. Une ellipse tout entière ou un cercle forment des cas particulier. Reportez-vous à  “Canvas oval objects” pour en savoir plus sur la géométrie des ellipses dessinées.
+.. image:: img/can_arc.png
+        :align: center
+        
+Un arc, dans sa forme générale, est une portion d'ellipse. Une ellipse tout entière ou un cercle forment des cas particuliers. Reportez-vous à  :ref:`ellipses-et-cercles` pour en savoir plus sur la géométrie des ellipses dessinées.
 
 Pour créer un arc sur un canvas, utiliser :
 
@@ -498,6 +506,18 @@ Pour créer un item de type bitmap sur un canevas, utiliser:
 
 Les images
 ==========
+.. image:: img/can_image.png
+        :align: center
+
+extrait de code utilisé:
+
+.. code-block:: python
+
+        can = Canvas(root, width=w, height=h, bg="black")
+        #...
+        img = PhotoImage(file='zelda.ppm')
+        can.create_image(w/2, h/2, image=img)
+        #... 
 
 Pour afficher une image sur un canevas, utiliser:
 
@@ -575,6 +595,9 @@ En général, une ligne est une succession de segments connectés les uns aux au
 Les ellipses et cercles
 =======================
 
+.. image:: img/can_ellipse.png
+        :align: center
+        
 Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carré) *(x0, y0)*, *(x1, y1)* où les premières coordonnées sont celles du coin supérieur gauche et les secondes celles du coin inférieur droit, utiliser:
 
 .. py:method:: Canvas.create_oval(x0, y0, x1, y1, option, ...)
@@ -622,6 +645,17 @@ Pour créer l'ellipse (ou le cercle) qui s'inscrit dans le rectangle (ou le carr
 
 Les polygones
 =============
+
+.. image:: img/can_polygon.png
+        :align: center
+        
+Extrait de code::
+
+        can = Canvas(root, width=w, height=h, bg="black")
+        can.pack()
+        e=10
+        pts = [(e,h/2),(w/2,h-e),(w-e,h/2),(w/2,e)]
+        can.create_polygon(pts, dash=(4, 2), fill="magenta", outline="yellow", width=3)
 
 Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (formée de segments) et une zone intérieure. Pour le définir, on utilise une série de points ``[(x0, y0), (x1, y1), … (xn, yn)]``. Le premier point et le dernier sont reliés par un segment afin de le fermer. Pour créer un polygone, utiliser:
 
@@ -677,6 +711,9 @@ Un polygone est une ligne fermée. Ainsi, il possède une ligne de contour (form
 Les rectangles
 ==============
 
+.. image:: img/can_rectangle.png
+        :align: center
+        
 Un rectangle est défini par deux points : *(x0, y0)* pour son coin supérieur gauche et *(x1, y1)* pour son coin inférieur droit.
 
 Par exemple, un rectangle dont le coin supérieur gauche est *(100,100)* et le coin inférieur droit est *(102,102)* est un carré de deux pixels par deux pixels qui inclut le pixel *(101,101)* mais pas le pixel *(102,102)*.
@@ -748,7 +785,7 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg activestipple: 
                 Le motif en pointillé à utiliser lorsque le texte est ``'active'`` (au survol de la souris). Pour des valeurs possible, voir l'option **stipple** ci-dessous.
         :arg anchor:
-                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Voir :ref:`ancrage` pour les valeurs possibles.
+                Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Notez que l'ancrage se rapporte à la position du point relativement au texte: ainsi, si anchor="n", le texte apparaît sous le point de façon que ce dernier soit au nord. Voir :ref:`ancrage` pour les valeurs possibles.
         :arg disabledfill: 
                 Couleur de remplissage lorsque l'item est dans l'état (state) ``'disabled'``.
         :arg disabledstipple: 
