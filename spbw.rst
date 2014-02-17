@@ -6,6 +6,9 @@
 
 Le widget ``Spinbox`` sert à donner un moyen à l'utilisateur de sélectionner une valeur parmi un ensemble de valeurs données ou d'en proposer une autre. Cet ensemble de valeurs peut être un intervalle de nombres ou un ensemble fixe de chaînes de caractères.
 
+.. image:: img/spinbox.png
+        :align: center
+
 À l'écran, ce widget possède une zone de visualisation de la valeur courante ainsi qu'une paire de flèches.
 
 * L'utilisateur peut cliquer sur les flèches de manière à passer d'une valeur à une autre. Si la valeur courante est à une extrémité de l'ensemble, vous pouvez configurer le widget de façon à ce que l'appui sur une flèche adéquate positionne la valeur située à l'autre extrémité.

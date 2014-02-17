@@ -6,7 +6,24 @@
 
 La finalité du widget de type ``Scale`` - ou intervalle de sélection - est de permettre à l'utilisateur de choisir un entier ou un flottant situé à l'intérieur d'un intervalle précis. Voici deux widgets de ce type, l'un orienté horizontalement et l'autre verticalement.
 
-Chaque widget affiche un curseur que l'utilisateur peut déplacer pour modifier la valeur. Dans la figure, le premier widget ``Scale`` possède actuellement la valeur -0.38 et le second la valeur 7.
+.. image:: img/scales.png
+        :align: center
+
+Dans la figure:
+
+* le premier widget ``Scale`` possède le jeu d'options::
+
+        Scale(root, orient='horizontal', from_=0, to=10,
+              resolution=0.1, tickinterval=2, length=350,
+              label='Volume (db)')
+
+* et le second:: 
+  
+        Scale(root, orient='vertical', from_=0, to=100,
+              resolution=5, tickinterval=25, length=100,
+              label='Puissance')
+
+Chaque widget affiche un curseur que l'utilisateur peut déplacer pour modifier la valeur:
 
 * Vous pouvez déplacer le curseur en utilisant le bouton gauche de la souris.
 
