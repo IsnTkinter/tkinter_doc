@@ -4,7 +4,10 @@
 ``Listbox`` - Listes de sélection
 *********************************
 
-Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de lignes de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à “The Text widget”.
+Un widget ``ListBox`` - liste de sélection - sert à présenter une liste de lignes de textes dans un cadre. Généralement, il s'agit de permettre à l'utilisateur de sélectionner une ou plusieurs lignes dans la liste. Toutes les lignes utilisent la même police de caractère. Si vous avez besoin de quelquechose qui ressemble plus à un éditeur de texte, reportez vous à :ref:`TEXT`.
+
+.. image:: img/listbox.png
+        :align: center
 
 Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un cadre désigné par ``parent``:
 

@@ -69,7 +69,7 @@ Pour créer un simple bouton dans une fenêtre ou un cadre nommé ``parent``:
     :arg text:
             Le texte a afficher sur le bouton.
     :arg textvariable:
-            Une instance d'un ``StringVar()`` qui sera associée au texte du bouton. Si la variable est modifiée, un nouveau texte est affiché sur le bouton. See Section 52, “Control variables: the values behind the widgets”.
+            Une instance d'un ``StringVar()`` qui sera associée au texte du bouton. Si la variable est modifiée, un nouveau texte est affiché sur le bouton. Voir :ref:`CTRLVARIABLES`.
     :arg underline:
             Par défaut, vaut -1, indiquant qu'aucun caractère du texte du bouton n'est souligné. Si sa valeur est positive ou nulle, le caractère correspondant du texte est souligné. Par exemple, ``underline=1`` indique que le deuxième caractère du texte sera souligné.
     :arg width:

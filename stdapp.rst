@@ -30,7 +30,7 @@ Ainsi, chaque widget de chaque application possède deux hiérarchies de noms: l
 
 Le mécanisme de la base de données des options peut se servir de ces deux systèmes de nommage (celui des classes ou celui des instances) pour définir les options. Vous pouvez ainsi appliquer un jeu d'options à une classe entière de widgets (par exemple, tous les boutons auront une couleur d'arrière plan bleu) ou à des instances spécifiques (par exemple, le bouton «panique» aura un texte en rouge). 
 
-Nous commencerons par décrire les moyens de donner un nom aux classes puis aux instances. Ensuite, nous décrirons le fonctionnement de la base de données des options dans “Resource specification lines”.
+Nous commencerons par décrire les moyens de donner un nom aux classes puis aux instances. Ensuite, nous décrirons le fonctionnement de la base de données des options dans :ref:`lspress`.
 
 .. _nomclass:
 
@@ -62,6 +62,11 @@ Voici un exemple d'une instance nommée. Supposons que vous ayez créé plusieur
 
     panic = Button(root, name='panicButton', text='Panique', ...)
     
+.. _lspress:
+
+Lignes de spécification de ressource
+======================================   
+
 Chaque ligne d'un fichier d'options précise la valeur d'une ou de plusieurs options d'une ou de plusieurs applications. Une telle ligne est de l'une des formes suivantes::
 
     app option-pattern: valeur

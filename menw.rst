@@ -98,7 +98,7 @@ Pour créer un widget Menu, vous devez avoir créé au préalable un bouton de m
 
         .. py:method:: add_checkbutton(coption, ...)
 
-                 Ajoute un choix à cocher à la liste des élements de choix déjà présents dans ce menu. Les options vous permettront de régler cet item à peu près de la même façon qu'on configure une case à cocher ``Checkbutton``. Voir “:ref:`optmen`.
+                 Ajoute un choix à cocher à la liste des élements de choix déjà présents dans ce menu. Les options vous permettront de régler cet item à peu près de la même façon qu'on configure une case à cocher ``Checkbutton``. Voir :ref:`optmen`.
 
         .. py:method:: add_command(coption, ...)
 

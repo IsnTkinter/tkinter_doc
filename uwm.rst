@@ -226,7 +226,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: grab_current()
 
-        If there is a grab in force for w's display, return its identifier, otherwise return None. Refer to Section 54, “Events” for a discussion of grabs. 
+        If there is a grab in force for w's display, return its identifier, otherwise return None. Reportez-vous à :ref:`EVENTS` pour une discussion sur les «grabs» (à faire)
 
 .. py:method:: grab_release()
 
@@ -234,7 +234,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: grab_set()
 
-        Widget w grabs all events for w's application. If there was another grab in force, it goes away. See Section 54, “Events” for a discussion of grabs. 
+        Widget w grabs all events for w's application. If there was another grab in force, it goes away. Reportez-vous à :ref:`EVENTS` pour une discussion sur les «grabs» (à faire).
 
 .. py:method:: grab_set_global()
 
