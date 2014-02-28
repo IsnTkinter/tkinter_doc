@@ -177,8 +177,7 @@ Tous les Canevas disposent de ces méthodes (outre celles qui servent à créer 
   * :py:meth:`~Canvas.type`
   * :py:meth:`~Canvas.xview_moveto`
   * :py:meth:`~Canvas.xview_scroll`
-  * :py:meth::w
-    `~Canvas.yview_moveto`
+  * :py:meth:`~Canvas.yview_moveto`
   * :py:meth:`~Canvas.yview_scroll`
 
 .. py:method:: Canvas.addtag_above(newTag, tagOrId)
