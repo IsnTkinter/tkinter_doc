@@ -77,30 +77,30 @@ Pour créer un widget ``Listbox`` à l'intérieur d'une fenêtre mère ou d'un c
         .. hlist::
                 :columns: 4
 
-                * :py:meth:`activate`
-                * :py:meth:`bbox`
-                * :py:meth:`curselection`
-                * :py:meth:`delete`
-                * :py:meth:`get`
-                * :py:meth:`index`
-                * :py:meth:`insert`
-                * :py:meth:`itemcget`
-                * :py:meth:`itemconfig`
-                * :py:meth:`nearest`
-                * :py:meth:`scan_dragto`
-                * :py:meth:`scan_mark`
-                * :py:meth:`see`
-                * :py:meth:`selection_anchor`
-                * :py:meth:`selection_clear`
-                * :py:meth:`selection_includes`
-                * :py:meth:`selection_set`
-                * :py:meth:`size`
-                * :py:meth:`xview`
-                * :py:meth:`xview_moveto`
-                * :py:meth:`xview_scroll`
-                * :py:meth:`yview`
-                * :py:meth:`yview_moveto`
-                * :py:meth:`yview_scroll`
+                * :py:meth:`~Listbox.activate`
+                * :py:meth:`~Listbox.bbox`
+                * :py:meth:`~Listbox.curselection`
+                * :py:meth:`~Listbox.delete`
+                * :py:meth:`~Listbox.get`
+                * :py:meth:`~Listbox.index`
+                * :py:meth:`~Listbox.insert`
+                * :py:meth:`~Listbox.itemcget`
+                * :py:meth:`~Listbox.itemconfig`
+                * :py:meth:`~Listbox.nearest`
+                * :py:meth:`~Listbox.scan_dragto`
+                * :py:meth:`~Listbox.scan_mark`
+                * :py:meth:`~Listbox.see`
+                * :py:meth:`~Listbox.selection_anchor`
+                * :py:meth:`~Listbox.selection_clear`
+                * :py:meth:`~Listbox.selection_includes`
+                * :py:meth:`~Listbox.selection_set`
+                * :py:meth:`~Listbox.size`
+                * :py:meth:`~Listbox.xview`
+                * :py:meth:`~Listbox.xview_moveto`
+                * :py:meth:`~Listbox.xview_scroll`
+                * :py:meth:`~Listbox.yview`
+                * :py:meth:`~Listbox.yview_moveto`
+                * :py:meth:`~Listbox.yview_scroll`
 
         .. py:method:: activate(index)
 
