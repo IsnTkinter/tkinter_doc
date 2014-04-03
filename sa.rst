@@ -8,25 +8,25 @@ Avant d'examiner les widgets disponibles, prenons le temps d'observer comment ce
 de leurs attributs communs - comme les tailles, les couleurs et les polices de caractères (fontes) - sont
 précisés.
 
-* Chaque widget possède un ensemble d'`options` qui affectent son apparence et son comportement - des attributs comme les fontes, les couleurs, les tailles, les étiquettes textuelles, etc.
+* Chaque widget possède un ensemble d'options qui affectent son apparence et son comportement - des attributs comme les fontes, les couleurs, les tailles, les étiquettes textuelles, etc.
 
 * Vous pouvez préciser les options lors de l'appel du constructeur du widget en utilisant des mots clés comme ``text='PANIQUE'`` ou ``height=20``.
 
-* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode :py:meth:`config`. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode :py:meth:`cget`. Voir :ref:`UNIVERSAL` pour en apprendre plus sur ces méthodes.
+* Après avoir créé un widget, il est encore possible de modifier chacune de ses options en utilisant sa méthode :py:meth:`config` ou la syntaxe ``w['option'] = valeur``. Vous pouvez aussi récupérer la valeur courante de n'importe laquelle de ses options en utilisant sa méthode :py:meth:`cget` ou l'écriture ``w['option']``. Voir :ref:`UNIVERSAL` pour en apprendre plus sur ces méthodes.
 
 .. _dimensions:
 
 Les dimensions
 ==============
 
-Les différentes dimensions comme la largeur, la hauteur, etc. peuvent être précisées dans différentes unités.
+Les différentes dimensions comme la largeur (*width*), la hauteur (*height*), etc. peuvent être précisées dans différentes unités.
 
 * Si vous indiquez une dimension par un entier, elle est supposée être en pixels.
 * Vous pouvez préciser une unité en utilisant une chaîne de caractères qui contient un nombre suivi d'une unité :
       
     * ``c`` : Centimètres
     * ``i`` : Pousses (`Inches`)
-    * ``m`` : Millimètres 
+    * ``m`` : Millimètres
     * ``p`` : Points d'impression
 
   
@@ -36,12 +36,13 @@ Le système de coordonnées
 =========================
 
 Comme dans la plupart des systèmes d'affichage, l'origine de chaque système de coordonnées est
-située à son coin supérieur gauche, les valeurs de `x` augmentant vers la droite et
-les valeurs de `y` augmentant vers le bas.
+située à son coin supérieur gauche, les valeurs de *x* augmentant vers la droite et
+les valeurs de *y* augmentant vers le bas.
 
 .. image:: img/coords.png 
         :align: center
-L'unité de base est le pixel avec le coin supérieur gauche de coordonnées `(0,0)`.
+
+L'unité de base est le pixel avec le coin supérieur gauche de coordonnées *(0,0)*.
 Les coordonnées indiquées par un entier sont toujours exprimées en pixels, mais chaque coordonnée
 peut être indiquée via une chaîne de caractères dans une unité particulière; voir :ref:`dimensions`.
 
@@ -52,7 +53,7 @@ Les couleurs
 
 Il y a deux manières générales pour indiquer une couleur dans tkinter.
 
-* Vous pouvez utiliser une chaîne de caractères qui précise la proportion de rouge (`red`), vert (`green`) et bleu (`blue`) en hexadécimal:
+* Vous pouvez utiliser une chaîne de caractères qui précise la proportion de rouge (*red*), vert (*green*) et bleu (*blue*) en hexadécimal:
 
     * ``#rgb`` : quatre bits par couleur
     * ``#rrggbb`` : huit bits par couleur
@@ -70,7 +71,7 @@ Les polices de caractères
 
 Selon votre système d'exploitation, il peut y avoir jusqu'à trois façons d'indiquer un type de fonte.
 
-* Comme un tuple dont le premier élément est la famille de la fonte, suivi par une taille (en point si positif, en pixel si négatif), optionnellement suivi par une chaîne contenant un (ou plusieurs) modificateur de style ``bold``, ``italic``, ``underline`` et ``overstrike``.
+* Comme un tuple dont le premier élément est la famille de la fonte, suivi par une taille (en point si positif, en pixel si négatif), optionnellement suivi par une chaîne contenant un ou plusieurs modificateurs de style comme ``bold``, ``italic``, ``underline`` et ``overstrike``.
 
     Exemples :  ``('Helvetica', '16')`` pour une police Helvetica régulière de 16 points; ``('Times', '24', 'bold italic')`` pour une police Times de 16 points en gras italique; Pour une police Times en gras de 20 pixels, utilisez ``('Times', -20, 'bold')``.
 
@@ -87,11 +88,11 @@ Selon votre système d'exploitation, il peut y avoir jusqu'à trois façons d'in
     où les options sont :
 
     * ``family`` : la famille de fonte via une chaîne de caractères.
-    * ``size`` : la taille de fonte en points via un entier. Pour obtenir une taille de `n` pixels, utiliser ``-n``.
-    * ``weight`` : 'bold' pour gras, 'normal' pour un rendu normal.
-    * ``slant`` : 'italic' pour italique, 'roman' pour un rendu normal.
-    * ``underline`` : 1 pour le soulignement, 0 pour un rendu normal.
-    * ``overstrike`` : 1 pour barrer, 0 pour un rendu normal.
+    * ``size`` : la taille de fonte en points via un entier. Pour obtenir une taille de *n* pixels, utiliser ``-n``.
+    * ``weight`` : ``'bold'`` pour gras, ``'normal'`` pour un rendu normal.
+    * ``slant`` : ``'italic'`` pour italique, ``'roman'`` pour un rendu normal.
+    * ``underline`` : ``1`` pour le soulignement, ``0`` pour un rendu normal.
+    * ``overstrike`` : ``1`` pour barrer, ``0`` pour un rendu normal.
     
     Par exemple, pour obtenir une fonte Helvetica de 36 points en gras italique::
     
@@ -103,7 +104,7 @@ Pour obtenir la liste de toutes les familles de polices disponibles dans votre e
 
     tkFont.families()
     
-La valeur de retour est une liste de chaînes. Note : il est nécessaire de créer votre fenêtre principale avant d'appeler cette fonction.
+La valeur de retour est une liste de chaînes. Notez qu'il est nécessaire de créer votre fenêtre principale avant d'appeler cette fonction.
 
 Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Font.
 
@@ -117,7 +118,7 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
     
 .. py:method:: Font.configure(option, ...)
 
-    Utilisez cette méthode pour modifier une ou plusieurs options d'une fonte. Par exemple, si vous disposez d'un objet Font nommé ``titres`` et que vous appelez titres.configure(family='times', size=18), cette fonte sera modifiée conformément ainsi que tout widget qui l'utilise.
+    Utilisez cette méthode pour modifier une ou plusieurs options d'une fonte. Par exemple, si vous disposez d'un objet Font nommé ``titres`` et que vous appelez ``titres.configure(family='times', size=18)``, cette fonte sera modifiée conformément ainsi que tout widget qui l'utilise.
     
 .. py:method:: Font.copy()
 
@@ -125,7 +126,7 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
 
 .. py:method:: Font.measure(text)
 
-    Passez à cette méthode une chaîne de caractères et elle vous retournera le nombre de pixels en largeur que cette chaine occuperait avec la fonte appelante. Attention: certains caractères penchés peuvent déborder cette zone.
+    Passez à cette méthode une chaîne de caractères et elle vous retournera le nombre de pixels en largeur que cette chaîne occuperait avec la fonte appelante. Attention: certains caractères penchés peuvent déborder de cette zone.
     
 .. py:method:: Font.metrics(option)
 
@@ -134,15 +135,15 @@ Les méthodes qui suivent sont disponibles pour n'importe quel objet de type Fon
     :arg ascent: Nombre de pixels en hauteur entre la ligne de base et le point haut du plus haut caractère.
     :arg descent: Nombre de pixels en hauteur entre la ligne de base et le point bas du plus bas caractère.
     :arg fixed: Cette valeur est nulle pour une fonte à largeur variable et vaut 1 pour une police à chasse fixe.
-    :arg linespace: Nombre de pixels de la hauteur totale. This is the leading of type set solid in the given font.
+    :arg linespace: Nombre de pixels de la hauteur totale de la ligne.
 
 .. _ancrage:
 
 Le système d'ancrage
 =====================
 
-Le module Tkinter définit un certain nombre de constantes d'ancrage que vous pouvez utiliser pour contrôler l'endroit où un widget est positionné relativement à son contexte.
-Par exemple, les ancrages peuvent préciser l'endroit où un widget est situé à l'intérieur d'un cadre (`Frame`) lorsque celui-ci est plus grand que le widget.
+Le module Tkinter définit un certain nombre de constantes d'ancrages que vous pouvez utiliser pour contrôler l'endroit où un widget est positionné relativement à son contexte.
+Par exemple, les ancrages peuvent préciser l'endroit où un widget est situé à l'intérieur d'un cadre (*Frame*) lorsque celui-ci est plus grand que le widget.
 
 Ces constantes sont données comme sur une boussole où le nord est en haut et l'ouest à gauche. Nous prions les lecteurs de l'hémisphère sud de nous pardonner ce chauvinisme du nord.
 
@@ -334,7 +335,11 @@ Pour afficher une image du type `.gif`, `.pgm` ou `.ppm`, vous aurez besoin du c
 
     PhotoImage(file=f)
 
-où *f* est le nom d'un fichier image. Le constructeur retourne une valeur qui peut être utilisée partout où tkinter attend une image.
+où *f* est le nom d'un fichier image. Le constructeur retourne une valeur qui peut être utilisée partout où tkinter attend une image. Notez qu'il est nécessaire de conserver une référence vers cette valeur::
+
+      logo = PhotoImage(file='test.gif') # ne pas supprimer cette référence
+      Label(image=logo).grid()
+      # Label(image=PhotoImage(file='test.gif')) ne fonctionnera pas !
 
 .. _geometrie:
 
