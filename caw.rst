@@ -717,13 +717,13 @@ Un rectangle est défini par deux points : *(x0, y0)* pour son coin supérieur g
 
 Par exemple, un rectangle dont le coin supérieur gauche est *(100,100)* et le coin inférieur droit est *(102,102)* est un carré de deux pixels par deux pixels qui inclut le pixel *(101,101)* mais pas le pixel *(102,102)*.
 
-Les rectangles sont formés deux parties:
+Les rectangles sont formés de deux parties:
 
 * Les bords haut et gauche de la ligne de bordure font partie du rectangle mais pas les bords bas et droit. Par défaut cette bordure est noire et a une épaisseur de 1 pixel.
 
-  Par exemple, considérons le rectangle dont le coin supérieur gauche est *(10,10)* et le coin inférieur droit est *(11,11)*. Si vous annulez la bordure (``width=0``) et utilisez une couleur de remplissage verte (``fill='green'``), vous obtenez un pixel vert à la position *(10, 10)*. Cependant, dans les même conditions, si vous laissez par défaut la valeur de width, vous obtenez quatre pixels noirs aux positions *(10,10)*, *(10,11)*, *(11,10)*, and *(11,11)*.
+  Par exemple, considérons le rectangle dont le coin supérieur gauche est *(10,10)* et le coin inférieur droit est *(11,11)*. Si vous annulez la bordure (``width=0``) et utilisez une couleur de remplissage verte (``fill='green'``), vous obtenez un pixel vert à la position *(10, 10)*. Cependant, dans les même conditions, si vous laissez par défaut la valeur de width, vous obtenez quatre pixels noirs aux positions *(10,10)*, *(10,11)*, *(11,10)*, et *(11,11)*.
 
-* L'intérieur du rectangle est la zone délimité par la ligne de bordure. par défaut, il est transparent. 
+* L'intérieur du rectangle est la zone délimitée par la ligne de bordure. par défaut, il est transparent. 
 
 Pour créer un rectangle sur le canevas: 
 
@@ -739,7 +739,7 @@ Pour créer un rectangle sur le canevas:
         :arg activestipple:
         :arg activewidth:
         :arg dash: 
-                Sert à réaliser une bordure hachurée autour du rectangle. Utiliser cette option pour préciser un motif de hachure. Voir :ref:`Motifs-brise`.
+                Sert à réaliser une bordure hachurée autour du rectangle. Utilisez cette option pour préciser un motif de hachure. Voir :ref:`Motifs-brise`.
         :arg dashoffset: 
                 Utiliser cette option pour décaler la bordure du motif hachuré à un autre point du cycle. Voir :ref:`Motifs-brise`.
         :arg disableddash: 
@@ -782,7 +782,7 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg activefill: 
                 Couleur de remplissage à utiliser lorsque la souris est au-dessus.
         :arg activestipple: 
-                Le motif en pointillé à utiliser lorsque le texte est ``'active'`` (au survol de la souris). Pour des valeurs possible, voir l'option **stipple** ci-dessous.
+                Le motif en pointillé à utiliser lorsque le texte est ``'active'`` (au survol de la souris). Pour des valeurs possibles, voir l'option **stipple** ci-dessous.
         :arg anchor:
                 Par défaut, vaut ``'center'`` ce qui signifie que le texte est centré par rapport à la position *(x,y)*. Notez que l'ancrage se rapporte à la position du point relativement au texte: ainsi, si anchor="n", le texte apparaît sous le point de façon que ce dernier soit au nord. Voir :ref:`ancrage` pour les valeurs possibles.
         :arg disabledfill: 
@@ -798,13 +798,13 @@ Vous pouvez afficher une ou plusieurs lignes de texte sur un canevas en utilisan
         :arg offset: 
                 Le décalage du motif en pointillé à utiliser pour le texte. Pour plus d'informations, voir :ref:`nuagepts`.
         :arg state: 
-                ``'normal'`` par défaut. Mettre cet option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
+                ``'normal'`` par défaut. Mettre cette option à ``'disabled'`` pour l'empêcher de réagir à la souris, la mettre à ``'hidden'`` pour le rendre invisible.
         :arg stipple:
                 Un bitmap qui indique le motif pointillé qui sera utilisé pour le rendu du texte. La valeur par défaut est `` stipple=''``, ce qui indique un rendu «solide». Une valeur typique serait ``stipple='gray25'``. Voir :ref:`bitmaps`.
         :arg tags:
                 Si c'est une chaîne seule, elle sert à marquer (*tag*) le texte. Utiliser un tuple de chaînes pour lui attribuer plusieurs marques. Voir :ref:`CANVAStags`.
         :arg text:
-                Le texte à afficher sous la forme d'une chaîne de caractères. Utiliser '\n' pour forcer les sauts de ligne.
+                Le texte à afficher sous la forme d'une chaîne de caractères. Utiliser ``'\n'`` pour forcer les sauts de ligne.
         :arg width:
                 Si aucune valeur n'est indiquée, le texte est affiché dans un rectangle aussi long que la plus longue ligne. Si vous indiquez explicitement une largeur, chaque ligne du texte sera coupée afin de ne pas dépasser cette largeur. Voir :ref:`dimensions`.
 
@@ -834,7 +834,7 @@ Pour créer une fenêtre dans un canevas, utiliser:
         :arg anchor:
                 Par défaut, vaut ``'center'`` ce qui signifie que la fenêtre est centrée par rapport à la position *(x,y)*. Voir :ref:`ancrage` pour les valeurs possibles.
         :arg height:
-                La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenu. Voir :ref:`dimensions` pour les valeurs possibles.
+                La hauteur de la zone réservée pour la fenêtre. Si non renseignée, la fenêtre s'ajuste à la hauteur de son contenue. Voir :ref:`dimensions` pour les valeurs possibles.
         :arg state: 
                 ``'normal'`` par défaut. Mettre cette option à ``'disabled'`` pour empêcher la fenêtre de réagir à la souris, la mettre à ``'hidden'`` pour la rendre invisible.
         :arg tags:
