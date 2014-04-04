@@ -6,7 +6,7 @@
 
 Un événement est la survenue de quelquechose dans votre application - par exemple, l'utilisateur appuie sur une touche, clique avec sa souris ou la déplace. Votre application à certainement besoin de réagir à ces actions de l'utilisateur.
 
-Les widgets ont normalement un grand nombre de comportements prédéfinis. Par exemple, un bouton réagira à un clic souris en appelant sa fonction de rappel associé à son option **command**. Un autre exemple, si vous déplacez le focus sur un widget de saisie et que vous appuyez sur une lettre, cette lettre sera ajoutée au contenu du widget.
+Les widgets ont normalement un grand nombre de comportements prédéfinis. Par exemple, un bouton réagira à un clic souris en appelant la fonction associée à son option **command**. Un autre exemple, si vous déplacez le focus sur un widget de saisie et que vous appuyez sur une lettre, cette lettre sera ajoutée au contenu du widget.
 
 Cependant, tkinter fourni tous les moyens pour ajouter, changer ou supprimer de tels comportements.
 
@@ -14,9 +14,9 @@ Premièrement, quelques définitions:
 
 * Un **événement** (*event*) est la survenue d'une action (clavier, souris) dont votre application a besoin d'être informée.
 
-* Un **gestionnaire d'événement** (*event handler*) est une fonction de votre application qui sera appelée lorsqu'un certain événement se produira.
+* Un **gestionnaire d'événement** (*event handler*) est une fonction de votre application qui a vocation a être appelée lorsqu'un certain événement se produira.
 
-* Nous parlons de **liaison** lorsque votre application défini un gestionnaire d'événement qui sera appelé lorsqu'un événement se produit sur un widget.
+* Nous parlons de **liaison** lorsque votre application défini un gestionnaire d'événement qui sera effectivement appelé lorsqu'un certain événement se produit sur un widget.
 
 .. _nivliaisEvt:
 
@@ -33,7 +33,7 @@ Vous pouvez lier un gestionnaire à un événement à l'un de ces trois niveaux:
 
         can.bind('<Button-2>', dessineDisqueOrange)
 
-   Le premier argument est un «descripteur de séquence» qui indique à tkinter que lorsque le bouton centrale de la souris est pressé, il faut qu'il appelle le gestionnaire d'événement appelé ``dessineDisqueOrange`` (Voir :ref:`gestEvt`, ci-dessous, pour une vue d'ensemble sur la manière d'écrire un gestionnaire comme ``dessineDisqueOrange``). Notez qu'il faut omettre les parenthèses du gestionnaire d'événement afin que Python utilise la référence au gestionnaire plutôt que d'essayer de l'appeler sur le champ.
+   Le premier argument, ``'<Button-2>'``, est un «descripteur de séquence» qui indique à tkinter que lorsque le bouton central de la souris est pressé, il faut qu'il appelle le gestionnaire d'événement ``dessineDisqueOrange`` fourni comme deuxième argument (Voir :ref:`gestEvt`, ci-dessous, pour une vue d'ensemble sur la manière d'écrire un gestionnaire comme ``dessineDisqueOrange``). Notez qu'il faut omettre les parenthèses du gestionnaire d'événement afin que Python utilise la référence au gestionnaire plutôt que d'essayer de l'appeler sur le champ.
 
 2) **Liaison au niveau d'une classe**: Vous pouvez lier un événement à tous les widgets d'une classe donnée. Par exemple, vous pourriez souhaiter régler tous les boutons pour qu'ils réagissent à l'appui sur le bouton centrale de la souris en changeant leur étiquette du français vers l'anglais et vice versa. Pour lier un événement à tous les widgets d'une classe, utiliser la méthode :py:meth:`bind_class` sur n'importe quel widget (voir :ref:`UNIVERSAL`).
 
@@ -44,7 +44,7 @@ Vous pouvez lier un gestionnaire à un événement à l'un de ces trois niveaux:
        # w est un widget arbitraire
        w.bind_class('Canvas', '<Button-2>', dessineDisqueOrange) 
 
-3) **Liaison au niveau de l'application**: Vous pouvez définir une liaison d'événement de telle sorte que le gestionnaire d'événement soit appelé indépendament du widget qui a le focus ou qui se trouve sous la souris. Par exemple, vous pourriez souhaiter lier l'événement «appui sur la touche ImprÉcran» à tous les widgets de l'applicatoin de telle sorte que l'écran soit imprimé indépendamment du widget qui a effectivement reçu l'appui sur la touche. Pour lier un événement au niveau de l'application, appeler la méthode :py:meth:`bind_all` sur n'importe quel widget (voir :ref:`UNIVERSAL`).
+3) **Liaison au niveau de l'application**: Vous pouvez définir une liaison d'événement de telle sorte que le gestionnaire d'événement soit appelé indépendament du widget qui a le focus ou qui se trouve sous la souris. Par exemple, vous pourriez souhaiter lier l'événement « appui sur la touche *ImprÉcran* » à tous les widgets de l'applicatoin de telle sorte que l'écran soit imprimé indépendamment du widget qui a effectivement reçu l'appui sur la touche. Pour lier un événement au niveau de l'application, appeler la méthode :py:meth:`bind_all` sur n'importe quel widget (voir :ref:`UNIVERSAL`).
 
    Voici comment vous pourriez lier l'appui sur la touche, *Key*, ImprÉcran, *Print*, à l'effet désiré:
 
@@ -73,17 +73,25 @@ La forme générale d'un motif d'événement est la suivante:
 
 * Vous pouvez indiquer un ou plusieurs modificateurs avant son type pour décrire une combinaison comme un appui sur la touche *Maj* ou *Control* pendant qu'une autre touche ou qu'un bouton de la souris est enfoncé. Voir :ref:`modifEvt`.
 
-* Vous pouvez ajouter d'autres détails après le type pour décrire la touche ou le bouton précis qui vous intéresse. Pour les boutons de la souris, 1 indique normalement le bouton de gauche, 2 celui du milieu et 3 celui de droite.
+* Vous pouvez ajouter d'autres détails après le type pour décrire la touche ou le bouton précis qui vous intéresse. Pour les boutons de la souris, ``1`` indique normalement le bouton de gauche, ``2`` celui du milieu et ``3`` celui de droite.
 
-  + Notez qu'il est possible que les boutons de la souris soit inversés si un gaucher à effectuer le réglage correspondant de son système.
+  + Notez qu'il est possible que les boutons de la souris soit inversés si un gaucher a effectué le réglage correspondant de son système.
 
-  + Pour les touches du clavier, il s'agit soit d'un caractère (pour un caractère unique comme pour la touche *A* ou \*) ou le nom d'une touche; voir :ref:`nomtouchesEvt` pour une liste de tous ces noms.
+  + Pour les touches du clavier, il s'agit soit d'un caractère (pour un caractère unique comme pour la touche *A* ou \*) ou le nom d'une touche; voir :ref:`nomtouchesEvt` pour une liste de ces noms.
 
-Voici quelques exemples de motifs d'événements:
+Voici quelques **exemples de motifs d'événements**:
 
 * ``<Button-1>``: L'utilisateur a appuyé sur le premier bouton de la souris (celui de gauche normalement).
-* ``<KeyPress-H>``: L'utilisateur a appuyé sur la touche *H*.
-* ``<Control-Shift-KeyPress-H>``: L'utilsateur a appuyé simultanément sur les touches *Control*, *Maj* et *H*.
+* ``<KeyRelease-H>``: L'utilisateur a relâché la touche *H*.
+* ``<Control-Shift-KeyPress-H>``: L'utilisateur a appuyé simultanément sur les touches *Control*, *Maj* et *H*.
+
+Vous pouvez aussi **utiliser des formes courtes pour préciser un événenemt**. Voici quelques exemples:
+
+    ``'<1>'`` revient au même que ``'<Button-1>'``.
+
+    ``'x'`` revient au même que ``'<KeyPress-x>'``. 
+
+Remarquez que vous pouvez omettre les chevrons ``'<…>'`` pour la plupart des caractères, mais que vous ne pouvez pas le faire pour l'espace (dont le nom est ``'<space>'``) ou pour le caractère inférieur à *<* (dont le nom est ``'<less>'``).
 
 .. _typeEvt:
 
@@ -119,10 +127,10 @@ L'ensemble complet de tous les types d'événements est très grand, mais beauco
      - Un widget a été détruit.
    * - 7
      - ``Enter`` 
-     - L'utilisateur a bougé la souris qui est entrée dans la partie visible d'un widget. (Ne pas confondre avec la touche Entrée, qui est un événement de type ``KeyPress`` pour une touche dont le nom est ``'return'``).
+     - L'utilisateur a bougé la souris qui est entrée dans la partie visible d'un widget. (Ne pas confondre avec la touche Entrée, qui est un événement de type ``KeyPress`` pour une touche dont le nom est ``'Return'``).
    * - 12
      - ``Expose`` 
-     - Cette événement se produit à chaque fois qu'au moins une partie de votre application ou d'un widget devient visible après avoir été recouvert par une autre fenêtre.
+     - Cet événement se produit à chaque fois qu'au moins une partie de votre application ou d'un widget devient visible après avoir été recouverte par une autre fenêtre.
    * - 9
      - ``FocusIn`` 
      - Un widget obtient le focus (voir :ref:`FOCUS` pour une introduction générale à la notion de focus). Cela peut se produire soit en réponse à une action de l'utilisateur (comme en utilisant la touche *Tab* pour déplacer le focus entre les widgets) ou de manière programmée (par exemple lorsque votre programme appelle la méthode :py:meth:`focus_set` sur un widget).
@@ -131,16 +139,16 @@ L'ensemble complet de tous les types d'événements est très grand, mais beauco
      - Le focus a été perdu par un widget. Comme avec ``FocusIn``, l'utilisateur peut produire un tel événement ou il peut être produit de manière programmée.
    * - 2
      - ``KeyPress`` 
-     - L'utilisateur a appuyé sur une touche du clavier. La partie *détail* précise la touche particulière. Ce mot clé peut être abrégé par ``Key``.
+     - L'utilisateur a appuyé sur une touche du clavier. La partie *détail* précise optionnellement une touche en particulier. Ce mot clé peut être abrégé par ``Key``.
    * - 3
      - ``KeyRelease`` 
-     - L'utilisateur à relâché une touche du clavier.
+     - L'utilisateur a relâché une touche du clavier.
    * - 8
      - ``Leave`` 
-     - L'utilisateur à déplacer le pointeur de la souris en dehors d'un widget.
+     - L'utilisateur a déplacé le pointeur de la souris en dehors d'un widget.
    * - 19
      - ``Map`` 
-     - Un widget a été «mappé» (associé), c'est à dire, a été rendu visible dans l'application. Cela arrive, par exemple, lorsque vous appelez la méthode ``grid()`` d'un widget.
+     - Un widget a été «mappé» (associé), c'est à dire, a été rendu visible dans l'application. Cela arrive, par exemple, lorsque vous appelez la méthode :py:meth:`grid` d'un widget.
    * - 6
      - ``Motion`` 
      - L'utilisateur a déplacé la souris à l'intérieur d'un widget.
@@ -149,7 +157,7 @@ L'ensemble complet de tous les types d'événements est très grand, mais beauco
      - L'utilisateur a tourné la molette de la souris, vers le haut ou vers le bas. Pour l'instant, cela n'est pris en compte que par Windows ou MacOS, mais pas par Linux. Pour ces systèmes, voir la discussion de l'attribut ``delta`` d'une instance d'un objet de classe ``Event`` dans :ref:`gestEvt`. Pour Linux, se rapporter à la note ci-dessus pour le type ``Button``.
    * - 18
      - ``Unmap`` 
-     - Un widget a perdu l'association (le «mappage») et n'est plus visible. Cela arrive, par exemple, lorsque vous appelez la méthode ``grid_remove()`` d'un widget.
+     - Un widget a perdu l'association (le «mappage») et n'est plus visible. Cela arrive, par exemple, lorsque vous appelez la méthode :py:meth:`grid_remove` d'un widget.
    * - 15
      - ``Visibility`` 
      - Se produit lorsqu'au moins une partie de la fenêtre d'application est devenue visible à l'écran.
@@ -173,15 +181,8 @@ Les noms des modificateurs que vous pouvez utiliser dans une séquence d'événe
 
 * ``Shift`` : Vrai si l'utilisateur est en train de maintenir enfoncée la touche *Maj*.
 
-* ``Triple`` : Comme ``Double``, mais pour l'apparition de 3 fois le même événement dans un cours laps de temps.
+* ``Triple`` : Comme ``Double``, mais pour l'apparition du même événement 3 fois dans un cours laps de temps.
 
-Vous pouvez utiliser des formes courtes pour préciser un événenemt. Voici quelques exemples:
-
-    ``'<1>'`` revient au même que ``'<Button-1>'``.
-
-    ``'x'`` revient au même que ``'<KeyPress-x>'``. 
-
-Remarquez que vous pouvez omettre les chevrons ``'<…>'`` pour la plupart des caractères, mais que vous ne pouvez pas le faire pour l'espace (dont le nom est ``'<space>'``) ou pour le caractère inférieur à *<* (dont le nom est ``'<less>'``).
 
 .. _nomtouchesEvt:
 
@@ -194,7 +195,7 @@ Le tableau ci-dessous montre plusieurs façons de nommer les touches. Voir :ref:
 
 * La colonne ``keysym`` montre le «symbole de touche», une chaîne de caractères pour la touche. Cela correpond à l'attribut ``keysym`` des objets ``Event``.
 
-* La colonne ``keycode`` correpond au «code de touche». C'est un identifiant de touche qui permet de savoir quelle touche a été enfoncée. Notez cependant qu'il ne permet pas de savoir si une touche modificatrice (*Maj*, *Ctrl* et *VerrMaj*) a été ou est enfoncée; ainsi, par exemple, *a* et *A* ont le même code de touche.
+* La colonne ``keycode`` correpond au «code de touche». C'est un *identifiant* de touche (chaque touche possède un unique ``keycode``) qui permet de savoir quelle touche a été enfoncée. Notez cependant qu'il ne permet pas de savoir si une touche modificatrice (*Maj*, *Ctrl* et *VerrMaj*) a été ou est enfoncée; ainsi, par exemple, *a* et *A* ont le même code de touche.
 
 * La colonne ``keysym_num`` montre un code numérique équivalent au symbole de la touche. Il a la particularité d'être différent selon qu'une touche modificatrice a été ou est enfoncée. Par exemple, le chiffre 2 du clavier numérique (dont le symbole de touche est ``KP_2``) et la flèche «sud» du clavier numérique (de symbole ``KP_Down``) ont le même code de touche (88), mais leurs codes numériques ``keysym_num`` sont différents (65433 et 65458, respectivement).
 
@@ -425,7 +426,7 @@ Il y a beaucoup de noms de touches pour couvrir de nombreux ensembles de caract�
    * - ``Scroll_Lock``
      - `78`
      - `65300`
-     - ???ScrollLock
+     - Verrouillage Défilement (*ScrollLock*)
    * - ``Shift_L``
      - `50`
      - `65505`
@@ -434,6 +435,10 @@ Il y a beaucoup de noms de touches pour couvrir de nombreux ensembles de caract�
      - `62`
      - `65506`
      - La touche *Maj* de droite
+   * - ``space``
+     - `65`
+     - `32`
+     - La barre espace   
    * - ``Tab``
      - `23`
      - `65289`
@@ -448,7 +453,7 @@ Il y a beaucoup de noms de touches pour couvrir de nombreux ensembles de caract�
 Écrire son gestionnaire: la classe ``Event``
 ============================================
 
-Les sections précédentes vous ont expliqué comment décrire l'événement auquel vous souhaitez réagir et comment le lier à l'application. À présent, intéressons-nous à l'écriture du gestionnaire d'événements qui sera appelé lorsque l'événement aura lieu.
+Les sections précédentes vous ont expliquées comment décrire l'événement auquel vous souhaitez réagir et comment le lier à l'application. À présent, intéressons-nous à l'écriture du gestionnaire d'événements qui sera appelé lorsque l'événement aura lieu.
 
 Le gestionnaire d'événements recevra un objet de type ``Event`` qui sert à décrire les circonstances de l'événement. Le gestionnaire peut être une fonction ou une méthode. Voici la forme de la déclaration d'une fonction:
 
@@ -456,22 +461,25 @@ Le gestionnaire d'événements recevra un objet de type ``Event`` qui sert à d�
 
         def nomGestionnaire(evt):
 
-
 Et pour une méthode:
 
 .. code-block:: python
 
-        def nomGestionnaire(self, evt):
+        class MaClasse:
 
-Les attributs de l'objet de type ``Event`` passé au gestionnaire, par l'intermédiaire de son paramètre ``evt``, sont décrit ci-dessous. Certains attributs possèdent toujours une valeur, mais d'autres n'en possède une que pour certains types d'événements.
+                # ...
+
+                def nomGestionnaire(self, evt):
+
+Les attributs de l'objet de type ``Event`` passé au gestionnaire, par l'intermédiaire de son paramètre ``evt`` (parfois noté plus explicitement ``event``), sont décrits ci-dessous. Certains attributs possèdent toujours une valeur, mais d'autres n'en possède une que pour certains types d'événements.
 
 .. list-table::
    :widths: 15 85
    :header-rows: 0
 
    * - ``char`` 
-     - Si l'événement est produit par l'appui ou le relâchement d'un touche qui produit un caractère ASCII régulier, cet attribut est le caractère sous la forme d'une chaîne. (Pour des touches spéciales comme *Suppr*, voir l'attribut ``keysym`` ci-dessous)
-   * - ``delta`` 
+     - Si l'événement est produit par l'appui ou le relâchement d'une touche qui produit un caractère ASCII régulier, cet attribut est le caractère sous la forme d'une chaîne. (Pour des touches spéciales comme *Suppr*, voir l'attribut ``keysym`` ci-dessous)
+   * - ``delta``
      - Pour un événement du type ``MouseWheel``, cet attribut contient un entier dont le signe est positif pour un déplacement vers le haut, négatif pour un déplacement vers le bas. Sous Windows, cette valeur sera un multiple de 120; par exemple, 120 désigne un défilement vers le haut en une étape et -240 un défilement vers le bas en deux étapes. Sous MacOS, on aurait obtenu les valeurs 1 et -2 dans cet exemple. Pour le support de la molette sous Linux, voir les note sur l'événement de type ``Button`` dans :ref:`typeEvt`.
    * - ``height`` 
      - Si l'événement est du type ``Configure``, cet attribut porte la nouvelle hauteur du widget en pixels.
@@ -581,7 +589,7 @@ Heureusement, il est possible d'exploiter les valeurs par défaut des fonctions 
     def ccGest(evt, ccNb):
         #...
 
-Ces lignes définissent un gestionnaire, ``gest()`` qui attend deux arguments. Le premier est l'objet de type ``Event`` habituel et le second a une valeur par défaut qui est exactement celle que nous avons besoin de connaître. Il suffit ensuite de définir le gestionnaire d'événement «réel», ``ccGest()`` pour atteindre le but que nous nous étions fixés.
+Ces lignes définissent un gestionnaire, ``gest()`` qui attend deux arguments. Le premier est l'objet de type ``Event`` habituel et le second a une valeur par défaut qui est exactement celle que nous avons besoin de connaître. Il suffit ensuite de définir le gestionnaire d'événement «réel», ``ccGest()`` pour atteindre le but que nous nous étions fixé.
 
 Cette technique peut être étendue pour fournir autant d'arguments que souhaités à un gestionnaire d'événements.
 
