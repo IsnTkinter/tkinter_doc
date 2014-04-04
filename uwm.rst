@@ -4,7 +4,7 @@
 Méthodes communes à tous les widgets
 ************************************
 
-Les méthodes données ci-après sont communes à tous les widgets. Dans les description, ``w`` désigne un widget de type arbitraire.
+Les méthodes données ci-après sont communes à tous les widgets. Dans les descriptions, ``w`` désigne un widget de type arbitraire.
 
 .. hlist::
         :columns: 3
@@ -126,7 +126,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Cette méthode est utilisée pour attacher un gestionnaire d'événement (une fonction) à la survenue d'un événement, précisé par *sequence*, sur le widget appelant (sur lequel cette méthode a été appliquée). Voir :ref:`EVENTS` pour une vue d'ensemble sur le moyen de rendre votre application réactive aux actions de l'utilisateur.
 
-        L'argument *sequence* sert à décrire le type d'événement (action de l'utilisateur) auquel il faut réagir par le moyen du gestionnaire *evtGest*, c'est à dire en appelant cette fonction lorsque survient l'événement surveillé sur le widget. Si une liaison avait déjà été définie sur ce widget, l'ancien gestionnaire d'événement est remplacé par le nouveau sauf si vous utilisez ``add='+'``; dans ce cas les gestionnaires définie précédement sont préservés.
+        L'argument *sequence* sert à décrire le type d'événement (action de l'utilisateur) auquel il faut réagir par le moyen du gestionnaire *evtGest*, c'est à dire en appelant cette fonction lorsque survient l'événement surveillé sur le widget. Si une liaison avait déjà été définie sur ce widget, l'ancien gestionnaire d'événement est remplacé par le nouveau sauf si vous utilisez ``add='+'``; dans ce cas les gestionnaires définis précédement sont préservés.
 
 .. py:method:: bind_all(sequence=None, func=None, add=None)
 
@@ -146,7 +146,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
 .. py:method:: cget(option)
 
-        Retourne la valeur courante de l'*option* indiquée par une chaîne de caractères. Vous pouvez aussi obtenir la valeur d'une option d'un widget ``w`` en utilisant la syntaxe ``w[option]``.
+        Retourne la valeur courante de l'*option* indiquée par une chaîne de caractères. Vous pouvez aussi obtenir la valeur d'une option d'un widget ``w`` en utilisant la syntaxe ``w['option']``.
 
 .. py:method:: clipboard_append(text)
 
@@ -168,7 +168,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 
         Sert à configurer les valeurs d'une ou plusieurs options. Pour les options dont les noms sont des mots réservés de Python (class, from, in), ajoutez un caractère «souligné» à la fin de l'option:  'class\_', 'from\_', 'in\_'.
 
-        Vous pouvez aussi configurer la valeur d'une option pour le widget ``w`` avec une instruction de la forme ``w[option] = value``.
+        Vous pouvez aussi configurer la valeur d'une option pour le widget ``w`` avec une instruction de la forme ``w['option'] = valeur``.
 
         Si vous appelez la méthode ``config()`` sans arguments, elle retourne un dictionnaire de toutes les options du widget appelant. Les clés sont les noms des options (incluant les alias comme bd pour borderwidth). La valeur pour chaque clé est: 
 
@@ -283,10 +283,11 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
 .. py:method:: option_add(motif, value, priorite=None)
 
         Cette méthode ajoute des valeurs par défaut à la base de données des options de Tkinter. L'argument *motif* est une chaîne de caractères qui précise l'option à configurer par défaut pour un ou plusieurs widgets. L'argument *priorite* peut prendre l'une des valeurs suivantes:
-        20 	Pour les propriétés par défaut des widgets.
-        40 	Pour les propriétés par défaut qui concerne des applications particulières.
-        60 	Pour les options précisées dans des fichiers d'utilisateur.
-        80 	Pour les options qui sont configurées au démarrage de l'application. C'est ce niveau qui a la priorité par défaut.
+       
+        + 20: Pour les propriétés par défaut des widgets.
+        + 40: Pour les propriétés par défaut qui concerne des applications particulières.
+        + 60: Pour les options précisées dans des fichiers d'utilisateur.
+        + 80: Pour les options qui sont configurées au démarrage de l'application. C'est ce niveau qui a la priorité par défaut.
 
         Plus la valeur est grande, plus le réglage correspondant est prioritaire. Voir :ref:`APPEARANCE` pour une vue d'ensemble de la base de données des options. La syntaxe de l'argument *motif* est la même que celle du début d'une ligne de spécification d'option dans la base de donnée.
 
@@ -302,7 +303,7 @@ Les méthodes données ci-après sont communes à tous les widgets. Dans les des
                                      weight='bold')
                 root.option_add('*Button*font', grandeFonte)
 
-        Chaque bouton créé après l'exécution de ces lignes utilisera par défaut une police Times grasse de 24 points (sauf si l'option font est renseignée dans le constructeur de bouton).
+        Chaque bouton créé après l'exécution de ces lignes utilisera par défaut une police Times grasse de 24 points (sauf si l'option *font* est renseignée dans le constructeur de bouton).
 
 .. py:method:: option_clear()
 

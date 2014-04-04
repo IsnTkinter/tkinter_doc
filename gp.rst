@@ -159,11 +159,11 @@ Si vous souhaitez controler plus finement cet ajustement automatique des colonne
     
         marge en pixels à ajouter autour de la plus large cellule de la ligne (ou colonne).
     
-    :arg int weight:
+    :arg weight:
         
-        Pour rendre une ligne (ou colonne) étirable lors d'un redimensionnement, utilisez cette option en fournissant une valeur qui donne le poid relatif de cette ligne (ou colonne) lors de la distrubution de l'espace supplémentaire.
+        Pour rendre une ligne (ou colonne) étirable lors d'un redimensionnement, utilisez cette option en fournissant une valeur qui donne le poid relatif de cette ligne (ou colonne) lors de la distribution de l'espace supplémentaire.
         
-        Par exemple, si un widget ``w`` contient une grille, le code qui suit attribura trois quart (3/4) de l'espace supplémentaire à la première colonne et un quart (1/4) à la seconde::
+        Par exemple, si un widget ``w`` contient une grille, le code qui suit attribura trois quarts (3/4) de l'espace supplémentaire à la première colonne et un quart (1/4) à la seconde::
         
             w.columnconfigure(0, weight=3)
             w.columnconfigure(1, weight=1)
