@@ -10,8 +10,7 @@ Tkinter sert à réaliser des interfaces graphiques pour l'utilisateur (GUI)
 Ce document s'inspire (et traduit) de  `cette documentation <http://infohost.nmt.edu/tcc/help/pubs/tkinter/web/index.html>`_.
 
 Nous commencerons par la part visible de tkinter en créant des composants 
-graphiques (widgets) puis en les disposant sur l'écran. Ensuite, nous expliquerons
-comment connecter cette «façade graphique» de l'application à la logique qui se trouve
+graphiques (widgets) puis en les disposant sur l'écran. Ensuite, nous expliquerons comment connecter cette «façade graphique» de l'application à la logique qui se trouve
 derrière.
 
 Un exemple simple
@@ -41,6 +40,8 @@ Voici un programme «tkinter» minimal qui contient un seul bouton «Quitter».
 
 La dernière instruction ``root.mainloop()`` permet à l'application
 de recevoir des informations de la souris et du clavier (entre autres).
+
+Si vous souhaitez expérimenter tkinter tout en développant une bonne vision d'ensemble de ce module, reportez-vous à cette `présentation <http://tkinter.fdex.eu/presentation>`_
 
 Définitions
 ===========
