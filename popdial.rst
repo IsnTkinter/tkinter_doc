@@ -4,7 +4,7 @@
 Fenêtres de dialogues
 *********************
 
-Tkinter fournit trois sous-modules qui servent à créer des fenêtres de «dialogue» préfonconfigurées. Ces fenêtres sont utiles pour transmettre une information à l'utilisateur ou pour lui demander quelque chose. Ces sont des fenêtres popups ou «surgissantes» car leur durée de vie est limitée: elles sont détruites dès que l'utilisateur clique sur un bouton de validation.
+Tkinter fournit trois sous-modules qui servent à créer des fenêtres de «dialogue» préconfigurées. Ces fenêtres sont utiles pour transmettre une information à l'utilisateur ou pour lui demander quelque chose. Ce sont des fenêtres popups ou «surgissantes» car leur durée de vie est limitée: elles sont détruites dès que l'utilisateur clique sur un bouton de validation.
 
 * ``tkinter.messagebox``: fournit un assortiment de fenêtres de dialogue pour des tâches simples.
 
@@ -88,7 +88,7 @@ Les fonctions disponibles sont:
 
    .. py:function:: asksaveasfilename(option=valeur, ...)
 
-           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un répertoire et d'indiquer le nom d'un fichier qu'il souhaite créer ou qu'il souhaite remplacer s'il existe déjà. Dans ce dernier cas, une popup apparaît pour le mettre en garde sur le fait que le fichier existe déjà et pour lui demander si il souhaite vraiment le remplacer. i
+           Produit une fenêtre popup qui permet à l'utilisateur de sélectionner un répertoire et d'indiquer le nom d'un fichier qu'il souhaite créer ou qu'il souhaite remplacer s'il existe déjà. Dans ce dernier cas, une popup apparaît pour le mettre en garde sur le fait que le fichier existe déjà et pour lui demander si il souhaite vraiment le remplacer.
            
            La fonction retourne le chemin complet du fichier à créer ou à remplacer sous la forme d'une chaîne (éventuellement vide).
 
@@ -104,7 +104,7 @@ Les options des deux fonctions sont les mêmes:
 
                 Une liste de la forme ``[(nom1, motif1), (nom2, motif2), ...]`` dont les éléments sont des 2-tuples qui contiennent, d'une part le nom d'un type de fichiers, d'autre part un motif de sélection qui servira à filtrer les fichiers selon que leur nom corresponde ou non au motif. Le nom est affiché sur le bouton de sélection «Type de fichiers» afin d'aider l'utilisateur à comprendre quels sont les fichiers filtrés.
                
-                Par exemple, pour permettre à l'utilisateur d'afficher uniquement les fichiers dont le nom se termine par ``'.png'``, vous pourriez utiliser ``filetypes=[("PNG","*.png")]``. Le caractère ``*`` est une sorte de joker qui symbolise tous les caractères situés avant le point. 
+                Par exemple, pour permettre à l'utilisateur d'afficher uniquement les fichiers dont le nom se termine par ``'.png'``, vous pourriez utiliser ``filetypes=[("PNG", "*.png")]``. Le caractère ``*`` est une sorte de joker qui symbolise tous les caractères situés avant le point. 
                
                 En précisant plus de tuples de ce genre dans la liste, on donne à l'utilisateur le choix du filtre qu'il peut sélectionner en utilisant le bouton «Type de fichiers» (voir l'illustration).
 
